@@ -8,7 +8,7 @@ Geeknews 등에서 뉴스를 수집하고, 번역/요약하여 발행하는 Semi
 | 항목       | 값                     |
 | ---------- | ---------------------- |
 | **Name**   | Tom's Blog             |
-| **Domain** | `toms-blog.vercel.app` |
+| **Domain** | `toms-blog-mu.vercel.app` |
 | **Owner**  | @sonhyowon             |
 
 ---

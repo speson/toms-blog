@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://toms-blog.vercel.app/sitemap.xml",
+    sitemap: "https://toms-blog-mu.vercel.app/sitemap.xml",
   };
 }

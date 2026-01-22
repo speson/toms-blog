@@ -133,7 +133,7 @@ export async function GET(request: NextRequest) {
               color: "rgba(255,255,255,0.7)",
             }}
           >
-            toms-blog.vercel.app
+            toms-blog-mu.vercel.app
           </div>
         </div>
       </div>

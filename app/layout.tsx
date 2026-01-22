@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toms-blog.vercel.app"),
+  metadataBase: new URL("https://toms-blog-mu.vercel.app"),
   title: {
     default: "Tom's Blog",
     template: "%s | Tom's Blog",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tom's Blog",
     description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
-    url: "https://toms-blog.vercel.app",
+    url: "https://toms-blog-mu.vercel.app",
     siteName: "Tom's Blog",
     locale: "ko_KR",
     type: "website",
