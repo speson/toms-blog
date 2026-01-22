@@ -5,24 +5,24 @@
 AI 관련 뉴스와 개발 트렌드를 다루는 기술 블로그.
 Geeknews 등에서 뉴스를 수집하고, 번역/요약하여 발행하는 Semi-Manual 워크플로우.
 
-| 항목 | 값 |
-|------|-----|
-| **Name** | Tom's Blog |
+| 항목       | 값                     |
+| ---------- | ---------------------- |
+| **Name**   | Tom's Blog             |
 | **Domain** | `toms-blog.vercel.app` |
-| **Owner** | @sonhyowon |
+| **Owner**  | @sonhyowon             |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Content | MDX + Contentlayer |
-| Package Manager | pnpm |
-| Deployment | Vercel (무료 티어) |
+| Layer           | Technology              |
+| --------------- | ----------------------- |
+| Framework       | Next.js 15 (App Router) |
+| Language        | TypeScript              |
+| Styling         | Tailwind CSS            |
+| Content         | MDX + Contentlayer      |
+| Package Manager | pnpm                    |
+| Deployment      | Vercel (무료 티어)      |
 
 ---
 
@@ -31,6 +31,7 @@ Geeknews 등에서 뉴스를 수집하고, 번역/요약하여 발행하는 Semi
 **Theme**: Dark Minimal (Vercel/Toss 스타일)
 
 ### Colors
+
 ```
 Background: #000000, #0a0a0a, #18181b
 Text: #fafafa (primary), #a1a1aa (secondary)
@@ -39,6 +40,7 @@ Border: rgba(255,255,255,0.1)
 ```
 
 ### Effects
+
 - Glassmorphism: `bg-zinc-900/50 backdrop-blur-md`
 - Card: `rounded-xl border border-zinc-800`
 - Hover: `hover:border-zinc-700 transition-colors`
@@ -78,13 +80,13 @@ tom-project/
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | 개발 서버 실행 |
-| `pnpm build` | 프로덕션 빌드 |
-| `pnpm fetch-news` | RSS 뉴스 수집 |
-| `/commit` | Conventional Commits 형식으로 커밋 |
-| `/commit --push` | 커밋 후 자동 push |
+| Command           | Description                        |
+| ----------------- | ---------------------------------- |
+| `pnpm dev`        | 개발 서버 실행                     |
+| `pnpm build`      | 프로덕션 빌드                      |
+| `pnpm fetch-news` | RSS 뉴스 수집                      |
+| `/commit`         | Conventional Commits 형식으로 커밋 |
+| `/commit --push`  | 커밋 후 자동 push                  |
 
 ---
 
@@ -92,14 +94,14 @@ tom-project/
 
 **Format**: `[type](scope): description`
 
-| Type | Description |
-|------|-------------|
-| `feat` | 새로운 기능 |
-| `fix` | 버그 수정 |
-| `docs` | 문서 수정 |
-| `style` | 스타일/포맷 변경 |
-| `refactor` | 리팩토링 |
-| `chore` | 빌드/설정 변경 |
+| Type       | Description      |
+| ---------- | ---------------- |
+| `feat`     | 새로운 기능      |
+| `fix`      | 버그 수정        |
+| `docs`     | 문서 수정        |
+| `style`    | 스타일/포맷 변경 |
+| `refactor` | 리팩토링         |
+| `chore`    | 빌드/설정 변경   |
 
 상세 가이드: `.claude/commands/commit.md`
 
@@ -107,11 +109,11 @@ tom-project/
 
 ## Plans & Documentation
 
-| Document | Description |
-|----------|-------------|
-| `.claude/plans/00-overview.md` | 전체 프로젝트 개요 |
-| `.claude/plans/01-blog-pipeline.md` | 블로그 파이프라인 상세 |
-| `.claude/plans/04-blog-mvp-implementation.md` | **MVP 구현 플랜** |
+| Document                                      | Description            |
+| --------------------------------------------- | ---------------------- |
+| `.claude/plans/00-overview.md`                | 전체 프로젝트 개요     |
+| `.claude/plans/01-blog-pipeline.md`           | 블로그 파이프라인 상세 |
+| `.claude/plans/04-blog-mvp-implementation.md` | **MVP 구현 플랜**      |
 
 ---
 

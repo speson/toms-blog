@@ -22,6 +22,7 @@ Suno AI로 Lo-fi 음악을 생성하고 YouTube 채널 + 스트리밍 플랫폼�
 ## Research Findings
 
 ### Suno API
+
 - **공식 API**: 없음
 - **비공식 옵션**:
   - `gcui-art/suno-api` (TypeScript) - 2.6k stars
@@ -30,11 +31,13 @@ Suno AI로 Lo-fi 음악을 생성하고 YouTube 채널 + 스트리밍 플랫폼�
 - **상업적 사용**: Pro 플랜 ($10/월) 필수
 
 ### YouTube Automation
+
 - **Data API v3**: 업로드 가능 (100 units/upload)
 - **일일 쿼터**: 10,000 units
 - **주의**: 미인증 프로젝트는 private 전용
 
 ### Music Distribution
+
 - **DistroKid**: API 없음 (수동만)
 - **대안**: Symphonic ($19.99/년) - API 제공
 
@@ -57,29 +60,32 @@ Suno AI로 Lo-fi 음악을 생성하고 YouTube 채널 + 스트리밍 플랫폼�
 
 ## Cost Estimate (When Active)
 
-| Item | Monthly Cost |
-|------|--------------|
-| Suno Pro | $10 |
-| Modal/Railway | $5-10 |
-| Symphonic | $1.67 |
-| **Total** | **~$17-22** |
+| Item          | Monthly Cost |
+| ------------- | ------------ |
+| Suno Pro      | $10          |
+| Modal/Railway | $5-10        |
+| Symphonic     | $1.67        |
+| **Total**     | **~$17-22**  |
 
 ---
 
 ## Options When Resuming
 
 ### Option A: Semi-Manual (Recommended Start)
+
 - Suno 웹에서 수동 생성
 - 로컬 FFmpeg로 영상 제작
 - YouTube 수동 업로드
 - **비용**: $10/월 (Suno Pro만)
 
 ### Option B: Partial Automation
+
 - Suno API로 음악 생성 자동화
 - 영상/업로드는 수동
 - **비용**: $15/월
 
 ### Option C: Full Automation
+
 - 전체 파이프라인 자동화
 - Modal/Railway 서버 필요
 - **비용**: $20-25/월
@@ -97,11 +103,11 @@ Suno AI로 Lo-fi 음악을 생성하고 YouTube 채널 + 스트리밍 플랫폼�
 
 ## Channel Concept Ideas
 
-| Concept | Target Audience | Differentiation |
-|---------|-----------------|-----------------|
-| 코딩할 때 듣는 Lo-fi | 개발자 | 한국 개발자 특화 |
-| 새벽 감성 Lo-fi | 일반 | 한국 감성, 한글 가사 |
-| AI News BGM | 테크 팬 | 블로그와 연계 |
+| Concept              | Target Audience | Differentiation      |
+| -------------------- | --------------- | -------------------- |
+| 코딩할 때 듣는 Lo-fi | 개발자          | 한국 개발자 특화     |
+| 새벽 감성 Lo-fi      | 일반            | 한국 감성, 한글 가사 |
+| AI News BGM          | 테크 팬         | 블로그와 연계        |
 
 ---
 
