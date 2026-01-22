@@ -71,9 +71,10 @@ tom-project/
 ## Workflow (Semi-Manual)
 
 ```
-1. pnpm fetch-news          # RSS 뉴스 수집
-2. "이거 번역해줘"           # Claude에게 요청
-3. 검토 후 "발행해줘"        # MDX 생성 및 배포
+1. /fetch-news              # RSS 뉴스 수집 + 리스트 표시
+2. "1, 3, 5번 선택"          # 뉴스 선택
+3. /publish                 # 선택된 뉴스로 포스트 발행
+4. /commit --push           # 커밋 및 배포
 ```
 
 ---
@@ -84,7 +85,9 @@ tom-project/
 | ----------------- | ---------------------------------- |
 | `pnpm dev`        | 개발 서버 실행                     |
 | `pnpm build`      | 프로덕션 빌드                      |
-| `pnpm fetch-news` | RSS 뉴스 수집                      |
+| `pnpm fetch-news` | RSS 뉴스 수집 (CLI)                |
+| `/fetch-news`     | 뉴스 수집 + 선택 UI                |
+| `/publish`        | 선택된 뉴스로 포스트 발행          |
 | `/commit`         | Conventional Commits 형식으로 커밋 |
 | `/commit --push`  | 커밋 후 자동 push                  |
 
