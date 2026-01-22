@@ -13,6 +13,7 @@
     "fetch-news": "tsx scripts/fetch-news.ts"
   },
   "dependencies": {
+    "@vercel/og": "^0.8.6",
     "contentlayer2": "^0.5.8",
     "next": "16.1.4",
     "next-contentlayer2": "^0.5.8",

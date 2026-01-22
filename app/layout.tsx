@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://toms-blog.vercel.app"),
   title: {
     default: "Tom's Blog",
     template: "%s | Tom's Blog",
@@ -26,6 +27,20 @@ export const metadata: Metadata = {
     siteName: "Tom's Blog",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/api/og?title=Tom's Blog&tags=AI",
+        width: 1200,
+        height: 630,
+        alt: "Tom's Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tom's Blog",
+    description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
+    images: ["/api/og?title=Tom's Blog&tags=AI"],
   },
   robots: {
     index: true,
