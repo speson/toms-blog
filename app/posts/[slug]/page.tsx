@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
 import { getPostBySlug, formatDate } from "@/lib/posts";
@@ -61,8 +62,20 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  const thumbnailUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <div className="relative mb-8 aspect-[1200/630] w-full overflow-hidden rounded-xl">
+        <Image
+          src={thumbnailUrl}
+          alt={post.title}
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+      </div>
       <header className="mb-12">
         <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
           {post.title}
