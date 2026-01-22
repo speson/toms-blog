@@ -12,8 +12,8 @@ export function PostCard({ post }: PostCardProps) {
 
   return (
     <article className="group overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 transition-all hover:border-zinc-700 hover:bg-zinc-900/80">
-      <Link href={post.url} className="flex flex-col sm:flex-row">
-        <div className="relative aspect-[1200/630] w-full sm:w-56 md:w-72 flex-shrink-0 bg-zinc-800">
+      <Link href={post.url} className="flex flex-col sm:flex-row sm:p-4 sm:gap-4">
+        <div className="relative aspect-[1200/630] w-full sm:w-56 md:w-72 flex-shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-800">
           <Image
             src={thumbnailUrl}
             alt={post.title}
@@ -23,7 +23,7 @@ export function PostCard({ post }: PostCardProps) {
             unoptimized
           />
         </div>
-        <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
+        <div className="flex flex-1 flex-col justify-between p-4 sm:p-0">
           <div>
             <h2 className="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-purple-400 sm:text-xl">
               {post.title}
