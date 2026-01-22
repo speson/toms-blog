@@ -1,0 +1,77 @@
+---
+title: "AI 시대, 리팩터링은 더 이상 노가다가 아니다"
+description: "AI와 Codemod(jscodeshift)를 활용해 Design System 레거시를 대규모로 정리한 실전 경험을 공유합니다."
+date: "2026-01-23"
+tags: ["AI", "리팩터링", "Codemod", "개발도구"]
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=26040"
+draft: false
+---
+
+## 요약
+
+레몬베이스 팀이 **AI + Codemod(jscodeshift)** 조합으로 Deprecated된 Design System 컴포넌트를 대규모로 정리한 경험을 공유했습니다. 약 **95%의 패턴을 자동 변환**하는 데 성공했습니다.
+
+## 문제 상황
+
+많은 팀이 겪는 전형적인 레거시 문제입니다:
+
+- 사내 Design System에서 Typography 등 다수 컴포넌트가 **Deprecated**
+- 새 Design System + Tailwind 도입 후 한 코드베이스 안에 **Deprecated 패턴이 혼재**
+- Boy Scout 룰(지나가면서 조금씩 정리)로 해결하기엔:
+  - 파일 수가 너무 많음
+  - 기능 변경 PR과 리팩터링 PR 분리 원칙 때문에 **우선순위에서 계속 밀림**
+
+## 접근 방법: Codemod + AI
+
+단순 문자열 치환이 아닌 **AST(Abstract Syntax Tree) 기반 Codemod**를 사용했습니다.
+
+### AI의 역할
+
+- Deprecated Typography 사용 패턴 **전수 조사**
+- Before/After 규칙 정리
+- jscodeshift 변환 스크립트 **초안 및 테스트 코드 작성 보조**
+
+### 핵심 변환 예시
+
+```jsx
+// Before
+<Body1 bold>텍스트</Body1>
+
+// After
+<span className="typography-body1-bold">텍스트</span>
+```
+
+```jsx
+// Before
+<HeadLine5 as="h1" color={SemanticColor.Text.Primary}>
+
+// After
+<h1 className="typography-headLine5 text-primary">
+```
+
+## 결과
+
+- Typography 관련 Deprecated 패턴 **약 95% 자동 변환**
+- 혼합 패턴이 크게 줄어 **코드 일관성과 온보딩 경험 개선**
+- "다음 Design System 교체도 Codemod로 한다"는 **옵션 확보**
+
+## 배운 점
+
+1. **생각보다 많은 리팩터링이 AST + Codemod로 자동화 가능**
+2. 대규모 자동 변환에서는 "파일 diff 리뷰"보다 **"변환 규칙 + 테스트 리뷰"** 가 더 효율적이고 안전
+3. AI는 **패턴 분석·초안 작성 보조**, Codemod는 **일관된 대량 치환** 역할로 구분하는 것이 좋음
+
+## 실전 팁
+
+대규모 리팩터링을 앞두고 있다면:
+
+- **jscodeshift**로 AST 기반 변환 스크립트 작성
+- AI에게 패턴 분석과 초안 작성 위임
+- 변환 규칙에 대한 테스트 코드로 안전성 확보
+- 한 번에 대량 변환 후 통합 리뷰
+
+## 원문 링크
+
+- [AI 시대, 리팩터링은 더 이상 노가다가 아니다 - 레몬베이스 블로그](https://blog.lemonbase.team/ai-시대-리팩터링은-더-이상-노가다가-아니다-24f3cfae20b6)
+- [GeekNews 토론](https://news.hada.io/topic?id=26040)
