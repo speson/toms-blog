@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Header, Footer } from "@/components";
+import { Header, Footer, WebsiteJsonLd } from "@/components";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,6 +46,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    types: {
+      "application/rss+xml": "https://toms-blog-mu.vercel.app/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -55,6 +60,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark">
+      <head>
+        <WebsiteJsonLd />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-black font-sans antialiased`}
       >
