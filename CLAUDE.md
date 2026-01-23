@@ -51,20 +51,61 @@ Border: rgba(255,255,255,0.1)
 
 ```
 tom-project/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx
-│   ├── page.tsx            # Home (post list)
-│   ├── posts/[slug]/       # Post detail
-│   └── about/              # About page
-├── components/             # React components
+├── app/
+│   ├── layout.tsx          # Root layout + WebsiteJsonLd
+│   ├── page.tsx            # Home (2-column: posts + sidebar)
+│   ├── posts/[slug]/       # Post detail + ArticleJsonLd
+│   ├── about/              # About page
+│   ├── feed.xml/route.ts   # RSS feed endpoint
+│   ├── sitemap.ts          # Dynamic sitemap
+│   ├── robots.ts           # Robots.txt
+│   └── api/og/route.tsx    # OG image generation
+├── components/
+│   ├── post-card.tsx       # Post preview card
+│   ├── post-list.tsx       # Filterable post list
+│   ├── category-sidebar.tsx # Category filter sidebar
+│   ├── code-block.tsx      # Code block with copy button
+│   ├── mdx-components.tsx  # MDX rendering (table, code, etc.)
+│   └── json-ld.tsx         # Structured data components
 ├── content/posts/          # MDX blog posts
-├── lib/                    # Utilities
-│   ├── posts.ts            # Post CRUD
+├── lib/
+│   ├── posts.ts            # Post CRUD + category helpers
 │   └── rss.ts              # RSS fetching
-├── scripts/                # CLI scripts
-│   └── fetch-news.ts       # RSS news fetcher
-└── public/                 # Static assets
+├── scripts/
+│   └── fetch-news.ts       # RSS news fetcher (multi-source)
+└── public/
 ```
+
+---
+
+## Implemented Features
+
+### Category Filtering
+
+- 카테고리: `ai-news`, `updates`, `opensource`
+- 좌측 사이드바로 필터링 가능
+- URL query param으로 상태 유지 (`?category=ai-news`)
+
+### MDX Enhancements
+
+- **Code Block**: Copy 버튼 (clipboard API)
+- **Table**: GFM 테이블 지원 (`remark-gfm`)
+- **Syntax Highlighting**: `rehype-pretty-code` + Shiki
+
+### SEO
+
+- **JSON-LD**: WebSite, Article, BreadcrumbList 스키마
+- **RSS Feed**: `/feed.xml` 엔드포인트
+- **Sitemap**: `/sitemap.xml` 동적 생성
+- **OG Image**: `/api/og` 동적 생성
+
+### News Sources
+
+- GeekNews RSS
+- OpenAI Blog
+- Google AI Blog
+- Anthropic News
+- GitHub Releases (Claude Code, Cursor 등)
 
 ---
 
@@ -97,14 +138,15 @@ tom-project/
 
 **Format**: `[type](scope): description`
 
-| Type       | Description      |
-| ---------- | ---------------- |
-| `feat`     | 새로운 기능      |
-| `fix`      | 버그 수정        |
-| `docs`     | 문서 수정        |
-| `style`    | 스타일/포맷 변경 |
-| `refactor` | 리팩토링         |
-| `chore`    | 빌드/설정 변경   |
+| Type       | Description             |
+| ---------- | ----------------------- |
+| `feat`     | 새로운 기능             |
+| `fix`      | 버그 수정               |
+| `docs`     | 문서 수정               |
+| `style`    | 스타일/포맷 변경        |
+| `refactor` | 리팩토링                |
+| `chore`    | 빌드/설정 변경          |
+| `content`  | 블로그 포스트 추가/수정 |
 
 상세 가이드: `.claude/commands/commit.md`
 
@@ -122,7 +164,8 @@ tom-project/
 
 ## Important Notes
 
-- **비용**: $0 (Vercel 무료 티어 + vercel.app 도메인)
+- **비용**: $0 (Vercel 무료 티어)
+- **도메인**: `toms-blog.co.kr` (가비아 DNS + Vercel 연결)
 - **다크 모드 기본**: 라이트 모드 토글은 MVP 이후
-- **SEO**: 메타 태그, OG 이미지, sitemap.xml 필수
-- **Font**: Geist 또는 Pretendard + Inter
+- **SEO**: JSON-LD, OG 이미지, sitemap.xml, RSS 피드 구현 완료
+- **Font**: Geist (기본)
