@@ -19,6 +19,29 @@ export function getAllTags(): string[] {
   return [...new Set(tags)].sort();
 }
 
+export type Category = "ai-news" | "updates" | "opensource";
+
+export const CATEGORY_LABELS: Record<Category, string> = {
+  "ai-news": "AI 뉴스",
+  updates: "업데이트",
+  opensource: "오픈소스",
+};
+
+export function getPostsByCategory(category: Category): Post[] {
+  return getAllPosts().filter((post) => post.category === category);
+}
+
+export function getAllCategories(): Category[] {
+  const categories = allPosts
+    .filter((post) => !post.draft)
+    .map((post) => post.category as Category);
+  return [...new Set(categories)];
+}
+
+export function getCategoryCount(category: Category): number {
+  return getPostsByCategory(category).length;
+}
+
 export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString("ko-KR", {
     year: "numeric",

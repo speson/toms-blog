@@ -1,11 +1,9 @@
-import { PostCard } from "@/components";
-import { getAllPosts } from "@/lib/posts";
+import { Suspense } from "react";
+import { CategorySidebar, PostList } from "@/components";
 
 export default function Home() {
-  const posts = getAllPosts();
-
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
+    <div className="mx-auto max-w-6xl px-6 py-16">
       <section className="mb-16">
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
           Tom&apos;s Blog
@@ -15,20 +13,26 @@ export default function Home() {
         </p>
       </section>
 
-      <section>
-        <h2 className="mb-8 text-2xl font-semibold text-white">최근 포스트</h2>
-        {posts.length > 0 ? (
-          <div className="space-y-4">
-            {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-            <p className="text-zinc-500">포스트가 없습니다.</p>
-          </div>
-        )}
-      </section>
+      <div className="flex flex-col lg:flex-row lg:gap-8">
+        <section className="min-w-0 flex-1">
+          <h2 className="mb-8 text-2xl font-semibold text-white">
+            최근 포스트
+          </h2>
+          <Suspense
+            fallback={
+              <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+                <p className="text-zinc-500">로딩 중...</p>
+              </div>
+            }
+          >
+            <PostList />
+          </Suspense>
+        </section>
+
+        <Suspense fallback={null}>
+          <CategorySidebar />
+        </Suspense>
+      </div>
     </div>
   );
 }
