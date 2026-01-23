@@ -1,0 +1,60 @@
+---
+title: "Claude Code v2.1.16 출시 - 태스크 관리 시스템 및 VSCode 플러그인 관리 추가"
+description: "Anthropic의 Claude Code v2.1.16이 출시되었습니다. 의존성 추적이 가능한 새로운 태스크 관리 시스템, VSCode 네이티브 플러그인 관리, 원격 세션 복원 등 주요 기능이 추가되었습니다."
+date: "2026-01-23"
+tags: ["AI", "Claude", "개발도구", "VSCode"]
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.16"
+draft: false
+---
+
+## 요약
+
+Anthropic의 AI 코딩 어시스턴트 **Claude Code v2.1.16**이 출시되었습니다. 이번 버전에서는 **태스크 관리 시스템**과 **VSCode 네이티브 플러그인 관리** 등 생산성 향상 기능이 대거 추가되었습니다.
+
+## 새로운 기능
+
+### 태스크 관리 시스템
+
+새로운 태스크 관리 시스템이 추가되었습니다:
+
+- **의존성 추적(dependency tracking)** 기능 포함
+- 복잡한 프로젝트에서 작업 흐름 관리 용이
+- 태스크 간 관계를 명시적으로 정의 가능
+
+### VSCode 네이티브 플러그인 관리
+
+VSCode 사용자를 위한 개선사항:
+
+- **네이티브 플러그인 관리 지원** 추가
+- VSCode 내에서 직접 플러그인 설치/관리 가능
+
+### 원격 세션 복원 (OAuth 사용자)
+
+- Sessions 다이얼로그에서 **원격 Claude 세션 탐색 및 재개** 가능
+- OAuth 인증 사용자 대상 기능
+
+## 버그 수정
+
+| 문제                                                                          | 해결   |
+| ----------------------------------------------------------------------------- | ------ |
+| 서브에이전트 과다 사용 세션 재개 시 OOM 크래시                                | 수정됨 |
+| `/compact` 실행 후 "context remaining" 경고가 숨겨지지 않음                   | 수정됨 |
+| 세션 타이틀이 사용자 언어 설정을 무시함                                       | 수정됨 |
+| [Windows] Claude Code 사이드바 컨테이너가 시작 시 나타나지 않는 레이스 컨디션 | 수정됨 |
+
+## 업데이트 방법
+
+```bash
+# 최신 버전 설치
+claude install
+
+# 또는 npm으로 설치 (지원 중단 예정)
+npm install -g @anthropic/claude-code
+```
+
+> **참고**: npm 설치 방식은 지원 중단 예정입니다. `claude install` 명령어 사용을 권장합니다.
+
+## 원문 링크
+
+- [Claude Code v2.1.16 Release - GitHub](https://github.com/anthropics/claude-code/releases/tag/v2.1.16)
