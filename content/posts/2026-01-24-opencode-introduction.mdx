@@ -1,0 +1,243 @@
+---
+title: "OpenCode 완벽 가이드: 오픈소스 AI 코딩 에이전트 설치부터 활용까지"
+description: "GitHub 스타 85K의 오픈소스 AI 코딩 에이전트 OpenCode를 소개합니다. Claude Code의 오픈소스 대안으로, 다양한 AI 모델을 지원하며 터미널에서 강력한 코딩 지원을 받을 수 있습니다."
+date: "2026-01-24"
+tags: ["AI", "개발도구", "오픈소스", "OpenCode"]
+source: "original"
+sourceUrl: "https://opencode.ai"
+category: "ai-news"
+draft: false
+---
+
+## OpenCode란?
+
+**OpenCode**는 터미널, IDE, 데스크톱에서 코드 작성을 도와주는 **오픈소스 AI 코딩 에이전트**입니다. Anthropic의 Claude Code와 유사한 기능을 제공하지만, **100% 오픈소스**이며 **특정 AI 제공자에 종속되지 않는** 것이 특징입니다.
+
+### 주요 수치
+
+| 지표                      | 수치        |
+| ------------------------- | ----------- |
+| GitHub Stars              | **85,000+** |
+| Contributors              | **600+**    |
+| Monthly Active Developers | **150만+**  |
+| Commits                   | **7,500+**  |
+
+## Claude Code와의 차이점
+
+| 항목       | OpenCode                          | Claude Code |
+| ---------- | --------------------------------- | ----------- |
+| 소스 코드  | 오픈소스 (MIT)                    | 비공개      |
+| AI 모델    | Claude, GPT, Gemini, 로컬 모델 등 | Claude 전용 |
+| LSP 지원   | 기본 내장                         | 제한적      |
+| 인터페이스 | TUI 중심 + 데스크톱 앱            | CLI         |
+| 아키텍처   | 클라이언트/서버 (원격 제어 가능)  | 단일        |
+
+## 설치 방법
+
+### 1. 빠른 설치 (추천)
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+### 2. 패키지 매니저별 설치
+
+#### macOS / Linux
+
+```bash
+# Homebrew (추천 - 항상 최신 버전)
+brew install anomalyco/tap/opencode
+
+# 공식 Homebrew formula
+brew install opencode
+```
+
+#### Windows
+
+```powershell
+# Scoop
+scoop install opencode
+
+# Chocolatey
+choco install opencode
+```
+
+#### Node.js 패키지 매니저
+
+```bash
+# npm
+npm i -g opencode-ai@latest
+
+# pnpm
+pnpm add -g opencode-ai@latest
+
+# bun
+bun add -g opencode-ai@latest
+
+# yarn
+yarn global add opencode-ai@latest
+```
+
+#### 기타
+
+```bash
+# Arch Linux (paru)
+paru -S opencode-bin
+
+# mise
+mise use -g opencode
+
+# Nix
+nix run nixpkgs#opencode
+```
+
+### 3. 데스크톱 앱 (베타)
+
+GUI를 선호한다면 데스크톱 앱을 사용할 수 있습니다.
+
+| 플랫폼                | 파일                                  |
+| --------------------- | ------------------------------------- |
+| macOS (Apple Silicon) | `opencode-desktop-darwin-aarch64.dmg` |
+| macOS (Intel)         | `opencode-desktop-darwin-x64.dmg`     |
+| Windows               | `opencode-desktop-windows-x64.exe`    |
+| Linux                 | `.deb`, `.rpm`, AppImage              |
+
+```bash
+# macOS (Homebrew)
+brew install --cask opencode-desktop
+
+# Windows (Scoop)
+scoop bucket add extras
+scoop install extras/opencode-desktop
+```
+
+[다운로드 페이지](https://opencode.ai/download)에서 직접 받을 수도 있습니다.
+
+## 기본 사용법
+
+### 시작하기
+
+```bash
+# 프로젝트 디렉토리에서 실행
+cd my-project
+opencode
+```
+
+### 에이전트 모드
+
+OpenCode는 두 가지 내장 에이전트를 제공하며, `Tab` 키로 전환할 수 있습니다.
+
+#### 1. Build 에이전트 (기본)
+
+- **전체 접근 권한**: 파일 읽기/쓰기, 명령어 실행
+- **용도**: 실제 개발 작업
+
+```
+> 이 프로젝트에 로그인 기능을 추가해줘
+```
+
+#### 2. Plan 에이전트
+
+- **읽기 전용**: 파일 수정 거부
+- **명령어 실행 시 확인 요청**
+- **용도**: 코드베이스 분석, 변경 계획 수립
+
+```
+> 이 코드베이스의 아키텍처를 설명해줘
+> 성능 개선 방안을 제안해줘
+```
+
+#### 3. General 서브에이전트
+
+복잡한 검색이나 다단계 작업에 사용됩니다. 메시지에서 `@general`로 호출:
+
+```
+> @general 이 프로젝트에서 사용된 모든 API 엔드포인트를 찾아줘
+```
+
+## AI 모델 설정
+
+OpenCode는 다양한 AI 제공자를 지원합니다.
+
+### 지원 모델
+
+- **Anthropic**: Claude 3.5 Sonnet, Claude 3 Opus
+- **OpenAI**: GPT-4o, GPT-4 Turbo
+- **Google**: Gemini Pro, Gemini Ultra
+- **로컬 모델**: Ollama, LM Studio 등
+
+### 설정 방법
+
+```bash
+# 환경 변수로 API 키 설정
+export ANTHROPIC_API_KEY="your-api-key"
+export OPENAI_API_KEY="your-api-key"
+
+# 또는 설정 파일 사용 (~/.opencode/config.json)
+```
+
+### GitHub Copilot / ChatGPT Plus 연동
+
+기존 구독이 있다면 해당 계정으로 로그인하여 사용할 수 있습니다:
+
+- **GitHub Copilot**: GitHub 계정으로 로그인
+- **ChatGPT Plus/Pro**: OpenAI 계정으로 로그인
+
+### OpenCode Zen
+
+OpenCode 팀이 코딩 에이전트용으로 테스트하고 벤치마킹한 최적화된 모델을 제공합니다. 별도의 설정 없이 안정적인 성능을 원한다면 [Zen](https://opencode.ai/zen)을 사용해보세요.
+
+## 주요 기능
+
+### LSP (Language Server Protocol) 지원
+
+OpenCode는 자동으로 프로젝트에 맞는 LSP를 로드하여 AI가 더 정확한 코드를 작성하도록 돕습니다.
+
+### 멀티 세션
+
+같은 프로젝트에서 여러 에이전트를 병렬로 실행할 수 있습니다.
+
+### 세션 공유
+
+세션 링크를 공유하여 다른 사람과 디버깅하거나 참조할 수 있습니다.
+
+### 프라이버시
+
+OpenCode는 코드나 컨텍스트 데이터를 저장하지 않아, 프라이버시에 민감한 환경에서도 사용할 수 있습니다.
+
+## 유용한 팁
+
+### 1. 프로젝트 컨텍스트 파일
+
+`.opencode/` 디렉토리에 프로젝트 설정을 저장할 수 있습니다:
+
+```
+.opencode/
+├── config.json      # 프로젝트별 설정
+└── instructions.md  # AI에게 전달할 지침
+```
+
+### 2. 자주 쓰는 단축키
+
+| 키       | 동작                         |
+| -------- | ---------------------------- |
+| `Tab`    | 에이전트 전환 (Build ↔ Plan) |
+| `Ctrl+C` | 현재 작업 취소               |
+| `Ctrl+L` | 화면 클리어                  |
+
+### 3. MCP (Model Context Protocol) 지원
+
+외부 도구와 통합하여 기능을 확장할 수 있습니다.
+
+## 마무리
+
+OpenCode는 Claude Code의 강력한 오픈소스 대안입니다. 특정 AI 제공자에 종속되지 않고, 다양한 모델을 자유롭게 선택할 수 있으며, 활발한 커뮤니티와 함께 빠르게 발전하고 있습니다.
+
+터미널에서 AI와 함께 코딩하고 싶다면, OpenCode를 한번 사용해보세요!
+
+## 관련 링크
+
+- [OpenCode 공식 사이트](https://opencode.ai)
+- [GitHub 저장소](https://github.com/anomalyco/opencode)
+- [공식 문서](https://opencode.ai/docs)
+- [Discord 커뮤니티](https://opencode.ai/discord)
