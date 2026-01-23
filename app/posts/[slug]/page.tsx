@@ -6,7 +6,7 @@ import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components";
 import { getPostBySlug, formatDate } from "@/lib/posts";
 import type { Metadata } from "next";
 
-const BASE_URL = "https://toms-blog-mu.vercel.app";
+const BASE_URL = "https://toms-blog.co.kr";
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;

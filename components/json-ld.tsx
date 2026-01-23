@@ -17,7 +17,7 @@ export function WebsiteJsonLd() {
     "@type": "WebSite",
     name: "Tom's Blog",
     description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
-    url: "https://toms-blog-mu.vercel.app",
+    url: "https://toms-blog.co.kr",
     inLanguage: "ko-KR",
     publisher: {
       "@type": "Person",
@@ -65,7 +65,7 @@ export function ArticleJsonLd({
       name: "Tom's Blog",
       logo: {
         "@type": "ImageObject",
-        url: "https://toms-blog-mu.vercel.app/api/og?title=Tom's%20Blog&tags=AI",
+        url: "https://toms-blog.co.kr/api/og?title=Tom's%20Blog&tags=AI",
       },
     },
     keywords: tags.join(", "),

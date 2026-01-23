@@ -5,11 +5,11 @@
 AI 관련 뉴스와 개발 트렌드를 다루는 기술 블로그.
 Geeknews 등에서 뉴스를 수집하고, 번역/요약하여 발행하는 Semi-Manual 워크플로우.
 
-| 항목       | 값                     |
-| ---------- | ---------------------- |
-| **Name**   | Tom's Blog             |
-| **Domain** | `toms-blog-mu.vercel.app` |
-| **Owner**  | @sonhyowon             |
+| 항목       | 값                |
+| ---------- | ----------------- |
+| **Name**   | Tom's Blog        |
+| **Domain** | `toms-blog.co.kr` |
+| **Owner**  | @sonhyowon        |
 
 ---
 
