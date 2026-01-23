@@ -1,0 +1,254 @@
+---
+title: "Oh My OpenCode: OpenCode를 위한 최강의 에이전트 하네스"
+description: "GitHub 스타 22K의 Oh My OpenCode를 소개합니다. OpenCode 위에서 동작하는 오케스트레이션 레이어로, 멀티 에이전트 병렬 처리, LSP/AST 도구, Claude Code 호환성 등 배터리 포함 기능을 제공합니다."
+date: "2026-01-24"
+tags: ["AI", "개발도구", "오픈소스", "OpenCode", "Oh My OpenCode"]
+source: "original"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode"
+category: "opensource"
+draft: false
+---
+
+## Oh My OpenCode란?
+
+**Oh My OpenCode**는 [OpenCode](/posts/2026-01-24-opencode-introduction) 위에서 동작하는 **오케스트레이션 레이어**입니다. OpenCode가 리눅스라면, Oh My OpenCode는 Ubuntu와 같은 존재입니다. 설치만 하면 바로 사용할 수 있는 **배터리 포함(Batteries-Included)** 에이전트 하네스입니다.
+
+### 주요 수치
+
+| 지표          | 수치        |
+| ------------- | ----------- |
+| GitHub Stars  | **22,600+** |
+| Forks         | **1,600+**  |
+| Contributors  | **68+**     |
+| npm Downloads | **다수**    |
+
+### 핵심 철학
+
+> "LLM 에이전트는 우리와 다르지 않다. 좋은 도구와 팀원을 주면, 우리만큼 훌륭한 코드를 작성할 수 있다."
+
+프로젝트 이름 **Sisyphus(시시포스)**는 그리스 신화에서 영원히 바위를 굴려야 했던 인물에서 따왔습니다. LLM 에이전트도 매일 그들의 "돌"을 굴립니다. 우리 개발자들도 마찬가지입니다.
+
+## OpenCode vs Oh My OpenCode
+
+| 항목             | OpenCode                  | Oh My OpenCode                          |
+| ---------------- | ------------------------- | --------------------------------------- |
+| 역할             | AI 코딩 에이전트 (베이스) | 오케스트레이션 레이어 (플러그인)        |
+| 에이전트         | Build, Plan               | Sisyphus, Oracle, Librarian, Explore 등 |
+| 멀티 에이전트    | 단일 에이전트             | 병렬 멀티 에이전트 지원                 |
+| LSP/AST          | 기본 지원                 | 고급 리팩토링 도구 포함                 |
+| MCP              | 수동 설정                 | Exa, Context7, Grep.app 내장            |
+| 훅 시스템        | 기본                      | 25+ 빌트인 훅                           |
+| Claude Code 호환 | 없음                      | 완벽 호환                               |
+
+## 설치 방법
+
+### 1. LLM 에이전트에게 설치 요청 (추천)
+
+가장 쉬운 방법은 Claude Code, Cursor 등의 에이전트에게 설치를 요청하는 것입니다:
+
+```
+Install and configure oh-my-opencode by following the instructions here:
+https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/refs/heads/master/docs/guide/installation.md
+```
+
+### 2. npm으로 설치
+
+```bash
+# npm
+npm install -g oh-my-opencode
+
+# pnpm
+pnpm add -g oh-my-opencode
+
+# bun
+bun add -g oh-my-opencode
+```
+
+### 3. OpenCode 설정에 플러그인 추가
+
+`~/.config/opencode/opencode.json`에 플러그인을 추가합니다:
+
+```json
+{
+  "plugin": ["oh-my-opencode"]
+}
+```
+
+## 업데이트 방법
+
+```bash
+# npm
+npm update -g oh-my-opencode
+
+# pnpm
+pnpm update -g oh-my-opencode
+
+# 버전 확인
+opencode --version
+```
+
+## 핵심 기능
+
+### 1. Sisyphus 에이전트 시스템
+
+Oh My OpenCode의 메인 에이전트인 **Sisyphus**는 여러 전문 에이전트를 지휘합니다:
+
+| 에이전트  | 역할                 | 특화 모델         |
+| --------- | -------------------- | ----------------- |
+| Sisyphus  | 메인 오케스트레이터  | Opus 4.5 High     |
+| Oracle    | 설계, 디버깅         | GPT 5.2 Medium    |
+| Librarian | 문서, 코드 검색      | Claude Sonnet 4.5 |
+| Explore   | 빠른 코드베이스 탐색 | Grok Code         |
+| Frontend  | UI/UX 개발           | Gemini 3 Pro      |
+
+### 2. 멀티 에이전트 병렬 처리
+
+여러 에이전트가 동시에 작업할 수 있습니다:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Sisyphus (메인 에이전트)                                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ├── Oracle (설계 검토 중...)           [백그라운드]         │
+│  ├── Librarian (문서 검색 중...)        [백그라운드]         │
+│  ├── Explore (코드베이스 탐색 중...)    [백그라운드]         │
+│  └── Frontend (UI 컴포넌트 작업 중...)  [백그라운드]         │
+│                                                             │
+│  [4개 에이전트 병렬 실행 중]                                  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 3. LSP/AST 도구
+
+안전하고 정확한 리팩토링을 위한 도구:
+
+- **LSP 리팩토링**: 변수/함수 이름 변경, 정의로 이동, 참조 찾기
+- **AST-Grep**: AST 기반 코드 패턴 검색 및 변환
+- **진단**: 실시간 오류 및 경고 확인
+
+### 4. 내장 MCP (Model Context Protocol)
+
+설정 없이 바로 사용 가능한 MCP들:
+
+| MCP      | 기능             |
+| -------- | ---------------- |
+| Exa      | 웹 검색          |
+| Context7 | 공식 문서 검색   |
+| Grep.app | GitHub 코드 검색 |
+
+### 5. Todo 연속 실행
+
+작업을 중간에 멈추지 않고 끝까지 완료하도록 강제합니다:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  [TODO ENFORCER] 미완료 작업 감지                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ❌ 1. API 엔드포인트 구현        [in_progress]              │
+│  ⬜ 2. 테스트 코드 작성           [pending]                  │
+│  ⬜ 3. 문서 업데이트              [pending]                  │
+│                                                             │
+│  → 에이전트가 작업을 계속합니다...                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 6. 25+ 빌트인 훅
+
+Claude Code 호환 훅 시스템:
+
+- `PreToolUse`: 도구 실행 전
+- `PostToolUse`: 도구 실행 후
+- `UserPromptSubmit`: 사용자 입력 시
+- `Stop`: 에이전트 중지 시
+
+## 마법의 키워드: ultrawork
+
+**문서를 다 읽기 싫다면, 프롬프트에 `ultrawork` (또는 `ulw`)만 포함하세요.**
+
+이 키워드 하나로 모든 기능이 자동으로 활성화됩니다:
+
+- 병렬 에이전트 실행
+- 백그라운드 태스크
+- 깊은 탐색
+- 작업 완료까지 끈질긴 실행
+
+```bash
+# 예시
+> ulw 이 프로젝트에 OAuth 로그인 기능 추가해줘
+```
+
+## 설정 파일
+
+### 설정 위치
+
+| 위치                                     | 범위     |
+| ---------------------------------------- | -------- |
+| `.opencode/oh-my-opencode.json`          | 프로젝트 |
+| `~/.config/opencode/oh-my-opencode.json` | 글로벌   |
+
+### 예시 설정
+
+```json
+{
+  "agents": {
+    "sisyphus": {
+      "model": "anthropic/claude-opus-4-5",
+      "temperature": 0.7
+    },
+    "oracle": {
+      "model": "openai/gpt-5.2",
+      "temperature": 0.3
+    }
+  },
+  "disabled_hooks": [],
+  "mcps": {
+    "websearch": { "enabled": true },
+    "context7": { "enabled": true },
+    "grep_app": { "enabled": true }
+  }
+}
+```
+
+## 제거 방법
+
+```bash
+# 1. OpenCode 설정에서 플러그인 제거
+jq '.plugin = [.plugin[] | select(. != "oh-my-opencode")]' \
+    ~/.config/opencode/opencode.json > /tmp/oc.json && \
+    mv /tmp/oc.json ~/.config/opencode/opencode.json
+
+# 2. 설정 파일 제거 (선택)
+rm -f ~/.config/opencode/oh-my-opencode.json
+rm -f .opencode/oh-my-opencode.json
+```
+
+## 실제 사용 후기
+
+> "Cursor 구독을 취소하게 만들었다. 오픈소스 커뮤니티에서 믿을 수 없는 일이 일어나고 있다." — Arthur Guiot
+
+> "Oh My OpenCode로 하루 만에 8000개의 ESLint 경고를 해결했다." — Jacob Ferrari
+
+> "45,000줄짜리 Tauri 앱을 하룻밤 만에 SaaS 웹앱으로 전환했다." — James Hargis
+
+> "oh-my-opencode를 쓰면, 다시는 돌아가지 못한다." — d0t3ch
+
+## 주의사항
+
+- **생산성이 너무 급격히 올라갈 수 있습니다.** 동료가 눈치채지 못하게 조심하세요.
+- OpenCode 1.0.132 이하 버전에서는 설정 버그가 있을 수 있습니다. 최신 버전을 사용하세요.
+- **ohmyopencode.com은 공식 사이트가 아닙니다.** 공식 다운로드는 GitHub에서만 받으세요.
+
+## 관련 링크
+
+- [GitHub 저장소](https://github.com/code-yeongyu/oh-my-opencode)
+- [공식 문서](https://github.com/code-yeongyu/oh-my-opencode/tree/dev/docs)
+- [Discord 커뮤니티](https://discord.gg/PUwSMR9XNk)
+- [OpenCode 소개](/posts/2026-01-24-opencode-introduction)
+
+## 마무리
+
+Oh My OpenCode는 OpenCode의 잠재력을 최대한 끌어올리는 오케스트레이션 레이어입니다. 멀티 에이전트 병렬 처리, LSP/AST 도구, Claude Code 호환성 등 "있어야 할 것 같은" 모든 기능이 포함되어 있습니다.
+
+설치하고 `ulw`만 입력하세요. 커피 한 잔 마시는 동안 작업이 완료됩니다.
