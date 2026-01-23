@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
-import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components";
+import { ArticleJsonLd, BreadcrumbJsonLd, TableOfContents } from "@/components";
 import { getPostBySlug, formatDate } from "@/lib/posts";
 import type { Metadata } from "next";
 
@@ -85,53 +85,61 @@ export default async function PostPage({ params }: PostPageProps) {
           { name: post.title, url: postUrl },
         ]}
       />
-      <article className="mx-auto max-w-3xl px-6 py-16">
-        <div className="relative mb-8 aspect-[1200/630] w-full overflow-hidden rounded-xl">
-          <Image
-            src={thumbnailUrl}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-        </div>
-        <header className="mb-12">
-          <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-            {post.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
-            <time>{formatDate(post.date)}</time>
-            {post.sourceUrl && (
-              <>
-                <span>•</span>
-                <a
-                  href={post.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 hover:underline"
-                >
-                  원문 보기
-                </a>
-              </>
-            )}
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </header>
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
+          <article>
+            <div className="relative mb-8 aspect-[1200/630] w-full overflow-hidden rounded-xl">
+              <Image
+                src={thumbnailUrl}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+                unoptimized
+              />
+            </div>
+            <header className="mb-12">
+              <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+                <time>{formatDate(post.date)}</time>
+                {post.sourceUrl && (
+                  <>
+                    <span>•</span>
+                    <a
+                      href={post.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:underline"
+                    >
+                      원문 보기
+                    </a>
+                  </>
+                )}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </header>
 
-        <div className="prose prose-invert max-w-none">
-          <MDXContent code={post.body.code} />
+            <div className="prose prose-invert max-w-none">
+              <MDXContent code={post.body.code} />
+            </div>
+          </article>
+
+          <aside className="hidden lg:block">
+            <TableOfContents />
+          </aside>
         </div>
-      </article>
+      </div>
     </>
   );
 }
