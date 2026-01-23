@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  <!-- Border -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" fill="none" stroke="#27272a" stroke-width="1"/>
+  <!-- < bracket -->
+  <path d="M7 11 L4 16 L7 21" stroke="url(#accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8"/>
+  <!-- T letter -->
+  <path d="M11 10 L21 10 M16 10 L16 22" stroke="url(#accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- /> bracket -->
+  <path d="M25 11 L28 16 L25 21" stroke="url(#accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8"/>
+  <!-- Cursor underscore -->
+  <path d="M22 22 L26 22" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/>
+</svg>
