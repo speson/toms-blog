@@ -1,0 +1,116 @@
+---
+title: "OpenAI Codex 에이전트 루프 해부: 기술적 딥다이브"
+description: "OpenAI가 Codex CLI의 에이전트 루프 작동 방식을 상세히 공개했습니다. 프롬프트 구성, 모델 추론, 도구 호출, 그리고 성능 최적화에 대해 알아봅니다."
+date: "2026-01-25"
+tags: ["AI", "OpenAI", "Codex", "에이전트"]
+source: "openai"
+sourceUrl: "https://openai.com/index/unrolling-the-codex-agent-loop"
+category: "ai-news"
+draft: false
+---
+
+## Codex 에이전트 루프란?
+
+OpenAI가 **Codex CLI**의 핵심인 **에이전트 루프**에 대한 기술적 딥다이브를 공개했습니다. 에이전트 루프는 사용자, 모델, 그리고 도구 간의 상호작용을 조율하는 핵심 로직입니다.
+
+## 에이전트 루프의 기본 구조
+
+```
+사용자 입력 → 프롬프트 구성 → 모델 추론 → 도구 호출 → 결과 반영 → (반복)
+```
+
+### 1. 사용자 입력
+
+에이전트는 사용자의 입력을 받아 **프롬프트**에 포함시킵니다.
+
+### 2. 모델 추론 (Inference)
+
+프롬프트가 **토큰**으로 변환되고, 모델이 출력 토큰을 생성합니다. 출력은 다시 텍스트로 변환됩니다.
+
+### 3. 도구 호출 또는 응답
+
+모델은 두 가지 중 하나를 수행합니다:
+
+- **최종 응답**: 사용자에게 메시지 반환
+- **도구 호출**: 에이전트가 실행할 작업 요청 (예: `ls` 실행)
+
+도구 호출 시, 결과가 프롬프트에 추가되고 모델을 다시 쿼리합니다.
+
+## Responses API를 통한 구현
+
+Codex CLI는 **Responses API**를 사용하여 모델 추론을 수행합니다.
+
+### 주요 파라미터
+
+| 파라미터       | 설명                            |
+| -------------- | ------------------------------- |
+| `instructions` | 시스템/개발자 메시지            |
+| `tools`        | 모델이 호출할 수 있는 도구 목록 |
+| `input`        | 텍스트, 이미지, 파일 입력 목록  |
+
+### 프롬프트 구성 순서
+
+1. **시스템 메시지**: 모델별 기본 지침
+2. **도구 정의**: shell, update_plan, web_search, MCP 도구 등
+3. **샌드박스 설명**: 파일 권한, 네트워크 접근 규칙
+4. **개발자 지침**: config.toml의 `developer_instructions`
+5. **사용자 지침**: AGENTS.md, 스킬 메타데이터 등
+6. **환경 컨텍스트**: cwd, shell 정보
+7. **사용자 메시지**: 실제 사용자 입력
+
+## 성능 최적화
+
+### 프롬프트 캐싱
+
+컨텍스트 윈도우는 제한적이므로, **프롬프트 캐싱**이 중요합니다:
+
+- 정적 콘텐츠(지침, 예시)는 프롬프트 시작에 배치
+- 동적 콘텐츠(사용자 입력)는 끝에 배치
+- **캐시 히트 시 샘플링이 선형(O(n))으로 유지**
+
+### 캐시 미스 원인
+
+- 대화 중 `tools` 변경
+- 대상 `model` 변경
+- 샌드박스 설정, 승인 모드, 현재 디렉토리 변경
+
+### 컨텍스트 윈도우 관리
+
+토큰 수가 임계값을 초과하면 **압축(compaction)**을 수행:
+
+```bash
+# 수동 압축
+/compact
+
+# 자동 압축
+auto_compact_limit 초과 시 자동 실행
+```
+
+Responses API의 `/responses/compact` 엔드포인트가 효율적인 압축을 제공합니다.
+
+## Zero Data Retention (ZDR) 지원
+
+- 요청은 완전히 **무상태(stateless)**로 유지
+- `previous_response_id` 대신 전체 컨텍스트 전송
+- ZDR 고객도 암호화된 reasoning 메시지 활용 가능
+
+## 핵심 인사이트
+
+1. **에이전트 루프**는 AI 에이전트의 핵심 아키텍처
+2. **프롬프트 캐싱**으로 성능 최적화 가능
+3. **컨텍스트 윈도우 관리**가 장기 대화에 필수
+4. **무상태 설계**로 ZDR과 호환성 확보
+
+## 향후 시리즈 예고
+
+OpenAI는 이후 포스트에서 다음 주제를 다룰 예정:
+
+- CLI 아키텍처
+- 도구 사용 구현
+- 샌드박싱 모델
+
+## 관련 링크
+
+- [원문](https://openai.com/index/unrolling-the-codex-agent-loop)
+- [Codex CLI GitHub](https://github.com/openai/codex)
+- [Responses API 문서](https://platform.openai.com/docs/api-reference/responses)

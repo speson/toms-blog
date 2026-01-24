@@ -1,0 +1,60 @@
+---
+title: "Claude Code v2.1.19: 태스크 관리 시스템과 VSCode 세션 포크"
+description: "Claude Code v2.1.19가 출시되었습니다. 태스크 관리 시스템 환경 변수, 커스텀 명령어 인덱스 인수, VSCode 세션 포크 기능 등이 추가되었습니다."
+date: "2026-01-25"
+tags: ["AI", "개발도구", "Claude Code", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.19"
+category: "updates"
+draft: false
+---
+
+## Claude Code v2.1.19 릴리스
+
+Anthropic의 **Claude Code**가 v2.1.19로 업데이트되었습니다. 태스크 관리 시스템 제어, 커스텀 명령어 개선, 그리고 여러 버그 수정이 포함되어 있습니다.
+
+## 주요 변경사항
+
+### 새로운 기능
+
+| 기능                       | 설명                                                        |
+| -------------------------- | ----------------------------------------------------------- |
+| `CLAUDE_CODE_ENABLE_TASKS` | 환경 변수로 태스크 관리 시스템 비활성화 가능 (`false` 설정) |
+| 인덱스 인수 단축키         | 커스텀 명령어에서 `$0`, `$1` 등으로 개별 인수 접근          |
+| 세션 포크/되감기           | VSCode 사용자 전체에게 세션 포크 및 되감기 기능 활성화      |
+
+### 버그 수정
+
+- **AVX 미지원 프로세서 크래시 수정** (v2.1.17에서 시작된 이슈)
+- 터미널 종료 시 **Claude Code 프로세스가 남아있는 문제** 수정
+  - EIO 에러 캐치 및 SIGKILL 폴백 사용
+- `/rename`, `/tag` 명령이 다른 디렉토리에서 재개 시 잘못된 세션 업데이트하는 문제 수정
+- 커스텀 제목으로 세션 재개 시 다른 디렉토리에서 작동하지 않는 문제 수정
+- 프롬프트 스태시(Ctrl+S) 사용 시 붙여넣은 텍스트 손실 문제 수정
+- 에이전트 목록에서 "Sonnet (default)" 대신 "Inherit (default)" 표시 수정
+- 백그라운드 훅 명령이 조기 반환하지 않는 문제 수정
+- 파일 쓰기 미리보기에서 빈 줄 누락 문제 수정
+
+### 변경사항
+
+- 추가 권한이나 훅이 없는 스킬은 승인 없이 허용
+- 인덱스 인수 문법 변경: `$ARGUMENTS.0` → `$ARGUMENTS[0]` (브라켓 문법)
+
+### SDK 변경사항
+
+- `replayUserMessages` 활성화 시 `queued_command` 첨부 메시지를 `SDKUserMessageReplay` 이벤트로 재생
+
+## 업데이트 방법
+
+```bash
+# npm
+npm update -g @anthropic-ai/claude-code
+
+# Homebrew
+brew upgrade claude-code
+```
+
+## 관련 링크
+
+- [릴리스 노트](https://github.com/anthropics/claude-code/releases/tag/v2.1.19)
+- [Claude Code 문서](https://docs.anthropic.com/en/docs/claude-code)

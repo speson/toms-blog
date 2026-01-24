@@ -1,0 +1,77 @@
+---
+title: "Oh My OpenCode v3.0.0: 오케스트레이션 혁명"
+description: "Oh My OpenCode v3.0.0이 출시되었습니다. 동적 에이전트 구성, Prometheus 플래너, Atlas 오케스트레이터 등 대규모 업데이트를 소개합니다."
+date: "2026-01-25"
+tags: ["AI", "개발도구", "오픈소스", "OpenCode", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.0.0"
+category: "updates"
+draft: false
+---
+
+## Oh My OpenCode v3.0.0 출시
+
+**Oh My OpenCode**가 v3.0.0으로 대규모 업데이트되었습니다. 이번 버전은 에이전트 배포와 관리 방식을 근본적으로 변화시키는 **오케스트레이션 혁명**입니다.
+
+## 주요 변경사항
+
+### 동적 에이전트 구성: Categories & Skills
+
+정적인 에이전트 정의에서 벗어나 **동적으로 에이전트를 구성**할 수 있게 되었습니다.
+
+- **Categories**: 모델 추상화 (예: `quick`, `visual-engineering`)
+- **Skills**: 특정 작업을 위한 스킬 (예: `frontend-ui-ux`, `git-master`)
+
+```
+// 예시: visual-engineering + frontend-ui-ux = 프론트엔드 전문가
+// 예시: quick + git-master = 빠른 Git 작업 에이전트
+```
+
+기존 "Frontend UI/UX Engineer" 하드코딩 에이전트는 은퇴하고, Sisyphus가 동적으로 최적의 에이전트를 조합합니다.
+
+### Prometheus: 전략적 플래너
+
+새로운 **Prometheus** 에이전트가 추가되었습니다.
+
+- 사용자와 "인터뷰"를 진행하며 요구사항을 명확히 파악
+- 작업 계획 초안 작성 후 다른 전문 에이전트의 검증을 받음
+- 인지 부하를 최소화하면서 계획 정확도를 최대화
+
+### Atlas: 마스터 오케스트레이터
+
+`/start-work` 명령으로 **Atlas** 오케스트레이션 모드를 활성화할 수 있습니다.
+
+| 기능          | 설명                                |
+| ------------- | ----------------------------------- |
+| 적재적소 배치 | 각 하위 작업에 최적의 에이전트 배치 |
+| 끊임없는 검증 | 모든 단계를 작업 계획과 대조 검증   |
+| 비용 효율성   | 제공자별로 토큰 사용량 최적화       |
+
+**비용 최적화 예시:**
+
+- 오케스트레이션: Sonnet
+- 일상 작업: GLM 4.7
+- 빠른 수정: Haiku 4.5
+- 복잡한 백엔드 로직: GPT 5.2 Codex X-High
+
+### 개선된 설치 경험
+
+- **대화형 CLI 설치 프로그램**
+- **자동 모델 매핑**: 구독 상태에 따라 자동 설정
+- **네이티브 바이너리**: 런타임 없이 실행 가능
+- **멀티 프로바이더 지원**: GitHub Copilot, OpenCode Zen, Z.ai Coding Plan 등
+
+## 업데이트 방법
+
+```bash
+npm update -g oh-my-opencode
+# 또는
+pnpm update -g oh-my-opencode
+```
+
+## 관련 링크
+
+- [릴리스 노트](https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.0.0)
+- [Category & Skill 가이드](https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/category-skill-guide.md)
+- [Orchestration 가이드](https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/orchestration-guide.md)
+- [Oh My OpenCode 소개](/posts/2026-01-24-oh-my-opencode)
