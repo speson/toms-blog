@@ -49,6 +49,41 @@ export const Post = defineDocumentType(() => ({
       type: "boolean",
       default: false,
     },
+    perspective: {
+      type: "string",
+    },
+    handsOn: {
+      type: "boolean",
+      default: false,
+    },
+    stackContext: {
+      type: "list",
+      of: { type: "string" },
+      default: [],
+    },
+    tldrVerdict: {
+      type: "string",
+    },
+    relevanceFrontend: {
+      type: "enum",
+      options: ["high", "medium", "low"],
+    },
+    relevanceBackend: {
+      type: "enum",
+      options: ["high", "medium", "low"],
+    },
+    relevanceDevops: {
+      type: "enum",
+      options: ["high", "medium", "low"],
+    },
+    relevanceTooling: {
+      type: "enum",
+      options: ["high", "medium", "low"],
+    },
+    relevanceDatabase: {
+      type: "enum",
+      options: ["high", "medium", "low"],
+    },
   },
   computedFields: {
     slug: {

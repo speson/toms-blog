@@ -1,0 +1,232 @@
+---
+title: "Oh My OpenCode v3.1.7: OAuth 2.1 완전 지원 및 LSP 클라이언트 마이그레이션"
+description: "Oh My OpenCode v3.1.7 릴리스 - MCP 서버를 위한 OAuth 2.1 완전 지원 (RFC 7591, RFC 9728), LSP 클라이언트 vscode-jsonrpc 마이그레이션, 백그라운드 에이전트 안정성 개선."
+date: 2026-01-29
+category: updates
+tags: ["AI", "개발도구", "오픈소스", "OAuth", "MCP"]
+source: github
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.1.7"
+perspective: "개발자 관점: 실무에서 체감하는 MCP OAuth 설정과 안정성 개선"
+handsOn: true
+stackContext: ["typescript", "oauth", "mcp", "cli"]
+tldrVerdict: "실제 사용 중인 도구의 OAuth 2.1 지원으로 MCP 서버 인증 설정이 표준화됨. 백그라운드 에이전트 좀비 프로세스 버그 수정으로 장시간 작업 안정성 크게 개선."
+relevanceFrontend: "low"
+relevanceBackend: "medium"
+relevanceDevops: "low"
+relevanceTooling: "high"
+relevanceDatabase: "low"
+---
+
+[Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode) v3.1.7이 릴리스되었습니다. MCP 서버를 위한 **OAuth 2.1 완전 지원**과 **LSP 클라이언트 마이그레이션**이 주요 변경사항입니다.
+
+## 🔐 OAuth 2.1 완전 지원
+
+MCP(Model Context Protocol) 서버를 위한 **OAuth 2.1 인증**이 완전히 구현되었습니다.
+
+### 지원 RFC 표준
+
+| RFC          | 설명                                                   |
+| ------------ | ------------------------------------------------------ |
+| **RFC 7591** | Dynamic Client Registration (동적 클라이언트 등록)     |
+| **RFC 9728** | Protected Resource Metadata (보호된 리소스 메타데이터) |
+| **RFC 8414** | Authorization Server Discovery (인증 서버 디스커버리)  |
+| **RFC 8707** | Resource Indicators (리소스 표시자)                    |
+
+### 주요 기능
+
+- **보안 토큰 스토리지**: 안전한 토큰 저장소
+- **Step-up Authorization**: 단계별 권한 상승
+- **CLI 명령어**:
+  ```bash
+  opencode mcp oauth login   # MCP OAuth 로그인
+  opencode mcp oauth logout  # OAuth 로그아웃
+  opencode mcp oauth status  # 현재 OAuth 상태 확인
+  ```
+
+이를 통해 MCP 서버와의 통신이 더욱 안전하고 표준을 준수하게 되었습니다.
+
+## 🔧 LSP 클라이언트 마이그레이션
+
+기존 커스텀 JSON-RPC 구현을 **vscode-jsonrpc 라이브러리**로 마이그레이션했습니다.
+
+### 개선 사항
+
+- **프로토콜 안정성 향상**: 검증된 라이브러리 사용
+- **Bun↔Node 스트림 브릿지**: 호환성 보장
+- **코드 간소화**: ~60줄 순 감소
+
+이 변경으로 LSP(Language Server Protocol) 통신이 더 안정적이고 유지보수하기 쉬워졌습니다.
+
+## 🐛 버그 수정
+
+### 백그라운드 에이전트 안정성
+
+**문제**: 백그라운드 에이전트 종료 시 자식 세션이 좀비 프로세스로 남음  
+**해결**: 종료 시 모든 자식 세션을 중단하도록 수정 ([#1240](https://github.com/code-yeongyu/oh-my-opencode/issues/1240))
+
+### 모델 Resolver 개선
+
+| 수정 사항                     | 설명                                                                                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **UI 모델 선택 존중**         | 에이전트 초기화 시 UI에서 선택한 모델 우선 적용 ([#1158](https://github.com/code-yeongyu/oh-my-opencode/pull/1158))   |
+| **연결된 Provider 캐시 사용** | 모델 캐시가 비어있을 때 연결된 Provider 캐시 활용 ([#1227](https://github.com/code-yeongyu/oh-my-opencode/pull/1227)) |
+
+### delegate-task 수정
+
+**문제**: subagent_type에 대해 등록된 에이전트 모델이 명시적으로 전달되지 않음  
+**해결**: 등록된 에이전트 모델을 명시적으로 전달하도록 수정 ([#1225](https://github.com/code-yeongyu/oh-my-opencode/issues/1225))
+
+### start-work 수정
+
+- 이미 설정된 세션 에이전트 덮어쓰기 방지
+- subagent 타입에 대해 부모 모델 상속 ([#1201](https://github.com/code-yeongyu/oh-my-opencode/pull/1201))
+
+### Config 수정
+
+- `override.category` 확장
+- 명시적 `reasoningEffort` 우선순위 개선 ([#1219](https://github.com/code-yeongyu/oh-my-opencode/issues/1219))
+
+### 테스트 개선
+
+**문제**: `mock.module`이 파일 간 캐시 오염 발생  
+**해결**: config-handler 테스트를 `spyOn`으로 마이그레이션
+
+## 📖 문서 개선
+
+- `configurations.md`에 누락된 설정 옵션 추가 ([#1186](https://github.com/code-yeongyu/oh-my-opencode/pull/1186))
+- OAuth 2.1 기능 문서 및 CLI 가이드 추가
+
+## 주요 커밋
+
+| 커밋                                                                                                      | 설명                                               |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [dcda876](https://github.com/code-yeongyu/oh-my-opencode/commit/dcda8769cc76d7070de72953bd9b88d6d43a6772) | OAuth 2.1 인증 추가                                |
+| [a94fbad](https://github.com/code-yeongyu/oh-my-opencode/commit/a94fbadd5714a7176c887b6282823b5bc3b60b20) | LSP 클라이언트 vscode-jsonrpc 마이그레이션         |
+| [23b49c4](https://github.com/code-yeongyu/oh-my-opencode/commit/23b49c4a5cfba505f029bb69eb56e2c9ed0e7036) | override.category 및 reasoningEffort 우선순위 수정 |
+| [b497395](https://github.com/code-yeongyu/oh-my-opencode/commit/b4973954e32f0ffcd09dfb0dcb32ab13426293ce) | 백그라운드 에이전트 좀비 프로세스 방지             |
+
+## 업그레이드
+
+```bash
+# Homebrew (macOS)
+brew upgrade oh-my-opencode
+
+# npm
+npm update -g oh-my-opencode
+
+# 직접 설치
+curl -fsSL https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/main/install.sh | bash
+```
+
+<DeveloperPerspective>
+
+### 왜 이 업데이트가 중요한가
+
+oh-my-opencode는 **현재 실무에서 사용 중**이기 때문에, 이번 업데이트의 영향을 직접 체감합니다:
+
+1. **OAuth 2.1 표준화**: MCP 서버 연결 시 인증 설정이 더 명확해짐
+2. **좀비 프로세스 수정**: 백그라운드 에이전트 사용 시 메모리 누수 방지
+3. **LSP 안정성**: TypeScript 프로젝트에서 LSP 통신 오류 감소
+
+### OAuth 2.1 실전 적용
+
+**MCP 서버란?**  
+Model Context Protocol 서버 - Claude/GPT가 외부 시스템 (DB, API, 파일 시스템)과 통신하는 표준 프로토콜.
+
+**이전 문제:**
+
+```bash
+# MCP 서버에 인증 정보를 수동으로 환경변수로 전달
+export MCP_TOKEN="..."
+opencode start
+```
+
+**이번 업데이트 후:**
+
+```bash
+# OAuth 2.1 표준 플로우
+opencode mcp oauth login
+# 브라우저에서 인증 → 토큰 자동 저장
+opencode mcp oauth status
+# ✅ Logged in as: user@example.com
+```
+
+**지원 RFC 중 실무 적용:**
+
+- **RFC 7591 (Dynamic Client Registration)**: 매번 client_id 수동 발급 불필요
+- **RFC 8414 (Authorization Server Discovery)**: `.well-known/oauth-authorization-server` 자동 감지
+
+### 백그라운드 에이전트 좀비 프로세스 수정 (#1240)
+
+**실제 경험한 버그:**
+
+```bash
+# 장시간 코딩 작업 후
+ps aux | grep opencode
+# 결과: 좀비 프로세스 20개...
+```
+
+**원인:**  
+백그라운드 에이전트 (`delegate_task(run_in_background=true)`) 종료 시, 자식 세션이 정리되지 않음.
+
+**수정 후:**
+
+- 에이전트 종료 시 모든 자식 세션 명시적 중단
+- 메모리 사용량 장시간 작업 시 안정화
+
+### LSP 클라이언트 마이그레이션
+
+**변경 내용:**  
+커스텀 JSON-RPC 구현 → `vscode-jsonrpc` 라이브러리
+
+**왜 중요한가:**
+
+- TypeScript 프로젝트에서 **LSP 통신 안정성** 향상
+- Bun ↔ Node.js 스트림 브릿지로 호환성 보장
+- 코드 60줄 감소 = 유지보수 부담 감소
+
+**체감 효과:**  
+이전에는 가끔 "LSP connection lost" 메시지가 떴는데, 업데이트 후 발생 빈도 감소.
+
+### 실무 팁: MCP OAuth 설정 순서
+
+1. **MCP 서버 확인**
+
+   ```bash
+   opencode mcp list
+   # 연결된 MCP 서버 목록 확인
+   ```
+
+2. **OAuth 로그인**
+
+   ```bash
+   opencode mcp oauth login
+   # 브라우저 자동 열림 → 인증 완료
+   ```
+
+3. **상태 확인**
+
+   ```bash
+   opencode mcp oauth status
+   # 토큰 만료일, 권한 범위 확인
+   ```
+
+4. **로그아웃 (토큰 재발급 시)**
+   ```bash
+   opencode mcp oauth logout
+   ```
+
+### 주의사항
+
+- **RFC 9728 (Protected Resource Metadata)**: MCP 서버가 이 스펙을 지원해야 메타데이터 자동 발견 가능
+- **Step-up Authorization**: 민감한 작업 (DB 쓰기) 시 추가 인증 요구 가능
+
+### 한 줄 요약
+
+Oh My OpenCode v3.1.7은 **실무 안정성 개선** 릴리스. OAuth 2.1 표준화로 MCP 서버 인증 설정 간소화, 좀비 프로세스 수정으로 장시간 작업 안정화.
+
+</DeveloperPerspective>
+
+---
+
+**Full Changelog**: [v3.1.6...v3.1.7](https://github.com/code-yeongyu/oh-my-opencode/compare/v3.1.6...v3.1.7)
