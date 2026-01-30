@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { Header, Footer, WebsiteJsonLd } from "@/components";
 import "./globals.css";
 
@@ -51,6 +52,29 @@ export const metadata: Metadata = {
       "application/rss+xml": "https://toms-blog.co.kr/feed.xml",
     },
   },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
+  process.env.NEXT_PUBLIC_NAVER_VERIFICATION
+    ? {
+        verification: {
+          ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && {
+            google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+          }),
+          other: {
+            ...(process.env.NEXT_PUBLIC_NAVER_VERIFICATION && {
+              "naver-site-verification":
+                process.env.NEXT_PUBLIC_NAVER_VERIFICATION,
+            }),
+          },
+        },
+      }
+    : {}),
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -69,6 +93,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

@@ -13,6 +13,7 @@
     "fetch-news": "tsx scripts/fetch-news.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "@vercel/og": "^0.8.6",
     "cheerio": "^1.1.2",
     "contentlayer2": "^0.5.8",

@@ -4,6 +4,7 @@ import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
 import { ArticleJsonLd, BreadcrumbJsonLd, TableOfContents } from "@/components";
 import { getPostBySlug, formatDate } from "@/lib/posts";
+import { calculateReadingTime } from "@/lib/reading-time";
 import type { Metadata } from "next";
 
 const BASE_URL = "https://toms-blog.co.kr";
@@ -33,6 +34,9 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `/posts/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -65,6 +69,7 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  const readingTime = calculateReadingTime(post.body.raw);
   const thumbnailUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
   const postUrl = `${BASE_URL}/posts/${post.slug}`;
   const fullImageUrl = `${BASE_URL}${thumbnailUrl}`;
@@ -104,6 +109,8 @@ export default async function PostPage({ params }: PostPageProps) {
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
                 <time>{formatDate(post.date)}</time>
+                <span>•</span>
+                <span>{readingTime}분 읽기</span>
                 {post.sourceUrl && (
                   <>
                     <span>•</span>

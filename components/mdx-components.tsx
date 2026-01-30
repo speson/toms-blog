@@ -41,14 +41,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => (
       <p className="mb-4 leading-relaxed text-zinc-300">{children}</p>
     ),
-    a: ({ href, children }) => (
-      <Link
-        href={href || "#"}
-        className="text-purple-400 underline decoration-purple-400/30 underline-offset-2 transition-colors hover:text-purple-300"
-      >
-        {children}
-      </Link>
-    ),
+    a: ({ href, children }) => {
+      const isExternal =
+        href?.startsWith("http://") || href?.startsWith("https://");
+      return (
+        <Link
+          href={href || "#"}
+          className="text-purple-400 underline decoration-purple-400/30 underline-offset-2 transition-colors hover:text-purple-300"
+          {...(isExternal
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
+          {children}
+        </Link>
+      );
+    },
     ul: ({ children }) => (
       <ul className="mb-4 ml-6 list-disc space-y-2 text-zinc-300">
         {children}

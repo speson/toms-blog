@@ -49,7 +49,7 @@ export function ArticleJsonLd({
 }: ArticleJsonLdProps) {
   const data = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: title,
     description: description,
     url: url,
@@ -69,6 +69,8 @@ export function ArticleJsonLd({
       },
     },
     keywords: tags.join(", "),
+    articleSection: tags[0] || "AI",
+    inLanguage: "ko-KR",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
