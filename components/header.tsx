@@ -14,6 +14,12 @@ export function Header() {
           >
             About
           </Link>
+          <Link
+            href="/contact"
+            className="text-sm text-zinc-400 transition-colors hover:text-white"
+          >
+            Contact
+          </Link>
         </div>
       </nav>
     </header>
