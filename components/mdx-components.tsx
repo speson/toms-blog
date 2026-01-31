@@ -2,7 +2,6 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import Image from "next/image";
 import { CodeBlock } from "./code-block";
-import { DeveloperPerspective } from "./developer-perspective";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -115,7 +114,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ children }) => (
       <td className="px-4 py-3 text-zinc-300">{children}</td>
     ),
-    DeveloperPerspective,
     ...components,
   };
 }
