@@ -1,11 +1,17 @@
 ---
 title: "Oh My OpenCode v3.1.4: Provider Cache 경고와 npm 글로벌 설치 버그 수정"
 description: "Oh My OpenCode v3.1.4 릴리스 - Provider Cache 누락 시 토스트 알림, npm 글로벌 설치 버전 감지 수정, Model Resolver 개선."
-date: 2026-01-28
-category: updates
+date: "2026-01-28"
+tags: ["AI", "개발도구", "오픈소스", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.1.4"
+category: "updates"
+draft: false
 ---
 
-[Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode) v3.1.4가 릴리스되었습니다. Provider Cache 관련 UX 개선과 npm 글로벌 설치 환경에서의 버그가 수정되었습니다.
+안녕하세요, Tom입니다.
+
+**Oh My OpenCode** v3.1.4가 릴리스되었습니다! 이번 버전은 Provider Cache 관련 UX 개선과 npm 글로벌 설치 환경에서의 버그 수정이 주를 이룹니다.
 
 ## 새로운 기능
 
@@ -13,13 +19,17 @@ category: updates
 
 Provider Cache가 누락된 경우 **토스트 알림**을 표시합니다. 모델 해석(resolution) 문제가 발생했을 때 사용자가 원인을 파악하기 쉬워졌습니다.
 
-이전에는 Provider Cache가 없으면 조용히 실패하거나 예상치 못한 동작이 발생했는데, 이제는 명확한 알림으로 문제를 인지할 수 있습니다.
+💡 **이전에는:** Provider Cache가 없으면 조용히 실패하거나 예상치 못한 동작이 발생했어요.
+
+🎯 **이제는:** 명확한 알림으로 문제를 즉시 인지할 수 있습니다.
 
 ## 버그 수정
 
 ### npm 글로벌 설치 버전 감지
 
 `npm install -g oh-my-opencode`로 설치한 경우 버전 감지가 제대로 작동하지 않던 문제가 수정되었습니다.
+
+⚠️ **이 문제 겪으신 분들:** 이제 정상적으로 버전이 감지됩니다.
 
 ### Model Resolver 개선
 
@@ -48,10 +58,12 @@ npm update -g oh-my-opencode
 curl -fsSL https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/main/install.sh | bash
 ```
 
-## Contributors
+## 제 생각
 
-[@agno01](https://github.com/agno01)과 [@zycaskevin](https://github.com/zycaskevin)이 CLA에 서명하고 기여했습니다.
+v3.1.4는 **안정성 개선**에 초점이 맞춰진 마이너 업데이트입니다. Provider Cache 관련 UX 개선이 특히 유용합니다.
+
+🎯 **Oh My OpenCode를 쓰고 계시다면:** 이번 업데이트를 권장합니다. npm 글로벌 설치 버그가 수정되어 더 안정적으로 사용할 수 있어요.
 
 ---
 
-**Full Changelog**: [v3.1.3...v3.1.4](https://github.com/code-yeongyu/oh-my-opencode/compare/v3.1.3...v3.1.4)
+**원문**: [Oh My OpenCode v3.1.4 Release Notes](https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.1.4)
