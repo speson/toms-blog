@@ -86,6 +86,11 @@ export default function RootLayout({
     <html lang="ko" className="dark">
       <head>
         <WebsiteJsonLd />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4618270821118962"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-black font-sans antialiased`}
