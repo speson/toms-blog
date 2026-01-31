@@ -210,10 +210,10 @@ export default function PrivacyPage() {
               <p>
                 <strong className="text-white">이메일:</strong>{" "}
                 <a
-                  href="mailto:contact@toms-blog.co.kr"
+                  href="mailto:speson2@gmail.com"
                   className="text-purple-400 transition-colors hover:text-purple-300"
                 >
-                  contact@toms-blog.co.kr
+                  speson2@gmail.com
                 </a>
               </p>
               <p>

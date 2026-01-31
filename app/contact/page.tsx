@@ -20,10 +20,10 @@ export default function ContactPage() {
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
           <h2 className="mb-4 text-xl font-semibold text-white">이메일</h2>
           <a
-            href="mailto:contact@toms-blog.co.kr"
+            href="mailto:speson2@gmail.com"
             className="text-purple-400 transition-colors hover:text-purple-300"
           >
-            contact@toms-blog.co.kr
+            speson2@gmail.com
           </a>
         </section>
 
