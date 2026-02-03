@@ -1,0 +1,63 @@
+---
+title: "OpenCode v1.1.49: mDNS 도메인 커스터마이징과 파일 상태 개선"
+description: "OpenCode v1.1.49가 출시되었습니다. mDNS 호스트네임 커스터마이징, 파일 상태 표시 개선 등의 업데이트를 소개합니다."
+date: "2026-02-03"
+tags: ["AI", "OpenCode", "개발도구", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/anomalyco/opencode/releases/tag/v1.1.49"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**OpenCode** v1.1.49가 출시되었습니다! 이번 업데이트는 주로 네트워킹과 파일 관리 관련 개선사항들입니다.
+
+## 주요 변경사항
+
+### 1. mDNS 도메인 커스터마이징 ⭐
+
+이제 `--mdns-domain` 플래그로 mDNS 호스트네임을 커스터마이징할 수 있습니다.
+
+```bash
+opencode --mdns-domain=my-custom-name
+```
+
+💡 **이게 왜 유용한가:** 여러 OpenCode 인스턴스를 로컬 네트워크에서 실행할 때, 각각 고유한 이름으로 접근할 수 있습니다. 기본 이름이 아닌 "my-code-instance.local" 같은 식별하기 쉬운 이름을 쓸 수 있죠.
+
+🎯 **사용 예시:**
+
+- 팀 개발 환경에서 각자의 OpenCode 인스턴스 구분
+- 여러 프로젝트별로 다른 OpenCode 설정 관리
+
+### 2. 파일 상태 표시 개선
+
+추가되거나 삭제된 파일의 상태 표시가 개선되었습니다. 이제 더 명확하게 어떤 파일이 변경되었는지 확인할 수 있습니다.
+
+⚠️ **이전에는:** 파일 상태가 혼란스럽게 표시되는 경우가 있었습니다.
+
+**이제는:** 일관된 아이콘과 색상으로 파일 상태를 직관적으로 파악 가능합니다.
+
+### 3. 잘못된 PR 복원
+
+실수로 머지된 PR을 revert했습니다. 안정성을 위한 조치입니다.
+
+## 업데이트 방법
+
+```bash
+# Homebrew (macOS/Linux)
+brew upgrade opencode
+
+# 직접 설치
+curl -fsSL https://opencode.ai/install | bash
+```
+
+## 제 생각
+
+이번 v1.1.49는 **소규모지만 실용적인 개선**들이 포함된 업데이트입니다. 특히 mDNS 도메인 커스터마이징은 팀 환경에서 유용할 것 같습니다.
+
+💰 **OpenCode를 쓰고 계시다면:** 특별히 업그레이드를 서두를 필요는 없지만, mDNS 기능이 필요하시면 업데이트하세요.
+
+---
+
+**원문**: [OpenCode v1.1.49 Release Notes](https://github.com/anomalyco/opencode/releases/tag/v1.1.49)
