@@ -65,9 +65,9 @@ Transform the blog's voice from impersonal AI-generated style to authentic, pers
 
 ### Definition of Done
 
-- [ ] `pnpm build` completes successfully
-- [ ] All 24 posts use new style (personal greeting, emoji markers, conversational tone)
-- [ ] /publish command includes style guide reference
+- [x] `pnpm build` completes successfully
+- [x] All 24 posts use new style (personal greeting, emoji markers, conversational tone)
+- [x] /publish command includes style guide reference
 
 ### Must Have
 
@@ -147,7 +147,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ## TODOs
 
-- [ ] 1. Create Writing Style Guide
+- [x] 1. Create Writing Style Guide
 
   **What to do**:
   - Create `.claude/writing-style.md` with comprehensive Tom style guidelines
@@ -212,9 +212,9 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
   ```
 
   **Acceptance Criteria**:
-  - [ ] File created: `.claude/writing-style.md`
-  - [ ] Contains all sections: Voice & Tone, Structure Template, Emoji Markers, Before/After Examples
-  - [ ] Minimum 100 lines of comprehensive guidance
+  - [x] File created: `.claude/writing-style.md`
+  - [x] Contains all sections: Voice & Tone, Structure Template, Emoji Markers, Before/After Examples
+  - [x] Minimum 100 lines of comprehensive guidance
 
   **Automated Verification**:
 
@@ -231,7 +231,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 2. Update /publish Command with Style Guide
+- [x] 2. Update /publish Command with Style Guide
 
   **What to do**:
   - Update `.claude/commands/publish.md` to include Tom style instructions
@@ -304,7 +304,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 3. Pilot Rewrite: hello-world.mdx
+- [x] 3. Pilot Rewrite: hello-world.mdx
 
   **What to do**:
   - Rewrite `content/posts/hello-world.mdx` as pilot test
@@ -378,7 +378,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 4. Batch Rewrite: Posts 1-8 (2026-01-23 posts)
+- [x] 4. Batch Rewrite: Posts 1-8 (2026-01-23 posts)
 
   **What to do**:
   - Rewrite 8 posts from 2026-01-23 date range
@@ -475,7 +475,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 5. Batch Rewrite: Posts 9-16 (2026-01-24 to 2026-01-26)
+- [x] 5. Batch Rewrite: Posts 9-16 (2026-01-24 to 2026-01-26)
 
   **What to do**:
   - Rewrite 8 posts from 2026-01-24 to 2026-01-26
@@ -535,7 +535,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 6. Batch Rewrite: Posts 17-24 (2026-01-28 to 2026-01-30)
+- [x] 6. Batch Rewrite: Posts 17-24 (2026-01-28 to 2026-01-30)
 
   **What to do**:
   - Rewrite remaining 7 posts from 2026-01-28 to 2026-01-30
@@ -594,7 +594,7 @@ Critical Path: Task 1 → Task 3 → Tasks 4/5/6 → Task 7
 
 ---
 
-- [ ] 7. Final Verification and Cleanup
+- [x] 7. Final Verification and Cleanup
 
   **What to do**:
   - Run final `pnpm build` to verify all posts
@@ -686,9 +686,9 @@ grep "writing-style" .claude/commands/publish.md
 
 ### Final Checklist
 
-- [ ] All 24 posts use Tom style (personal greeting, conversational tone)
-- [ ] Writing style guide created at `.claude/writing-style.md`
-- [ ] /publish command updated with style reference
-- [ ] All `pnpm build` commands pass
-- [ ] No MDX parsing errors
-- [ ] No changes to files outside scope (content/posts/, .claude/)
+- [x] All 24 posts use Tom style (personal greeting, conversational tone)
+- [x] Writing style guide created at `.claude/writing-style.md`
+- [x] /publish command updated with style reference
+- [x] All `pnpm build` commands pass
+- [x] No MDX parsing errors
+- [x] No changes to files outside scope (content/posts/, .claude/)
