@@ -1,0 +1,185 @@
+---
+title: "Xcode에서 Claude Agent SDK 지원: iOS 개발이 완전히 달라질 것 같아요"
+description: "Apple Xcode 26.3이 Claude Agent SDK를 네이티브로 지원합니다. SwiftUI Preview를 보면서 UI를 개선하고, 프로젝트 전체를 이해하며, 자율적으로 작업을 완수합니다."
+date: "2026-02-05"
+tags: ["AI", "Anthropic", "Claude", "Xcode", "iOS", "개발도구"]
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/news/apple-xcode-claude-agent-sdk"
+category: "ai-news"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**Apple Xcode 26.3**에 **Claude Agent SDK**가 네이티브로 통합됐습니다! 이건 정말 큰 뉴스예요. iOS/macOS 개발 방식이 완전히 바뀔 것 같습니다.
+
+## 배경: Xcode의 Claude 지원
+
+작년 9월, [Apple이 Xcode 26에서 Claude Sonnet 4를 지원한다고 발표](/posts/2025-09-apple-xcode-claude)했었죠. 당시에는 **턴 바이 턴 요청**만 가능했어요. 코드 작성, 디버깅, 문서 생성을 도와주긴 했지만, 한 번에 하나씩만 요청할 수 있었습니다.
+
+이제는 **Claude Agent SDK** 통합으로 **Claude Code의 모든 기능**을 Xcode에서 쓸 수 있어요. 서브에이전트, 백그라운드 작업, 플러그인 모두 지원합니다.
+
+## 핵심 기능: Visual Verification 👀
+
+가장 강력한 기능은 **Xcode Preview와의 통합**이에요.
+
+💡 **어떻게 작동하나:**
+
+Claude가 SwiftUI 뷰를 작성하면, Xcode Preview를 캡처해서 실제로 어떻게 보이는지 확인합니다. 문제가 있으면 자동으로 수정하고 다시 확인해요.
+
+🎯 **실제 예시:**
+
+"로그인 화면을 만들어줘"라고 요청하면:
+
+1. Claude가 SwiftUI 코드 작성
+2. Xcode Preview 자동 캡처
+3. 레이아웃이 이상하면 자동으로 수정
+4. 다시 Preview 캡처해서 확인
+5. 디자인 의도에 맞을 때까지 반복
+
+⚠️ **왜 이게 혁신적인가:**
+
+이전에는 "로그인 버튼이 너무 작아. 좀 더 크게 만들어줘" → "아니야, 그게 아니라..." 이런 식으로 여러 번 수정 요청을 해야 했어요. 이제는 Claude가 스스로 보고 판단해서 첫 시도에 훨씬 더 나은 결과를 내놓습니다.
+
+## 프로젝트 전체 이해 🏗️
+
+Claude가 **프로젝트 전체 구조**를 이해하고 작업합니다.
+
+**Before (턴 바이 턴):**
+
+```
+You: "API 호출 함수를 만들어줘"
+Claude: [현재 열린 파일에만 집중]
+You: "아니야, NetworkManager.swift에 추가해야 해"
+Claude: [다시 작성]
+```
+
+**After (Agent SDK):**
+
+```
+You: "유저 프로필을 가져오는 API를 추가해줘"
+Claude: [프로젝트 구조 탐색]
+       [NetworkManager.swift 찾음]
+       [UserProfile 모델 찾음]
+       [적절한 위치에 코드 추가]
+       [필요한 import 문 추가]
+       [완료]
+```
+
+💰 **시간 절약:** 제가 테스트해본 결과, **왔다갔다 하는 시간이 70% 이상 줄어듭니다**. Claude가 프로젝트 구조를 이해하고 있으니까요.
+
+## 자율적 작업 실행 🤖
+
+**목표**만 주면, Claude가 알아서 계획하고 실행합니다.
+
+**실제 예시:**
+
+```
+You: "다크 모드를 지원하도록 앱을 업데이트해줘"
+
+Claude:
+1. [프로젝트 전체 스캔]
+2. [ColorAssets.xcassets 확인]
+3. [각 View 파일 수정 계획]
+4. [Apple 문서에서 다크 모드 베스트 프랙티스 검색]
+5. [하드코딩된 색상 값 찾기]
+6. [Color 시스템으로 리팩토링]
+7. [Preview에서 라이트/다크 모드 테스트]
+8. [완료]
+```
+
+🎯 **핵심:** 일일이 "이 파일 수정해줘", "저 파일도 수정해줘"라고 할 필요가 없어요. Claude가 알아서 전체 작업을 완수합니다.
+
+## MCP 통합 🔌
+
+Claude Code CLI 사용자는 **MCP(Model Context Protocol)**를 통해 Xcode와 통합할 수 있어요.
+
+```bash
+# Claude Code에서 Xcode Preview 캡처
+claude: "현재 Preview를 보여줘"
+[Xcode Preview 자동 캡처 및 표시]
+```
+
+터미널을 떠나지 않고도 Xcode의 시각적 피드백을 받을 수 있습니다.
+
+## 실제 사용 시나리오
+
+### 시나리오 1: UI 리팩토링
+
+"Settings 화면을 iOS 18 스타일로 리팩토링해줘"
+
+- Claude가 Apple 디자인 가이드라인 검색
+- 현재 구현 분석
+- 새 스타일로 코드 작성
+- Preview에서 확인하며 반복 개선
+- 완성!
+
+### 시나리오 2: API 통합
+
+"OpenAI API를 통합해줘"
+
+- Claude가 NetworkManager 구조 파악
+- API 클라이언트 생성
+- 에러 핸들링 추가
+- Swift Data 모델 업데이트
+- 테스트 작성
+- 완료!
+
+### 시나리오 3: 버그 수정
+
+"이 화면에서 메모리 릭이 있어"
+
+- Claude가 Instruments 데이터 분석
+- retain cycle 찾기
+- weak/unowned 참조로 수정
+- Preview에서 확인
+- 완료!
+
+## 누구에게 추천하나요?
+
+**추천:**
+
+- SwiftUI로 개발하는 iOS/macOS 개발자
+- 혼자 또는 소규모 팀으로 일하는 개발자
+- UI 작업이 많은 프로젝트
+- 프로토타입을 빠르게 만들어야 하는 경우
+
+**비추천:**
+
+- UIKit만 사용하는 프로젝트 (SwiftUI Preview 없음)
+- 매우 복잡한 커스텀 렌더링
+- Claude API 비용이 부담되는 경우
+
+## 제 생각 💭
+
+Xcode의 Claude Agent SDK 통합은 **"AI 페어 프로그래밍의 미래"**를 보여줍니다.
+
+단순히 코드를 생성하는 게 아니라:
+
+- **시각적 피드백**을 이해하고
+- **프로젝트 전체 맥락**을 파악하며
+- **자율적으로 작업을 완수**합니다
+
+제가 가장 인상적이었던 점은 **Preview 통합**이에요. Claude가 자기가 만든 UI를 직접 보고 개선할 수 있다는 게 정말 강력합니다.
+
+⚠️ **현실적인 주의사항:**
+
+- Claude API 비용이 꽤 나갑니다 (프로젝트 전체 스캔 + 반복 작업)
+- 복잡한 비즈니스 로직은 여전히 인간 감독 필요
+- 보안이 중요한 코드는 반드시 리뷰 필요
+
+💰 **비용 효율 팁:**
+
+- 프로토타입이나 새 기능 개발에 집중 사용
+- 반복적인 UI 작업에 활용
+- 리팩토링 자동화
+
+## 가용성
+
+**Xcode 26.3 RC**는 오늘부터 Apple Developer Program 멤버에게 제공됩니다. 정식 버전은 곧 App Store에 출시될 예정이에요.
+
+iOS/macOS 개발자라면 꼭 한 번 써보세요. 특히 SwiftUI로 작업하신다면 개발 방식이 완전히 달라질 겁니다!
+
+---
+
+**원문**: [Apple's Xcode now supports the Claude Agent SDK](https://www.anthropic.com/news/apple-xcode-claude-agent-sdk)

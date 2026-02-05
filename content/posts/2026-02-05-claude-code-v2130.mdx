@@ -1,0 +1,99 @@
+---
+title: "Claude Code v2.1.30 사용 후기: PDF 페이지 범위 지정이 가능해졌어요"
+description: "Claude Code v2.1.30이 나왔습니다. PDF Read 도구에서 특정 페이지만 읽을 수 있고, 큰 PDF는 자동으로 레퍼런스만 표시됩니다."
+date: "2026-02-05"
+tags: ["AI", "Claude", "Claude Code", "개발도구", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.30"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**Claude Code v2.1.30**이 출시됐어요! 이번 업데이트는 제가 자주 겪던 문제를 해결해줬습니다. 바로 **큰 PDF 파일을 다룰 때의 불편함**이에요.
+
+## PDF 페이지 범위 지정 기능 📄
+
+이제 Read 도구에서 **특정 페이지만 읽을 수 있습니다**.
+
+```typescript
+// 예시: 1-5페이지만 읽기
+read("design-spec.pdf", { pages: "1-5" });
+```
+
+💡 **왜 이게 유용한가:**
+
+이전에는 100페이지짜리 API 문서를 읽으려면 전체를 다 읽어야 했어요. 당연히 토큰도 엄청나게 먹었죠. 이제는 필요한 부분만 골라서 읽을 수 있습니다.
+
+🎯 **실제 사용 예시:**
+
+- API 문서의 특정 챕터만 읽기: `pages: "20-35"`
+- 목차 확인: `pages: "1-3"`
+- 마지막 부록만 읽기: `pages: "95-100"`
+
+### 큰 PDF 자동 레퍼런스
+
+10페이지 이상의 PDF를 `@`로 멘션하면 이제 **전체 내용을 컨텍스트에 넣지 않고 가벼운 레퍼런스만 표시**합니다.
+
+⚠️ **주의:** 이전에는 `@design.pdf`라고 하면 전체 내용이 컨텍스트에 들어갔는데, 이제는 레퍼런스만 들어갑니다. 특정 페이지를 읽고 싶으면 명시적으로 `pages` 파라미터를 써야 해요.
+
+## MCP OAuth 개선 🔐
+
+Dynamic Client Registration을 지원하지 않는 MCP 서버(예: Slack)를 위한 **미리 설정된 OAuth 클라이언트 크레덴셜**이 추가됐어요.
+
+```bash
+# Slack MCP 서버 추가 시
+claude mcp add slack --client-id=YOUR_ID --client-secret=YOUR_SECRET
+```
+
+💰 **팁:** 이제 Slack MCP 서버를 훨씬 쉽게 설정할 수 있습니다. 이전에는 OAuth 설정이 복잡해서 포기하는 분들이 많았거든요.
+
+## 기타 개선 사항
+
+### /debug 명령어 추가
+
+Claude가 현재 세션을 디버깅하는 데 도움을 줄 수 있는 `/debug` 명령어가 추가됐어요. 뭔가 이상하게 동작할 때 써보면 유용합니다.
+
+### Git 명령어 플래그 추가
+
+read-only 모드에서 `git log`와 `git show`에 추가 플래그를 쓸 수 있어요:
+
+- `--topo-order`: 토폴로지 순서로 커밋 보기
+- `--cherry-pick`: 체리픽 표시
+- `--format`: 커스텀 포맷
+- `--raw`: raw diff 보기
+
+### 버그 수정들
+
+중요한 버그들이 많이 수정됐어요:
+
+1. **"(no content)" 텍스트 블록 제거** - API 대화 히스토리에서 쓸데없는 토큰 낭비를 줄였습니다
+2. **프롬프트 캐시 무효화 개선** - 툴 설명이나 스키마가 바뀌어도 캐시가 제대로 갱신되지 않던 문제 해결
+3. **세션 재개 시 행 문제** - transcript 파일이 손상됐을 때 멈추던 문제 해결
+4. **Windows .bashrc 버그** - Windows에서 `.bashrc` 파일이 있으면 bash 명령이 실행되지 않던 문제 해결
+
+## 성능 개선
+
+`--resume` 사용 시 메모리 사용량이 **68% 감소**했어요! 세션이 많은 사용자에게는 큰 개선입니다.
+
+## 총평
+
+v2.1.30은 **"PDF 작업의 혁신"**입니다. 페이지 범위 지정 기능 하나만으로도 업데이트할 가치가 충분해요.
+
+제가 느낀 점:
+
+- PDF 페이지 범위 지정 → 토큰 비용 절감
+- 큰 PDF 자동 레퍼런스 → 컨텍스트 관리 개선
+- 버그 수정들 → 전반적인 안정성 향상
+
+특히 API 문서나 기술 문서를 자주 다루시는 분들은 꼭 업데이트하세요!
+
+```bash
+# 업데이트 방법
+claude --update
+```
+
+---
+
+**원문**: [Claude Code v2.1.30 Release Notes](https://github.com/anthropics/claude-code/releases/tag/v2.1.30)

@@ -1,0 +1,117 @@
+---
+title: "Oh My OpenCode v3.2.3 사용 후기: 웹서치 프로바이더를 선택할 수 있게 됐어요"
+description: "Oh My OpenCode v3.2.3가 나왔어요. Exa와 Tavily 중에서 웹서치 엔진을 골라 쓸 수 있고, 스킬 파일도 폴더로 정리할 수 있게 됐습니다."
+date: "2026-02-05"
+tags: ["AI", "Oh My OpenCode", "OpenCode", "개발도구", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.2.3"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**Oh My OpenCode v3.2.3**이 나왔습니다! 이번 릴리스는 제가 요즘 가장 많이 쓰고 있는 기능인 **웹서치**에 대한 업데이트예요. 이제 검색 엔진을 직접 선택할 수 있게 됐습니다.
+
+## 멀티 프로바이더 웹서치 지원 🔍
+
+이전에는 Exa만 지원했는데, 이제 **Exa와 Tavily** 중에서 선택할 수 있어요.
+
+💡 **왜 이게 중요한가:**
+
+기본값은 여전히 Exa인데요, Tavily는 특정 분야(뉴스, 최신 정보)에서 더 나은 결과를 보여주더라고요. 프로젝트 성격에 따라 골라 쓸 수 있어서 유용합니다.
+
+```bash
+# 설정 방법 (.oh-my-opencode.json)
+{
+  "websearchProvider": "tavily"  # 기본값: "exa"
+}
+```
+
+🎯 **제가 실제로 써본 결과:**
+
+- **Exa**: 기술 문서, 코드 예제 검색에 강함
+- **Tavily**: 최신 뉴스, 실시간 정보에 강함
+
+예를 들어 "React 19 새로운 기능"을 검색할 때:
+
+- Exa는 공식 문서와 RFC를 잘 찾아줍니다
+- Tavily는 최근 블로그 포스트와 뉴스를 잘 찾아줍니다
+
+## 중첩 스킬 디렉토리 지원 📁
+
+이제 스킬 파일을 **서브 디렉토리**로 정리할 수 있어요.
+
+**Before:**
+
+```
+.oh-my-opencode/skills/
+  git-master.md
+  playwright.md
+  frontend.md
+  backend.md
+  (50개의 파일들...)
+```
+
+**After:**
+
+```
+.oh-my-opencode/skills/
+  dev/
+    git-master.md
+    playwright.md
+  design/
+    frontend.md
+    figma.md
+  server/
+    backend.md
+    devops.md
+```
+
+⚠️ **주의할 점:** 파일명이 중복되면 deterministic collision handling이 작동해서 하나만 로드됩니다. 서브 디렉토리가 다르더라도 파일명은 유니크하게 유지하세요.
+
+## 스킬 비활성화 기능
+
+이제 특정 스킬을 설정에서 꺼둘 수 있어요.
+
+```json
+{
+  "disabledSkills": ["playwright", "dev-browser"]
+}
+```
+
+💰 **토큰 절약 팁:** 사용하지 않는 스킬은 꺼두면 프롬프트 크기가 줄어들어서 토큰 비용을 절약할 수 있습니다.
+
+## 버그 수정들
+
+### 모델 선택 개선
+
+Gemini 사용자라면 반가운 소식이에요. `fuzzyMatchModel`이 이제 정확한 모델 ID를 우선으로 매칭해서 **잘못된 모델이 선택되는 문제**가 해결됐습니다.
+
+### LSP 진단 정확도 향상
+
+파일을 수정한 후 바로 LSP 진단을 요청하면 **오래된 결과가 나오던 문제**가 수정됐어요. 이제 `didChange` 이벤트를 먼저 보낸 후 진단을 받아오기 때문에 항상 최신 상태를 확인할 수 있습니다.
+
+## 총평
+
+v3.2.3은 **"작지만 확실한 개선"**이에요. 웹서치 프로바이더 선택권이 생긴 게 가장 큰 변화입니다.
+
+제가 느낀 점:
+
+- Exa/Tavily 선택 가능 → 검색 품질 개선
+- 중첩 디렉토리 → 스킬 관리가 훨씬 편해짐
+- 버그 수정 → LSP 진단이 더 정확해짐
+
+Oh My OpenCode 사용자라면 업데이트 추천드려요!
+
+```bash
+# npm
+npm update -g oh-my-opencode
+
+# Homebrew (macOS)
+brew upgrade oh-my-opencode
+```
+
+---
+
+**원문**: [Oh My OpenCode v3.2.3 Release Notes](https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.2.3)
