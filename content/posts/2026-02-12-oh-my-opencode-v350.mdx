@@ -1,0 +1,97 @@
+---
+title: "Oh My OpenCode v3.5.0: Atlas가 더 이상 서브에이전트를 믿지 않아요"
+description: "Oh My OpenCode v3.5.0 — Atlas Trusts No One. 서브에이전트 결과를 수동으로 검증하고, 645개 파일을 리팩토링한 대규모 업데이트입니다."
+date: "2026-02-12T11:00:00"
+tags: ["AI", "개발도구", "오픈소스", "Oh My OpenCode", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.5.0"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**Oh My OpenCode v3.5.0**이 나왔어요! 코드네임이 **"Atlas Trusts No One"**인데, 이름부터 강렬하죠. 서브에이전트가 "다 했어요"라고 하면 그대로 믿고 넘어가던 Atlas가, 이제는 **직접 검증**하도록 바뀌었습니다.
+
+## Atlas, 신뢰를 버리다 🔍
+
+이전까지 Atlas(오케스트레이션 에이전트)는 서브에이전트가 "done"이라고 하면 그냥 넘어갔어요. 테스트 실패, 코드 반만 완성, 요구사항 누락 — 다 무시. "Done"이면 된 거였죠.
+
+**이제는 달라요:**
+
+- 서브에이전트가 수정한 **모든 파일을 직접 Read**해야 함
+- 주장과 현실을 **크로스체크**
+- import, 로직, 엣지케이스 검증 — 안 하면 진행 불가
+- **러버스탬핑 금지**
+
+💡 **왜 이게 중요한가:** AI 에이전트가 "완료"라고 했는데 실제로는 절반만 된 경험, 다들 있으시죠? 이제 Oh My OpenCode에서는 오케스트레이터가 자체적으로 검증해서 그런 상황을 방지합니다.
+
+## Boulder Continuation 수정
+
+이전에는 Boulder continuation이 **아무 idle 세션에나** 발동했어요. 내 세션이 boulder의 일부가 아닌데도 continuation 프롬프트가 주입되는 "유령 continuation" 문제가 있었습니다.
+
+**수정사항:**
+
+- `session_ids` 목록을 먼저 확인 — 목록에 없으면 continuation 안 함
+- `injectBoulderContinuation`이 제대로 await됨 — 이전에는 fire-and-forget
+- 실패 시 카운트 증가, 2번 실패하면 continuation 중단
+- Sisyphus 세션도 boulder continuation 허용
+
+## The Great Split: 645파일 대리팩토링 🏗️
+
+이게 정말 인상적이에요. 25개 이상의 god-file을 분해하고, **200줄 하드 리밋**을 적용했습니다.
+
+| 모듈                          | Before  | After                |
+| ----------------------------- | ------- | -------------------- |
+| `src/index.ts`                | 1,004줄 | 88줄 + 4개 파일      |
+| `delegate-task/executor.ts`   | 998줄   | 16줄 + 15개 모듈     |
+| `background-agent/manager.ts` | 1,646줄 | 코어 + 20개 모듈     |
+| `hooks/atlas/index.ts`        | 700줄   | 25줄 + 15개 모듈     |
+| `tools/lsp/client.ts`         | 854줄   | 129줄 + 12개 모듈    |
+| `config/schema.ts`            | 483줄   | 21개 스키마 컴포넌트 |
+
+🎯 **핵심:** `utils.ts` 같은 모호한 이름은 전부 실제 역할을 반영하는 이름으로 변경 — `result-formatter.ts`, `session-formatter.ts`, `tmux-path-resolver.ts` 등.
+
+**공개 API는 하나도 안 바뀌었어요.** 순수 내부 리팩토링입니다.
+
+## 기타 주요 변경사항
+
+### 백그라운드 태스크 인터럽트 🔴
+
+`promptAsync` 중 실패한 백그라운드 태스크가 이제 "error" 대신 **"interrupt"**로 표시돼요. 로그 뒤지지 않아도 무슨 일인지 바로 알 수 있습니다.
+
+### 세션 Idle 중복 제거
+
+OpenCode가 같은 이벤트에 `session.status {type:"idle"}`와 `session.idle`를 둘 다 발생시켜서 훅이 2번 실행되던 문제가, 500ms dedup 윈도우로 해결됐어요.
+
+### 위임 시스템 오버홀 (Wave 1+2)
+
+동기 위임 파이프라인 전체가 재작업됐어요:
+
+- 네이티브 finish 기반 완료 감지
+- 모든 종료 경로에서 서브에이전트 세션 정리
+- JSONC 파서로 설정 파일 손상 방지
+
+## 통계
+
+- **645개 파일 변경**
+- **+34,507 추가 / -21,492 삭제**
+- **브레이킹 체인지: 없음**
+
+## 업데이트 방법
+
+```bash
+npm install -g oh-my-opencode@3.5.0
+# 또는
+bun install -g oh-my-opencode@3.5.0
+```
+
+## 총평
+
+v3.5.0은 Oh My OpenCode 역사상 가장 큰 규모의 업데이트 중 하나예요. "Atlas Trusts No One"이라는 코드네임이 철학 자체를 말해줍니다 — **신뢰하되 검증하라(Trust but verify)**.
+
+645개 파일 리팩토링을 하면서 공개 API를 하나도 안 건드린 것도 대단하고, 서브에이전트 검증 강제는 에이전트 오케스트레이션의 핵심 과제를 정면으로 다룬 거라 인상적이에요.
+
+---
+
+**원문**: [Oh My OpenCode v3.5.0 — Atlas Trusts No One](https://github.com/code-yeongyu/oh-my-opencode/releases/tag/v3.5.0)

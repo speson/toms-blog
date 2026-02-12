@@ -1,0 +1,62 @@
+---
+title: "OpenCode v1.1.60: Claude Agent SDK 스타일 구조화 출력 지원"
+description: "OpenCode v1.1.60이 나왔어요. Claude Agent SDK 스타일의 구조화 출력, 모델별 커스텀 API URL, read 도구 개선 등 핵심 업데이트를 살펴봤습니다."
+date: "2026-02-12"
+tags: ["AI", "개발도구", "오픈소스", "OpenCode", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/anomalyco/opencode/releases/tag/v1.1.60"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**OpenCode v1.1.60**이 나왔습니다! 이번 릴리스에서 가장 눈에 띄는 건 **Claude Agent SDK 스타일의 구조화 출력(structured outputs)**을 OpenCode SDK에서 지원하게 됐다는 점이에요.
+
+## 핵심 변경사항
+
+### 1. Claude Agent SDK 스타일 구조화 출력 🎯
+
+커뮤니티 기여자 @K-Mistele가 구현한 기능인데요, Claude Agent SDK에서 쓰는 방식 그대로 OpenCode SDK에서 구조화 출력을 사용할 수 있게 됐어요.
+
+💡 **왜 중요한가:** 에이전트가 자유 텍스트 대신 정해진 JSON 스키마에 맞춰 응답하면, 후처리가 훨씬 안정적이에요. 파싱 실패 걱정 없이 바로 코드에서 활용할 수 있습니다.
+
+### 2. 모델별 커스텀 API URL 지원
+
+이제 모델마다 다른 API 엔드포인트를 지정할 수 있어요. 프록시 서버를 거치거나 자체 호스팅 모델을 쓰는 경우에 유용합니다.
+
+### 3. Read 도구 개선 📖
+
+- **offset이 1-indexed로 변경**: 라인 번호와 일치하도록 바뀌었어요. 이전에는 0-indexed라 혼동이 있었는데 해결됐습니다.
+- **디렉토리 읽기 기능 추가**: 이제 read 도구로 디렉토리 내용도 볼 수 있어요.
+
+🎯 **실제로 체감되는 변화:** read 도구에서 "3번째 줄부터 보여줘"라고 하면 진짜 3번째 줄부터 보여줍니다. 이전에는 4번째 줄이 나왔거든요.
+
+### 4. MCP 성능 개선
+
+`listTools` 호출에 `Promise.all`을 적용해서 MCP 도구 로딩이 빨라졌어요. 여러 MCP 서버를 쓰는 분들은 체감하실 겁니다.
+
+## TUI 변경사항
+
+- **Windows Ctrl+C 처리 개선**: FFI를 사용해서 Windows에서 raw input과 Ctrl+C 처리 문제를 해결했어요 (@Hona)
+- **세션 헤더 숨기기 토글**: TUI에서 세션 헤더를 숨길 수 있는 옵션이 추가됐어요 (@kitlangton). 화면이 좁을 때 유용합니다.
+
+## 업데이트 방법
+
+```bash
+# npm
+npm install -g opencode@latest
+
+# bun
+bun install -g opencode@latest
+```
+
+## 총평
+
+v1.1.60은 **SDK 개발자에게 특히 의미 있는 업데이트**예요. 구조화 출력 지원으로 OpenCode 기반 에이전트 개발이 한층 편해졌고, read 도구의 1-indexed 전환은 사소해 보이지만 실제 사용에서 큰 차이를 만드는 변경이에요.
+
+6명의 커뮤니티 기여자가 참여한 릴리스인 것도 인상적입니다. 오픈소스의 힘이 느껴지네요!
+
+---
+
+**원문**: [OpenCode v1.1.60 Release Notes](https://github.com/anomalyco/opencode/releases/tag/v1.1.60)
