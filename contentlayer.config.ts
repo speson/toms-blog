@@ -45,6 +45,10 @@ export const Post = defineDocumentType(() => ({
     sourceUrl: {
       type: "string",
     },
+    thumbnail: {
+      type: "string",
+      description: "커스텀 썸네일 이미지 경로 (예: /thumbnails/my-post.png)",
+    },
     draft: {
       type: "boolean",
       default: false,

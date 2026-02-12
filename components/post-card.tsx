@@ -8,19 +8,24 @@ interface PostCardProps {
 }
 
 export function PostCard({ post }: PostCardProps) {
-  const thumbnailUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+  const ogUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+  const thumbnailUrl = post.thumbnail || ogUrl;
+  const isCustomThumbnail = !!post.thumbnail;
 
   return (
     <article className="group overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 transition-all hover:border-zinc-700 hover:bg-zinc-900/80">
-      <Link href={post.url} className="flex flex-col sm:flex-row sm:p-4 sm:gap-4">
-        <div className="relative aspect-[1200/630] w-full sm:w-56 md:w-72 flex-shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-800">
+      <Link
+        href={post.url}
+        className="flex flex-col sm:flex-row sm:gap-4 sm:p-4"
+      >
+        <div className="relative aspect-[1200/630] w-full flex-shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-800 sm:w-56 md:w-72">
           <Image
             src={thumbnailUrl}
             alt={post.title}
             fill
-            className="object-contain"
+            className={isCustomThumbnail ? "object-cover" : "object-contain"}
             sizes="(max-width: 640px) 100vw, 288px"
-            unoptimized
+            unoptimized={!isCustomThumbnail}
           />
         </div>
         <div className="flex flex-1 flex-col justify-between p-4 sm:p-0">
@@ -33,7 +38,9 @@ export function PostCard({ post }: PostCardProps) {
             </p>
           </div>
           <div className="flex items-center justify-between">
-            <time className="text-sm text-zinc-500">{formatDate(post.date)}</time>
+            <time className="text-sm text-zinc-500">
+              {formatDate(post.date)}
+            </time>
             <div className="flex gap-2">
               {post.tags.slice(0, 2).map((tag) => (
                 <span

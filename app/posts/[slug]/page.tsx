@@ -30,6 +30,7 @@ export async function generateMetadata({
   }
 
   const ogImageUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+  const metaImageUrl = post.thumbnail || ogImageUrl;
 
   return {
     title: post.title,
@@ -45,7 +46,7 @@ export async function generateMetadata({
       tags: post.tags,
       images: [
         {
-          url: ogImageUrl,
+          url: metaImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -56,7 +57,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [ogImageUrl],
+      images: [metaImageUrl],
     },
   };
 }
@@ -70,9 +71,13 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   const readingTime = calculateReadingTime(post.body.raw);
-  const thumbnailUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+  const ogUrl = `/api/og?title=${encodeURIComponent(post.title)}&tags=${encodeURIComponent(post.tags.join(","))}`;
+  const thumbnailUrl = post.thumbnail || ogUrl;
+  const isCustomThumbnail = !!post.thumbnail;
   const postUrl = `${BASE_URL}/posts/${post.slug}`;
-  const fullImageUrl = `${BASE_URL}${thumbnailUrl}`;
+  const fullImageUrl = post.thumbnail
+    ? `${BASE_URL}${post.thumbnail}`
+    : `${BASE_URL}${ogUrl}`;
 
   return (
     <>
@@ -100,7 +105,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 fill
                 className="object-cover"
                 priority
-                unoptimized
+                unoptimized={!isCustomThumbnail}
               />
             </div>
             <header className="mb-12">
