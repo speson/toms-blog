@@ -1,0 +1,76 @@
+---
+title: "Claude Code v2.1.41: auth 명령어 추가와 15가지 버그 수정"
+thumbnail: "/thumbnails/claude-code-v2141.png"
+description: "Claude Code v2.1.41이 나왔어요. claude auth 명령어, Windows ARM64 지원, AWS 인증 타임아웃 수정 등 실용적인 개선이 가득합니다."
+date: "2026-02-13"
+tags: ["AI", "Claude", "Claude Code", "개발도구", "릴리스"]
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.41"
+category: "updates"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+**Claude Code v2.1.41**이 나왔어요! 이번에는 새로운 CLI 명령어와 함께 무려 **15가지 버그 수정**이 포함된 알찬 업데이트입니다.
+
+## 주요 신기능
+
+### `claude auth` CLI 명령어 추가 🔑
+
+드디어 인증 관리가 CLI에서 직접 가능해졌어요:
+
+```bash
+claude auth login    # 로그인
+claude auth status   # 인증 상태 확인
+claude auth logout   # 로그아웃
+```
+
+💡 **실용적인 포인트:** 여러 환경에서 Claude Code를 쓰는 분들한테 특히 유용해요. 서버에서 인증 상태 확인하거나, 계정 전환할 때 편리합니다.
+
+### Windows ARM64 지원 💻
+
+Surface Pro X나 ARM 기반 Windows 디바이스에서도 네이티브 바이너리로 실행할 수 있게 됐어요.
+
+### `/rename` 자동 생성 개선
+
+`/rename`을 인자 없이 호출하면 대화 맥락에서 **자동으로 세션 이름을 생성**해줍니다. 이전에는 직접 이름을 입력해야 했는데, 이제 그냥 `/rename`만 치면 돼요.
+
+## 주요 버그 수정
+
+### AWS 인증 무한 대기 해결 ⚠️
+
+AWS 인증 갱신이 **무한 대기**에 빠지는 문제가 3분 타임아웃 추가로 해결됐어요. AWS Bedrock으로 Claude Code를 쓰시는 분들한테 중요한 수정입니다.
+
+### 파일 관련 수정
+
+- **@-mention 앵커 프래그먼트 수정**: `@README.md#installation` 같은 참조가 제대로 해석돼요
+- **FIFO/stdin 블로킹 수정**: `/dev/stdin`이나 대용량 파일에서 프로세스가 멈추던 문제 해결
+
+### UX 개선
+
+- 좁은 터미널에서 프롬프트 풋터 레이아웃 개선
+- 마크다운 링크의 표시 텍스트가 사라지던 문제 수정
+- auto-compact 실패 알림이 사용자에게 노출되던 문제 수정
+- 분류 규칙 입력 시 커서가 끝으로 점프하던 문제 수정
+
+### Agent SDK 관련
+
+- 스트리밍 Agent SDK 모드에서 백그라운드 태스크 알림이 전달되지 않던 문제 수정
+- 서브에이전트 경과 시간에 권한 대기 시간이 포함되던 문제 수정
+
+## 업데이트 방법
+
+```bash
+claude --update
+```
+
+## 총평
+
+v2.1.41은 **"작지만 확실한 개선"**의 집합체예요. 특히 `claude auth` 명령어와 AWS 인증 타임아웃 수정은 실무에서 바로 체감되는 변화입니다.
+
+15개 버그 수정이라는 숫자에서 알 수 있듯이, Anthropic이 사용자 피드백을 꽤 열심히 반영하고 있다는 느낌이에요. 업데이트 추천합니다!
+
+---
+
+**원문**: [Claude Code v2.1.41 Release Notes](https://github.com/anthropics/claude-code/releases/tag/v2.1.41)
