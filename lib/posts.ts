@@ -19,12 +19,13 @@ export function getAllTags(): string[] {
   return [...new Set(tags)].sort();
 }
 
-export type Category = "ai-news" | "updates" | "opensource";
+export type Category = "news" | "releases" | "analysis" | "guide";
 
 export const CATEGORY_LABELS: Record<Category, string> = {
-  "ai-news": "AI 뉴스",
-  updates: "업데이트",
-  opensource: "오픈소스",
+  news: "뉴스",
+  releases: "릴리스",
+  analysis: "분석",
+  guide: "가이드",
 };
 
 export function getPostsByCategory(category: Category): Post[] {
