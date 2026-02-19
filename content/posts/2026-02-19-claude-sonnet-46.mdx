@@ -1,0 +1,95 @@
+---
+title: "Claude Sonnet 4.6 출시: Opus급 성능을 Sonnet 가격에"
+thumbnail: "/thumbnails/claude-sonnet-46.png"
+description: "Anthropic이 Claude Sonnet 4.6을 출시했어요. 코딩, 컴퓨터 사용, 장문 맥락 추론 등 전방위 업그레이드된 중급 모델입니다."
+date: "2026-02-19"
+tags: ["AI", "Anthropic", "Claude", "모델"]
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/news/claude-sonnet-4-6"
+category: "ai-news"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Anthropic이 **Claude Sonnet 4.6**을 출시했어요. 이번에 가장 인상적인 부분은… **Opus급 성능을 Sonnet 가격에 쓸 수 있다**는 겁니다.
+
+## 핵심 포인트
+
+Sonnet 4.6은 코딩, 컴퓨터 사용, 장문 맥락 추론, 에이전트 계획, 지식 작업, 디자인 등 **전 영역에서 업그레이드**된 모델이에요. 가격은 기존 Sonnet 4.5와 동일하게 **$3/$15 per million tokens**입니다.
+
+🎯 **왜 중요한가:** 이전에는 어려운 작업에 Opus를 써야 했는데, 이제 Sonnet으로도 충분한 경우가 많아졌어요. 비용 효율이 크게 좋아진 거죠.
+
+## 코딩 성능
+
+Claude Code에서의 초기 테스트 결과가 상당해요:
+
+- Sonnet 4.5 대비 **70%의 선호도**
+- 심지어 Opus 4.5 대비 **59% 선호도** (!)
+- 코드 수정 전에 컨텍스트를 더 잘 읽음
+- 공유 로직을 복제하지 않고 통합
+- 오버엔지니어링과 "게으른" 응답이 크게 감소
+- 성공했다고 거짓 주장하는 빈도 감소
+
+💡 **Cursor, GitHub, Replit, Bolt 등 주요 AI 코딩 도구 업체들이 모두 호평**하고 있어요. 특히 Cursor의 CEO는 "장기 작업과 어려운 문제에서 눈에 띄는 개선"이라고 했습니다.
+
+## 컴퓨터 사용 (Computer Use)
+
+2024년 10월에 처음 선보인 AI 컴퓨터 사용 기능이 꾸준히 발전하고 있어요. OSWorld 벤치마크에서 16개월간의 Sonnet 모델 개선 추이를 보면 정말 인상적입니다.
+
+실제 사용에서는:
+
+- 복잡한 스프레드시트 탐색
+- 다단계 웹 폼 작성
+- 여러 브라우저 탭에서 정보 취합
+
+이런 작업에서 **인간 수준의 능력**을 보여주고 있다고 해요.
+
+⚠️ **보안 측면:** 프롬프트 인젝션 방어가 Sonnet 4.5 대비 크게 개선됐고, Opus 4.6과 비슷한 수준이라고 합니다.
+
+## 1M 토큰 컨텍스트 윈도우
+
+Sonnet 4.6은 **100만 토큰 컨텍스트 윈도우**를 베타로 지원해요. 코드베이스 전체, 긴 계약서, 수십 편의 연구 논문을 한 번에 넣을 수 있는 수준입니다.
+
+🤔 **흥미로운 점:** Vending-Bench Arena라는 시뮬레이션 비즈니스 벤치마크에서 Sonnet 4.6이 재미있는 전략을 보여줬어요. 처음 10개월은 공격적으로 투자하다가 막판에 수익성으로 피봇해서 경쟁자들을 앞섰다고 합니다. AI가 장기 전략을 세우는 게 점점 현실이 되고 있네요.
+
+## 주요 벤치마크 성과
+
+| 영역                   | 평가                    |
+| ---------------------- | ----------------------- |
+| SWE-bench Verified     | Opus급 접근             |
+| OSWorld (Computer Use) | Sonnet 시리즈 최고      |
+| Terminal-Bench 2.0     | 강력한 코딩 성능        |
+| Vending-Bench Arena    | 경쟁 모델 대비 수익 1위 |
+
+## 제품 업데이트
+
+Sonnet 4.6과 함께 몇 가지 플랫폼 업데이트도 있어요:
+
+- **Adaptive Thinking + Extended Thinking** 지원
+- **Context Compaction** 베타 — 대화가 길어지면 자동으로 오래된 컨텍스트 요약
+- **Web Search/Fetch** 도구가 코드를 자동 실행해서 검색 결과 필터링
+- **Claude in Excel**에서 MCP 커넥터 지원 — S&P Global, PitchBook 등 외부 도구 연결 가능
+
+## 사용 방법
+
+| 플랫폼                      | 모델명                    |
+| --------------------------- | ------------------------- |
+| API                         | `claude-sonnet-4-6`       |
+| Claude.ai                   | Free/Pro 기본 모델로 설정 |
+| Claude Code                 | 기본 지원                 |
+| AWS Bedrock / Google Vertex | 사용 가능                 |
+
+무료 플랜에서도 Sonnet 4.6이 기본 모델로 설정됐고, 파일 생성, 커넥터, 스킬, 컴팩션까지 포함돼요.
+
+## 총평
+
+Claude Sonnet 4.6은 **"가격 대비 성능의 혁명"**이라고 표현하고 싶어요. Opus급 품질이 필요했던 많은 작업들이 이제 Sonnet으로 가능해졌습니다.
+
+특히 코딩 영역에서의 개선이 눈에 띄어요. "오버엔지니어링 감소"와 "게으른 응답 감소"라는 평가가 실제 사용감과 직결되는 부분이거든요. Claude Code를 쓰시는 분들이라면 체감이 클 거예요.
+
+Opus 4.6이 여전히 가장 깊은 추론이 필요한 작업에서는 우위를 유지하지만, 대부분의 실무에서는 Sonnet 4.6이면 충분할 것 같아요. 강력 추천합니다!
+
+---
+
+**원문**: [Introducing Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6)
