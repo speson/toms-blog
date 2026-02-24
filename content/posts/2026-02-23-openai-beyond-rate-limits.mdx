@@ -6,7 +6,7 @@ date: "2026-02-23T23:30:00"
 tags: ["OpenAI", "아키텍처", "Sora", "Codex", "시스템 설계", "인프라"]
 source: "openai"
 sourceUrl: "https://openai.com/index/beyond-rate-limits"
-category: "tech"
+category: "analysis"
 draft: false
 ---
 
@@ -27,11 +27,13 @@ OpenAI도 똑같이 고민했습니다. 그래서 **"rate limit에 걸려도 멈
 ### 1. Rate Limits (사용량 제한)
 
 **장점:**
+
 - 수요 평준화 가능
 - 공정한 접근 보장
 - 서버 과부하 방지
 
 **단점:**
+
 - "나중에 다시 와" → 최악의 UX
 - 몰입 중단
 - 사용자 이탈
@@ -39,15 +41,18 @@ OpenAI도 똑같이 고민했습니다. 그래서 **"rate limit에 걸려도 멈
 ### 2. Usage-based Billing (종량제)
 
 **장점:**
+
 - 유연한 사용
 - 쓴 만큼만 과금
 
 **단점:**
+
 - 첫 토큰부터 과금 → 초기 탐색 어려움
 - 비동기 정산 → 지연/초과 청구/정산 오류
 - 실시간성 부족
 
 **OpenAI가 원한 것:**
+
 - ✅ Rate limit의 공정성과 안정성
 - ✅ 종량제의 유연성
 - ✅ 실시간 결정
@@ -70,6 +75,7 @@ Rate Limit 체크
 ```
 
 **핵심 아이디어:**
+
 - Rate limit은 **무료 티어의 보호막**
 - 크레딧은 **무제한 사용의 열쇠**
 - 둘 사이의 전환은 **단일 요청 내에서 즉시 결정**
@@ -93,6 +99,7 @@ OpenAI는 접근 제어를 **폭포수처럼 흐르는 의사결정**으로 설�
 ```
 
 **사용자 입장에서는:**
+
 - "시스템을 전환"하는 느낌이 아니라
 - 그냥 **계속 쓰는 것처럼** 느껴짐
 
@@ -114,6 +121,7 @@ OpenAI는 Stripe Billing 같은 서드파티 솔루션도 평가했습니다.
    - "어떤 limit/balance가 적용됐는지" 추적 어려움
 
 **OpenAI가 원한 것:**
+
 - ⚡ **밀리초 단위 실시간 결정**
 - 🔍 **모든 결정의 완벽한 추적**
 - ✅ **100% 정확한 과금**
@@ -161,6 +169,7 @@ OpenAI는 **"증명 가능하게 정확한"** 빌링 시스템을 만들었습�
 3. **Balance Updates** — 실제 잔액 변경
 
 **왜 분리했나?**
+
 - 각 레이어를 **독립적으로 감사, 재실행, 검증 가능**
 - 문제 발생 시 **어느 단계에서 잘못됐는지** 정확히 파악
 
@@ -184,17 +193,18 @@ else:
 ```sql
 BEGIN TRANSACTION;
   -- 크레딧 차감
-  UPDATE credit_balance 
+  UPDATE credit_balance
   SET amount = amount - 10
   WHERE user_id = 'user123';
-  
+
   -- 감사 기록 삽입
-  INSERT INTO balance_updates 
+  INSERT INTO balance_updates
   VALUES ('user123', -10, 'event_xyz', now());
 COMMIT;
 ```
 
 **보장:**
+
 - 크레딧 차감과 감사 기록이 **항상 함께** 발생
 - 둘 중 하나라도 실패하면 **전체 롤백**
 
@@ -224,15 +234,18 @@ if balance < 0:
 OpenAI는 **정확성**을 선택했습니다:
 
 **동기 처리 (실시간):**
+
 - Rate limit 체크
 - 크레딧 잔액 확인
 - 허용/차단 결정
 
 **비동기 처리 (약간 지연):**
+
 - 크레딧 차감
 - 감사 기록 생성
 
 **결과:**
+
 - 크레딧 잔액 업데이트가 **1~2초 지연**될 수 있음
 - 하지만 그 대신 **100% 정확한 감사 추적** 확보
 - 초과 차감 발생 시 **자동 환불**
@@ -257,6 +270,7 @@ OpenAI는 **정확성**을 선택했습니다:
 OpenAI의 이 시스템은 단순히 "rate limit 우회"가 아닙니다.
 
 **본질은:**
+
 - 사용자 몰입을 보호하면서
 - 시스템 안정성을 유지하고
 - 100% 정확한 과금을 보장하는
@@ -269,4 +283,4 @@ OpenAI의 이 시스템은 단순히 "rate limit 우회"가 아닙니다.
 
 ---
 
-*이 글은 OpenAI 공식 블로그 포스트를 정리한 것입니다. 원본은 [여기](https://openai.com/index/beyond-rate-limits)에서 확인할 수 있습니다.*
+_이 글은 OpenAI 공식 블로그 포스트를 정리한 것입니다. 원본은 [여기](https://openai.com/index/beyond-rate-limits)에서 확인할 수 있습니다._

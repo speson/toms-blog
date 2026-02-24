@@ -19,13 +19,14 @@ export function getAllTags(): string[] {
   return [...new Set(tags)].sort();
 }
 
-export type Category = "news" | "releases" | "analysis" | "guide";
+export type Category = "news" | "releases" | "analysis" | "guide" | "opinion";
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   news: "뉴스",
   releases: "릴리스",
   analysis: "분석",
   guide: "가이드",
+  opinion: "칼럼",
 };
 
 export function getPostsByCategory(category: Category): Post[] {
