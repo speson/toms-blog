@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "개인정보 처리방침",
-  description: "Tom's Blog의 개인정보 처리방침",
+  description: "Tom&apos;s Blog의 개인정보 처리방침",
   robots: {
     index: true,
     follow: true,
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
             1. 수집하는 정보
           </h2>
           <div className="space-y-4 leading-relaxed">
-            <p>Tom's Blog는 다음과 같은 정보를 자동으로 수집합니다:</p>
+            <p>Tom&apos;s Blog는 다음과 같은 정보를 자동으로 수집합니다:</p>
             <ul className="ml-2 list-inside list-disc space-y-2">
               <li>
                 <strong className="text-white">Google AdSense 쿠키</strong>
@@ -104,7 +104,7 @@ export default function PrivacyPage() {
             4. 쿠키 및 추적 기술
           </h2>
           <div className="space-y-4 leading-relaxed">
-            <p>Tom's Blog는 쿠키 및 유사한 추적 기술을 사용합니다.</p>
+            <p>Tom&apos;s Blog는 쿠키 및 유사한 추적 기술을 사용합니다.</p>
             <div className="rounded-lg border border-zinc-700 bg-zinc-800/30 p-4">
               <h3 className="mb-2 font-semibold text-white">쿠키 차단 방법:</h3>
               <ul className="ml-2 list-inside list-disc space-y-1 text-sm">
@@ -163,7 +163,7 @@ export default function PrivacyPage() {
           </h2>
           <div className="space-y-2 leading-relaxed">
             <p>
-              Tom's Blog는 수집된 정보를 보호하기 위해 적절한 기술적, 관리적
+              Tom&apos;s Blog는 수집된 정보를 보호하기 위해 적절한 기술적, 관리적
               조치를 취합니다:
             </p>
             <ul className="ml-2 list-inside list-disc space-y-2">

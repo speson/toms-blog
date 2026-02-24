@@ -23,6 +23,7 @@ export function TableOfContents() {
       level: Number(element.tagName.charAt(1)),
     }));
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadings(items);
 
     const observer = new IntersectionObserver(

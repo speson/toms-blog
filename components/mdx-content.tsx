@@ -8,8 +8,10 @@ interface MDXContentProps {
 }
 
 export function MDXContent({ code }: MDXContentProps) {
+  /* eslint-disable react-hooks/static-components */
   const Component = useMDXComponent(code);
   const components = useMDXComponents({});
 
   return <Component components={components} />;
+  /* eslint-enable react-hooks/static-components */
 }

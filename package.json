@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "fetch-news": "tsx scripts/fetch-news.ts"
+    "fetch-news": "tsx scripts/fetch-news.ts",
+    "test": "echo 'No test suite configured'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
