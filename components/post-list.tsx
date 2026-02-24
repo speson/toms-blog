@@ -8,11 +8,9 @@ export function PostList() {
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get("category") as Category | null;
 
-  const posts =
-    currentCategory &&
-    ["ai-news", "updates", "opensource"].includes(currentCategory)
-      ? getPostsByCategory(currentCategory)
-      : getAllPosts();
+  const posts = currentCategory
+    ? getPostsByCategory(currentCategory)
+    : getAllPosts();
 
   if (posts.length === 0) {
     return (
