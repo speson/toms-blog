@@ -1,0 +1,334 @@
+---
+title: "Vercel agent-browser --native: Rust로 다시 쓴 AI 브라우저 자동화"
+thumbnail: "/thumbnails/vercel-agent-browser-native.png"
+description: "Node.js + Playwright를 버리고 Rust 바이너리가 직접 CDP를 제어합니다. 메모리 사용량 감소, 속도 향상, AI 에이전트를 위한 최적화된 헤드리스 브라우저 CLI."
+date: "2026-03-05T22:10:00"
+tags: ["Vercel", "Rust", "브라우저 자동화", "AI", "CDP"]
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=27218"
+category: "tech"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+AI 에이전트가 브라우저를 제어할 때, 보통 이렇게 작동합니다:
+
+```
+AI 에이전트 → Node.js → Playwright → CDP → Chrome
+```
+
+여기서 **Node.js와 Playwright는 사실 오버헤드**입니다. AI 에이전트는 그냥 "버튼 클릭해줘"라고 말하는데, 왜 중간에 두 개의 런타임을 거쳐야 할까요?
+
+Vercel은 이 문제를 **Rust로 해결**했습니다.
+
+## agent-browser --native: 무엇이 바뀌었나?
+
+### 기존 구조
+
+```
+AI 에이전트
+  ↓
+Node.js 런타임 (항상 실행 중)
+  ↓
+Playwright 라이브러리
+  ↓
+CDP (Chrome DevTools Protocol)
+  ↓
+Chrome
+```
+
+**문제점:**
+- Node.js 프로세스가 계속 메모리 차지
+- Playwright 초기화 오버헤드
+- 런타임 레이어 2개 통과
+
+### --native 구조
+
+```
+AI 에이전트
+  ↓
+Rust 바이너리 (독립실행형 데몬)
+  ↓
+CDP (직접 호출)
+  ↓
+Chrome
+```
+
+**개선점:**
+- ✅ 런타임에 Node.js 불필요
+- ✅ 메모리 사용량 대폭 감소
+- ✅ 바이너리 크기 작아짐 (footprint ↓)
+- ✅ 시작 속도 빨라짐
+
+## AI 친화적 워크플로우
+
+agent-browser는 처음부터 **AI가 쓰기 쉽게** 설계되었습니다.
+
+### 1. snapshot으로 시작
+
+```bash
+# 현재 페이지의 접근성 트리 가져오기
+agent-browser snapshot
+
+# 출력:
+# @e1 button "Sign in"
+# @e2 input[type=email] "Email"
+# @e3 input[type=password] "Password"
+# @e4 button "Forgot password?"
+```
+
+AI는 이제 **고유 ref (@e1, @e2)**로 요소를 참조할 수 있습니다.
+
+### 2. ref 기반 액션
+
+```bash
+# 전통적인 셀렉터 (복잡함)
+agent-browser click 'button[data-testid="login-btn"]'
+
+# AI 친화적 ref (간단함)
+agent-browser click @e1
+```
+
+**장점:**
+- 셀렉터 작성 불필요
+- DOM 구조 변경에 강함
+- AI가 이해하기 쉬움
+
+### 3. 풍부한 명령어
+
+**페이지 탐색:**
+```bash
+agent-browser open https://example.com
+agent-browser goto /login
+```
+
+**인터랙션:**
+```bash
+agent-browser click @e1
+agent-browser fill @e2 "user@example.com"
+agent-browser type @e3 "password123"
+agent-browser hover @e4
+agent-browser check @e5
+```
+
+**스크린샷 & PDF:**
+```bash
+agent-browser screenshot output.png
+agent-browser pdf report.pdf
+```
+
+**상태 조회:**
+```bash
+agent-browser get text @e1
+agent-browser get attr @e2 "href"
+agent-browser is visible @e3
+agent-browser is checked @e4
+```
+
+**대기:**
+```bash
+agent-browser wait @e1  # 요소가 나타날 때까지
+agent-browser wait 3000  # 3초 대기
+```
+
+**마우스 & 키보드:**
+```bash
+agent-browser mouse move 100 200
+agent-browser mouse click
+agent-browser keyboard press Enter
+agent-browser keyboard type "Hello World"
+```
+
+**검색:**
+```bash
+agent-browser find "Submit button"
+# → @e7
+```
+
+**비교:**
+```bash
+agent-browser diff snapshot before.json after.json
+agent-browser diff screenshot before.png after.png
+agent-browser diff url https://old.com https://new.com
+```
+
+**네트워크 제어:**
+```bash
+# 요청 가로채기 및 모킹
+agent-browser network route "*/api/users" mock.json
+```
+
+**스토리지 & 쿠키:**
+```bash
+agent-browser cookie set "session" "abc123"
+agent-browser storage get "token"
+```
+
+## 세션 & 프로필 관리
+
+### 격리된 브라우저 인스턴스
+
+```bash
+# 각각 독립된 브라우저
+agent-browser --session=test1 open https://app.com
+agent-browser --session=test2 open https://app.com
+```
+
+### 로그인 상태 유지
+
+```bash
+# 프로필로 상태 저장
+agent-browser --profile=admin open https://app.com
+# 로그인...
+
+# 나중에 같은 프로필로 재사용
+agent-browser --profile=admin open https://dashboard.com
+# 이미 로그인된 상태!
+```
+
+### 세션 이름 지정
+
+```bash
+agent-browser --session-name="qa-test" open https://staging.app.com
+```
+
+## 주석 스크린샷
+
+AI가 요소를 구별하기 쉽게 **번호가 표시된 스크린샷** 생성:
+
+```bash
+agent-browser screenshot --annotate output.png
+```
+
+생성된 이미지:
+```
+┌─────────────────────┐
+│  [1] Sign in        │
+│  [2] ___________    │  ← Email input
+│  [3] ___________    │  ← Password input
+│  [4] Forgot?        │
+└─────────────────────┘
+```
+
+AI는 이제 "2번 칸에 이메일 입력해줘"라고 말할 수 있습니다.
+
+## 크로스 플랫폼 바이너리
+
+```bash
+# macOS
+brew install agent-browser
+
+# Linux
+curl -fsSL https://vercel.com/agent-browser/install.sh | sh
+
+# Windows
+winget install Vercel.AgentBrowser
+```
+
+**전용 Rust 바이너리 제공**, Node.js 폴백도 지원.
+
+## 실전 활용 예시
+
+### 예시 1: E2E 테스트
+
+```bash
+#!/bin/bash
+agent-browser --session=e2e open https://app.com
+
+# 로그인
+agent-browser fill @email "test@example.com"
+agent-browser fill @password "testpass"
+agent-browser click @login-btn
+
+# 대시보드 확인
+agent-browser wait @dashboard
+agent-browser screenshot --annotate dashboard.png
+
+# 리포트 생성
+agent-browser pdf report.pdf
+```
+
+### 예시 2: AI 에이전트 통합
+
+```python
+# AI 에이전트가 브라우저 제어
+import subprocess
+
+def ai_browse(instruction):
+    # 1. 현재 상태 스냅샷
+    snapshot = subprocess.run(
+        ["agent-browser", "snapshot"],
+        capture_output=True, text=True
+    ).stdout
+    
+    # 2. AI에게 다음 액션 물어보기
+    action = ask_ai(f"Snapshot: {snapshot}\nTask: {instruction}")
+    
+    # 3. 액션 실행
+    subprocess.run(["agent-browser"] + action.split())
+
+# 사용
+ai_browse("로그인해서 대시보드 스크린샷 찍어줘")
+```
+
+### 예시 3: 자동화된 모니터링
+
+```bash
+#!/bin/bash
+# 매 5분마다 실행
+
+agent-browser --session=monitor open https://app.com/status
+
+# 스크린샷 저장
+agent-browser screenshot monitoring/$(date +%Y%m%d_%H%M%S).png
+
+# 이전과 비교
+if agent-browser diff screenshot prev.png current.png | grep "changed"; then
+  # Slack 알림
+  curl -X POST $SLACK_WEBHOOK -d '{"text":"Status page changed!"}'
+fi
+```
+
+## Playwright vs agent-browser
+
+| 기능              | Playwright       | agent-browser --native |
+|------------------|------------------|------------------------|
+| 런타임           | Node.js 필수     | 독립 바이너리           |
+| 메모리 사용      | 높음             | 낮음                    |
+| 시작 속도        | 보통             | 빠름                    |
+| AI 친화성        | 보통             | 높음 (ref 기반)         |
+| 주석 스크린샷     | 없음             | 기본 제공               |
+| 설치 크기        | 큼               | 작음                    |
+| 네트워크 모킹     | 복잡함           | 간단함                  |
+
+## 언제 사용해야 할까?
+
+### agent-browser를 쓰세요:
+- ✅ AI 에이전트가 브라우저를 제어할 때
+- ✅ 가벼운 헤드리스 자동화
+- ✅ 메모리 제약이 있는 환경
+- ✅ CLI 기반 워크플로우
+
+### Playwright를 쓰세요:
+- ✅ 복잡한 E2E 테스트 스위트
+- ✅ TypeScript 타입 안정성 필요
+- ✅ 기존 Playwright 코드베이스 보유
+- ✅ 풍부한 생태계 필요
+
+## 마무리하며
+
+agent-browser --native는 **"AI가 쓰기 위한 브라우저 자동화"**의 새로운 표준을 제시합니다.
+
+**핵심은:**
+- Rust로 다시 써서 런타임 오버헤드 제거
+- ref 기반 인터랙션으로 AI 친화성 극대화
+- 주석 스크린샷으로 시각적 이해 지원
+
+Playwright는 여전히 훌륭하지만, **AI 에이전트에게는 agent-browser가 더 자연스러운 선택**일 것 같습니다.
+
+여러분은 AI 에이전트 브라우저 자동화에 뭘 쓰고 계신가요?
+
+---
+
+*이 글은 Geeknews에서 발견한 내용을 정리한 것입니다. 원본은 [여기](https://news.hada.io/topic?id=27218)에서 확인할 수 있습니다.*
