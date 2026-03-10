@@ -11,9 +11,11 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "fetch-news": "tsx scripts/fetch-news.ts",
+    "generate-thumbnail": "tsx scripts/generate-thumbnail.ts",
     "test": "echo 'No test suite configured'"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@vercel/analytics": "^1.6.1",
     "@vercel/og": "^0.8.6",
     "cheerio": "^1.1.2",

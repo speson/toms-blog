@@ -114,40 +114,52 @@ export const AI_GITHUB_REPOS = [
 ] as const;
 
 export async function fetchAllAINews(limit = 5): Promise<RSSItem[]> {
-  const items: RSSItem[] = [];
+  console.log("🤖 AI 블로그 + Anthropic 수집 중...");
 
-  // Fetch from AI blogs (RSS)
-  console.log("🤖 AI 블로그 수집 중...");
-  for (const blogKey of Object.keys(AI_BLOG_FEEDS) as Array<
+  // 블로그 RSS + Anthropic 스크래핑 병렬 실행
+  const blogKeys = Object.keys(AI_BLOG_FEEDS) as Array<
     keyof typeof AI_BLOG_FEEDS
-  >) {
-    try {
-      const blogItems = await fetchAIBlog(blogKey, limit);
-      items.push(...blogItems);
-      console.log(`   ✓ ${blogKey}: ${blogItems.length}개`);
-    } catch {
-      console.log(`   ⚠ ${blogKey}: 수집 실패`);
+  >;
+  const blogPromises = blogKeys.map((key) =>
+    fetchAIBlog(key, limit).then((items) => ({ name: key, items }))
+  );
+  const anthropicPromise = fetchAnthropicNews(limit).then((items) => ({
+    name: "anthropic" as const,
+    items,
+  }));
+
+  const blogResults = await Promise.allSettled([
+    ...blogPromises,
+    anthropicPromise,
+  ]);
+
+  const items: RSSItem[] = [];
+  for (const result of blogResults) {
+    if (result.status === "fulfilled") {
+      items.push(...result.value.items);
+      console.log(`   ✓ ${result.value.name}: ${result.value.items.length}개`);
+    } else {
+      console.log(`   ⚠ 수집 실패: ${result.reason}`);
     }
   }
 
-  // Fetch from Anthropic (web scraping)
-  try {
-    const anthropicItems = await fetchAnthropicNews(limit);
-    items.push(...anthropicItems);
-    console.log(`   ✓ anthropic: ${anthropicItems.length}개`);
-  } catch {
-    console.log(`   ⚠ anthropic: 수집 실패`);
-  }
-
-  // Fetch from GitHub releases
+  // GitHub Releases 병렬 실행
   console.log("🐙 AI 도구 GitHub Releases 수집 중...");
-  for (const repo of AI_GITHUB_REPOS) {
-    try {
-      const releases = await fetchGitHubReleases(repo, 3);
-      items.push(...releases);
-      console.log(`   ✓ ${repo}: ${releases.length}개`);
-    } catch {
-      console.log(`   ⚠ ${repo}: 수집 실패`);
+  const ghResults = await Promise.allSettled(
+    AI_GITHUB_REPOS.map((repo) =>
+      fetchGitHubReleases(repo, 3).then((releases) => ({
+        name: repo,
+        items: releases,
+      }))
+    )
+  );
+
+  for (const result of ghResults) {
+    if (result.status === "fulfilled") {
+      items.push(...result.value.items);
+      console.log(`   ✓ ${result.value.name}: ${result.value.items.length}개`);
+    } else {
+      console.log(`   ⚠ 수집 실패: ${result.reason}`);
     }
   }
 

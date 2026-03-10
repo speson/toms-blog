@@ -10,6 +10,10 @@
    - 원문 URL에서 내용 가져오기
    - 한글로 번역 및 요약
    - MDX 포스트 생성 (`content/posts/YYYY-MM-DD-slug.mdx`)
+   - 썸네일 생성 (선택사항, 실패 시 자동 skip):
+     - `generateThumbnail({ title, description, slug, tags })` 호출
+     - 성공 시: frontmatter에 `thumbnail` 필드 추가
+     - 실패 시: `thumbnail` 필드 생략 (OG 폴백 사용)
 4. 생성된 포스트 목록 표시
 
 ## 글쓰기 스타일
@@ -32,6 +36,7 @@ tags: ["AI", "적절한태그"]
 category: "ai-news" # ai-news | updates | opensource
 source: "openai" # openai | anthropic | google | geeknews | original
 sourceUrl: "https://..."
+thumbnail: "/thumbnails/{slug}.png"  # Optional: AI-generated thumbnail, omitted if generation fails
 draft: false
 ---
 
