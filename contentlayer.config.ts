@@ -39,8 +39,12 @@ export const Post = defineDocumentType(() => ({
     },
     category: {
       type: "enum",
-      options: ["news", "releases", "analysis", "guide", "opinion"],
-      default: "news",
+      options: ["by-tom", "ai-news"],
+      default: "ai-news",
+    },
+    subcategory: {
+      type: "enum",
+      options: ["news", "releases", "column"],
     },
     sourceUrl: {
       type: "string",
