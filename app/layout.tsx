@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/api/og?title=Tom's Blog&tags=AI",
+        url: "/images/toms-blog-main-og.png",
         width: 1200,
         height: 630,
         alt: "Tom's Blog",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tom's Blog",
     description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
-    images: ["/api/og?title=Tom's Blog&tags=AI"],
+    images: ["/images/toms-blog-main-og.png"],
   },
   robots: {
     index: true,
