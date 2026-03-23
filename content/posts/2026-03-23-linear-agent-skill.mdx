@@ -1,0 +1,134 @@
+---
+title: "Linear MCP 서버를 CLI + Agent Skill로 다시 만든 이야기"
+description: "MCP 서버 대신 Python CLI 하나로 Linear API 전체를 감싼 Agent Skill을 만든 프로젝트예요. 토큰 소모 45% 절감에 설정도 간단해요."
+date: "2026-03-23"
+tags: ["AI", "MCP", "Linear", "개발도구"]
+category: "ai-news"
+subcategory: "dev-tools"
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=27637"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+MCP(Model Context Protocol)가 AI 에이전트의 표준 도구 연결 방식으로 자리잡고 있지만, 모든 상황에서 MCP 서버가 최선의 선택은 아닐 수 있어요. 오늘 소개할 프로젝트는 그 좋은 예시인데요, Linear의 MCP 서버를 걷어내고 **Python CLI 하나 + Agent Skill 마크다운**으로 대체한 이야기예요.
+
+결과적으로 토큰 소모를 45%나 줄이면서 설정도 훨씬 간단해졌다고 하니, 어떻게 가능했는지 살펴볼게요.
+
+## 왜 MCP 대신 CLI + Skill인가?
+
+MCP 서버는 강력하지만, 몇 가지 비용이 따라요.
+
+- **초기 설정의 복잡성**: 서버 프로세스를 띄우고, 연결 상태를 관리해야 해요
+- **토큰 오버헤드**: MCP 프로토콜 자체의 메타데이터가 컨텍스트를 차지해요
+- **디버깅의 어려움**: 서버-클라이언트 구조라 문제가 생겼을 때 추적이 까다로워요
+
+이 프로젝트의 개발자는 이런 오버헤드를 없애기 위해 완전히 다른 접근을 선택했어요. MCP 서버 대신 **일반 Python CLI 도구**를 만들고, AI 에이전트가 이 CLI를 어떻게 사용해야 하는지를 **SKILL.md 파일에 기술**한 거예요.
+
+## 🎯 핵심 구조
+
+구조가 정말 깔끔해요.
+
+```
+linear-agent-skill/
+├── linear_cli.py     # Python CLI (Linear API 래퍼)
+├── SKILL.md          # 에이전트용 사용 가이드
+├── .env              # API 키 (LINEAR_API_KEY)
+└── requirements.txt  # 의존성
+```
+
+설정 방법도 놀라울 정도로 간단해요.
+
+```bash
+# 1. .env에 API 키 넣기
+LINEAR_API_KEY=lin_api_xxxxxxxxxxxxx
+
+# 2. 끝!
+```
+
+`.env`에 API 키만 넣으면 끝이에요. Agent가 `SKILL.md`를 읽고 자동으로 CLI 명령어를 실행하는 방식이라, 별도의 서버 프로세스나 복잡한 설정이 필요 없어요.
+
+## 32개 커맨드로 Linear API 전체 커버
+
+이 CLI는 Linear의 주요 기능을 32개 커맨드로 빠짐없이 지원해요.
+
+### 이슈 관리
+
+```bash
+# 이슈 생성
+python linear_cli.py create-issue --title "버그 수정" --team "Engineering"
+
+# 이슈 검색
+python linear_cli.py search-issues --query "로그인 버그"
+
+# 이슈 상태 변경
+python linear_cli.py update-issue --id "ENG-123" --status "In Progress"
+```
+
+### 프로젝트 & 사이클
+
+```bash
+# 프로젝트 목록
+python linear_cli.py list-projects
+
+# 사이클 정보
+python linear_cli.py get-cycle --team "Engineering"
+```
+
+### 파일 업로드/다운로드
+
+```bash
+# 첨부파일 업로드
+python linear_cli.py upload-attachment --issue "ENG-123" --file "./screenshot.png"
+
+# 첨부파일 다운로드
+python linear_cli.py download-attachment --id "att_xxxxx" --output "./downloads/"
+```
+
+파일 업로드와 다운로드까지 지원하는 건 MCP 서버에서도 흔치 않은 기능이에요.
+
+## 💡 MCP 대비 약 45% 적은 토큰 소비
+
+이 부분이 가장 흥미로운 결과예요. 왜 토큰이 절약될까요?
+
+1. **프로토콜 오버헤드 제거**: MCP의 JSON-RPC 메시지, 도구 디스커버리, 스키마 교환 등의 메타데이터가 없어요
+2. **출력 최적화**: CLI의 출력이 AI 에이전트가 파싱하기 쉬운 형태로 설계되어 있어요. 불필요한 장식 없이 핵심 데이터만 반환해요
+3. **SKILL.md의 효율성**: 에이전트가 한 번 SKILL.md를 읽으면 모든 커맨드를 이해하기 때문에, 매번 도구 스키마를 주고받는 MCP보다 효율적이에요
+
+45%라는 수치는 단순히 비용 절감을 넘어서, 더 긴 대화를 유지하면서도 컨텍스트 한계에 덜 걸린다는 의미이기도 해요.
+
+## 다양한 에이전트 호환
+
+이 Skill의 또 다른 장점은 특정 에이전트에 종속되지 않는다는 거예요.
+
+- **Claude Code**: `.claude/commands/` 폴더에 배치
+- **Cursor**: Rules에 SKILL.md 내용 추가
+- **Gemini CLI**: 프로젝트 설정에 포함
+- **Windsurf**: 유사하게 스킬 형태로 등록
+
+CLI + 마크다운이라는 범용적인 형태이기 때문에, 어떤 AI 코딩 도구든 쉽게 통합할 수 있어요. MCP 서버는 MCP를 지원하는 클라이언트에서만 동작하지만, CLI는 bash를 실행할 수 있는 모든 에이전트에서 사용 가능하죠.
+
+## 🎯 AI 에이전트 중심의 출력 최적화
+
+이 프로젝트에서 특히 인상적인 건 출력이 사람이 아니라 **AI 에이전트가 읽기 좋게** 설계되었다는 점이에요.
+
+일반적인 CLI 도구는 사람이 터미널에서 읽기 편하도록 컬러, 테이블, 이모지 등으로 꾸미잖아요. 하지만 이 도구는 에이전트가 파싱하기 쉬운 구조화된 텍스트를 반환해요. 불필요한 장식은 오히려 토큰 낭비니까요.
+
+이건 앞으로 AI 시대의 CLI 도구 설계 철학이 바뀔 수 있다는 시사점을 던져줘요. "사람을 위한 UI"와 "에이전트를 위한 UI"가 공존하는 시대가 오고 있는 거죠.
+
+## Tom의 생각
+
+이 프로젝트를 보면서 "MCP가 만능은 아니구나"라는 생각이 다시 한번 들었어요. MCP는 분명 강력하고 표준화된 프로토콜이지만, 때로는 단순한 CLI + 마크다운 조합이 더 실용적일 수 있어요.
+
+특히 개인 개발자나 소규모 팀이 특정 서비스와의 통합을 빠르게 만들고 싶을 때, MCP 서버를 구축하는 것보다 CLI를 감싸는 Agent Skill을 만드는 게 훨씬 빠르고 유지보수도 쉬울 거예요.
+
+저도 이 블로그의 워크플로우에서 몇 가지 외부 서비스 연동을 MCP 대신 이 패턴으로 바꿔볼까 고민 중이에요. 특히 단순한 API 호출 위주의 작업이라면 이 접근이 더 적합할 것 같거든요.
+
+물론 복잡한 상호작용이나 실시간 스트리밍이 필요한 경우에는 여전히 MCP가 적합해요. 결국 도구는 상황에 맞게 선택하는 게 최선이겠죠.
+
+다음에 또 흥미로운 소식으로 찾아올게요!
+
+---
+
+**원문**: [Linear MCP 서버를 CLI + Agent Skill로 다시 만든 이야기](https://news.hada.io/topic?id=27637)
