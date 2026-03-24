@@ -1,5 +1,6 @@
 ---
 title: "GPT-5.4 mini와 nano 출시: 더 작고, 더 빠르고, 더 저렴한 AI"
+thumbnail: "/thumbnails/gpt-5-4-mini-nano.png"
 description: "OpenAI가 GPT-5.4의 경량 버전인 mini와 nano를 출시했어요. 코딩, 도구 사용, 멀티모달 추론에 최적화된 빠르고 저렴한 모델이에요."
 date: "2026-03-23"
 tags: ["AI", "OpenAI", "GPT", "LLM"]
@@ -73,14 +74,14 @@ GPT-5.4 nano는 **극도의 경량화**를 추구한 모델이에요. 가장 작
 
 어떤 모델을 써야 할지 고민이라면, 이 기준으로 판단해 보세요.
 
-| 기준 | GPT-5.4 | GPT-5.4 mini | GPT-5.4 nano |
-|------|---------|--------------|--------------|
-| 복잡한 추론 | ⭐⭐⭐ | ⭐⭐ | ⭐ |
-| 코딩 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| 도구 사용 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| 속도 | ⭐ | ⭐⭐ | ⭐⭐⭐ |
-| 비용 효율 | ⭐ | ⭐⭐ | ⭐⭐⭐ |
-| 대량 처리 | ⭐ | ⭐⭐ | ⭐⭐⭐ |
+| 기준        | GPT-5.4 | GPT-5.4 mini | GPT-5.4 nano |
+| ----------- | ------- | ------------ | ------------ |
+| 복잡한 추론 | ⭐⭐⭐  | ⭐⭐         | ⭐           |
+| 코딩        | ⭐⭐⭐  | ⭐⭐⭐       | ⭐⭐         |
+| 도구 사용   | ⭐⭐⭐  | ⭐⭐⭐       | ⭐⭐         |
+| 속도        | ⭐      | ⭐⭐         | ⭐⭐⭐       |
+| 비용 효율   | ⭐      | ⭐⭐         | ⭐⭐⭐       |
+| 대량 처리   | ⭐      | ⭐⭐         | ⭐⭐⭐       |
 
 간단히 정리하면:
 
@@ -93,20 +94,20 @@ GPT-5.4 nano는 **극도의 경량화**를 추구한 모델이에요. 가장 작
 개발자분들을 위해, OpenAI Node SDK v6.32.0에서 새 모델 슬러그가 추가되었어요.
 
 ```typescript
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI();
 
 // GPT-5.4 mini 사용
 const miniResponse = await openai.chat.completions.create({
-  model: 'gpt-5.4-mini',
-  messages: [{ role: 'user', content: '이 코드를 리뷰해 줘' }],
+  model: "gpt-5.4-mini",
+  messages: [{ role: "user", content: "이 코드를 리뷰해 줘" }],
 });
 
 // GPT-5.4 nano 사용
 const nanoResponse = await openai.chat.completions.create({
-  model: 'gpt-5.4-nano',
-  messages: [{ role: 'user', content: '이 텍스트를 분류해 줘' }],
+  model: "gpt-5.4-nano",
+  messages: [{ role: "user", content: "이 텍스트를 분류해 줘" }],
 });
 ```
 
@@ -116,11 +117,11 @@ API 인터페이스는 기존 모델과 동일하기 때문에, 모델 이름만
 
 경량 모델 시장은 이제 정말 치열해졌어요.
 
-| 회사 | 경량 모델 | 특징 |
-|------|-----------|------|
-| OpenAI | GPT-5.4 mini/nano | 코딩, 도구 사용에 강점 |
-| Anthropic | Claude Haiku | 빠른 응답, 안전성에 강점 |
-| Google | Gemini Flash | 멀티모달, 긴 컨텍스트에 강점 |
+| 회사      | 경량 모델         | 특징                         |
+| --------- | ----------------- | ---------------------------- |
+| OpenAI    | GPT-5.4 mini/nano | 코딩, 도구 사용에 강점       |
+| Anthropic | Claude Haiku      | 빠른 응답, 안전성에 강점     |
+| Google    | Gemini Flash      | 멀티모달, 긴 컨텍스트에 강점 |
 
 각 모델마다 강점이 다르기 때문에, 사용 사례에 따라 최적의 선택이 달라져요. 코딩 작업이 많다면 GPT-5.4 mini가, 안전성이 중요한 고객 대면 서비스라면 Claude Haiku가, 긴 문서를 처리해야 한다면 Gemini Flash가 더 적합할 수 있어요.
 
