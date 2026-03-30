@@ -44,7 +44,7 @@ export const Post = defineDocumentType(() => ({
     },
     subcategory: {
       type: "enum",
-      options: ["news", "releases", "column"],
+      options: ["news", "releases", "column", "tools"],
     },
     sourceUrl: {
       type: "string",
@@ -52,6 +52,10 @@ export const Post = defineDocumentType(() => ({
     thumbnail: {
       type: "string",
       description: "커스텀 썸네일 이미지 경로 (예: /thumbnails/my-post.png)",
+    },
+    updatedAt: {
+      type: "date",
+      description: "포스트 최종 수정일 (미설정 시 date 사용)",
     },
     draft: {
       type: "boolean",

@@ -65,7 +65,7 @@ export function ArticleJsonLd({
       name: "Tom's Blog",
       logo: {
         "@type": "ImageObject",
-        url: "https://toms-blog.co.kr/api/og?title=Tom's%20Blog&tags=AI",
+        url: "https://toms-blog.co.kr/images/toms-blog-main-og.png",
       },
     },
     keywords: tags.join(", "),

@@ -1,7 +1,17 @@
 import { Suspense } from "react";
 import { CategorySidebar, PostList } from "@/components";
+import { getAllPosts } from "@/lib/posts";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
+  const posts = getAllPosts();
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <section className="mb-16">
@@ -25,7 +35,7 @@ export default function Home() {
               </div>
             }
           >
-            <PostList />
+            <PostList posts={posts} />
           </Suspense>
         </section>
 

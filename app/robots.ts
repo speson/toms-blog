@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "Googlebot",
-        allow: "/",
+        allow: ["/", "/api/og"],
         disallow: ["/api/"],
       },
       {
@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/api/og"],
         disallow: ["/api/"],
       },
       {

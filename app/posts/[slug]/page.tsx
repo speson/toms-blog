@@ -87,6 +87,7 @@ export default async function PostPage({ params }: PostPageProps) {
         url={postUrl}
         imageUrl={fullImageUrl}
         datePublished={post.date}
+        dateModified={post.updatedAt || post.date}
         tags={post.tags}
       />
       <BreadcrumbJsonLd
