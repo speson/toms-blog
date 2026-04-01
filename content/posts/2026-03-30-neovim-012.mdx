@@ -1,0 +1,64 @@
+---
+title: "Neovim 0.12.0 출시 — 빌트인 플러그인 매니저부터 인라인 완성까지"
+description: "Neovim 0.12.0이 드디어 릴리스됐어요. 빌트인 플러그인 매니저, LSP 인라인 완성, 실험적 UI2 등 굵직한 기능이 대거 추가됐는데요, 주요 변경점을 정리해봤어요."
+date: "2026-03-30"
+tags: ["Neovim", "개발도구", "오픈소스"]
+category: "ai-news"
+subcategory: "tools"
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=28011"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Neovim 0.12.0이 3월 29일에 정식 릴리스됐어요. 이번 버전은 변경 사항이 정말 방대한데요 — 빌트인 플러그인 매니저, LSP 인라인 완성, 실험적 UI 재설계까지 들어있어서 "마이너 버전 맞아?" 싶을 정도더라고요. 핵심 변경점 위주로 정리해볼게요.
+
+## 🎯 핵심 신기능
+
+### 빌트인 플러그인 매니저 `vim.pack`
+
+드디어 Neovim에 **내장 플러그인 매니저**가 생겼어요. 지금까지 lazy.nvim이나 packer를 써왔는데, 공식 빌트인이 나온 건 꽤 의미 있는 변화예요. 가볍게 쓰는 분들은 별도 플러그인 매니저 없이도 관리가 가능해진 거죠.
+
+### LSP 인라인 완성 & 코드렌즈 가상 라인
+
+`textDocument/inlineCompletion`을 네이티브로 지원하기 시작했어요. GitHub Copilot 같은 인라인 제안이 더 자연스럽게 동작할 수 있는 기반이 마련된 셈이에요. 코드렌즈도 이제 **가상 라인(virtual lines)** 으로 표시돼서 가독성이 훨씬 좋아졌더라고요.
+
+### `'autocomplete'` 옵션
+
+Insert 모드에서 자동완성을 트리거하는 `'autocomplete'` 옵션이 새로 추가됐어요. 기존에 플러그인으로 처리하던 자동완성 동작을 네이티브 수준에서 제어할 수 있게 된 거예요.
+
+## 💡 개발자 체감이 큰 변경점
+
+### UI2 — 메시지/커맨드라인 재설계 (실험적)
+
+`require('vim._core.ui2').enable()`로 활성화할 수 있는 실험적 UI가 들어왔어요. 가장 반가운 건 **"Press ENTER" 인터럽트가 사라진다**는 점이에요. 커맨드라인 입력 중 실시간 하이라이팅도 되고, 페이저가 버퍼+윈도우로 제공돼서 UX가 확 달라져요.
+
+### 성능 개선
+
+- Insert 모드 `Ctrl+R` 레지스터 삽입이 **10배 빨라졌어요**
+- `vim.glob.to_lpeg()` 패턴 매칭이 약 **50% 개선**
+- LSP 시맨틱 토큰이 뷰포트 범위만 요청하도록 최적화
+
+### 빌트인 `:Undotree` & `:DiffTool`
+
+Undo 트리 시각화와 디렉토리/파일 비교 도구가 빌트인으로 들어왔어요. undotree 플러그인을 따로 설치하던 시절이 끝날 수도 있겠네요.
+
+### `vim.net.request()` — HTTP 요청 내장
+
+Lua에서 바로 HTTP 요청을 보낼 수 있는 `vim.net.request()`가 추가됐어요. 플러그인 개발할 때 외부 의존성 없이 API 호출이 가능해진 건 꽤 큰 변화예요.
+
+## ⚠️ 주의할 브레이킹 체인지
+
+- `vim.diff`가 `vim.text.diff`로 이름이 바뀌었어요
+- `vim.diagnostic.disable()`과 `is_disabled()`가 삭제됐어요 — `enable(false)`를 사용해야 해요
+- `'shelltemp'`의 기본값이 `false`로 변경됐어요
+- nvim-treesitter 플러그인이 0.12에 맞춰 구조가 크게 바뀌었어요. 업데이트 시 확인이 필요해요
+
+## 마무리
+
+Neovim 0.12.0은 "에디터 자체의 완성도"를 한 단계 끌어올린 릴리스라고 느껴져요. 빌트인 플러그인 매니저, HTTP 클라이언트, Undo 트리까지 — 예전엔 서드파티 플러그인 없이는 불가능했던 것들이 하나둘 네이티브로 흡수되고 있어요. 거기에 0.13에서는 **멀티커서** 지원도 예고돼 있어서, Neovim의 행보가 기대되네요.
+
+터미널 기반 개발 환경을 선호하시는 분이라면 꼭 업데이트해보세요!
+
+🔗 [GeekNews 원문 보기](https://news.hada.io/topic?id=28011) | [GitHub 릴리스 페이지](https://github.com/neovim/neovim/releases/tag/v0.12.0)
