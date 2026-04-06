@@ -1,0 +1,75 @@
+---
+title: "OpenCode v1.3.15~1.3.17: Azure 지원, Cloudflare Workers AI 통합"
+description: "OpenCode 세 버전 묶어서 정리해요. npm 설치 오류 수정부터 Azure 모델 지원, 마우스 캡처 비활성화, 그리고 Cloudflare Workers AI/AI Gateway 통합까지 담겨 있어요."
+date: "2026-04-06"
+tags: ["OpenCode", "AI", "개발도구", "오픈소스"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anomalyco/opencode/releases/tag/v1.3.17"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+지난번에 [OpenCode v1.3.5~1.3.7의 PowerShell 지원과 토큰 이중 카운팅 수정](/posts/2026-04-01-opencode-v135-137)을 다뤘는데요, 그 사이 버전이 꽤 올라갔어요. v1.3.15부터 v1.3.17까지 세 버전을 묶어서 정리해 볼게요.
+
+이번에는 **클라우드 프로바이더 확장**이 핵심 키워드예요. Azure, Cloudflare까지 지원 범위가 넓어지고 있더라고요.
+
+## v1.3.15 — npm 설치 안정화
+
+### ⚠️ node-gyp 경로 충돌 수정
+
+npm 설치 과정에서 Arborist가 컴파일된 바이너리의 `node-gyp` 경로를 만나면 설치가 실패하던 문제가 수정됐어요. npm 기반으로 플러그인을 설치할 때 간헐적으로 터지던 분들이라면 이 수정이 반가울 거예요.
+
+### 💡 커뮤니티 기여
+
+@Yuxin-Dong 님이 불필요한 Kimi 스킬 섹션 코드를 정리하는 리팩토링을 기여했어요. 코드베이스가 깔끔해지는 건 언제나 좋은 일이죠.
+
+## v1.3.16 — Azure 지원 & ACP 설정 확장
+
+### 🎯 Azure 모델 지원
+
+이번 릴리스의 하이라이트예요. **Azure OpenAI가 채팅과 응답 처리 양쪽 경로에서 모두 지원**되기 시작했어요. 회사에서 Azure를 통해 OpenAI 모델을 사용하는 분들에게는 꽤 의미 있는 변경이에요. 이제 별도 우회 없이 바로 연결할 수 있게 됐어요.
+
+### 🎯 ACP 세션 설정 노출
+
+ACP(Agent Communication Protocol)를 통해 세션 모델과 모드 설정을 외부에서 제어할 수 있게 됐어요. 자동화 파이프라인을 구축하시는 분들한테 유용할 것 같아요.
+
+### 💡 TUI 개선 사항
+
+- Windows에서 기본 되돌리기 단축키가 `Ctrl+Z`로 변경 — 터미널 서스펜드와 충돌하던 문제가 해결됐어요
+- **마우스 캡처 비활성화** 기능 추가 — 설정이나 `OPENCODE_DISABLE_MOUSE` 환경 변수로 끌 수 있어요. tmux 사용자분들 환호할 부분이에요
+- 조직이 하나뿐일 때 조직 전환 UI가 심플해짐
+
+### ⚠️ 플러그인 설치 수정
+
+npm alias나 git URL로 플러그인을 설치할 때 발생하던 문제가 수정됐고, Windows에서 캐시 경로 관련 이슈도 해결됐어요.
+
+### 💡 출력 토큰 계산 보정
+
+추론(reasoning) 토큰이 별도로 추적될 때 출력 토큰 계산이 잘못되던 문제가 수정됐어요. v1.3.6에서 토큰 이중 카운팅을 수정했었는데, 관련 정밀도를 계속 개선하고 있는 모습이에요.
+
+## v1.3.17 — Cloudflare Workers AI 통합
+
+### 🎯 Cloudflare Workers AI & AI Gateway 지원
+
+**Cloudflare Workers AI와 AI Gateway가 공식 지원**되기 시작했어요. 필수 환경 변수가 누락되면 직접 입력을 안내하고, 설정 오류 시 명확한 에러 메시지를 보여주도록 구현됐더라고요.
+
+Cloudflare 인프라 위에서 AI를 운영하는 팀이라면 별도 어댑터 없이 OpenCode를 바로 연결할 수 있게 된 거예요. 프로바이더 선택지가 계속 늘어나는 게 좋아요.
+
+### ⚠️ Windows 키보드 입력 수정
+
+v1.3.16에서 변경했던 kitty 키보드 처리 워크어라운드가 오히려 입력 문제를 일으켜서, 이번에 기본값으로 되돌렸어요. Windows 터미널에서 키 입력이 이상했던 분들은 업데이트하면 해결될 거예요.
+
+## 총평
+
+세 버전을 관통하는 키워드는 **"프로바이더 생태계 확장"**이에요. Azure, Cloudflare Workers AI까지 지원하면서 OpenCode가 특정 벤더에 종속되지 않는 유연한 AI 코딩 도구로 자리잡아 가고 있어요.
+
+특히 v1.3.16의 Azure 지원은 엔터프라이즈 환경에서의 채택을 크게 넓힐 수 있는 변경이고, Cloudflare 통합은 엣지 AI를 활용하는 팀에게 새로운 선택지를 열어줬어요. 마우스 캡처 비활성화 같은 세심한 UX 개선도 인상적이에요.
+
+다음 버전도 기대하면서 계속 지켜볼게요!
+
+---
+
+**원문**: [OpenCode v1.3.17 Release Notes](https://github.com/anomalyco/opencode/releases/tag/v1.3.17)
