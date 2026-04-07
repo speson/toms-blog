@@ -1,41 +1,26 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
-  getAllCategories,
   getSubcategories,
   getCategoryCount,
   getSubcategoryCount,
   getAllPosts,
+  getCategoryHref,
+  getSubcategoryHref,
   CATEGORY_LABELS,
   SUBCATEGORY_LABELS,
-  type Category,
-  type Subcategory,
 } from "@/lib/posts";
 
 export function CategorySidebar() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const currentCategory = searchParams.get("category") as Category | null;
-  const currentSub = searchParams.get("sub") as Subcategory | null;
+  const pathname = usePathname();
 
-  const categories = getAllCategories();
   const subcategories = getSubcategories();
   const totalPosts = getAllPosts().length;
-
-  const navigate = (category: Category | null, sub?: Subcategory | null) => {
-    const params = new URLSearchParams();
-    if (category) params.set("category", category);
-    if (sub) params.set("sub", sub);
-    const queryString = params.toString();
-    router.push(queryString ? `/?${queryString}` : "/", { scroll: false });
-  };
-
-  const isActive = (category: Category | null, sub?: Subcategory | null) => {
-    if (category === null) return currentCategory === null;
-    if (sub) return currentCategory === category && currentSub === sub;
-    return currentCategory === category && !currentSub;
-  };
+  const isHome = pathname === "/";
+  const isByTom = pathname === getCategoryHref("by-tom");
+  const isAiNews = pathname === getCategoryHref("ai-news");
 
   const btnClass = (active: boolean) =>
     `flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm transition-all ${
@@ -68,56 +53,41 @@ export function CategorySidebar() {
             카테고리
           </h3>
           <ul className="space-y-1">
-            {/* 전체 */}
             <li>
-              <button
-                onClick={() => navigate(null)}
-                className={btnClass(isActive(null))}
-              >
+              <Link href="/" className={btnClass(isHome)}>
                 <span>전체</span>
-                <span className={badgeClass(isActive(null))}>{totalPosts}</span>
-              </button>
+                <span className={badgeClass(isHome)}>{totalPosts}</span>
+              </Link>
             </li>
 
-            {/* by Tom */}
             <li>
-              <button
-                onClick={() => navigate("by-tom")}
-                className={btnClass(isActive("by-tom"))}
+              <Link
+                href={getCategoryHref("by-tom")}
+                className={btnClass(isByTom)}
               >
                 <span>{CATEGORY_LABELS["by-tom"]}</span>
-                <span className={badgeClass(isActive("by-tom"))}>
+                <span className={badgeClass(isByTom)}>
                   {getCategoryCount("by-tom")}
                 </span>
-              </button>
+              </Link>
             </li>
 
-            {/* AI 소식 (top-level) */}
             <li>
-              <button
-                onClick={() => navigate("ai-news")}
-                className={btnClass(
-                  currentCategory === "ai-news" && !currentSub
-                )}
-              >
+              <Link href={getCategoryHref("ai-news")} className={btnClass(isAiNews)}>
                 <span>{CATEGORY_LABELS["ai-news"]}</span>
-                <span
-                  className={badgeClass(
-                    currentCategory === "ai-news" && !currentSub
-                  )}
-                >
+                <span className={badgeClass(isAiNews)}>
                   {getCategoryCount("ai-news")}
                 </span>
-              </button>
+              </Link>
 
-              {/* Subcategories — always visible */}
               <ul className="mt-1 ml-3 space-y-0.5 border-l border-zinc-800 pl-3">
                 {subcategories.map((sub) => {
-                  const subActive = isActive("ai-news", sub);
+                  const href = getSubcategoryHref("ai-news", sub);
+                  const subActive = pathname === href;
                   return (
                     <li key={sub}>
-                      <button
-                        onClick={() => navigate("ai-news", sub)}
+                      <Link
+                        href={href}
                         className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-xs transition-all ${
                           subActive
                             ? "font-medium text-purple-400"
@@ -134,7 +104,7 @@ export function CategorySidebar() {
                         >
                           {getSubcategoryCount(sub)}
                         </span>
-                      </button>
+                      </Link>
                     </li>
                   );
                 })}
@@ -147,45 +117,32 @@ export function CategorySidebar() {
       {/* Mobile horizontal pills */}
       <div className="scrollbar-hide -mx-2 mb-8 overflow-x-auto px-2 lg:hidden">
         <div className="flex gap-2 pb-2">
-          <button
-            onClick={() => navigate(null)}
-            className={pillClass(isActive(null))}
-          >
+          <Link href="/" className={pillClass(isHome)}>
             <span>전체</span>
-            <span className={pillBadgeClass(isActive(null))}>{totalPosts}</span>
-          </button>
+            <span className={pillBadgeClass(isHome)}>{totalPosts}</span>
+          </Link>
 
-          <button
-            onClick={() => navigate("by-tom")}
-            className={pillClass(isActive("by-tom"))}
-          >
+          <Link href={getCategoryHref("by-tom")} className={pillClass(isByTom)}>
             <span>{CATEGORY_LABELS["by-tom"]}</span>
-            <span className={pillBadgeClass(isActive("by-tom"))}>
+            <span className={pillBadgeClass(isByTom)}>
               {getCategoryCount("by-tom")}
             </span>
-          </button>
+          </Link>
 
-          <button
-            onClick={() => navigate("ai-news")}
-            className={pillClass(currentCategory === "ai-news" && !currentSub)}
-          >
+          <Link href={getCategoryHref("ai-news")} className={pillClass(isAiNews)}>
             <span>{CATEGORY_LABELS["ai-news"]}</span>
-            <span
-              className={pillBadgeClass(
-                currentCategory === "ai-news" && !currentSub
-              )}
-            >
+            <span className={pillBadgeClass(isAiNews)}>
               {getCategoryCount("ai-news")}
             </span>
-          </button>
+          </Link>
 
-          {/* Mobile subcategory pills */}
           {subcategories.map((sub) => {
-            const subActive = isActive("ai-news", sub);
+            const href = getSubcategoryHref("ai-news", sub);
+            const subActive = pathname === href;
             return (
-              <button
+              <Link
                 key={sub}
-                onClick={() => navigate("ai-news", sub)}
+                href={href}
                 className={`flex shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all ${
                   subActive
                     ? "border-purple-500/30 bg-purple-500/10 font-medium text-purple-400"
@@ -196,7 +153,7 @@ export function CategorySidebar() {
                 <span className={pillBadgeClass(subActive)}>
                   {getSubcategoryCount(sub)}
                 </span>
-              </button>
+              </Link>
             );
           })}
         </div>

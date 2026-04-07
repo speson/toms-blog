@@ -57,9 +57,16 @@ export async function generateThumbnail(
       return null;
     }
 
-    const imagePart = candidate.content.parts.find((part: any) =>
-      part.inlineData?.mimeType?.startsWith("image/")
-    );
+    const imagePart = candidate.content.parts.find(
+      (part) => part.inlineData?.mimeType?.startsWith("image/") === true
+    ) as
+      | {
+          inlineData?: {
+            mimeType?: string;
+            data: string;
+          };
+        }
+      | undefined;
 
     if (!imagePart || !imagePart.inlineData) {
       console.warn(

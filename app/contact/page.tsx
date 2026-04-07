@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
 
+const BASE_URL = "https://toms-blog.co.kr";
+
 export const metadata: Metadata = {
   title: "연락처",
   description: "Tom's Blog 연락처 및 문의",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "연락처",
+    description: "Tom's Blog 연락처 및 문의",
+    url: `${BASE_URL}/contact`,
+    siteName: "Tom's Blog",
+    locale: "ko_KR",
+    type: "website",
+    images: ["/images/toms-blog-main-og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "연락처",
+    description: "Tom's Blog 연락처 및 문의",
+    images: ["/images/toms-blog-main-og.png"],
+  },
   robots: {
     index: true,
     follow: true,

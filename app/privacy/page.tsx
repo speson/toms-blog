@@ -1,8 +1,28 @@
 import { Metadata } from "next";
 
+const BASE_URL = "https://toms-blog.co.kr";
+
 export const metadata: Metadata = {
   title: "개인정보 처리방침",
   description: "Tom&apos;s Blog의 개인정보 처리방침",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "개인정보 처리방침",
+    description: "Tom&apos;s Blog의 개인정보 처리방침",
+    url: `${BASE_URL}/privacy`,
+    siteName: "Tom's Blog",
+    locale: "ko_KR",
+    type: "website",
+    images: ["/images/toms-blog-main-og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "개인정보 처리방침",
+    description: "Tom&apos;s Blog의 개인정보 처리방침",
+    images: ["/images/toms-blog-main-og.png"],
+  },
   robots: {
     index: true,
     follow: true,

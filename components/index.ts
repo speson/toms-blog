@@ -9,4 +9,6 @@ export {
   WebsiteJsonLd,
   ArticleJsonLd,
   BreadcrumbJsonLd,
+  CollectionPageJsonLd,
+  ProfilePageJsonLd,
 } from "./json-ld";

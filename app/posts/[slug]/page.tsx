@@ -1,9 +1,19 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
 import { ArticleJsonLd, BreadcrumbJsonLd, TableOfContents } from "@/components";
-import { getPostBySlug, formatDate } from "@/lib/posts";
+import {
+  CATEGORY_LABELS,
+  SUBCATEGORY_LABELS,
+  formatDate,
+  getCategoryHref,
+  getPostBySlug,
+  getRelatedPosts,
+  getTagHref,
+  getSubcategoryHref,
+} from "@/lib/posts";
 import { calculateReadingTime } from "@/lib/reading-time";
 import type { Metadata } from "next";
 
@@ -41,8 +51,14 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
+      url: `${BASE_URL}/posts/${post.slug}`,
+      siteName: "Tom's Blog",
+      locale: "ko_KR",
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updatedAt || post.date,
+      authors: ["Tom"],
+      section: post.subcategory || post.category,
       tags: post.tags,
       images: [
         {
@@ -78,6 +94,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const fullImageUrl = post.thumbnail
     ? `${BASE_URL}${post.thumbnail}`
     : `${BASE_URL}${ogUrl}`;
+  const relatedPosts = getRelatedPosts(post, 3);
 
   return (
     <>
@@ -113,6 +130,22 @@ export default async function PostPage({ params }: PostPageProps) {
               <h1 className="mb-4 text-3xl font-bold text-white md:text-4xl">
                 {post.title}
               </h1>
+              <div className="mb-4 flex flex-wrap gap-2 text-sm">
+                <Link
+                  href={getCategoryHref(post.category)}
+                  className="rounded-full bg-zinc-800 px-3 py-1 text-zinc-300 transition-colors hover:text-white"
+                >
+                  {CATEGORY_LABELS[post.category]}
+                </Link>
+                {post.subcategory && (
+                  <Link
+                    href={getSubcategoryHref(post.category, post.subcategory)}
+                    className="rounded-full bg-zinc-800 px-3 py-1 text-zinc-300 transition-colors hover:text-white"
+                  >
+                    {SUBCATEGORY_LABELS[post.subcategory]}
+                  </Link>
+                )}
+              </div>
               <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
                 <time>{formatDate(post.date)}</time>
                 <span>•</span>
@@ -133,12 +166,13 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span
+                  <Link
                     key={tag}
+                    href={getTagHref(tag)}
                     className="rounded-full bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </header>
@@ -146,6 +180,43 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="prose prose-invert max-w-none">
               <MDXContent code={post.body.code} />
             </div>
+
+            {relatedPosts.length > 0 && (
+              <section className="mt-16 border-t border-zinc-800 pt-10">
+                <h2 className="mb-6 text-2xl font-semibold text-white">
+                  관련 글
+                </h2>
+                <div className="grid gap-4 md:grid-cols-3">
+                  {relatedPosts.map((relatedPost) => (
+                    <Link
+                      key={relatedPost.slug}
+                      href={relatedPost.url}
+                      className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-900/80"
+                    >
+                      <div className="mb-3 flex flex-wrap gap-2 text-xs">
+                        <span className="rounded-full bg-zinc-800 px-2 py-1 text-zinc-400">
+                          {CATEGORY_LABELS[relatedPost.category]}
+                        </span>
+                        {relatedPost.subcategory && (
+                          <span className="rounded-full bg-zinc-800 px-2 py-1 text-zinc-400">
+                            {SUBCATEGORY_LABELS[relatedPost.subcategory]}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-white">
+                        {relatedPost.title}
+                      </h3>
+                      <p className="mb-4 line-clamp-3 text-sm text-zinc-400">
+                        {relatedPost.description}
+                      </p>
+                      <time className="text-sm text-zinc-500">
+                        {formatDate(relatedPost.date)}
+                      </time>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
           </article>
 
           <aside className="hidden lg:block">

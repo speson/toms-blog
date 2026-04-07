@@ -23,6 +23,14 @@ export function WebsiteJsonLd() {
       "@type": "Person",
       name: "Tom",
     },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://toms-blog.co.kr/search?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return <JsonLd data={data} />;
@@ -97,6 +105,79 @@ export function BreadcrumbJsonLd({ items }: BreadcrumbJsonLdProps) {
       name: item.name,
       item: item.url,
     })),
+  };
+
+  return <JsonLd data={data} />;
+}
+
+interface CollectionPageJsonLdProps {
+  name: string;
+  description: string;
+  url: string;
+  items: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+export function CollectionPageJsonLd({
+  name,
+  description,
+  url,
+  items,
+}: CollectionPageJsonLdProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url,
+    inLanguage: "ko-KR",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+
+  return <JsonLd data={data} />;
+}
+
+interface ProfilePageJsonLdProps {
+  url: string;
+  name: string;
+  description: string;
+}
+
+export function ProfilePageJsonLd({
+  url,
+  name,
+  description,
+}: ProfilePageJsonLdProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url,
+    name,
+    description,
+    mainEntity: {
+      "@type": "Person",
+      name: "Tom",
+      description,
+      url,
+      sameAs: ["https://github.com/speson"],
+      knowsAbout: [
+        "AI coding tools",
+        "Claude Code",
+        "OpenCode",
+        "AI model comparison",
+        "Developer tooling",
+      ],
+    },
   };
 
   return <JsonLd data={data} />;

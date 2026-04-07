@@ -21,6 +21,11 @@ export default function Home() {
         <p className="text-lg text-zinc-400">
           AI 뉴스와 개발 트렌드를 다루는 기술 블로그
         </p>
+        <p className="mt-4 max-w-3xl leading-relaxed text-zinc-500">
+          Claude Code, OpenAI, Anthropic, Gemini, 개발 도구 릴리스, 실전 가이드와
+          같은 주제를 개발자 관점에서 정리합니다. 단순 링크 모음이 아니라 직접
+          사용해본 경험, 비교, 해석을 함께 남기는 AI 기술 블로그입니다.
+        </p>
       </section>
 
       <div className="flex flex-col lg:flex-row lg:gap-8">
