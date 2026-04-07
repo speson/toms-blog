@@ -15,7 +15,7 @@ draft: false
 
 지난번에 [OpenCode v1.3.5~1.3.7의 PowerShell 지원과 토큰 이중 카운팅 수정](/posts/2026-04-01-opencode-v135-137)을 다뤘는데요, 그 사이 버전이 꽤 올라갔어요. v1.3.15부터 v1.3.17까지 세 버전을 묶어서 정리해 볼게요.
 
-이번에는 **클라우드 프로바이더 확장**이 핵심 키워드예요. Azure, Cloudflare까지 지원 범위가 넓어지고 있더라고요.
+이번에는 <strong>클라우드 프로바이더 확장</strong>이 핵심 키워드예요. Azure, Cloudflare까지 지원 범위가 넓어지고 있더라고요.
 
 ## v1.3.15 — npm 설치 안정화
 
@@ -31,7 +31,7 @@ npm 설치 과정에서 Arborist가 컴파일된 바이너리의 `node-gyp` 경�
 
 ### 🎯 Azure 모델 지원
 
-이번 릴리스의 하이라이트예요. **Azure OpenAI가 채팅과 응답 처리 양쪽 경로에서 모두 지원**되기 시작했어요. 회사에서 Azure를 통해 OpenAI 모델을 사용하는 분들에게는 꽤 의미 있는 변경이에요. 이제 별도 우회 없이 바로 연결할 수 있게 됐어요.
+이번 릴리스의 하이라이트예요. <strong>Azure OpenAI가 채팅과 응답 처리 양쪽 경로에서 모두 지원</strong>되기 시작했어요. 회사에서 Azure를 통해 OpenAI 모델을 사용하는 분들에게는 꽤 의미 있는 변경이에요. 이제 별도 우회 없이 바로 연결할 수 있게 됐어요.
 
 ### 🎯 ACP 세션 설정 노출
 
@@ -40,7 +40,7 @@ ACP(Agent Communication Protocol)를 통해 세션 모델과 모드 설정을 �
 ### 💡 TUI 개선 사항
 
 - Windows에서 기본 되돌리기 단축키가 `Ctrl+Z`로 변경 — 터미널 서스펜드와 충돌하던 문제가 해결됐어요
-- **마우스 캡처 비활성화** 기능 추가 — 설정이나 `OPENCODE_DISABLE_MOUSE` 환경 변수로 끌 수 있어요. tmux 사용자분들 환호할 부분이에요
+- <strong>마우스 캡처 비활성화</strong> 기능 추가 — 설정이나 `OPENCODE_DISABLE_MOUSE` 환경 변수로 끌 수 있어요. tmux 사용자분들 환호할 부분이에요
 - 조직이 하나뿐일 때 조직 전환 UI가 심플해짐
 
 ### ⚠️ 플러그인 설치 수정
@@ -55,7 +55,7 @@ npm alias나 git URL로 플러그인을 설치할 때 발생하던 문제가 수
 
 ### 🎯 Cloudflare Workers AI & AI Gateway 지원
 
-**Cloudflare Workers AI와 AI Gateway가 공식 지원**되기 시작했어요. 필수 환경 변수가 누락되면 직접 입력을 안내하고, 설정 오류 시 명확한 에러 메시지를 보여주도록 구현됐더라고요.
+<strong>Cloudflare Workers AI와 AI Gateway가 공식 지원</strong>되기 시작했어요. 필수 환경 변수가 누락되면 직접 입력을 안내하고, 설정 오류 시 명확한 에러 메시지를 보여주도록 구현됐더라고요.
 
 Cloudflare 인프라 위에서 AI를 운영하는 팀이라면 별도 어댑터 없이 OpenCode를 바로 연결할 수 있게 된 거예요. 프로바이더 선택지가 계속 늘어나는 게 좋아요.
 
@@ -65,7 +65,7 @@ v1.3.16에서 변경했던 kitty 키보드 처리 워크어라운드가 오히�
 
 ## 총평
 
-세 버전을 관통하는 키워드는 **"프로바이더 생태계 확장"**이에요. Azure, Cloudflare Workers AI까지 지원하면서 OpenCode가 특정 벤더에 종속되지 않는 유연한 AI 코딩 도구로 자리잡아 가고 있어요.
+세 버전을 관통하는 키워드는 <strong>"프로바이더 생태계 확장"</strong>이에요. Azure, Cloudflare Workers AI까지 지원하면서 OpenCode가 특정 벤더에 종속되지 않는 유연한 AI 코딩 도구로 자리잡아 가고 있어요.
 
 특히 v1.3.16의 Azure 지원은 엔터프라이즈 환경에서의 채택을 크게 넓힐 수 있는 변경이고, Cloudflare 통합은 엣지 AI를 활용하는 팀에게 새로운 선택지를 열어줬어요. 마우스 캡처 비활성화 같은 세심한 UX 개선도 인상적이에요.
 
@@ -73,4 +73,4 @@ v1.3.16에서 변경했던 kitty 키보드 처리 워크어라운드가 오히�
 
 ---
 
-**원문**: [OpenCode v1.3.17 Release Notes](https://github.com/anomalyco/opencode/releases/tag/v1.3.17)
+<strong>원문</strong>: [OpenCode v1.3.17 Release Notes](https://github.com/anomalyco/opencode/releases/tag/v1.3.17)

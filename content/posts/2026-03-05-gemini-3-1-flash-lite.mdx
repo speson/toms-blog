@@ -19,9 +19,9 @@ AI 모델 가격 경쟁이 치열합니다. 최근 몇 달간:
 - Claude 3.5 Sonnet: 입력 $3 → $0.50 (6배 인하)
 - Gemini 2.5 Flash: 입력 $0.15/1M 토큰
 
-이제 Google이 **Gemini 3.1 Flash-Lite**를 발표했습니다:
+이제 Google이 <strong>Gemini 3.1 Flash-Lite</strong>를 발표했습니다:
 
-**입력 $0.25/1M 토큰, 출력 $1.50/1M 토큰**
+<strong>입력 $0.25/1M 토큰, 출력 $1.50/1M 토큰</strong>
 
 ## 왜 Flash-Lite인가?
 
@@ -29,11 +29,11 @@ Google은 Gemini 3 시리즈를 3개 티어로 나눴습니다:
 
 | 모델                | 용도                    | 가격 (입력/출력)       |
 |--------------------|------------------------|----------------------|
-| **Gemini 3 Pro**    | 복잡한 추론, 창의적 작업 | 높음                  |
-| **Gemini 3 Flash**  | 일반적 작업             | 중간                  |
-| **Gemini 3.1 Flash-Lite** | 대규모 워크로드   | **$0.25 / $1.50**    |
+| <strong>Gemini 3 Pro</strong>    | 복잡한 추론, 창의적 작업 | 높음                  |
+| <strong>Gemini 3 Flash</strong>  | 일반적 작업             | 중간                  |
+| <strong>Gemini 3.1 Flash-Lite</strong> | 대규모 워크로드   | <strong>$0.25 / $1.50</strong>    |
 
-**Flash-Lite의 포지션:**
+<strong>Flash-Lite의 포지션:</strong>
 - 품질은 유지하면서
 - 속도는 극대화하고
 - 가격은 최소화
@@ -44,8 +44,8 @@ Google은 Gemini 3 시리즈를 3개 티어로 나눴습니다:
 
 | 지표                          | 2.5 Flash | 3.1 Flash-Lite | 개선율  |
 |------------------------------|-----------|----------------|---------|
-| **TTFT** (Time to First Answer Token) | 1.0x      | **2.5x 빠름**   | 150% ↑  |
-| **출력 속도**                  | 1.0x      | **1.45x 빠름**  | 45% ↑   |
+| <strong>TTFT</strong> (Time to First Answer Token) | 1.0x      | <strong>2.5x 빠름</strong>   | 150% ↑  |
+| <strong>출력 속도</strong>                  | 1.0x      | <strong>1.45x 빠름</strong>  | 45% ↑   |
 
 *출처: [Artificial Analysis 벤치마크](https://artificialanalysis.ai/)*
 
@@ -53,17 +53,17 @@ Google은 Gemini 3 시리즈를 3개 티어로 나눴습니다:
 
 | 벤치마크        | 3.1 Flash-Lite | 2.5 Flash | 비교        |
 |----------------|----------------|-----------|------------|
-| **Arena Elo**   | **1432**       | ~1400     | ✅ 더 높음  |
-| **GPQA Diamond** | **86.9%**     | 84.2%     | ✅ 더 높음  |
-| **MMMU Pro**    | **76.8%**      | 74.5%     | ✅ 더 높음  |
+| <strong>Arena Elo</strong>   | <strong>1432</strong>       | ~1400     | ✅ 더 높음  |
+| <strong>GPQA Diamond</strong> | <strong>86.9%</strong>     | 84.2%     | ✅ 더 높음  |
+| <strong>MMMU Pro</strong>    | <strong>76.8%</strong>      | 74.5%     | ✅ 더 높음  |
 
-**놀라운 점:**
-- Gemini 2.5 Flash를 **모든 지표에서 능가**
-- 이전 세대 **더 큰 모델들보다도 높은 점수**
+<strong>놀라운 점:</strong>
+- Gemini 2.5 Flash를 <strong>모든 지표에서 능가</strong>
+- 이전 세대 <strong>더 큰 모델들보다도 높은 점수</strong>
 
 ## Thinking Levels: 작업별 맞춤 추론
 
-Flash-Lite의 가장 혁신적인 기능은 **Thinking Levels**입니다:
+Flash-Lite의 가장 혁신적인 기능은 <strong>Thinking Levels</strong>입니다:
 
 ```
 Level 1: 빠른 응답 (간단한 작업)
@@ -101,10 +101,10 @@ response = model.generate_content(
 )
 ```
 
-**효과:**
-- 간단한 작업은 **더 빠르고 저렴하게**
-- 복잡한 작업은 **더 정확하게**
-- **비용 최적화 자동화**
+<strong>효과:</strong>
+- 간단한 작업은 <strong>더 빠르고 저렴하게</strong>
+- 복잡한 작업은 <strong>더 정확하게</strong>
+- <strong>비용 최적화 자동화</strong>
 
 ## 실전 활용 케이스
 
@@ -171,37 +171,37 @@ Generate a traffic simulation with:
 | 모델                    | 가격     | 비교      |
 |------------------------|---------|----------|
 | GPT-4o                 | $0.25   | 동일      |
-| Claude 3.5 Sonnet      | $3.00   | **12배 비쌈** |
+| Claude 3.5 Sonnet      | $3.00   | <strong>12배 비쌈</strong> |
 | Claude 3.5 Haiku       | $0.80   | 3.2배 비쌈 |
-| Gemini 2.5 Flash       | $0.15   | **1.7배 저렴** |
-| **Gemini 3.1 Flash-Lite** | **$0.25** | **기준** |
+| Gemini 2.5 Flash       | $0.15   | <strong>1.7배 저렴</strong> |
+| <strong>Gemini 3.1 Flash-Lite</strong> | <strong>$0.25</strong> | <strong>기준</strong> |
 
 ### 출력 토큰 (1M 토큰당)
 
 | 모델                    | 가격     | 비교      |
 |------------------------|---------|----------|
-| GPT-4o                 | $1.00   | **1.5배 저렴** |
+| GPT-4o                 | $1.00   | <strong>1.5배 저렴</strong> |
 | Claude 3.5 Sonnet      | $15.00  | 10배 비쌈 |
 | Claude 3.5 Haiku       | $4.00   | 2.7배 비쌈 |
-| Gemini 2.5 Flash       | $0.60   | **2.5배 저렴** |
-| **Gemini 3.1 Flash-Lite** | **$1.50** | **기준** |
+| Gemini 2.5 Flash       | $0.60   | <strong>2.5배 저렴</strong> |
+| <strong>Gemini 3.1 Flash-Lite</strong> | <strong>$1.50</strong> | <strong>기준</strong> |
 
 ### 실제 비용 계산
 
-**시나리오: 100만 번의 챗봇 응답**
+<strong>시나리오: 100만 번의 챗봇 응답</strong>
 - 평균 입력: 500 토큰
 - 평균 출력: 200 토큰
 
 | 모델              | 입력 비용 | 출력 비용 | 총 비용  |
 |------------------|----------|----------|---------|
-| GPT-4o           | $125     | $200     | **$325** |
-| Claude 3.5 Haiku | $400     | $800     | **$1,200** |
-| Gemini 2.5 Flash | $75      | $120     | **$195** |
-| **Flash-Lite**   | **$125** | **$300** | **$425** |
+| GPT-4o           | $125     | $200     | <strong>$325</strong> |
+| Claude 3.5 Haiku | $400     | $800     | <strong>$1,200</strong> |
+| Gemini 2.5 Flash | $75      | $120     | <strong>$195</strong> |
+| <strong>Flash-Lite</strong>   | <strong>$125</strong> | <strong>$300</strong> | <strong>$425</strong> |
 
-**결론:**
+<strong>결론:</strong>
 - 2.5 Flash가 가장 저렴
-- Flash-Lite는 **속도와 가격의 균형**
+- Flash-Lite는 <strong>속도와 가격의 균형</strong>
 - GPT-4o와 가격 동일, 속도는 더 빠름
 
 ## 얼리 어답터 반응
@@ -221,10 +221,10 @@ Generate a traffic simulation with:
 ## 언제 사용해야 할까?
 
 ### Flash-Lite를 쓰세요:
-- ✅ **대규모 배치 작업** (번역, 검열, 분류)
-- ✅ **실시간 응답** (챗봇, 추천)
-- ✅ **이미지 대량 분석**
-- ✅ **비용이 중요한 프로덕션**
+- ✅ <strong>대규모 배치 작업</strong> (번역, 검열, 분류)
+- ✅ <strong>실시간 응답</strong> (챗봇, 추천)
+- ✅ <strong>이미지 대량 분석</strong>
+- ✅ <strong>비용이 중요한 프로덕션</strong>
 
 ### Flash를 쓰세요:
 - ✅ 더 복잡한 추론
@@ -262,20 +262,20 @@ model = GenerativeModel('gemini-3.1-flash-lite-preview')
 response = model.generate_content("Hello world")
 ```
 
-**현재 상태: Preview**
+<strong>현재 상태: Preview</strong>
 - AI Studio와 Vertex AI에서 사용 가능
 - 프로덕션 릴리스 예정
 
 ## 마무리하며
 
-Gemini 3.1 Flash-Lite는 **"속도와 가격의 새로운 기준"**을 제시합니다.
+Gemini 3.1 Flash-Lite는 <strong>"속도와 가격의 새로운 기준"</strong>을 제시합니다.
 
-**핵심:**
-- 2.5 Flash보다 **빠르고 똑똑함**
-- GPT-4o와 **가격 동일, 속도는 더 빠름**
-- **Thinking Levels로 비용 최적화**
+<strong>핵심:</strong>
+- 2.5 Flash보다 <strong>빠르고 똑똑함</strong>
+- GPT-4o와 <strong>가격 동일, 속도는 더 빠름</strong>
+- <strong>Thinking Levels로 비용 최적화</strong>
 
-특히 **대규모 워크로드**를 돌리는 스타트업이라면, Flash-Lite가 비용을 크게 줄여줄 것 같습니다.
+특히 <strong>대규모 워크로드</strong>를 돌리는 스타트업이라면, Flash-Lite가 비용을 크게 줄여줄 것 같습니다.
 
 여러분은 어떤 모델 쓰고 계신가요? Flash-Lite 써보실 계획 있으신가요?
 

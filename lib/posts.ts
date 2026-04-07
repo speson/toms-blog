@@ -15,7 +15,7 @@ export function getPostsByTag(tag: string): Post[] {
 }
 
 export function getAllTags(): string[] {
-  const tags = allPosts.flatMap((post) => post.tags);
+  const tags = getAllPosts().flatMap((post) => post.tags);
   return [...new Set(tags)].sort();
 }
 
@@ -52,10 +52,16 @@ export function getPostsBySubcategory(subcategory: Subcategory): Post[] {
   );
 }
 
-export function getPostsByCategoryAndSub(category: Category, subcategory?: Subcategory): Post[] {
+export function getPostsByCategoryAndSub(
+  category: Category,
+  subcategory?: Subcategory
+): Post[] {
   return getAllPosts().filter((post) => {
     if (post.category !== category) return false;
-    if (subcategory && (post.subcategory as string | undefined) !== subcategory) {
+    if (
+      subcategory &&
+      (post.subcategory as string | undefined) !== subcategory
+    ) {
       return false;
     }
     return true;
@@ -152,7 +158,8 @@ export function getRelatedPosts(post: Post, limit = 3): Post[] {
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       return (
-        new Date(b.candidate.date).getTime() - new Date(a.candidate.date).getTime()
+        new Date(b.candidate.date).getTime() -
+        new Date(a.candidate.date).getTime()
       );
     })
     .slice(0, limit)

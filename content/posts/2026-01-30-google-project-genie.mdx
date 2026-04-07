@@ -13,19 +13,19 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-Google이 **Project Genie**를 미국 내 Google AI Ultra 구독자에게 출시했습니다! 사용자가 **인터랙티브 월드를 생성, 탐색, 리믹스**할 수 있는 실험적 연구 프로토타입인데, 이거 정말 미래 지향적이더라고요.
+Google이 <strong>Project Genie</strong>를 미국 내 Google AI Ultra 구독자에게 출시했습니다! 사용자가 <strong>인터랙티브 월드를 생성, 탐색, 리믹스</strong>할 수 있는 실험적 연구 프로토타입인데, 이거 정말 미래 지향적이더라고요.
 
 ## World Model의 진화
 
-World Model은 환경의 역학을 시뮬레이션하고, 액션이 환경에 어떻게 영향을 미치는지 예측합니다. Google DeepMind는 체스나 바둑처럼 특정 환경을 위한 에이전트를 개발한 역사가 있지만, **범용 인공지능(AGI)**을 위해서는 현실 세계의 다양성을 다룰 수 있는 시스템이 필요했습니다.
+World Model은 환경의 역학을 시뮬레이션하고, 액션이 환경에 어떻게 영향을 미치는지 예측합니다. Google DeepMind는 체스나 바둑처럼 특정 환경을 위한 에이전트를 개발한 역사가 있지만, <strong>범용 인공지능(AGI)</strong>을 위해서는 현실 세계의 다양성을 다룰 수 있는 시스템이 필요했습니다.
 
-💡 **그래서 개발한 게 Genie 3입니다.** 정적인 3D 스냅샷과 달리, Genie 3는 **실시간으로 경로를 생성**하며 사용자가 움직이고 상호작용할 때마다 월드를 확장합니다.
+💡 <strong>그래서 개발한 게 Genie 3입니다.</strong> 정적인 3D 스냅샷과 달리, Genie 3는 <strong>실시간으로 경로를 생성</strong>하며 사용자가 움직이고 상호작용할 때마다 월드를 확장합니다.
 
 ### Genie 3의 특징
 
-- **동적 물리 시뮬레이션**: 실시간 상호작용 지원
-- **일관성(Consistency)**: 로보틱스, 애니메이션, 역사적 설정 등 모든 실제 시나리오 시뮬레이션 가능
-- **무한 확장**: 이동하고 상호작용하면서 월드가 계속 생성됨
+- <strong>동적 물리 시뮬레이션</strong>: 실시간 상호작용 지원
+- <strong>일관성(Consistency)</strong>: 로보틱스, 애니메이션, 역사적 설정 등 모든 실제 시나리오 시뮬레이션 가능
+- <strong>무한 확장</strong>: 이동하고 상호작용하면서 월드가 계속 생성됨
 
 ## Project Genie의 3가지 핵심 기능
 
@@ -35,16 +35,16 @@ World Model은 환경의 역학을 시뮬레이션하고, 액션이 환경에 �
 
 - 캐릭터와 월드 정의
 - 탐험 방식 선택 (걷기, 타기, 날기, 운전 등)
-- **Nano Banana Pro**와 통합되어 월드 미리보기 가능
+- <strong>Nano Banana Pro</strong>와 통합되어 월드 미리보기 가능
 - 1인칭/3인칭 시점 선택
 
-🎯 **예시:** "사이버펑크 도시, 비 오는 밤, 네온사인"이라고 입력하면 그에 맞는 3D 월드가 생성됩니다.
+🎯 <strong>예시:</strong> "사이버펑크 도시, 비 오는 밤, 네온사인"이라고 입력하면 그에 맞는 3D 월드가 생성됩니다.
 
 ### 2. World Exploration (월드 탐험)
 
-월드는 탐색 가능한 환경입니다. 이동하면 **Project Genie가 실시간으로 경로를 생성**하며, 카메라 각도도 조정할 수 있습니다.
+월드는 탐색 가능한 환경입니다. 이동하면 <strong>Project Genie가 실시간으로 경로를 생성</strong>하며, 카메라 각도도 조정할 수 있습니다.
 
-⚠️ **이게 핵심입니다.** 미리 만들어진 맵이 아니라, **실시간으로 생성되는 맵**입니다.
+⚠️ <strong>이게 핵심입니다.</strong> 미리 만들어진 맵이 아니라, <strong>실시간으로 생성되는 맵</strong>입니다.
 
 ### 3. World Remixing (월드 리믹스)
 
@@ -52,34 +52,34 @@ World Model은 환경의 역학을 시뮬레이션하고, 액션이 환경에 �
 
 ## 개발 워크플로우 관점에서
 
-**프론트엔드 개발자 관점:**
+<strong>프론트엔드 개발자 관점:</strong>
 
-🎯 **실시간 3D 렌더링 파이프라인**과 유사한 개념입니다. React의 Virtual DOM이 UI 상태를 추적하듯, Genie 3는 월드 상태를 실시간으로 생성합니다.
+🎯 <strong>실시간 3D 렌더링 파이프라인</strong>과 유사한 개념입니다. React의 Virtual DOM이 UI 상태를 추적하듯, Genie 3는 월드 상태를 실시간으로 생성합니다.
 
-**가능성:**
+<strong>가능성:</strong>
 
-- **실시간 상태 관리**: 사용자 액션 → 월드 업데이트 (클라이언트 사이드 렌더링의 극한)
-- **인터랙티브 경험**: 정적 이미지 대신 탐색 가능한 3D 공간으로 제품 데모 구현
-- **React Three Fiber 통합 가능성**: Gemini API + Three.js로 WebGL 렌더링 구현 예상
+- <strong>실시간 상태 관리</strong>: 사용자 액션 → 월드 업데이트 (클라이언트 사이드 렌더링의 극한)
+- <strong>인터랙티브 경험</strong>: 정적 이미지 대신 탐색 가능한 3D 공간으로 제품 데모 구현
+- <strong>React Three Fiber 통합 가능성</strong>: Gemini API + Three.js로 WebGL 렌더링 구현 예상
 
 ## 제 생각
 
-Project Genie는 "**실시간 생성형 3D**"의 미래를 보여줍니다. 미리 만들어진 게임 맵이 아니라, **플레이하면서 실시간으로 생성되는 맵**이라는 점이 혁신적입니다.
+Project Genie는 "<strong>실시간 생성형 3D</strong>"의 미래를 보여줍니다. 미리 만들어진 게임 맵이 아니라, <strong>플레이하면서 실시간으로 생성되는 맵</strong>이라는 점이 혁신적입니다.
 
-⚠️ **하지만 아직은 실험 단계입니다:**
+⚠️ <strong>하지만 아직은 실험 단계입니다:</strong>
 
 - 60초 제한이 있음
 - 캐릭터 제어가 불안정함
 - 프로덕션 사용은 시기상조
 
-📝 **프론트엔드 개발자들에게:** WebGL과 실시간 3D 렌더링에 관심 있으시다면 Project Genie의 기술 스택을 주목하세요. 향후 이런 기술이 더 대중화될 것입니다.
+📝 <strong>프론트엔드 개발자들에게:</strong> WebGL과 실시간 3D 렌더링에 관심 있으시다면 Project Genie의 기술 스택을 주목하세요. 향후 이런 기술이 더 대중화될 것입니다.
 
 ## 마무리
 
-Project Genie는 **World Model 기술의 실용적 데모**입니다. 아직은 실험적이지만, 향후 게임, 교육, 시뮬레이션 분야에서 큰 가능성을 보여줍니다.
+Project Genie는 <strong>World Model 기술의 실용적 데모</strong>입니다. 아직은 실험적이지만, 향후 게임, 교육, 시뮬레이션 분야에서 큰 가능성을 보여줍니다.
 
 AI Ultra 구독자이신 분들은 한 번 체험해보세요. 미래의 3D 인터랙티브 콘텐츠가 어떤 모습일지 짐작할 수 있습니다.
 
 ---
 
-**원문**: [Google Blog - Project Genie](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/)
+<strong>원문</strong>: [Google Blog - Project Genie](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/)

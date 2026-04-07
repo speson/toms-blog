@@ -13,30 +13,30 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-오늘은 정말 실용적인 개발 이야기를 들고 왔어요. 레몬베이스 팀이 **AI + Codemod** 조합으로 Deprecated된 Design System을 대규모로 정리한 경험을 공유했는데, 이거 꽤 인상적이더라고요.
+오늘은 정말 실용적인 개발 이야기를 들고 왔어요. 레몬베이스 팀이 <strong>AI + Codemod</strong> 조합으로 Deprecated된 Design System을 대규모로 정리한 경험을 공유했는데, 이거 꽤 인상적이더라고요.
 
 ## 왜 이게 중요한가
 
 많은 팀이 겪는 전형적인 레거시 문제입니다:
 
-- 사내 Design System에서 Typography 등 다수 컴포넌트가 **Deprecated** 됨
-- 새 Design System + Tailwind 도입 후 한 코드베이스 안에 **Deprecated 패턴이 혼재**됨
+- 사내 Design System에서 Typography 등 다수 컴포넌트가 <strong>Deprecated</strong> 됨
+- 새 Design System + Tailwind 도입 후 한 코드베이스 안에 <strong>Deprecated 패턴이 혼재</strong>됨
 - Boy Scout 룰(지나가면서 조금씩 정리)로 해결하기엔 파일 수가 너무 많음
-- 기능 변경 PR과 리팩터링 PR 분리 원칙 때문에 **우선순위에서 계속 밀림**
+- 기능 변경 PR과 리팩터링 PR 분리 원칙 때문에 <strong>우선순위에서 계속 밀림</strong>
 
-💡 **이 상황, 익숙하시죠?** "나중에 정리하자"고 했다가 1년이 지나도 그대로인 코드들...
+💡 <strong>이 상황, 익숙하시죠?</strong> "나중에 정리하자"고 했다가 1년이 지나도 그대로인 코드들...
 
 ## 해결책: Codemod + AI
 
-단순 문자열 치환이 아닌 **AST(Abstract Syntax Tree) 기반 Codemod**를 사용했습니다.
+단순 문자열 치환이 아닌 <strong>AST(Abstract Syntax Tree) 기반 Codemod</strong>를 사용했습니다.
 
 ### AI의 역할
 
-- Deprecated Typography 사용 패턴 **전수 조사**
+- Deprecated Typography 사용 패턴 <strong>전수 조사</strong>
 - Before/After 규칙 정리
-- jscodeshift 변환 스크립트 **초안 및 테스트 코드 작성 보조**
+- jscodeshift 변환 스크립트 <strong>초안 및 테스트 코드 작성 보조</strong>
 
-🎯 **핵심 변환 예시:**
+🎯 <strong>핵심 변환 예시:</strong>
 
 ```jsx
 // Before
@@ -56,46 +56,46 @@ draft: false
 
 ## 결과는 놀라웠습니다
 
-- Typography 관련 Deprecated 패턴 **약 95% 자동 변환** 성공
-- 혼합 패턴이 크게 줄어 **코드 일관성과 온보딩 경험 개선**
-- "다음 Design System 교체도 Codemod로 한다"는 **옵션 확보**
+- Typography 관련 Deprecated 패턴 <strong>약 95% 자동 변환</strong> 성공
+- 혼합 패턴이 크게 줄어 <strong>코드 일관성과 온보딩 경험 개선</strong>
+- "다음 Design System 교체도 Codemod로 한다"는 <strong>옵션 확보</strong>
 
-⚠️ **95%라는 숫자가 중요해요.** 완벽하지 않지만, 수동으로 5%만 처리하면 된다는 의미입니다. 원래라면 100% 수동으로 해야 했을 작업이죠.
+⚠️ <strong>95%라는 숫자가 중요해요.</strong> 완벽하지 않지만, 수동으로 5%만 처리하면 된다는 의미입니다. 원래라면 100% 수동으로 해야 했을 작업이죠.
 
 ## 제가 배운 점
 
-**1. AI는 Codemod 작성을 가속화합니다**
+<strong>1. AI는 Codemod 작성을 가속화합니다</strong>
 
 jscodeshift 문법을 완벽히 알지 못해도, AI가 초안을 작성해주면 거기서 수정하면 됩니다. "이 패턴을 이렇게 변환해줘"라고 설명하면 AST 변환 코드를 만들어주더라고요.
 
-**2. 테스트 코드가 필수입니다**
+<strong>2. 테스트 코드가 필수입니다</strong>
 
 자동 변환은 항상 edge case가 있습니다. Before/After 예시를 많이 만들어두고 테스트하는 게 중요해요.
 
-**3. 점진적 도입이 가능합니다**
+<strong>3. 점진적 도입이 가능합니다</strong>
 
 한 번에 모든 걸 바꾸지 않아도 됩니다. 가장 많이 쓰이는 패턴부터 Codemod로 처리하고, 나머지는 Boy Scout 룰로 처리하는 하이브리드 접근도 좋습니다.
 
 ## 언제 써보면 좋을까요?
 
-💰 **추천 시나리오:**
+💰 <strong>추천 시나리오:</strong>
 
 - Design System 마이그레이션
 - API 변경에 따른 클라이언트 코드 일괴 수정
 - 공통 타입/인터페이스 변경
 - 의존성 버전 업그레이드 (예: React 17 → 18)
 
-**비추천:**
+<strong>비추천:</strong>
 
 - 비즈니스 로직이 복잡하게 얽힌 경우
 - 테스트 커버리지가 낮은 레거시 코드
 
 ## 마무리
 
-AI 시대에 리팩터링은 더 이상 노가다가 아닙니다. "**AI가 코드를 짜준다**"는 것보다 "**AI가 리팩터링을 도와준다**"는 게 더 현실적이고 유용한 적용 사례인 것 같아요.
+AI 시대에 리팩터링은 더 이상 노가다가 아닙니다. "<strong>AI가 코드를 짜준다</strong>"는 것보다 "<strong>AI가 리팩터링을 도와준다</strong>"는 게 더 현실적이고 유용한 적용 사례인 것 같아요.
 
 여러분도 다음에 대규모 리팩터링이 필요할 때 Codemod + AI 조합을 한 번 고려해보세요. 생각보다 쉽게 시작할 수 있습니다.
 
 ---
 
-**원문**: [레몬베이스 기술 블로그](https://news.hada.io/topic?id=26040)
+<strong>원문</strong>: [레몬베이스 기술 블로그](https://news.hada.io/topic?id=26040)

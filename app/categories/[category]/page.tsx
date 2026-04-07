@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -107,9 +108,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
         <div className="flex flex-col lg:flex-row lg:gap-8">
           <section className="min-w-0 flex-1">
-            <PostList posts={posts} />
+            <Suspense fallback={null}>
+              <PostList posts={posts} />
+            </Suspense>
           </section>
-          <CategorySidebar />
+          <Suspense fallback={null}>
+            <CategorySidebar />
+          </Suspense>
         </div>
       </div>
     </>

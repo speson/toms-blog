@@ -19,9 +19,9 @@ AI 에이전트가 브라우저를 제어할 때, 보통 이렇게 작동합니�
 AI 에이전트 → Node.js → Playwright → CDP → Chrome
 ```
 
-여기서 **Node.js와 Playwright는 사실 오버헤드**입니다. AI 에이전트는 그냥 "버튼 클릭해줘"라고 말하는데, 왜 중간에 두 개의 런타임을 거쳐야 할까요?
+여기서 <strong>Node.js와 Playwright는 사실 오버헤드</strong>입니다. AI 에이전트는 그냥 "버튼 클릭해줘"라고 말하는데, 왜 중간에 두 개의 런타임을 거쳐야 할까요?
 
-Vercel은 이 문제를 **Rust로 해결**했습니다.
+Vercel은 이 문제를 <strong>Rust로 해결</strong>했습니다.
 
 ## agent-browser --native: 무엇이 바뀌었나?
 
@@ -39,7 +39,7 @@ CDP (Chrome DevTools Protocol)
 Chrome
 ```
 
-**문제점:**
+<strong>문제점:</strong>
 - Node.js 프로세스가 계속 메모리 차지
 - Playwright 초기화 오버헤드
 - 런타임 레이어 2개 통과
@@ -56,7 +56,7 @@ CDP (직접 호출)
 Chrome
 ```
 
-**개선점:**
+<strong>개선점:</strong>
 - ✅ 런타임에 Node.js 불필요
 - ✅ 메모리 사용량 대폭 감소
 - ✅ 바이너리 크기 작아짐 (footprint ↓)
@@ -64,7 +64,7 @@ Chrome
 
 ## AI 친화적 워크플로우
 
-agent-browser는 처음부터 **AI가 쓰기 쉽게** 설계되었습니다.
+agent-browser는 처음부터 <strong>AI가 쓰기 쉽게</strong> 설계되었습니다.
 
 ### 1. snapshot으로 시작
 
@@ -79,7 +79,7 @@ agent-browser snapshot
 # @e4 button "Forgot password?"
 ```
 
-AI는 이제 **고유 ref (@e1, @e2)**로 요소를 참조할 수 있습니다.
+AI는 이제 <strong>고유 ref (@e1, @e2)</strong>로 요소를 참조할 수 있습니다.
 
 ### 2. ref 기반 액션
 
@@ -91,20 +91,20 @@ agent-browser click 'button[data-testid="login-btn"]'
 agent-browser click @e1
 ```
 
-**장점:**
+<strong>장점:</strong>
 - 셀렉터 작성 불필요
 - DOM 구조 변경에 강함
 - AI가 이해하기 쉬움
 
 ### 3. 풍부한 명령어
 
-**페이지 탐색:**
+<strong>페이지 탐색:</strong>
 ```bash
 agent-browser open https://example.com
 agent-browser goto /login
 ```
 
-**인터랙션:**
+<strong>인터랙션:</strong>
 ```bash
 agent-browser click @e1
 agent-browser fill @e2 "user@example.com"
@@ -113,13 +113,13 @@ agent-browser hover @e4
 agent-browser check @e5
 ```
 
-**스크린샷 & PDF:**
+<strong>스크린샷 & PDF:</strong>
 ```bash
 agent-browser screenshot output.png
 agent-browser pdf report.pdf
 ```
 
-**상태 조회:**
+<strong>상태 조회:</strong>
 ```bash
 agent-browser get text @e1
 agent-browser get attr @e2 "href"
@@ -127,13 +127,13 @@ agent-browser is visible @e3
 agent-browser is checked @e4
 ```
 
-**대기:**
+<strong>대기:</strong>
 ```bash
 agent-browser wait @e1  # 요소가 나타날 때까지
 agent-browser wait 3000  # 3초 대기
 ```
 
-**마우스 & 키보드:**
+<strong>마우스 & 키보드:</strong>
 ```bash
 agent-browser mouse move 100 200
 agent-browser mouse click
@@ -141,26 +141,26 @@ agent-browser keyboard press Enter
 agent-browser keyboard type "Hello World"
 ```
 
-**검색:**
+<strong>검색:</strong>
 ```bash
 agent-browser find "Submit button"
 # → @e7
 ```
 
-**비교:**
+<strong>비교:</strong>
 ```bash
 agent-browser diff snapshot before.json after.json
 agent-browser diff screenshot before.png after.png
 agent-browser diff url https://old.com https://new.com
 ```
 
-**네트워크 제어:**
+<strong>네트워크 제어:</strong>
 ```bash
 # 요청 가로채기 및 모킹
 agent-browser network route "*/api/users" mock.json
 ```
 
-**스토리지 & 쿠키:**
+<strong>스토리지 & 쿠키:</strong>
 ```bash
 agent-browser cookie set "session" "abc123"
 agent-browser storage get "token"
@@ -196,7 +196,7 @@ agent-browser --session-name="qa-test" open https://staging.app.com
 
 ## 주석 스크린샷
 
-AI가 요소를 구별하기 쉽게 **번호가 표시된 스크린샷** 생성:
+AI가 요소를 구별하기 쉽게 <strong>번호가 표시된 스크린샷</strong> 생성:
 
 ```bash
 agent-browser screenshot --annotate output.png
@@ -227,7 +227,7 @@ curl -fsSL https://vercel.com/agent-browser/install.sh | sh
 winget install Vercel.AgentBrowser
 ```
 
-**전용 Rust 바이너리 제공**, Node.js 폴백도 지원.
+<strong>전용 Rust 바이너리 제공</strong>, Node.js 폴백도 지원.
 
 ## 실전 활용 예시
 
@@ -319,14 +319,14 @@ fi
 
 ## 마무리하며
 
-agent-browser --native는 **"AI가 쓰기 위한 브라우저 자동화"**의 새로운 표준을 제시합니다.
+agent-browser --native는 <strong>"AI가 쓰기 위한 브라우저 자동화"</strong>의 새로운 표준을 제시합니다.
 
-**핵심은:**
+<strong>핵심은:</strong>
 - Rust로 다시 써서 런타임 오버헤드 제거
 - ref 기반 인터랙션으로 AI 친화성 극대화
 - 주석 스크린샷으로 시각적 이해 지원
 
-Playwright는 여전히 훌륭하지만, **AI 에이전트에게는 agent-browser가 더 자연스러운 선택**일 것 같습니다.
+Playwright는 여전히 훌륭하지만, <strong>AI 에이전트에게는 agent-browser가 더 자연스러운 선택</strong>일 것 같습니다.
 
 여러분은 AI 에이전트 브라우저 자동화에 뭘 쓰고 계신가요?
 

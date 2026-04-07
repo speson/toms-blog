@@ -13,17 +13,17 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-오늘은 **OpenAI의 PostgreSQL 스케일링** 이야기를 들고 왔어요. ChatGPT의 8억 사용자를 지원하기 위해 PostgreSQL을 초당 수백만 건의 쿼리(QPS)까지 확장한 엔지니어링 노하우를 공개했거든요. 이건 정말 실전에서 쓸 수 있는 인사이트라서 꼭 공유드리고 싶었습니다.
+오늘은 <strong>OpenAI의 PostgreSQL 스케일링</strong> 이야기를 들고 왔어요. ChatGPT의 8억 사용자를 지원하기 위해 PostgreSQL을 초당 수백만 건의 쿼리(QPS)까지 확장한 엔지니어링 노하우를 공개했거든요. 이건 정말 실전에서 쓸 수 있는 인사이트라서 꼭 공유드리고 싶었습니다.
 
 ## 핵심 아키텍처
 
 OpenAI의 PostgreSQL 구성은 이렇습니다:
 
-- **단일 프라이머리** Azure PostgreSQL Flexible Server 인스턴스
-- **약 50개의 읽기 레플리카** (전 세계 다중 리전 분산)
-- 지난 1년간 **10배 이상의 부하 증가**에도 안정적 운영
+- <strong>단일 프라이머리</strong> Azure PostgreSQL Flexible Server 인스턴스
+- <strong>약 50개의 읽기 레플리카</strong> (전 세계 다중 리전 분산)
+- 지난 1년간 <strong>10배 이상의 부하 증가</strong>에도 안정적 운영
 
-💡 **놀라운 점:** 단일 프라이머리로 8억 사용자를 지원한다는 게 정말 대단합니다.
+💡 <strong>놀라운 점:</strong> 단일 프라이머리로 8억 사용자를 지원한다는 게 정말 대단합니다.
 
 ## 주요 확장 전략
 
@@ -38,7 +38,7 @@ OpenAI의 PostgreSQL 구성은 이렇습니다:
 - 불필요한 쓰기 제거 및 지연 쓰기(lazy writes) 도입
 - 새 테이블은 PostgreSQL에 추가 금지 → 샤드 시스템에 생성
 
-🎯 **핵심:** 프라이머리는 최소한의 쓰기만 처리하도록 설계
+🎯 <strong>핵심:</strong> 프라이머리는 최소한의 쓰기만 처리하도록 설계
 
 ### 2. 쿼리 최적화
 
@@ -48,47 +48,47 @@ OpenAI의 PostgreSQL 구성은 이렇습니다:
 | ORM 생성 비효율 쿼리  | SQL 직접 검토 및 최적화                    |
 | 장시간 유휴 쿼리      | `idle_in_transaction_session_timeout` 설정 |
 
-⚠️ **교훈:** ORM이 생성하는 쿼리를 믿지 마세요. 복잡한 쿼리는 직접 SQL로 최적화해야 합니다.
+⚠️ <strong>교훈:</strong> ORM이 생성하는 쿼리를 믿지 마세요. 복잡한 쿼리는 직접 SQL로 최적화해야 합니다.
 
 ### 3. 단일 장애점(SPOF) 완화
 
-- **High-Availability 모드**: 핫 스탠바이로 빠른 페일오버
+- <strong>High-Availability 모드</strong>: 핫 스탠바이로 빠른 페일오버
 - 읽기 전용 요청은 프라이머리 다운시에도 레플리카에서 처리
 - 리전당 충분한 레플리카 배치로 개별 레플리카 장애 대응
 
 ## 제가 배운 점
 
-**1. 단일 프라이머리도 충분할 수 있다**
+<strong>1. 단일 프라이머리도 충분할 수 있다</strong>
 
 샤딩이 무조건 정답은 아닙니다. OpenAI는 단일 프라이머리 + 50개 레플리카로 8억 사용자를 지원합니다. 쓰기 워크로드만 잘 분리하면 됩니다.
 
-**2. 쿼리 최적화가 핵심**
+<strong>2. 쿼리 최적화가 핵심</strong>
 
-12개 테이블 조인을 애플리케이션 레이어로 분해한 것처럼, **쿼리를 단순화**하는 게 중요합니다.
+12개 테이블 조인을 애플리케이션 레이어로 분해한 것처럼, <strong>쿼리를 단순화</strong>하는 게 중요합니다.
 
-**3. 모니터링과 자동화**
+<strong>3. 모니터링과 자동화</strong>
 
 OpenAI는 자체 개발한 도구로 쿼리 패턴을 분석하고 자동으로 최적화합니다. 이 부분은 우리도 적용해볼 수 있을 것 같아요.
 
 ## 언제 적용하면 좋을까요?
 
-💰 **추천 시나리오:**
+💰 <strong>추천 시나리오:</strong>
 
 - 읽기 트래픽이 쓰기보다 훨씬 많은 경우
 - 글로벌 서비스로 다중 리전 배포가 필요한 경우
 - PostgreSQL에 익숙하고 샤딩은 부담스러운 경우
 
-**비추천:**
+<strong>비추천:</strong>
 
 - 쓰기 트래픽이 읽기보다 많은 경우
 - 실시간 데이터 일관성이 절대적으로 중요한 경우
 
 ## 마무리
 
-OpenAI의 PostgreSQL 스케일링 전략은 "**단순함의 미학**"을 보여줍니다. 복잡한 샤딩 대신 레플리카와 쿼리 최적화로 문제를 해결했죠.
+OpenAI의 PostgreSQL 스케일링 전략은 "<strong>단순함의 미학</strong>"을 보여줍니다. 복잡한 샤딩 대신 레플리카와 쿼리 최적화로 문제를 해결했죠.
 
 우리도 PostgreSQL을 쓰고 있다면, OpenAI의 전략을 참고해보세요. 생각보다 단순한 방법으로 큰 성과를 낼 수 있습니다.
 
 ---
 
-**원문**: [OpenAI - Scaling PostgreSQL](https://openai.com/index/scaling-postgresql)
+<strong>원문</strong>: [OpenAI - Scaling PostgreSQL](https://openai.com/index/scaling-postgresql)

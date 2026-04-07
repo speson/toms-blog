@@ -15,16 +15,16 @@ draft: false
 
 Claude Code 쓰면서 "이 작업 승인 여부를 웹 대시보드에서 관리할 수 있으면 좋겠는데..."라고 생각해본 적 있으세요?
 
-이제 가능합니다. Claude Code에 **HTTP Hook 기능**이 추가되었습니다.
+이제 가능합니다. Claude Code에 <strong>HTTP Hook 기능</strong>이 추가되었습니다.
 
 ## HTTP Hook이 뭔가요?
 
-기존 **커맨드 훅(Command Hook)**은 강력하지만 복잡했습니다:
+기존 <strong>커맨드 훅(Command Hook)</strong>은 강력하지만 복잡했습니다:
 - 쉘 스크립트 작성 필요
 - 보안 관리 까다로움
 - 상태 공유 어려움
 
-**HTTP Hook**은 이걸 완전히 바꿉니다:
+<strong>HTTP Hook</strong>은 이걸 완전히 바꿉니다:
 
 ```
 Claude Code 이벤트 발생
@@ -56,7 +56,7 @@ app.post('/claude-hook', (req, res) => {
 });
 ```
 
-이제 **브라우저에서 실시간으로**:
+이제 <strong>브라우저에서 실시간으로</strong>:
 - Claude Code가 뭘 하려는지 확인
 - 승인/거부 버튼 클릭
 - 로그 확인 및 저장
@@ -67,9 +67,9 @@ app.post('/claude-hook', (req, res) => {
 데이터베이스 ←→ 웹 서버 ←→ Claude Code
 ```
 
-- **중앙 DB로 권한 관리**: 누가 어떤 작업을 승인했는지 추적
-- **팀원과 공유**: 같은 웹앱으로 여러 Claude Code 인스턴스 제어
-- **감사 기록**: 모든 이벤트를 DB에 저장
+- <strong>중앙 DB로 권한 관리</strong>: 누가 어떤 작업을 승인했는지 추적
+- <strong>팀원과 공유</strong>: 같은 웹앱으로 여러 Claude Code 인스턴스 제어
+- <strong>감사 기록</strong>: 모든 이벤트를 DB에 저장
 
 ### 3. 복잡한 로직도 쉽게
 
@@ -188,7 +188,7 @@ npm run dev  # http://localhost:3000
 claude-code --http-hook=http://localhost:3000/hook
 ```
 
-**외부 서버 필요 없음.** 개발 머신에서 바로 테스트 가능합니다.
+<strong>외부 서버 필요 없음.</strong> 개발 머신에서 바로 테스트 가능합니다.
 
 ## 기존 커맨드 훅과 비교
 
@@ -203,10 +203,10 @@ claude-code --http-hook=http://localhost:3000/hook
 
 ## 시작하기
 
-1. **공식 문서 확인**  
+1. <strong>공식 문서 확인</strong>  
    [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks)
 
-2. **간단한 서버로 시작**
+2. <strong>간단한 서버로 시작</strong>
    ```typescript
    import express from 'express';
    
@@ -221,14 +221,14 @@ claude-code --http-hook=http://localhost:3000/hook
    app.listen(3000);
    ```
 
-3. **Claude Code 연결**
+3. <strong>Claude Code 연결</strong>
    ```bash
    claude-code --http-hook=http://localhost:3000/hook
    ```
 
 ## 마무리하며
 
-HTTP Hook는 Claude Code를 **"혼자 쓰는 도구"에서 "팀이 관리하는 인프라"**로 바꿔줍니다.
+HTTP Hook는 Claude Code를 <strong>"혼자 쓰는 도구"에서 "팀이 관리하는 인프라"</strong>로 바꿔줍니다.
 
 특히:
 - 민감한 작업이 많은 프로덕션 환경

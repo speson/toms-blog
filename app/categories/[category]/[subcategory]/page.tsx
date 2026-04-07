@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -115,17 +116,21 @@ export default async function SubcategoryPage({
           <p className="text-lg text-zinc-400">{description}</p>
           <p className="mt-4 max-w-3xl leading-relaxed text-zinc-500">
             {SUBCATEGORY_LABELS[subcategory]} 주제에 해당하는 글만 모아, 비슷한
-            키워드와 문제의식을 가진 콘텐츠를 연속해서 읽을 수 있게 구성했습니다.
-            릴리스 추적, 도구 분석, 업계 동향을 세부 주제로 나눠 탐색할 수
-            있습니다.
+            키워드와 문제의식을 가진 콘텐츠를 연속해서 읽을 수 있게
+            구성했습니다. 릴리스 추적, 도구 분석, 업계 동향을 세부 주제로 나눠
+            탐색할 수 있습니다.
           </p>
         </section>
 
         <div className="flex flex-col lg:flex-row lg:gap-8">
           <section className="min-w-0 flex-1">
-            <PostList posts={posts} />
+            <Suspense fallback={null}>
+              <PostList posts={posts} />
+            </Suspense>
           </section>
-          <CategorySidebar />
+          <Suspense fallback={null}>
+            <CategorySidebar />
+          </Suspense>
         </div>
       </div>
     </>

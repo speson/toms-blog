@@ -13,7 +13,7 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-Claude Code 업데이트 소식, 이번 주도 어김없이 찾아왔어요. v2.1.83부터 v2.1.85까지 사흘 동안 세 버전이 연달아 나왔는데, 이번에는 **팀 운영과 엔터프라이즈 환경**에 초점을 맞춘 기능들이 눈에 띄어요.
+Claude Code 업데이트 소식, 이번 주도 어김없이 찾아왔어요. v2.1.83부터 v2.1.85까지 사흘 동안 세 버전이 연달아 나왔는데, 이번에는 <strong>팀 운영과 엔터프라이즈 환경</strong>에 초점을 맞춘 기능들이 눈에 띄어요.
 
 하나씩 살펴볼게요.
 
@@ -21,7 +21,7 @@ Claude Code 업데이트 소식, 이번 주도 어김없이 찾아왔어요. v2.
 
 ### 🎯 managed-settings.d/ 드롭인 디렉토리
 
-이번 업데이트에서 가장 실용적인 기능이에요. 기존에는 `managed-settings.json` 하나에 모든 팀 정책을 몰아넣어야 했는데, 이제 **`managed-settings.d/` 디렉토리**에 파일을 나눠서 배포할 수 있어요.
+이번 업데이트에서 가장 실용적인 기능이에요. 기존에는 `managed-settings.json` 하나에 모든 팀 정책을 몰아넣어야 했는데, 이제 <strong>`managed-settings.d/` 디렉토리</strong>에 파일을 나눠서 배포할 수 있어요.
 
 파일들은 알파벳 순서로 자동 병합되니까, 보안팀은 `01-security.json`, 인프라팀은 `02-infra.json` 같은 식으로 독립적으로 관리할 수 있죠. 팀 간 설정 충돌 때문에 고생하던 분들에게 반가운 소식일 거예요.
 
@@ -41,7 +41,7 @@ Claude Code를 끄려는데 프로세스가 안 죽던 버그가 잡혔어요. `
 
 ### 🎯 Windows PowerShell 도구 (프리뷰)
 
-드디어 Windows 사용자를 위한 **PowerShell 도구**가 opt-in 프리뷰로 추가됐어요. 기존에 Bash 도구만 지원하던 것에서 한 발 나아간 건데, Windows 네이티브 환경에서 작업하는 분들에게는 큰 변화예요.
+드디어 Windows 사용자를 위한 <strong>PowerShell 도구</strong>가 opt-in 프리뷰로 추가됐어요. 기존에 Bash 도구만 지원하던 것에서 한 발 나아간 건데, Windows 네이티브 환경에서 작업하는 분들에게는 큰 변화예요.
 
 ### 💡 모델 기능 오버라이드 환경변수
 
@@ -59,7 +59,7 @@ Bedrock, Vertex, Foundry 같은 3rd-party 프로바이더를 쓰는 분들을 �
 
 ### 🎯 조건부 훅 (if 필드)
 
-훅에 **`if` 필드**가 추가돼서 권한 규칙 문법(예: `Bash(git *)`)으로 훅 실행 조건을 필터링할 수 있게 됐어요. 모든 도구 호출마다 훅 프로세스가 생성되던 오버헤드를 줄일 수 있어서 성능에도 도움이 돼요.
+훅에 <strong>`if` 필드</strong>가 추가돼서 권한 규칙 문법(예: `Bash(git *)`)으로 훅 실행 조건을 필터링할 수 있게 됐어요. 모든 도구 호출마다 훅 프로세스가 생성되던 오버헤드를 줄일 수 있어서 성능에도 도움이 돼요.
 
 예를 들어 git 명령어에만 반응하는 훅을 만들고 싶을 때, 이전에는 훅 스크립트 내부에서 직접 필터링해야 했는데 이제는 선언적으로 지정할 수 있죠.
 
@@ -69,7 +69,7 @@ Bedrock, Vertex, Foundry 같은 3rd-party 프로바이더를 쓰는 분들을 �
 
 ### 💡 딥링크 쿼리 확장
 
-`claude-cli://open?q=...` 딥링크가 최대 **5,000자**까지 지원돼요. IDE 연동이나 외부 도구에서 긴 프롬프트를 전달할 때 유용해요.
+`claude-cli://open?q=...` 딥링크가 최대 <strong>5,000자</strong>까지 지원돼요. IDE 연동이나 외부 도구에서 긴 프롬프트를 전달할 때 유용해요.
 
 ### ⚠️ /compact "context exceeded" 수정
 
@@ -77,10 +77,10 @@ Bedrock, Vertex, Foundry 같은 3rd-party 프로바이더를 쓰는 분들을 �
 
 ## 총평
 
-이번 세 버전의 키워드는 **"팀 & 엔터프라이즈"**예요. 드롭인 설정, 조건부 훅, 모델 오버라이드 등 조직에서 Claude Code를 운영하기 위한 기능들이 크게 강화됐어요.
+이번 세 버전의 키워드는 <strong>"팀 & 엔터프라이즈"</strong>예요. 드롭인 설정, 조건부 훅, 모델 오버라이드 등 조직에서 Claude Code를 운영하기 위한 기능들이 크게 강화됐어요.
 
 개인 사용자 입장에서는 IME 수정, /compact 버그 수정, 트랜스크립트 검색 같은 QoL 개선이 반가울 거예요. 특히 한국어 사용자라면 IME 수정은 꼭 업데이트해서 체감해 보세요.
 
 ---
 
-**원문**: [Claude Code v2.1.85 Release Notes](https://github.com/anthropics/claude-code/releases/tag/v2.1.85)
+<strong>원문</strong>: [Claude Code v2.1.85 Release Notes](https://github.com/anthropics/claude-code/releases/tag/v2.1.85)

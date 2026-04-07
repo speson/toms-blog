@@ -18,12 +18,21 @@
 
 ## 글쓰기 스타일
 
-모든 포스트는 `.claude/writing-style.md`의 **Tom 스타일 가이드**를 따릅니다:
+모든 포스트는 `.claude/writing-style.md`의 Tom 스타일 가이드를 따릅니다:
 
-- **개인적 인사로 시작**: "안녕하세요, Tom입니다."
-- **대화체 한국어 사용**: "~입니다" 대신 "~예요/해요"
-- **개인 경험과 의견을 자연스럽게 녹여내기**: "제가 써본 결과", "이 부분이 특히 좋았어요"
-- **이모지 마커 활용**: 💡 팁, 🎯 핵심, ⚠️ 주의
+- 개인적 인사로 시작: "안녕하세요, Tom입니다."
+- 대화체 한국어 사용: "~입니다" 대신 "~예요/해요"
+- 개인 경험과 의견을 자연스럽게 녹여내기: "제가 써본 결과", "이 부분이 특히 좋았어요"
+- 이모지 마커 활용: 💡 팁, 🎯 핵심, ⚠️ 주의
+
+## ⚠️ 볼드 처리 규칙 (필수)
+
+`**text**` 구조는 절대 사용하지 마세요. 한국어에서는 MDX 파서가 제대로 치환하지 못하는 경우가 많아요.
+
+볼드가 필요하면 반드시 `<strong>text</strong>` HTML 태그를 사용하세요.
+
+- ❌ `**핵심 기능**`
+- ✅ `<strong>핵심 기능</strong>`
 
 ## MDX 포스트 형식 (Updated)
 
@@ -36,7 +45,7 @@ tags: ["AI", "적절한태그"]
 category: "ai-news" # ai-news | updates | opensource
 source: "openai" # openai | anthropic | google | geeknews | original
 sourceUrl: "https://..."
-thumbnail: "/thumbnails/{slug}.png"  # Optional: AI-generated thumbnail, omitted if generation fails
+thumbnail: "/thumbnails/{slug}.png" # Optional: AI-generated thumbnail, omitted if generation fails
 draft: false
 ---
 
