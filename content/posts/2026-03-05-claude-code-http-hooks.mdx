@@ -28,11 +28,11 @@ Claude Code 쓰면서 "이 작업 승인 여부를 웹 대시보드에서 관리
 
 ```
 Claude Code 이벤트 발생
-  ↓
+ ↓
 HTTP POST → 웹 서버 (localhost도 가능)
-  ↓
+ ↓
 웹 서버가 응답 (승인/거부/수정)
-  ↓
+ ↓
 Claude Code가 응답에 따라 행동
 ```
 
@@ -43,16 +43,16 @@ Claude Code가 응답에 따라 행동
 ```javascript
 // Express.js 예시
 app.post('/claude-hook', (req, res) => {
-  const { event, context } = req.body;
-  
-  if (event.type === 'file_write') {
-    // 파일 쓰기 승인 여부를 웹 대시보드에서 확인
-    if (isDangerousPath(event.path)) {
-      res.json({ approved: false, reason: 'Sensitive file' });
-    } else {
-      res.json({ approved: true });
-    }
-  }
+ const { event, context } = req.body;
+ 
+ if (event.type === 'file_write') {
+ // 파일 쓰기 승인 여부를 웹 대시보드에서 확인
+ if (isDangerousPath(event.path)) {
+ res.json({ approved: false, reason: 'Sensitive file' });
+ } else {
+ res.json({ approved: true });
+ }
+ }
 });
 ```
 
@@ -74,16 +74,16 @@ app.post('/claude-hook', (req, res) => {
 ### 3. 복잡한 로직도 쉽게
 
 쉘 스크립트로는 어려웠던 것들:
-- ❌ REST API 호출
-- ❌ 데이터베이스 쿼리
-- ❌ 복잡한 조건문
-- ❌ 실시간 알림
+- REST API 호출
+- 데이터베이스 쿼리
+- 복잡한 조건문
+- 실시간 알림
 
 웹 서버에서는:
-- ✅ 모든 npm 패키지 사용 가능
-- ✅ Prisma, TypeORM 등으로 DB 연동
-- ✅ TypeScript로 타입 안전하게
-- ✅ Slack/Discord 웹훅 바로 연동
+- 모든 npm 패키지 사용 가능
+- Prisma, TypeORM 등으로 DB 연동
+- TypeScript로 타입 안전하게
+- Slack/Discord 웹훅 바로 연동
 
 ## 실전 활용 예시
 
@@ -92,30 +92,30 @@ app.post('/claude-hook', (req, res) => {
 ```typescript
 // hooks/file-protection.ts
 const PROTECTED_PATHS = [
-  '.env',
-  'secrets/',
-  'config/production.yml'
+ '.env',
+ 'secrets/',
+ 'config/production.yml'
 ];
 
 app.post('/hook', async (req, res) => {
-  if (req.body.event.type === 'file_write') {
-    const path = req.body.event.path;
-    
-    if (PROTECTED_PATHS.some(p => path.includes(p))) {
-      // Slack으로 알림 전송
-      await slackNotify({
-        text: `⚠️ Claude Code가 민감한 파일 수정 시도: ${path}`,
-        channel: '#security'
-      });
-      
-      return res.json({
-        approved: false,
-        message: '민감한 파일은 수동 승인이 필요합니다.'
-      });
-    }
-  }
-  
-  res.json({ approved: true });
+ if (req.body.event.type === 'file_write') {
+ const path = req.body.event.path;
+ 
+ if (PROTECTED_PATHS.some(p => path.includes(p))) {
+ // Slack으로 알림 전송
+ await slackNotify({
+ text: ` Claude Code가 민감한 파일 수정 시도: ${path}`,
+ channel: '#security'
+ });
+ 
+ return res.json({
+ approved: false,
+ message: '민감한 파일은 수동 승인이 필요합니다.'
+ });
+ }
+ }
+ 
+ res.json({ approved: true });
 });
 ```
 
@@ -124,36 +124,36 @@ app.post('/hook', async (req, res) => {
 ```typescript
 // hooks/cost-tracking.ts
 app.post('/hook', async (req, res) => {
-  const { event, context } = req.body;
-  
-  // API 호출 비용 추적
-  if (event.type === 'api_call') {
-    const cost = estimateCost(event.model, event.tokens);
-    
-    await db.usage.create({
-      data: {
-        userId: context.user,
-        model: event.model,
-        tokens: event.tokens,
-        cost: cost
-      }
-    });
-    
-    // 일일 한도 체크
-    const todayTotal = await db.usage.sum({ where: { 
-      userId: context.user,
-      date: new Date()
-    }});
-    
-    if (todayTotal > DAILY_LIMIT) {
-      return res.json({
-        approved: false,
-        message: '오늘 일일 한도를 초과했습니다.'
-      });
-    }
-  }
-  
-  res.json({ approved: true });
+ const { event, context } = req.body;
+ 
+ // API 호출 비용 추적
+ if (event.type === 'api_call') {
+ const cost = estimateCost(event.model, event.tokens);
+ 
+ await db.usage.create({
+ data: {
+ userId: context.user,
+ model: event.model,
+ tokens: event.tokens,
+ cost: cost
+ }
+ });
+ 
+ // 일일 한도 체크
+ const todayTotal = await db.usage.sum({ where: { 
+ userId: context.user,
+ date: new Date()
+ }});
+ 
+ if (todayTotal > DAILY_LIMIT) {
+ return res.json({
+ approved: false,
+ message: '오늘 일일 한도를 초과했습니다.'
+ });
+ }
+ }
+ 
+ res.json({ approved: true });
 });
 ```
 
@@ -162,17 +162,17 @@ app.post('/hook', async (req, res) => {
 ```typescript
 // 실시간 승인 대시보드
 app.get('/dashboard', (req, res) => {
-  res.render('dashboard', {
-    pendingActions: await getPendingActions()
-  });
+ res.render('dashboard', {
+ pendingActions: await getPendingActions()
+ });
 });
 
 // 웹소켓으로 실시간 이벤트 전송
 io.on('connection', (socket) => {
-  socket.on('approve', async (eventId) => {
-    await approveEvent(eventId);
-    io.emit('event_approved', eventId);
-  });
+ socket.on('approve', async (eventId) => {
+ await approveEvent(eventId);
+ io.emit('event_approved', eventId);
+ });
 });
 ```
 
@@ -182,7 +182,7 @@ io.on('connection', (socket) => {
 
 ```bash
 # 1. 로컬에서 웹 서버 실행
-npm run dev  # http://localhost:3000
+npm run dev # http://localhost:3000
 
 # 2. Claude Code 설정
 claude-code --http-hook=http://localhost:3000/hook
@@ -192,39 +192,39 @@ claude-code --http-hook=http://localhost:3000/hook
 
 ## 기존 커맨드 훅과 비교
 
-| 기능           | 커맨드 훅       | HTTP 훅              |
+| 기능 | 커맨드 훅 | HTTP 훅 |
 |----------------|----------------|---------------------|
-| 설정 난이도     | 높음 (스크립트) | 낮음 (웹 API)        |
-| 복잡한 로직     | 어려움          | 쉬움                 |
-| 팀 공유        | 어려움          | 쉬움                 |
-| 실시간 대시보드 | 불가능          | 가능                 |
-| 보안 관리      | 복잡함          | 명확함 (HTTP)        |
-| 디버깅         | 어려움          | 쉬움 (로그/UI)       |
+| 설정 난이도 | 높음 (스크립트) | 낮음 (웹 API) |
+| 복잡한 로직 | 어려움 | 쉬움 |
+| 팀 공유 | 어려움 | 쉬움 |
+| 실시간 대시보드 | 불가능 | 가능 |
+| 보안 관리 | 복잡함 | 명확함 (HTTP) |
+| 디버깅 | 어려움 | 쉬움 (로그/UI) |
 
 ## 시작하기
 
-1. <strong>공식 문서 확인</strong>  
-   [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks)
+1. <strong>공식 문서 확인</strong> 
+ [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks)
 
 2. <strong>간단한 서버로 시작</strong>
-   ```typescript
-   import express from 'express';
-   
-   const app = express();
-   app.use(express.json());
-   
-   app.post('/hook', (req, res) => {
-     console.log('Event:', req.body);
-     res.json({ approved: true });
-   });
-   
-   app.listen(3000);
-   ```
+ ```typescript
+ import express from 'express';
+ 
+ const app = express();
+ app.use(express.json());
+ 
+ app.post('/hook', (req, res) => {
+ console.log('Event:', req.body);
+ res.json({ approved: true });
+ });
+ 
+ app.listen(3000);
+ ```
 
 3. <strong>Claude Code 연결</strong>
-   ```bash
-   claude-code --http-hook=http://localhost:3000/hook
-   ```
+ ```bash
+ claude-code --http-hook=http://localhost:3000/hook
+ ```
 
 ## 마무리하며
 

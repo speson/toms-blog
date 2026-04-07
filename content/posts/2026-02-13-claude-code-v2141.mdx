@@ -17,19 +17,19 @@ draft: false
 
 ## 주요 신기능
 
-### `claude auth` CLI 명령어 추가 🔑
+### `claude auth` CLI 명령어 추가 
 
 드디어 인증 관리가 CLI에서 직접 가능해졌어요:
 
 ```bash
-claude auth login    # 로그인
-claude auth status   # 인증 상태 확인
-claude auth logout   # 로그아웃
+claude auth login # 로그인
+claude auth status # 인증 상태 확인
+claude auth logout # 로그아웃
 ```
 
-💡 <strong>실용적인 포인트:</strong> 여러 환경에서 Claude Code를 쓰는 분들한테 특히 유용해요. 서버에서 인증 상태 확인하거나, 계정 전환할 때 편리합니다.
+ <strong>실용적인 포인트:</strong> 여러 환경에서 Claude Code를 쓰는 분들한테 특히 유용해요. 서버에서 인증 상태 확인하거나, 계정 전환할 때 편리합니다.
 
-### Windows ARM64 지원 💻
+### Windows ARM64 지원 
 
 Surface Pro X나 ARM 기반 Windows 디바이스에서도 네이티브 바이너리로 실행할 수 있게 됐어요.
 
@@ -39,7 +39,7 @@ Surface Pro X나 ARM 기반 Windows 디바이스에서도 네이티브 바이너
 
 ## 주요 버그 수정
 
-### AWS 인증 무한 대기 해결 ⚠️
+### AWS 인증 무한 대기 해결 
 
 AWS 인증 갱신이 <strong>무한 대기</strong>에 빠지는 문제가 3분 타임아웃 추가로 해결됐어요. AWS Bedrock으로 Claude Code를 쓰시는 분들한테 중요한 수정입니다.
 

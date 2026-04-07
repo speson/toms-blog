@@ -27,11 +27,11 @@ AI 모델 가격 경쟁이 치열합니다. 최근 몇 달간:
 
 Google은 Gemini 3 시리즈를 3개 티어로 나눴습니다:
 
-| 모델                | 용도                    | 가격 (입력/출력)       |
+| 모델 | 용도 | 가격 (입력/출력) |
 |--------------------|------------------------|----------------------|
-| <strong>Gemini 3 Pro</strong>    | 복잡한 추론, 창의적 작업 | 높음                  |
-| <strong>Gemini 3 Flash</strong>  | 일반적 작업             | 중간                  |
-| <strong>Gemini 3.1 Flash-Lite</strong> | 대규모 워크로드   | <strong>$0.25 / $1.50</strong>    |
+| <strong>Gemini 3 Pro</strong> | 복잡한 추론, 창의적 작업 | 높음 |
+| <strong>Gemini 3 Flash</strong> | 일반적 작업 | 중간 |
+| <strong>Gemini 3.1 Flash-Lite</strong> | 대규모 워크로드 | <strong>$0.25 / $1.50</strong> |
 
 <strong>Flash-Lite의 포지션:</strong>
 - 품질은 유지하면서
@@ -42,20 +42,20 @@ Google은 Gemini 3 시리즈를 3개 티어로 나눴습니다:
 
 ### 속도 비교
 
-| 지표                          | 2.5 Flash | 3.1 Flash-Lite | 개선율  |
+| 지표 | 2.5 Flash | 3.1 Flash-Lite | 개선율 |
 |------------------------------|-----------|----------------|---------|
-| <strong>TTFT</strong> (Time to First Answer Token) | 1.0x      | <strong>2.5x 빠름</strong>   | 150% ↑  |
-| <strong>출력 속도</strong>                  | 1.0x      | <strong>1.45x 빠름</strong>  | 45% ↑   |
+| <strong>TTFT</strong> (Time to First Answer Token) | 1.0x | <strong>2.5x 빠름</strong> | 150% ↑ |
+| <strong>출력 속도</strong> | 1.0x | <strong>1.45x 빠름</strong> | 45% ↑ |
 
 *출처: [Artificial Analysis 벤치마크](https://artificialanalysis.ai/)*
 
 ### 품질 비교
 
-| 벤치마크        | 3.1 Flash-Lite | 2.5 Flash | 비교        |
+| 벤치마크 | 3.1 Flash-Lite | 2.5 Flash | 비교 |
 |----------------|----------------|-----------|------------|
-| <strong>Arena Elo</strong>   | <strong>1432</strong>       | ~1400     | ✅ 더 높음  |
-| <strong>GPQA Diamond</strong> | <strong>86.9%</strong>     | 84.2%     | ✅ 더 높음  |
-| <strong>MMMU Pro</strong>    | <strong>76.8%</strong>      | 74.5%     | ✅ 더 높음  |
+| <strong>Arena Elo</strong> | <strong>1432</strong> | ~1400 | 더 높음 |
+| <strong>GPQA Diamond</strong> | <strong>86.9%</strong> | 84.2% | 더 높음 |
+| <strong>MMMU Pro</strong> | <strong>76.8%</strong> | 74.5% | 더 높음 |
 
 <strong>놀라운 점:</strong>
 - Gemini 2.5 Flash를 <strong>모든 지표에서 능가</strong>
@@ -73,13 +73,13 @@ Level 3: 깊은 추론 (복잡한 작업)
 
 ### 작업별 추천 레벨
 
-| 작업                     | 추천 레벨 | 이유                          |
+| 작업 | 추천 레벨 | 이유 |
 |-------------------------|-----------|------------------------------|
-| 번역                     | Level 1   | 추론 불필요, 속도 중요          |
-| 콘텐츠 검열               | Level 1   | 패턴 인식, 빠른 처리            |
-| UI 생성                  | Level 2   | 구조 이해 필요                  |
-| 시뮬레이션 생성           | Level 3   | 복잡한 로직, 깊은 추론          |
-| 복잡한 지시 따르기         | Level 3   | 정확한 이해 필요                |
+| 번역 | Level 1 | 추론 불필요, 속도 중요 |
+| 콘텐츠 검열 | Level 1 | 패턴 인식, 빠른 처리 |
+| UI 생성 | Level 2 | 구조 이해 필요 |
+| 시뮬레이션 생성 | Level 3 | 복잡한 로직, 깊은 추론 |
+| 복잡한 지시 따르기 | Level 3 | 정확한 이해 필요 |
 
 ### 실제 사용 예시
 
@@ -90,14 +90,14 @@ model = GenerativeModel('gemini-3.1-flash-lite')
 
 # Level 1: 빠른 번역
 response = model.generate_content(
-    "Translate to Spanish: Hello world",
-    thinking_level=1
+ "Translate to Spanish: Hello world",
+ thinking_level=1
 )
 
 # Level 3: 복잡한 UI 생성
 response = model.generate_content(
-    "Create a responsive dashboard with...",
-    thinking_level=3
+ "Create a responsive dashboard with...",
+ thinking_level=3
 )
 ```
 
@@ -114,10 +114,10 @@ response = model.generate_content(
 # 100만 개 문장 번역
 # Level 1 사용 → 초당 수백 개 처리
 
-texts = load_texts()  # 1M items
+texts = load_texts() # 1M items
 for batch in chunks(texts, 1000):
-    translate(batch, thinking_level=1)
-    
+ translate(batch, thinking_level=1)
+ 
 # 비용: 약 $250 (입력만 계산 시)
 # 2.5 Flash 대비: 속도 2.5배, 비용 비슷
 ```
@@ -127,11 +127,11 @@ for batch in chunks(texts, 1000):
 ```python
 # Level 1로 빠른 검열
 def moderate_content(text):
-    response = model.generate_content(
-        f"Is this safe? {text}",
-        thinking_level=1
-    )
-    return response.text
+ response = model.generate_content(
+ f"Is this safe? {text}",
+ thinking_level=1
+ )
+ return response.text
 
 # 초당 수천 개 처리 가능
 ```
@@ -148,7 +148,7 @@ Create a React dashboard with:
 - Responsive layout
 """, thinking_level=3)
 
-print(response.text)  # 완전한 React 컴포넌트
+print(response.text) # 완전한 React 컴포넌트
 ```
 
 ### 4. 시뮬레이션 생성
@@ -168,22 +168,22 @@ Generate a traffic simulation with:
 
 ### 입력 토큰 (1M 토큰당)
 
-| 모델                    | 가격     | 비교      |
+| 모델 | 가격 | 비교 |
 |------------------------|---------|----------|
-| GPT-4o                 | $0.25   | 동일      |
-| Claude 3.5 Sonnet      | $3.00   | <strong>12배 비쌈</strong> |
-| Claude 3.5 Haiku       | $0.80   | 3.2배 비쌈 |
-| Gemini 2.5 Flash       | $0.15   | <strong>1.7배 저렴</strong> |
+| GPT-4o | $0.25 | 동일 |
+| Claude 3.5 Sonnet | $3.00 | <strong>12배 비쌈</strong> |
+| Claude 3.5 Haiku | $0.80 | 3.2배 비쌈 |
+| Gemini 2.5 Flash | $0.15 | <strong>1.7배 저렴</strong> |
 | <strong>Gemini 3.1 Flash-Lite</strong> | <strong>$0.25</strong> | <strong>기준</strong> |
 
 ### 출력 토큰 (1M 토큰당)
 
-| 모델                    | 가격     | 비교      |
+| 모델 | 가격 | 비교 |
 |------------------------|---------|----------|
-| GPT-4o                 | $1.00   | <strong>1.5배 저렴</strong> |
-| Claude 3.5 Sonnet      | $15.00  | 10배 비쌈 |
-| Claude 3.5 Haiku       | $4.00   | 2.7배 비쌈 |
-| Gemini 2.5 Flash       | $0.60   | <strong>2.5배 저렴</strong> |
+| GPT-4o | $1.00 | <strong>1.5배 저렴</strong> |
+| Claude 3.5 Sonnet | $15.00 | 10배 비쌈 |
+| Claude 3.5 Haiku | $4.00 | 2.7배 비쌈 |
+| Gemini 2.5 Flash | $0.60 | <strong>2.5배 저렴</strong> |
 | <strong>Gemini 3.1 Flash-Lite</strong> | <strong>$1.50</strong> | <strong>기준</strong> |
 
 ### 실제 비용 계산
@@ -192,12 +192,12 @@ Generate a traffic simulation with:
 - 평균 입력: 500 토큰
 - 평균 출력: 200 토큰
 
-| 모델              | 입력 비용 | 출력 비용 | 총 비용  |
+| 모델 | 입력 비용 | 출력 비용 | 총 비용 |
 |------------------|----------|----------|---------|
-| GPT-4o           | $125     | $200     | <strong>$325</strong> |
-| Claude 3.5 Haiku | $400     | $800     | <strong>$1,200</strong> |
-| Gemini 2.5 Flash | $75      | $120     | <strong>$195</strong> |
-| <strong>Flash-Lite</strong>   | <strong>$125</strong> | <strong>$300</strong> | <strong>$425</strong> |
+| GPT-4o | $125 | $200 | <strong>$325</strong> |
+| Claude 3.5 Haiku | $400 | $800 | <strong>$1,200</strong> |
+| Gemini 2.5 Flash | $75 | $120 | <strong>$195</strong> |
+| <strong>Flash-Lite</strong> | <strong>$125</strong> | <strong>$300</strong> | <strong>$425</strong> |
 
 <strong>결론:</strong>
 - 2.5 Flash가 가장 저렴
@@ -221,20 +221,20 @@ Generate a traffic simulation with:
 ## 언제 사용해야 할까?
 
 ### Flash-Lite를 쓰세요:
-- ✅ <strong>대규모 배치 작업</strong> (번역, 검열, 분류)
-- ✅ <strong>실시간 응답</strong> (챗봇, 추천)
-- ✅ <strong>이미지 대량 분석</strong>
-- ✅ <strong>비용이 중요한 프로덕션</strong>
+- <strong>대규모 배치 작업</strong> (번역, 검열, 분류)
+- <strong>실시간 응답</strong> (챗봇, 추천)
+- <strong>이미지 대량 분석</strong>
+- <strong>비용이 중요한 프로덕션</strong>
 
 ### Flash를 쓰세요:
-- ✅ 더 복잡한 추론
-- ✅ 긴 컨텍스트 (2M 토큰)
-- ✅ 멀티모달 작업
+- 더 복잡한 추론
+- 긴 컨텍스트 (2M 토큰)
+- 멀티모달 작업
 
 ### Pro를 쓰세요:
-- ✅ 최고 품질 필요
-- ✅ 창의적 작업
-- ✅ 연구/분석
+- 최고 품질 필요
+- 창의적 작업
+- 연구/분석
 
 ## 시작하기
 
@@ -247,8 +247,8 @@ genai.configure(api_key="YOUR_API_KEY")
 model = genai.GenerativeModel('gemini-3.1-flash-lite-preview')
 
 response = model.generate_content(
-    "Hello world",
-    thinking_level=1
+ "Hello world",
+ thinking_level=1
 )
 print(response.text)
 ```

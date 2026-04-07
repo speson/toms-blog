@@ -21,27 +21,27 @@ MCP(Model Context Protocol) 서버를 위한 <strong>OAuth 2.1 인증</strong>�
 
 ### 지원 RFC 표준
 
-| RFC          | 설명                                                   |
+| RFC | 설명 |
 | ------------ | ------------------------------------------------------ |
-| <strong>RFC 7591</strong> | Dynamic Client Registration (동적 클라이언트 등록)     |
+| <strong>RFC 7591</strong> | Dynamic Client Registration (동적 클라이언트 등록) |
 | <strong>RFC 9728</strong> | Protected Resource Metadata (보호된 리소스 메타데이터) |
-| <strong>RFC 8414</strong> | Authorization Server Discovery (인증 서버 디스커버리)  |
-| <strong>RFC 8707</strong> | Resource Indicators (리소스 표시자)                    |
+| <strong>RFC 8414</strong> | Authorization Server Discovery (인증 서버 디스커버리) |
+| <strong>RFC 8707</strong> | Resource Indicators (리소스 표시자) |
 
-💡 <strong>이게 왜 중요한가:</strong> MCP 서버 연결 시 인증 설정이 더 명확하고 표준화되었습니다.
+ <strong>이게 왜 중요한가:</strong> MCP 서버 연결 시 인증 설정이 더 명확하고 표준화되었습니다.
 
 ### 주요 기능
 
 - <strong>보안 토큰 스토리지</strong>: 안전한 토큰 저장소
 - <strong>Step-up Authorization</strong>: 단계별 권한 상승
 - <strong>CLI 명령어</strong>:
-  ```bash
-  opencode mcp oauth login   # MCP OAuth 로그인
-  opencode mcp oauth logout  # OAuth 로그아웃
-  opencode mcp oauth status  # 현재 OAuth 상태 확인
-  ```
+ ```bash
+ opencode mcp oauth login # MCP OAuth 로그인
+ opencode mcp oauth logout # OAuth 로그아웃
+ opencode mcp oauth status # 현재 OAuth 상태 확인
+ ```
 
-🎯 <strong>실제 사용 예시:</strong>
+ <strong>실제 사용 예시:</strong>
 
 ```bash
 # MCP 서버에 OAuth로 로그인
@@ -61,7 +61,7 @@ opencode mcp oauth status
 - <strong>호환성</strong>: VSCode 생태계와의 더 나은 통합
 - <strong>유지보수</strong>: 커스텀 코드 감소로 버그 가능성 감소
 
-⚠️ <strong>주의:</strong> 마이그레이션으로 인해 일부 edge case에서 동작이 달라질 수 있습니다. 문제 발생 시 이슈를 제보해주세요.
+ <strong>주의:</strong> 마이그레이션으로 인해 일부 edge case에서 동작이 달라질 수 있습니다. 문제 발생 시 이슈를 제보해주세요.
 
 ## 백그라운드 에이전트 안정성 개선
 
@@ -69,7 +69,7 @@ opencode mcp oauth status
 
 이전 버전에서 백그라운드 에이전트가 종료되지 않고 좀비 프로세스로 남는 문제가 있었습니다. v3.1.7에서 이 문제가 완전히 수정되었습니다.
 
-🎯 <strong>이게 중요합니다:</strong> 장시간 작업 시 메모리 누수가 방지됩니다.
+ <strong>이게 중요합니다:</strong> 장시간 작업 시 메모리 누수가 방지됩니다.
 
 ## 제가 실제로 써본 결과
 

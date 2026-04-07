@@ -44,13 +44,13 @@ pip의 느린 의존성 해결과 설치 속도에 답답함을 느끼던 개발
 
 ```bash
 # 린팅 + 포매팅 한 번에
-ruff check . --fix
-ruff format .
+ruff check. --fix
+ruff format.
 ```
 
 기존에는 flake8으로 린팅하고, black으로 포매팅하고, isort로 임포트 정렬하고... 도구마다 설정 파일을 따로 관리해야 했는데, ruff 하나면 전부 해결돼요. 역시 Rust로 작성되어 기존 도구 대비 10~100배 빠르고요.
 
-## 🎯 왜 OpenAI가 Astral을 인수했을까?
+## 왜 OpenAI가 Astral을 인수했을까?
 
 OpenAI의 공식 발표 메시지가 명확해요.
 
@@ -84,13 +84,13 @@ OpenAI의 공식 발표 메시지가 명확해요.
 - <strong>통합 경험</strong>: Codex + uv + ruff가 매끄럽게 연동되면 Python 개발 경험이 크게 개선될 거예요
 - <strong>생태계 표준화</strong>: uv가 Python 패키지 관리의 사실상 표준(de facto standard)이 될 가능성이 높아졌어요
 
-### ⚠️ 우려되는 점
+### 우려되는 점
 
 - <strong>오픈소스 지속성</strong>: OpenAI가 uv와 ruff를 계속 오픈소스로 유지할지 불확실해요
 - <strong>중립성 상실</strong>: 특정 기업에 종속된 개발 도구가 커뮤니티 전체의 표준이 되는 게 바람직한지 논란이 있어요
 - <strong>경쟁사 배제</strong>: Anthropic이나 Google의 AI 코딩 도구가 uv/ruff와 통합하기 어려워질 수 있어요
 
-### 💡 현실적 전망
+### 현실적 전망
 
 개인적으로는 당분간 오픈소스 유지가 될 거라고 봐요. uv와 ruff의 가치는 넓은 사용자 기반에서 나오고, 이를 폐쇄하면 커뮤니티가 바로 포크(fork)해서 대안을 만들 거니까요. OpenAI도 그걸 모를 리 없어요.
 

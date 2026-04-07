@@ -18,16 +18,16 @@ draft: false
 
 ## 한눈에 보는 릴리스 타임라인
 
-| 날짜 | 버전   | 핵심 테마                              | 규모     |
+| 날짜 | 버전 | 핵심 테마 | 규모 |
 | ---- | ------ | -------------------------------------- | -------- |
-| 1/25 | v3.0.0 | 오케스트레이션 혁명                    | 🔴 Major |
-| 1/28 | v3.1.4 | 안정성 개선                            | 🟢 Patch |
-| 1/29 | v3.1.7 | OAuth 2.1 + LSP 마이그레이션           | 🟡 Minor |
-| 2/03 | v3.2.2 | GPT-5.2 프롬프트 최적화                | 🟡 Minor |
-| 2/05 | v3.2.3 | 웹서치 멀티 프로바이더                 | 🟢 Patch |
-| 2/12 | v3.5.0 | Atlas Trusts No One + 645파일 리팩토링 | 🔴 Major |
+| 1/25 | v3.0.0 | 오케스트레이션 혁명 | Major |
+| 1/28 | v3.1.4 | 안정성 개선 | Patch |
+| 1/29 | v3.1.7 | OAuth 2.1 + LSP 마이그레이션 | Minor |
+| 2/03 | v3.2.2 | GPT-5.2 프롬프트 최적화 | Minor |
+| 2/05 | v3.2.3 | 웹서치 멀티 프로바이더 | Patch |
+| 2/12 | v3.5.0 | Atlas Trusts No One + 645파일 리팩토링 | Major |
 
-💡 <strong>3주 동안 6번 릴리스.</strong> 평균 3.5일에 한 번꼴이에요. 이 속도 자체가 프로젝트의 활발함을 보여줍니다.
+ <strong>3주 동안 6번 릴리스.</strong> 평균 3.5일에 한 번꼴이에요. 이 속도 자체가 프로젝트의 활발함을 보여줍니다.
 
 ## 테마 1: 오케스트레이션 혁명 — "에이전트의 에이전트"
 
@@ -38,28 +38,28 @@ v3.0.0은 OMO의 정체성을 완전히 바꾼 릴리스예요.
 ### Categories + Skills = 동적 에이전트 조합
 
 ```
-Categories (모델 추상화)     Skills (전문 지식)
-├── quick                    ├── frontend-ui-ux
-├── visual-engineering       ├── git-master
-├── ultrabrain               ├── playwright
-└── deep                     └── dev-browser
+Categories (모델 추상화) Skills (전문 지식)
+├── quick ├── frontend-ui-ux
+├── visual-engineering ├── git-master
+├── ultrabrain ├── playwright
+└── deep └── dev-browser
 
 visual-engineering + frontend-ui-ux = 프론트엔드 전문가
 quick + git-master = 빠른 Git 작업 에이전트
 ```
 
-🎯 <strong>왜 이게 혁신적인가:</strong> 고정된 에이전트 목록 대신, Sisyphus(메인 에이전트)가 <strong>작업에 맞는 최적의 조합을 동적으로 결정</strong>해요. N개의 카테고리 × M개의 스킬 = N×M개의 가능한 에이전트 조합이 생기는 거죠.
+ <strong>왜 이게 혁신적인가:</strong> 고정된 에이전트 목록 대신, Sisyphus(메인 에이전트)가 <strong>작업에 맞는 최적의 조합을 동적으로 결정</strong>해요. N개의 카테고리 × M개의 스킬 = N×M개의 가능한 에이전트 조합이 생기는 거죠.
 
 ### Prometheus + Atlas: 계획하고 실행하는 시스템
 
 v3.0은 두 가지 핵심 에이전트도 추가했어요:
 
-| 에이전트       | 역할                                                       | 비유        |
+| 에이전트 | 역할 | 비유 |
 | -------------- | ---------------------------------------------------------- | ----------- |
-| <strong>Prometheus</strong> | 사용자와 인터뷰 → 요구사항 파악 → 작업 계획 작성           | 전략 참모   |
-| <strong>Atlas</strong>      | 계획을 받아서 최적의 에이전트 배치 → 작업 분배 → 결과 검증 | 현장 사령관 |
+| <strong>Prometheus</strong> | 사용자와 인터뷰 → 요구사항 파악 → 작업 계획 작성 | 전략 참모 |
+| <strong>Atlas</strong> | 계획을 받아서 최적의 에이전트 배치 → 작업 분배 → 결과 검증 | 현장 사령관 |
 
-🤔 <strong>제 해석:</strong> 이건 "AI 에이전트가 AI 에이전트를 관리하는" 구조예요. 개발자가 에이전트를 일일이 선택하지 않아도, Prometheus가 요구사항을 파악하고 Atlas가 최적의 팀을 꾸려서 작업을 완수합니다.
+ <strong>제 해석:</strong> 이건 "AI 에이전트가 AI 에이전트를 관리하는" 구조예요. 개발자가 에이전트를 일일이 선택하지 않아도, Prometheus가 요구사항을 파악하고 Atlas가 최적의 팀을 꾸려서 작업을 완수합니다.
 
 ## 테마 2: 보안과 표준화 — "제대로 하자"
 
@@ -67,12 +67,12 @@ v3.1.7에서 MCP 서버를 위한 <strong>OAuth 2.1 인증이 완전 구현</str
 
 ### RFC 표준 4종 지원
 
-| RFC      | 설명                           |
+| RFC | 설명 |
 | -------- | ------------------------------ |
-| RFC 7591 | Dynamic Client Registration    |
-| RFC 9728 | Protected Resource Metadata    |
+| RFC 7591 | Dynamic Client Registration |
+| RFC 9728 | Protected Resource Metadata |
 | RFC 8414 | Authorization Server Discovery |
-| RFC 8707 | Resource Indicators            |
+| RFC 8707 | Resource Indicators |
 
 ```bash
 # OAuth 로그인이 이렇게 간단해졌어요
@@ -80,7 +80,7 @@ opencode mcp oauth login --server my-mcp-server
 opencode mcp oauth status
 ```
 
-💡 <strong>이전에는</strong> MCP 서버 인증 설정이 복잡했는데, 이제 CLI 한 줄이면 끝이에요. 특히 팀에서 여러 MCP 서버를 쓸 때 설정 부담이 크게 줄었습니다.
+ <strong>이전에는</strong> MCP 서버 인증 설정이 복잡했는데, 이제 CLI 한 줄이면 끝이에요. 특히 팀에서 여러 MCP 서버를 쓸 때 설정 부담이 크게 줄었습니다.
 
 같은 릴리스에서 <strong>LSP 클라이언트도 vscode-jsonrpc로 마이그레이션</strong>됐어요. Microsoft의 검증된 라이브러리로 바꾸면서 커스텀 코드를 줄이고 안정성을 높인 거죠.
 
@@ -92,13 +92,13 @@ v3.2.2에서 <strong>GPT-5.2에 최적화된 프롬프트</strong>가 도입됐�
 
 단순히 "GPT-5.2를 쓴다"가 아니라, <strong>작업 유형에 따라 모델과 프롬프트 스타일을 자동으로 매칭</strong>하는 시스템이에요.
 
-| 에이전트        | 모델    | 프롬프트 스타일                |
+| 에이전트 | 모델 | 프롬프트 스타일 |
 | --------------- | ------- | ------------------------------ |
-| Atlas           | GPT-5.2 | 오케스트레이션 중심 (XML 구조) |
-| Sisyphus-Junior | GPT-5.2 | 작업 실행 중심                 |
-| Oracle          | GPT-5.2 | 분석/조언 중심                 |
+| Atlas | GPT-5.2 | 오케스트레이션 중심 (XML 구조) |
+| Sisyphus-Junior | GPT-5.2 | 작업 실행 중심 |
+| Oracle | GPT-5.2 | 분석/조언 중심 |
 
-💰 <strong>비용 최적화 포인트:</strong> GPT-5.2는 성능이 좋지만 비용도 높아요. OMO는 복잡한 작업에만 GPT-5.2를 쓰고, 단순 작업은 더 저렴한 모델로 라우팅합니다. 결과적으로 복잡한 작업의 품질은 올라가면서 전체 비용은 최적화되는 구조예요.
+ <strong>비용 최적화 포인트:</strong> GPT-5.2는 성능이 좋지만 비용도 높아요. OMO는 복잡한 작업에만 GPT-5.2를 쓰고, 단순 작업은 더 저렴한 모델로 라우팅합니다. 결과적으로 복잡한 작업의 품질은 올라가면서 전체 비용은 최적화되는 구조예요.
 
 ## 테마 4: 개발자 경험 — "쓰기 편하게"
 
@@ -112,19 +112,19 @@ v3.2.2에서 <strong>GPT-5.2에 최적화된 프롬프트</strong>가 도입됐�
 ### v3.2.3: 선택의 자유
 
 - <strong>웹서치 프로바이더 선택</strong> — Exa와 Tavily 중 택1
-  - Exa: 기술 문서, 코드 예제에 강함
-  - Tavily: 최신 뉴스, 실시간 정보에 강함
+ - Exa: 기술 문서, 코드 예제에 강함
+ - Tavily: 최신 뉴스, 실시간 정보에 강함
 - <strong>중첩 스킬 디렉토리</strong> — 50개 스킬 파일을 폴더로 정리 가능
 - <strong>스킬 비활성화</strong> — 안 쓰는 스킬을 꺼서 토큰 절약
 
 ```json
 {
-  "websearchProvider": "tavily",
-  "disabledSkills": ["playwright", "dev-browser"]
+ "websearchProvider": "tavily",
+ "disabledSkills": ["playwright", "dev-browser"]
 }
 ```
 
-🎯 <strong>제가 체감한 차이:</strong> 웹서치 프로바이더를 고를 수 있게 된 게 생각보다 큰 변화예요. 뉴스 수집할 때는 Tavily, 코드 문서 찾을 때는 Exa를 쓰면 검색 품질이 확 달라집니다.
+ <strong>제가 체감한 차이:</strong> 웹서치 프로바이더를 고를 수 있게 된 게 생각보다 큰 변화예요. 뉴스 수집할 때는 Tavily, 코드 문서 찾을 때는 Exa를 쓰면 검색 품질이 확 달라집니다.
 
 ### LSP 진단 정확도 향상
 
@@ -147,7 +147,7 @@ v3.5.0의 코드네임이 "<strong>Atlas Trusts No One</strong>"인데, 이름�
 - import, 로직, 엣지케이스 검증 — 안 하면 진행 불가
 - "<strong>러버스탬핑 금지</strong>"
 
-⚠️ <strong>이게 왜 중요한가:</strong> AI 에이전트가 "완료"라고 했는데 실제로는 절반만 된 경험, 다들 있으시죠? OMO는 이 문제를 오케스트레이터 레벨에서 강제로 해결한 거예요. "Trust but verify"를 시스템에 내장한 겁니다.
+ <strong>이게 왜 중요한가:</strong> AI 에이전트가 "완료"라고 했는데 실제로는 절반만 된 경험, 다들 있으시죠? OMO는 이 문제를 오케스트레이터 레벨에서 강제로 해결한 거예요. "Trust but verify"를 시스템에 내장한 겁니다.
 
 ### Boulder Continuation 수정
 
@@ -157,14 +157,14 @@ v3.5.0의 코드네임이 "<strong>Atlas Trusts No One</strong>"인데, 이름�
 
 v3.5.0에서 가장 인상적인 부분이에요. 25개 이상의 god-file을 분해하고 <strong>200줄 하드 리밋</strong>을 적용했습니다.
 
-| 모듈                          | Before  | After                |
+| 모듈 | Before | After |
 | ----------------------------- | ------- | -------------------- |
-| `src/index.ts`                | 1,004줄 | 88줄 + 4개 파일      |
-| `delegate-task/executor.ts`   | 998줄   | 16줄 + 15개 모듈     |
-| `background-agent/manager.ts` | 1,646줄 | 코어 + 20개 모듈     |
-| `hooks/atlas/index.ts`        | 700줄   | 25줄 + 15개 모듈     |
-| `tools/lsp/client.ts`         | 854줄   | 129줄 + 12개 모듈    |
-| `config/schema.ts`            | 483줄   | 21개 스키마 컴포넌트 |
+| `src/index.ts` | 1,004줄 | 88줄 + 4개 파일 |
+| `delegate-task/executor.ts` | 998줄 | 16줄 + 15개 모듈 |
+| `background-agent/manager.ts` | 1,646줄 | 코어 + 20개 모듈 |
+| `hooks/atlas/index.ts` | 700줄 | 25줄 + 15개 모듈 |
+| `tools/lsp/client.ts` | 854줄 | 129줄 + 12개 모듈 |
+| `config/schema.ts` | 483줄 | 21개 스키마 컴포넌트 |
 
 ### 핵심 통계
 
@@ -172,7 +172,7 @@ v3.5.0에서 가장 인상적인 부분이에요. 25개 이상의 god-file을 �
 - <strong>+34,507줄 추가 / -21,492줄 삭제</strong>
 - <strong>브레이킹 체인지: 0개</strong>
 
-💡 <strong>공개 API는 하나도 안 바뀌었어요.</strong> 645개 파일을 고치면서 외부 인터페이스를 유지한 건 대단한 리팩토링이에요. `utils.ts` 같은 모호한 이름도 `result-formatter.ts`, `session-formatter.ts`, `tmux-path-resolver.ts` 같은 명확한 이름으로 바뀌었습니다.
+ <strong>공개 API는 하나도 안 바뀌었어요.</strong> 645개 파일을 고치면서 외부 인터페이스를 유지한 건 대단한 리팩토링이에요. `utils.ts` 같은 모호한 이름도 `result-formatter.ts`, `session-formatter.ts`, `tmux-path-resolver.ts` 같은 명확한 이름으로 바뀌었습니다.
 
 ## 3주간의 진화가 말해주는 것
 
@@ -192,11 +192,11 @@ OAuth 2.1 RFC 4종 지원, vscode-jsonrpc 마이그레이션 — 바퀴를 다�
 
 ## 누가 주목해야 하나?
 
-🎯 <strong>AI 에이전트 개발에 관심 있는 개발자</strong> — OMO의 Categories+Skills 패턴은 멀티 에이전트 시스템 설계의 좋은 참고 사례예요
+ <strong>AI 에이전트 개발에 관심 있는 개발자</strong> — OMO의 Categories+Skills 패턴은 멀티 에이전트 시스템 설계의 좋은 참고 사례예요
 
-🎯 <strong>Claude Code / OpenCode 사용자</strong> — OMO는 OpenCode 위에서 동작하는 오케스트레이션 레이어예요. AI 코딩 도구를 더 강력하게 쓰고 싶다면 주목
+ <strong>Claude Code / OpenCode 사용자</strong> — OMO는 OpenCode 위에서 동작하는 오케스트레이션 레이어예요. AI 코딩 도구를 더 강력하게 쓰고 싶다면 주목
 
-🎯 <strong>오픈소스 프로젝트 리더</strong> — 645파일 리팩토링을 브레이킹 체인지 없이 해낸 과정은 대규모 리팩토링의 교과서적 사례
+ <strong>오픈소스 프로젝트 리더</strong> — 645파일 리팩토링을 브레이킹 체인지 없이 해낸 과정은 대규모 리팩토링의 교과서적 사례
 
 ## 총평
 

@@ -29,13 +29,13 @@ Vercel은 이 문제를 <strong>Rust로 해결</strong>했습니다.
 
 ```
 AI 에이전트
-  ↓
+ ↓
 Node.js 런타임 (항상 실행 중)
-  ↓
+ ↓
 Playwright 라이브러리
-  ↓
+ ↓
 CDP (Chrome DevTools Protocol)
-  ↓
+ ↓
 Chrome
 ```
 
@@ -48,19 +48,19 @@ Chrome
 
 ```
 AI 에이전트
-  ↓
+ ↓
 Rust 바이너리 (독립실행형 데몬)
-  ↓
+ ↓
 CDP (직접 호출)
-  ↓
+ ↓
 Chrome
 ```
 
 <strong>개선점:</strong>
-- ✅ 런타임에 Node.js 불필요
-- ✅ 메모리 사용량 대폭 감소
-- ✅ 바이너리 크기 작아짐 (footprint ↓)
-- ✅ 시작 속도 빨라짐
+- 런타임에 Node.js 불필요
+- 메모리 사용량 대폭 감소
+- 바이너리 크기 작아짐 (footprint ↓)
+- 시작 속도 빨라짐
 
 ## AI 친화적 워크플로우
 
@@ -129,8 +129,8 @@ agent-browser is checked @e4
 
 <strong>대기:</strong>
 ```bash
-agent-browser wait @e1  # 요소가 나타날 때까지
-agent-browser wait 3000  # 3초 대기
+agent-browser wait @e1 # 요소가 나타날 때까지
+agent-browser wait 3000 # 3초 대기
 ```
 
 <strong>마우스 & 키보드:</strong>
@@ -205,10 +205,10 @@ agent-browser screenshot --annotate output.png
 생성된 이미지:
 ```
 ┌─────────────────────┐
-│  [1] Sign in        │
-│  [2] ___________    │  ← Email input
-│  [3] ___________    │  ← Password input
-│  [4] Forgot?        │
+│ [1] Sign in │
+│ [2] ___________ │ ← Email input
+│ [3] ___________ │ ← Password input
+│ [4] Forgot? │
 └─────────────────────┘
 ```
 
@@ -257,17 +257,17 @@ agent-browser pdf report.pdf
 import subprocess
 
 def ai_browse(instruction):
-    # 1. 현재 상태 스냅샷
-    snapshot = subprocess.run(
-        ["agent-browser", "snapshot"],
-        capture_output=True, text=True
-    ).stdout
-    
-    # 2. AI에게 다음 액션 물어보기
-    action = ask_ai(f"Snapshot: {snapshot}\nTask: {instruction}")
-    
-    # 3. 액션 실행
-    subprocess.run(["agent-browser"] + action.split())
+ # 1. 현재 상태 스냅샷
+ snapshot = subprocess.run(
+ ["agent-browser", "snapshot"],
+ capture_output=True, text=True
+ ).stdout
+ 
+ # 2. AI에게 다음 액션 물어보기
+ action = ask_ai(f"Snapshot: {snapshot}\nTask: {instruction}")
+ 
+ # 3. 액션 실행
+ subprocess.run(["agent-browser"] + action.split())
 
 # 사용
 ai_browse("로그인해서 대시보드 스크린샷 찍어줘")
@@ -286,36 +286,36 @@ agent-browser screenshot monitoring/$(date +%Y%m%d_%H%M%S).png
 
 # 이전과 비교
 if agent-browser diff screenshot prev.png current.png | grep "changed"; then
-  # Slack 알림
-  curl -X POST $SLACK_WEBHOOK -d '{"text":"Status page changed!"}'
+ # Slack 알림
+ curl -X POST $SLACK_WEBHOOK -d '{"text":"Status page changed!"}'
 fi
 ```
 
 ## Playwright vs agent-browser
 
-| 기능              | Playwright       | agent-browser --native |
+| 기능 | Playwright | agent-browser --native |
 |------------------|------------------|------------------------|
-| 런타임           | Node.js 필수     | 독립 바이너리           |
-| 메모리 사용      | 높음             | 낮음                    |
-| 시작 속도        | 보통             | 빠름                    |
-| AI 친화성        | 보통             | 높음 (ref 기반)         |
-| 주석 스크린샷     | 없음             | 기본 제공               |
-| 설치 크기        | 큼               | 작음                    |
-| 네트워크 모킹     | 복잡함           | 간단함                  |
+| 런타임 | Node.js 필수 | 독립 바이너리 |
+| 메모리 사용 | 높음 | 낮음 |
+| 시작 속도 | 보통 | 빠름 |
+| AI 친화성 | 보통 | 높음 (ref 기반) |
+| 주석 스크린샷 | 없음 | 기본 제공 |
+| 설치 크기 | 큼 | 작음 |
+| 네트워크 모킹 | 복잡함 | 간단함 |
 
 ## 언제 사용해야 할까?
 
 ### agent-browser를 쓰세요:
-- ✅ AI 에이전트가 브라우저를 제어할 때
-- ✅ 가벼운 헤드리스 자동화
-- ✅ 메모리 제약이 있는 환경
-- ✅ CLI 기반 워크플로우
+- AI 에이전트가 브라우저를 제어할 때
+- 가벼운 헤드리스 자동화
+- 메모리 제약이 있는 환경
+- CLI 기반 워크플로우
 
 ### Playwright를 쓰세요:
-- ✅ 복잡한 E2E 테스트 스위트
-- ✅ TypeScript 타입 안정성 필요
-- ✅ 기존 Playwright 코드베이스 보유
-- ✅ 풍부한 생태계 필요
+- 복잡한 E2E 테스트 스위트
+- TypeScript 타입 안정성 필요
+- 기존 Playwright 코드베이스 보유
+- 풍부한 생태계 필요
 
 ## 마무리하며
 

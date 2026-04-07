@@ -29,16 +29,16 @@ AI 뉴스가 매일 쏟아지는데, 한국어로 정리된 곳이 마땅치 않
 
 ## 기술 스택 선택
 
-| 레이어        | 선택                    | 이유                                 |
+| 레이어 | 선택 | 이유 |
 | ------------- | ----------------------- | ------------------------------------ |
-| 프레임워크    | Next.js 15 (App Router) | SSG + 동적 라우팅 + Vercel 무료 배포 |
-| 언어          | TypeScript              | 타입 안전성                          |
-| 스타일링      | Tailwind CSS            | 다크 모드 기본, 빠른 개발            |
-| 콘텐츠        | MDX + Contentlayer2     | 마크다운 + React 컴포넌트 조합       |
-| 패키지 매니저 | pnpm                    | 빠르고 디스크 효율적                 |
-| 배포          | Vercel (무료 티어)      | GitHub push → 자동 배포              |
+| 프레임워크 | Next.js 15 (App Router) | SSG + 동적 라우팅 + Vercel 무료 배포 |
+| 언어 | TypeScript | 타입 안전성 |
+| 스타일링 | Tailwind CSS | 다크 모드 기본, 빠른 개발 |
+| 콘텐츠 | MDX + Contentlayer2 | 마크다운 + React 컴포넌트 조합 |
+| 패키지 매니저 | pnpm | 빠르고 디스크 효율적 |
+| 배포 | Vercel (무료 티어) | GitHub push → 자동 배포 |
 
-💡 <strong>핵심 포인트:</strong> 이 조합의 가장 큰 장점은 <strong>비용이 $0</strong>이라는 거예요. Vercel 무료 티어 + 자체 도메인(가비아 연간 ~1만원)으로 완전한 블로그가 돌아갑니다.
+ <strong>핵심 포인트:</strong> 이 조합의 가장 큰 장점은 <strong>비용이 $0</strong>이라는 거예요. Vercel 무료 티어 + 자체 도메인(가비아 연간 ~1만원)으로 완전한 블로그가 돌아갑니다.
 
 ## 디자인: 다크 미니멀
 
@@ -58,7 +58,7 @@ Vercel이나 Toss의 디자인을 참고해서 <strong>다크 미니멀</strong>
 bg-zinc-900/50 backdrop-blur-md rounded-xl border border-zinc-800
 ```
 
-🎯 <strong>라이트 모드는 일부러 안 만들었어요.</strong> MVP에서는 하나에 집중하는 게 낫고, 개발자 블로그는 다크 모드가 자연스러우니까요.
+ <strong>라이트 모드는 일부러 안 만들었어요.</strong> MVP에서는 하나에 집중하는 게 낫고, 개발자 블로그는 다크 모드가 자연스러우니까요.
 
 ## 핵심 기능: Semi-Manual 뉴스 파이프라인
 
@@ -67,10 +67,10 @@ bg-zinc-900/50 backdrop-blur-md rounded-xl border border-zinc-800
 ### 전체 흐름
 
 ```
-1. /fetch-news          → RSS 뉴스 수집 + 리스트 표시
-2. "1, 3, 5번 선택"      → 사용자가 뉴스 선택
-3. /publish              → 선택된 뉴스로 포스트 자동 생성
-4. /commit --push        → 커밋 및 Vercel 배포
+1. /fetch-news → RSS 뉴스 수집 + 리스트 표시
+2. "1, 3, 5번 선택" → 사용자가 뉴스 선택
+3. /publish → 선택된 뉴스로 포스트 자동 생성
+4. /commit --push → 커밋 및 Vercel 배포
 ```
 
 이 4단계면 뉴스 수집부터 배포까지 <strong>5분 안에</strong> 끝나요.
@@ -79,12 +79,12 @@ bg-zinc-900/50 backdrop-blur-md rounded-xl border border-zinc-800
 
 현재 수집 중인 소스들이에요:
 
-| 소스            | 수집 방식                    |
+| 소스 | 수집 방식 |
 | --------------- | ---------------------------- |
-| GeekNews        | RSS 피드                     |
-| OpenAI Blog     | RSS 피드                     |
-| Google AI Blog  | RSS 피드                     |
-| Anthropic News  | RSS 피드                     |
+| GeekNews | RSS 피드 |
+| OpenAI Blog | RSS 피드 |
+| Google AI Blog | RSS 피드 |
+| Anthropic News | RSS 피드 |
 | GitHub Releases | API (Claude Code, Cursor 등) |
 
 ### `/fetch-news` — 뉴스 수집
@@ -97,7 +97,7 @@ pnpm fetch-news --source=ai --limit=5
 
 결과는 `.claude/news/YYYYMMDD_news.md` 파일에 저장되고, 체크박스 형태로 표시됩니다.
 
-⚠️ <strong>중복 체크가 중요해요.</strong> 기존 MDX 파일의 `sourceUrl` 필드와 비교해서, 이미 발행한 뉴스는 자동으로 제외합니다.
+ <strong>중복 체크가 중요해요.</strong> 기존 MDX 파일의 `sourceUrl` 필드와 비교해서, 이미 발행한 뉴스는 자동으로 제외합니다.
 
 ### `/publish` — 포스트 자동 생성
 
@@ -107,7 +107,7 @@ pnpm fetch-news --source=ai --limit=5
 
 - "~예요/해요" 대화체 사용
 - 개인적 경험과 의견 포함
-- 이모지 마커 활용 (💡🎯⚠️)
+- 이모지 마커 활용 ()
 - "안녕하세요, Tom입니다." 인트로
 
 AI가 쓰더라도 <strong>Tom의 목소리</strong>가 느껴지도록 가이드를 꽤 자세하게 작성했어요.
@@ -125,15 +125,15 @@ content(posts): add 5 new posts from 2026-02-19 news
 
 비용 $0 프로젝트에서 SEO는 <strong>코드로 해결</strong>해야 해요.
 
-| SEO 항목      | 구현 방식                                                      |
+| SEO 항목 | 구현 방식 |
 | ------------- | -------------------------------------------------------------- |
-| JSON-LD       | WebSite, Article, BreadcrumbList 스키마 자동 생성              |
-| OG 이미지     | `/api/og` 엔드포인트에서 태그 기반 그라디언트 이미지 동적 생성 |
-| RSS 피드      | `/feed.xml` 엔드포인트                                         |
-| 사이트맵      | `/sitemap.xml` 동적 생성                                       |
-| 커스텀 썸네일 | `thumbnail` 필드로 포스트별 커스텀 이미지 지원                 |
+| JSON-LD | WebSite, Article, BreadcrumbList 스키마 자동 생성 |
+| OG 이미지 | `/api/og` 엔드포인트에서 태그 기반 그라디언트 이미지 동적 생성 |
+| RSS 피드 | `/feed.xml` 엔드포인트 |
+| 사이트맵 | `/sitemap.xml` 동적 생성 |
+| 커스텀 썸네일 | `thumbnail` 필드로 포스트별 커스텀 이미지 지원 |
 
-💡 <strong>OG 이미지 자동 생성이 꽤 편해요.</strong> 포스트를 올리면 태그에 따라 다른 색상의 그라디언트 이미지가 자동으로 만들어져서, SNS 공유 시 썸네일 걱정을 안 해도 됩니다.
+ <strong>OG 이미지 자동 생성이 꽤 편해요.</strong> 포스트를 올리면 태그에 따라 다른 색상의 그라디언트 이미지가 자동으로 만들어져서, SNS 공유 시 썸네일 걱정을 안 해도 됩니다.
 
 ## 커스텀 썸네일 시스템
 
@@ -166,28 +166,28 @@ thumbnail: "/thumbnails/my-post.png" # 있으면 커스텀 사용
 - <strong>Writing Style Guide 작성</strong>: Tom의 목소리를 정의하는 건 제가 해야 했어요
 - <strong>비즈니스 판단</strong>: 어떤 기능을 먼저 만들지, MVP 범위를 어디까지 할지
 
-🤔 <strong>배운 점:</strong> AI 코딩 도구의 가치는 "코드를 짜주는 것"이 아니라, <strong>"내가 결정에 집중할 수 있게 실행을 대신해주는 것"</strong>이에요.
+ <strong>배운 점:</strong> AI 코딩 도구의 가치는 "코드를 짜주는 것"이 아니라, <strong>"내가 결정에 집중할 수 있게 실행을 대신해주는 것"</strong>이에요.
 
 ## 비용 정리
 
-| 항목                     | 비용                            |
+| 항목 | 비용 |
 | ------------------------ | ------------------------------- |
-| Vercel 호스팅            | $0 (무료 티어)                  |
-| 도메인 (toms-blog.co.kr) | ~₩12,000/년                     |
-| Claude Code              | 이미 구독 중이라 추가 비용 없음 |
-| <strong>총 운영 비용</strong>         | <strong>월 ~₩1,000</strong>                  |
+| Vercel 호스팅 | $0 (무료 티어) |
+| 도메인 (toms-blog.co.kr) | ~₩12,000/년 |
+| Claude Code | 이미 구독 중이라 추가 비용 없음 |
+| <strong>총 운영 비용</strong> | <strong>월 ~₩1,000</strong> |
 
-💰 <strong>월 1,000원으로 기술 블로그를 운영</strong>하고 있어요. 사실상 도메인 비용만 나가는 거죠.
+ <strong>월 1,000원으로 기술 블로그를 운영</strong>하고 있어요. 사실상 도메인 비용만 나가는 거죠.
 
 ## 현재 블로그 현황
 
-| 지표           | 수치                         |
+| 지표 | 수치 |
 | -------------- | ---------------------------- |
-| 총 포스트      | 46개+                        |
-| 운영 기간      | 약 4주                       |
-| 카테고리       | ai-news, updates, opensource |
-| 평균 발행 속도 | 하루 1~2개                   |
-| 뉴스 소스      | 5개 (RSS + GitHub API)       |
+| 총 포스트 | 46개+ |
+| 운영 기간 | 약 4주 |
+| 카테고리 | ai-news, updates, opensource |
+| 평균 발행 속도 | 하루 1~2개 |
+| 뉴스 소스 | 5개 (RSS + GitHub API) |
 
 ## 아쉬운 점과 개선 계획
 

@@ -32,7 +32,7 @@ AI 에이전트 생태계가 빠르게 성장하면서, 에이전트들이 서�
 
 ## 1. MCP (Model Context Protocol)
 
-### 🎯 핵심: "도구 연결의 표준화"
+### 핵심: "도구 연결의 표준화"
 
 MCP는 AI 모델이 외부 도구와 데이터에 접근하는 방식을 표준화한 프로토콜이에요. Anthropic이 제안했고, 현재 가장 널리 채택되고 있죠.
 
@@ -42,9 +42,9 @@ MCP 이전에는 DB에 연결하려면 DB 전용 코드, Notion에 연결하려�
 
 ```
 AI Agent ←→ MCP Protocol ←→ Database
-                          ←→ Notion
-                          ←→ Mailgun
-                          ←→ Slack
+ ←→ Notion
+ ←→ Mailgun
+ ←→ Slack
 ```
 
 ### 실무에서의 의미
@@ -55,7 +55,7 @@ AI Agent ←→ MCP Protocol ←→ Database
 
 ## 2. A2A (Agent2Agent)
 
-### 🎯 핵심: "에이전트 간 통신의 표준화"
+### 핵심: "에이전트 간 통신의 표준화"
 
 A2A는 Google이 제안한 프로토콜로, 서로 다른 팀이나 프레임워크에서 만든 <strong>원격 에이전트 간의 통신</strong>을 표준화해요.
 
@@ -67,16 +67,16 @@ A2A는 <strong>Agent Card</strong>라는 개념을 도입해요. 각 에이전�
 
 ```json
 {
-  "name": "마케팅 분석 에이전트",
-  "description": "캠페인 성과 분석 및 리포트 생성",
-  "capabilities": ["campaign_analysis", "report_generation"],
-  "endpoint": "https://marketing-agent.company.com/a2a"
+ "name": "마케팅 분석 에이전트",
+ "description": "캠페인 성과 분석 및 리포트 생성",
+ "capabilities": ["campaign_analysis", "report_generation"],
+ "endpoint": "https://marketing-agent.company.com/a2a"
 }
 ```
 
 ## 3. UCP (Universal Commerce Protocol)
 
-### 🎯 핵심: "상거래 API의 표준화"
+### 핵심: "상거래 API의 표준화"
 
 UCP는 공급업체별로 제각각인 상거래 API를 표준화하는 프로토콜이에요.
 
@@ -86,15 +86,15 @@ UCP는 공급업체별로 제각각인 상거래 API를 표준화하는 프로�
 
 ```
 에이전트 ←→ UCP ←→ 공급업체 A (주문)
-                ←→ 공급업체 B (주문)
-                ←→ 공급업체 C (주문)
+ ←→ 공급업체 B (주문)
+ ←→ 공급업체 C (주문)
 ```
 
 같은 인터페이스로 어떤 공급업체든 연결할 수 있으니까, 에이전트가 실시간으로 최적의 공급업체를 선택하는 것도 가능해지죠.
 
 ## 4. AP2 (Agent Payments Protocol)
 
-### 🎯 핵심: "에이전트의 결제 행위를 안전하게 관리"
+### 핵심: "에이전트의 결제 행위를 안전하게 관리"
 
 AP2는 AI 에이전트가 돈을 다룰 때의 안전장치를 제공하는 프로토콜이에요.
 
@@ -104,7 +104,7 @@ AP2는 세 단계의 흐름으로 결제를 처리해요.
 
 ```
 IntentMandate → PaymentMandate → PaymentReceipt
-(결제 의도)      (결제 승인)       (결제 영수증)
+(결제 의도) (결제 승인) (결제 영수증)
 ```
 
 1. <strong>IntentMandate</strong>: 에이전트가 "이 물건을 사고 싶다"고 의도를 선언
@@ -115,7 +115,7 @@ IntentMandate → PaymentMandate → PaymentReceipt
 
 ## 5. A2UI (Agent-to-User Interface)
 
-### 🎯 핵심: "에이전트가 동적으로 UI를 생성"
+### 핵심: "에이전트가 동적으로 UI를 생성"
 
 A2UI는 AI 에이전트가 사용자에게 보여줄 UI를 선언적으로 생성하는 프로토콜이에요.
 
@@ -125,12 +125,12 @@ A2UI는 <strong>18개의 안전한 컴포넌트 프리미티브</strong>를 정�
 
 ```json
 {
-  "type": "card",
-  "children": [
-    { "type": "heading", "text": "주문 현황" },
-    { "type": "progress", "value": 75, "label": "배송 중" },
-    { "type": "button", "text": "상세 보기", "action": "view_details" }
-  ]
+ "type": "card",
+ "children": [
+ { "type": "heading", "text": "주문 현황" },
+ { "type": "progress", "value": 75, "label": "배송 중" },
+ { "type": "button", "text": "상세 보기", "action": "view_details" }
+ ]
 }
 ```
 
@@ -138,7 +138,7 @@ A2UI는 <strong>18개의 안전한 컴포넌트 프리미티브</strong>를 정�
 
 ## 6. AG-UI (Agent-User Interaction)
 
-### 🎯 핵심: "실시간 스트리밍 상호작용의 표준화"
+### 핵심: "실시간 스트리밍 상호작용의 표준화"
 
 AG-UI는 CopilotKit에서 제안한 프로토콜로, 에이전트와 사용자 간의 <strong>실시간 스트리밍 상호작용</strong>을 표준화해요.
 
@@ -152,16 +152,16 @@ AG-UI는 SSE(Server-Sent Events) 스트림을 기반으로 다음 이벤트들�
 
 ```
 Agent ──SSE Stream──→ Client
-  ├─ TextDelta: "분석 결과를..."
-  ├─ ToolCallStart: {tool: "search", status: "running"}
-  ├─ ToolCallEnd: {result: {...}}
-  ├─ InputRequest: {type: "text", prompt: "기간을 선택해 주세요"}
-  └─ TextDelta: "결론적으로..."
+ ├─ TextDelta: "분석 결과를..."
+ ├─ ToolCallStart: {tool: "search", status: "running"}
+ ├─ ToolCallEnd: {result: {...}}
+ ├─ InputRequest: {type: "text", prompt: "기간을 선택해 주세요"}
+ └─ TextDelta: "결론적으로..."
 ```
 
 채팅 UI를 만들어 본 분이라면, 스트리밍 응답을 처리하는 게 얼마나 까다로운지 아실 거예요. AG-UI가 이걸 표준화해 주면 프론트엔드 개발이 훨씬 수월해지죠.
 
-## ⚠️ 어디서부터 시작해야 할까?
+## 어디서부터 시작해야 할까?
 
 6가지 프로토콜을 다 보면 압도당할 수 있는데, 가이드는 <strong>대부분 MCP로 시작</strong>하라고 권장해요.
 

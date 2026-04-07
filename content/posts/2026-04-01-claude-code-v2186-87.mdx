@@ -17,7 +17,7 @@ draft: false
 
 ## v2.1.86 주요 변경
 
-### 🎯 토큰 절약 & 성능 개선
+### 토큰 절약 & 성능 개선
 
 제가 이번 릴리스에서 가장 주목한 부분이에요.
 
@@ -26,14 +26,14 @@ draft: false
 - Bedrock, Vertex, Foundry 사용자를 위해 도구 설명에서 동적 콘텐츠를 제거해서 <strong>프롬프트 캐시 히트율이 개선</strong>됐어요.
 - 긴 세션에서 마크다운/하이라이트 렌더 캐시가 메모리를 계속 먹던 <strong>메모리 누수</strong>도 잡혔어요.
 
-### 💡 개발자 경험 개선
+### 개발자 경험 개선
 
 - `X-Claude-Code-Session-Id` 헤더가 API 요청에 추가돼서, 프록시에서 세션별로 요청을 묶어 추적할 수 있게 됐어요.
 - Grep과 파일 자동완성에서 `.jj`(Jujutsu), `.sl`(Sapling) 디렉토리가 제외돼요. Jujutsu 쓰는 분들 반가울 거예요.
 - 스킬 목록(`/skills`)이 알파벳 순 정렬로 바뀌고, 설명이 250자로 제한돼서 컨텍스트를 아껴요.
 - 메모리 저장 알림에서 파일명을 호버하면 하이라이트, 클릭하면 열리는 소소한 UX 개선도 있어요.
 
-### ⚠️ 버그 수정 (대량!)
+### 버그 수정 (대량!)
 
 이번 릴리스의 핵심이라고 할 수 있어요. 무려 <strong>14개 버그 수정</strong>이 포함됐어요.
 
@@ -46,7 +46,7 @@ draft: false
 - 좁은 터미널에서 OAuth 토큰이 줄바꿈되며 <strong>토큰 일부가 노출</strong>되던 보안 관련 수정
 - v2.1.83 이후 공식 마켓플레이스 플러그인이 macOS/Linux에서 "Permission denied" 발생하던 문제 수정
 
-### ⚠️ VSCode 확장 수정
+### VSCode 확장 수정
 
 - 오래 걸리는 작업 중 "Not responding" 표시되던 문제 해결
 - Max 플랜 사용자가 OAuth 토큰 갱신(로그인 8시간 후) 시 모델이 Sonnet으로 리셋되던 문제 수정 — 이건 Max 사용자라면 꽤 짜증났을 버그더라고요.
@@ -55,7 +55,7 @@ draft: false
 
 v2.1.87은 <strong>핫픽스 릴리스</strong>예요.
 
-- ⚠️ <strong>Cowork Dispatch에서 메시지가 전달되지 않던 버그</strong> 수정
+- <strong>Cowork Dispatch에서 메시지가 전달되지 않던 버그</strong> 수정
 
 Cowork 기능을 활발히 쓰는 팀이라면 빠르게 업데이트하는 게 좋겠어요.
 

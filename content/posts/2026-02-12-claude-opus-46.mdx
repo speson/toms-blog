@@ -13,11 +13,11 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-<strong>Claude Opus 4.6</strong>이 출시됐습니다! Anthropic의 가장 스마트한 모델이 업그레이드됐는데, 벤치마크 결과가 정말 인상적이에요. 사실 제가 지금 이 글을 쓰는 데도 Opus 4.6을 쓰고 있어요 😄
+<strong>Claude Opus 4.6</strong>이 출시됐습니다! Anthropic의 가장 스마트한 모델이 업그레이드됐는데, 벤치마크 결과가 정말 인상적이에요. 사실 제가 지금 이 글을 쓰는 데도 Opus 4.6을 쓰고 있어요 
 
 ## 무엇이 좋아졌나요?
 
-### 코딩 능력 대폭 향상 💻
+### 코딩 능력 대폭 향상 
 
 Opus 4.6은 전작 대비 <strong>코딩 능력이 눈에 띄게 개선</strong>됐어요:
 
@@ -26,21 +26,21 @@ Opus 4.6은 전작 대비 <strong>코딩 능력이 눈에 띄게 개선</strong>
 - <strong>자기 실수를 스스로 잡아내는</strong> 코드 리뷰 능력 향상
 - 에이전틱 태스크를 더 오래 지속
 
-🎯 <strong>핵심 벤치마크:</strong>
+ <strong>핵심 벤치마크:</strong>
 
-| 벤치마크             | 의미                  | 결과                      |
+| 벤치마크 | 의미 | 결과 |
 | -------------------- | --------------------- | ------------------------- |
-| Terminal-Bench 2.0   | 에이전틱 코딩         | <strong>1위</strong>                   |
-| Humanity's Last Exam | 다학제 추론           | <strong>1위</strong>                   |
-| GDPval-AA            | 경제적 가치 있는 업무 | GPT-5.2 대비 <strong>+144 Elo</strong> |
-| BrowseComp           | 정보 검색             | <strong>1위</strong>                   |
-| SWE-bench Verified   | 소프트웨어 엔지니어링 | 상위권                    |
+| Terminal-Bench 2.0 | 에이전틱 코딩 | <strong>1위</strong> |
+| Humanity's Last Exam | 다학제 추론 | <strong>1위</strong> |
+| GDPval-AA | 경제적 가치 있는 업무 | GPT-5.2 대비 <strong>+144 Elo</strong> |
+| BrowseComp | 정보 검색 | <strong>1위</strong> |
+| SWE-bench Verified | 소프트웨어 엔지니어링 | 상위권 |
 
-### 1M 토큰 컨텍스트 윈도우 (베타) 📚
+### 1M 토큰 컨텍스트 윈도우 (베타) 
 
 Opus 클래스 최초로 <strong>100만 토큰 컨텍스트</strong>를 지원해요. 이전 모델들은 200K가 한계였는데, 5배나 늘어난 거죠.
 
-💡 <strong>Context rot 개선:</strong> MRCR v2 (8-needle 1M 변형) 벤치마크에서:
+ <strong>Context rot 개선:</strong> MRCR v2 (8-needle 1M 변형) 벤치마크에서:
 
 - Opus 4.6: <strong>76%</strong>
 - Sonnet 4.5: 18.5%
@@ -55,20 +55,20 @@ Opus 클래스 최초로 <strong>100만 토큰 컨텍스트</strong>를 지원�
 
 4단계 effort 레벨이 생겼어요:
 
-| 레벨        | 용도                                |
+| 레벨 | 용도 |
 | ----------- | ----------------------------------- |
-| low         | 빠른 응답, 단순 작업                |
-| medium      | 일반적인 작업                       |
+| low | 빠른 응답, 단순 작업 |
+| medium | 일반적인 작업 |
 | high (기본) | 복잡한 작업, adaptive thinking 활성 |
-| max         | 최고 품질, 어려운 문제              |
+| max | 최고 품질, 어려운 문제 |
 
-⚠️ <strong>팁:</strong> Opus 4.6이 과하게 생각하는 것 같으면 `/effort medium`으로 조절하세요. 기본값이 high라 단순한 작업에는 과할 수 있어요.
+ <strong>팁:</strong> Opus 4.6이 과하게 생각하는 것 같으면 `/effort medium`으로 조절하세요. 기본값이 high라 단순한 작업에는 과할 수 있어요.
 
-## Claude Code 에이전트 팀 🤖
+## Claude Code 에이전트 팀 
 
 Claude Code에서 <strong>에이전트 팀</strong> 기능이 리서치 프리뷰로 추가됐어요! 여러 에이전트가 <strong>병렬로 작업하고 자율 조정</strong>합니다.
 
-💡 <strong>적합한 사용 사례:</strong>
+ <strong>적합한 사용 사례:</strong>
 
 - 코드베이스 리뷰
 - 독립적인 읽기 위주 작업
@@ -90,12 +90,12 @@ Opus 4.6은 성능 향상과 함께 <strong>안전성도 유지</strong>했어�
 
 가격은 기존 Opus와 동일:
 
-|                         | 가격 (1M 토큰당) |
+| | 가격 (1M 토큰당) |
 | ----------------------- | ---------------- |
-| Input                   | $5               |
-| Output                  | $25              |
-| Input (200K+ 프리미엄)  | $10              |
-| Output (200K+ 프리미엄) | $37.50           |
+| Input | $5 |
+| Output | $25 |
+| Input (200K+ 프리미엄) | $10 |
+| Output (200K+ 프리미엄) | $37.50 |
 
 ## 업계 반응
 
@@ -110,13 +110,13 @@ Opus 4.6은 성능 향상과 함께 <strong>안전성도 유지</strong>했어�
 
 Claude Opus 4.6은 <strong>현 시점 가장 강력한 AI 모델 중 하나</strong>예요. 특히 에이전틱 코딩, 장문 컨텍스트, 추론 능력에서 인상적인 결과를 보여줍니다.
 
-🎯 <strong>제가 실제 사용하면서 느낀 점:</strong>
+ <strong>제가 실제 사용하면서 느낀 점:</strong>
 
 - 코드 리뷰가 훨씬 정확해졌어요 — 이전에 놓치던 엣지케이스를 잡아냄
 - 긴 세션에서 컨텍스트를 잃지 않는 느낌
 - adaptive thinking 덕분에 단순한 작업은 빠르게, 복잡한 작업은 깊게 처리
 
-💰 <strong>비용 팁:</strong> 단순 작업은 Sonnet, 복잡한 작업은 Opus로 구분해서 쓰면 비용 효율적이에요. `/effort` 컨트롤도 적극 활용하세요.
+ <strong>비용 팁:</strong> 단순 작업은 Sonnet, 복잡한 작업은 Opus로 구분해서 쓰면 비용 효율적이에요. `/effort` 컨트롤도 적극 활용하세요.
 
 ---
 

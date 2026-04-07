@@ -54,10 +54,10 @@ OpenAI도 똑같이 고민했습니다. 그래서 <strong>"rate limit에 걸려�
 
 <strong>OpenAI가 원한 것:</strong>
 
-- ✅ Rate limit의 공정성과 안정성
-- ✅ 종량제의 유연성
-- ✅ 실시간 결정
-- ✅ 100% 정확한 과금
+- Rate limit의 공정성과 안정성
+- 종량제의 유연성
+- 실시간 결정
+- 100% 정확한 과금
 
 ## 해결책: 하이브리드 실시간 액세스 엔진
 
@@ -65,13 +65,13 @@ OpenAI는 완전히 새로운 접근을 택했습니다:
 
 ```
 사용자 요청
-  ↓
+ ↓
 Rate Limit 체크
-  ↓
+ ↓
 남았나? → Yes → 처리
-  ↓ No
+ ↓ No
 크레딧 있나? → Yes → 크레딧 차감 + 처리
-  ↓ No
+ ↓ No
 차단 (하지만 크레딧 구매 옵션 제시)
 ```
 
@@ -87,15 +87,15 @@ OpenAI는 접근 제어를 <strong>폭포수처럼 흐르는 의사결정</stron
 
 ```
 요청 들어옴
-  ↓
+ ↓
 1. Rate Limit 체크 (무료 티어)
-  ↓ 소진
+ ↓ 소진
 2. Free Tier 크레딧 체크 (프로모션 등)
-  ↓ 소진
+ ↓ 소진
 3. Paid Credits 체크 (구매한 크레딧)
-  ↓ 소진
+ ↓ 소진
 4. Enterprise Entitlements (기업 계약)
-  ↓ 모두 소진
+ ↓ 모두 소진
 5. 차단
 ```
 
@@ -113,19 +113,19 @@ OpenAI는 Stripe Billing 같은 서드파티 솔루션도 평가했습니다.
 <strong>서드파티의 한계:</strong>
 
 1. <strong>실시간성 부족</strong>
-   - "Best-effort" 카운팅 → 지연 발생
-   - 깜짝 차단, 잔액 오류, 잘못된 과금
+ - "Best-effort" 카운팅 → 지연 발생
+ - 깜짝 차단, 잔액 오류, 잘못된 과금
 
 2. <strong>투명성 부족</strong>
-   - "왜 차단됐는지" 설명 어려움
-   - "얼마나 썼는지" 즉시 확인 불가
-   - "어떤 limit/balance가 적용됐는지" 추적 어려움
+ - "왜 차단됐는지" 설명 어려움
+ - "얼마나 썼는지" 즉시 확인 불가
+ - "어떤 limit/balance가 적용됐는지" 추적 어려움
 
 <strong>OpenAI가 원한 것:</strong>
 
-- ⚡ <strong>밀리초 단위 실시간 결정</strong>
-- 🔍 <strong>모든 결정의 완벽한 추적</strong>
-- ✅ <strong>100% 정확한 과금</strong>
+- <strong>밀리초 단위 실시간 결정</strong>
+- <strong>모든 결정의 완벽한 추적</strong>
+- <strong>100% 정확한 과금</strong>
 
 → 직접 만드는 수밖에 없었습니다.
 
@@ -137,29 +137,29 @@ OpenAI는 <strong>"증명 가능하게 정확한"</strong> 빌링 시스템을 �
 
 ```
 사용자 요청
-  ↓
+ ↓
 ┌─────────────────────────────────────┐
-│ 1. 실시간 Access Decision           │
-│   - Rate limit 동기 체크            │
-│   - 크레딧 잔액 동기 확인           │
-│   → 즉시 허용/차단 결정             │
+│ 1. 실시간 Access Decision │
+│ - Rate limit 동기 체크 │
+│ - 크레딧 잔액 동기 확인 │
+│ → 즉시 허용/차단 결정 │
 └─────────────────────────────────────┘
-  ↓
+ ↓
 ┌─────────────────────────────────────┐
-│ 2. Product Usage Event 발행         │
-│   (사용자가 실제로 뭘 했는지)       │
+│ 2. Product Usage Event 발행 │
+│ (사용자가 실제로 뭘 했는지) │
 └─────────────────────────────────────┘
-  ↓
+ ↓
 ┌─────────────────────────────────────┐
-│ 3. Monetization Event 생성          │
-│   (이 사용에 대해 얼마를 청구할지)  │
+│ 3. Monetization Event 생성 │
+│ (이 사용에 대해 얼마를 청구할지) │
 └─────────────────────────────────────┘
-  ↓
+ ↓
 ┌─────────────────────────────────────┐
-│ 4. Balance Update (비동기)          │
-│   - 크레딧 차감                     │
-│   - Audit Trail 기록                │
-│   - Idempotency Key로 중복 방지     │
+│ 4. Balance Update (비동기) │
+│ - 크레딧 차감 │
+│ - Audit Trail 기록 │
+│ - Idempotency Key로 중복 방지 │
 └─────────────────────────────────────┘
 ```
 
@@ -183,24 +183,24 @@ OpenAI는 <strong>"증명 가능하게 정확한"</strong> 빌링 시스템을 �
 event_key = f"{user_id}_{request_id}_{timestamp}"
 
 if already_processed(event_key):
-    return  # 중복 처리 방지
+ return # 중복 처리 방지
 else:
-    deduct_credits(amount)
-    mark_processed(event_key)
+ deduct_credits(amount)
+ mark_processed(event_key)
 ```
 
 ### 2. Atomic Transaction (원자성)
 
 ```sql
 BEGIN TRANSACTION;
-  -- 크레딧 차감
-  UPDATE credit_balance
-  SET amount = amount - 10
-  WHERE user_id = 'user123';
+ -- 크레딧 차감
+ UPDATE credit_balance
+ SET amount = amount - 10
+ WHERE user_id = 'user123';
 
-  -- 감사 기록 삽입
-  INSERT INTO balance_updates
-  VALUES ('user123', -10, 'event_xyz', now());
+ -- 감사 기록 삽입
+ INSERT INTO balance_updates
+ VALUES ('user123', -10, 'event_xyz', now());
 COMMIT;
 ```
 
@@ -215,10 +215,10 @@ COMMIT;
 # 동시 요청이 같은 크레딧을 쓰려고 해도
 # 계정 단위로 직렬화되어 처리됨
 with account_lock(user_id):
-    if balance >= cost:
-        balance -= cost
-    else:
-        raise InsufficientCredits
+ if balance >= cost:
+ balance -= cost
+ else:
+ raise InsufficientCredits
 ```
 
 ### 4. Automatic Refunds (자동 환불)
@@ -226,8 +226,8 @@ with account_lock(user_id):
 ```python
 # 비동기 업데이트 지연으로 잔액을 초과 차감했을 경우
 if balance < 0:
-    refund(abs(balance))
-    # "사용자 신뢰 > 엄격한 집행"
+ refund(abs(balance))
+ # "사용자 신뢰 > 엄격한 집행"
 ```
 
 ## 성능 vs 정확성 트레이드오프
@@ -254,17 +254,17 @@ OpenAI는 <strong>정확성</strong>을 선택했습니다:
 ## 우리가 배울 수 있는 것
 
 1. <strong>Trade-off를 명확히 하라</strong>
-   - 성능 vs 정확성
-   - OpenAI는 정확성 선택
+ - 성능 vs 정확성
+ - OpenAI는 정확성 선택
 
 2. <strong>감사 추적을 1급 시민으로</strong>
-   - "나중에 추가"가 아니라 <strong>시스템 설계의 핵심</strong>
+ - "나중에 추가"가 아니라 <strong>시스템 설계의 핵심</strong>
 
 3. <strong>사용자 경험을 중단하지 마라</strong>
-   - "나중에 와" → "계속 쓰되, 과금됨"
+ - "나중에 와" → "계속 쓰되, 과금됨"
 
 4. <strong>Provably Correct > Best Effort</strong>
-   - 증명 불가능하면 만들지 마라
+ - 증명 불가능하면 만들지 마라
 
 ## 마무리하며
 

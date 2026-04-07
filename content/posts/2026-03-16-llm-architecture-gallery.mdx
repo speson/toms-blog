@@ -33,42 +33,42 @@ draft: false
 
 가장 기본적인 구조이면서도 여전히 강력한 성능을 보여주는 모델들이에요. 모든 파라미터가 매 계산마다 활성화되는 방식이죠.
 
-*   <strong>Llama 3 8B</strong>: GQA(Grouped-Query Attention)와 RoPE(Rotary Positional Embedding)를 사용한 전형적인 고성능 모델이에요. 메타의 Llama 시리즈는 이제 업계의 표준처럼 자리 잡았죠.
-*   <strong>OLMo 2 7B</strong>: AI2(Allen Institute for AI)에서 만든 완전 오픈 소스 모델이에요. MHA(Multi-Head Attention)와 QK-Norm을 적용했어요. 특이하게 residual 블록 내부에서 post-norm 구조를 사용한 게 눈에 띄네요.
+* <strong>Llama 3 8B</strong>: GQA(Grouped-Query Attention)와 RoPE(Rotary Positional Embedding)를 사용한 전형적인 고성능 모델이에요. 메타의 Llama 시리즈는 이제 업계의 표준처럼 자리 잡았죠.
+* <strong>OLMo 2 7B</strong>: AI2(Allen Institute for AI)에서 만든 완전 오픈 소스 모델이에요. MHA(Multi-Head Attention)와 QK-Norm을 적용했어요. 특이하게 residual 블록 내부에서 post-norm 구조를 사용한 게 눈에 띄네요.
 
 ### 2. Sparse MoE 모델 (희소 전문가 혼합 모델)
 
 최근 대세로 자리 잡은 MoE 구조예요. 전체 파라미터는 많지만, 실제 계산에는 일부만 사용하는 효율적인 방식이죠.
 
-*   <strong>DeepSeek V3</strong>: 총 671B 파라미터 중 37B만 활성화돼요. MLA(Multi-head Latent Attention)와 공유 전문가(shared experts) 구조를 사용한 게 특징이에요. 이 모델 덕분에 MoE의 효율성이 다시 한번 증명되었죠.
-*   <strong>DeepSeek R1</strong>: V3를 기반으로 추론 능력을 극대화한 모델이죠. 구조적인 변화보다는 학습 방식의 혁신이 돋보이는 모델이에요.
-*   <strong>Llama 4 Maverick</strong>: 400B 파라미터 중 17B가 활성화되는 구조인데, Dense 층과 MoE 층을 교차해서 배치(interleaved)한 독특한 설계를 보여줘요. 메타의 차세대 모델에 대한 힌트를 얻을 수 있는 부분이에요.
-*   <strong>Qwen3 235B-A22B</strong>: 알리바바에서 만든 모델로, 공유 전문가 없이 설계된 MoE 모델이에요. 각 전문가가 독립적으로 작동하는 방식이죠.
-*   <strong>Qwen3.5 397B</strong>: 최근에 추가된 아주 거대한 MoE 모델이에요.
+* <strong>DeepSeek V3</strong>: 총 671B 파라미터 중 37B만 활성화돼요. MLA(Multi-head Latent Attention)와 공유 전문가(shared experts) 구조를 사용한 게 특징이에요. 이 모델 덕분에 MoE의 효율성이 다시 한번 증명되었죠.
+* <strong>DeepSeek R1</strong>: V3를 기반으로 추론 능력을 극대화한 모델이죠. 구조적인 변화보다는 학습 방식의 혁신이 돋보이는 모델이에요.
+* <strong>Llama 4 Maverick</strong>: 400B 파라미터 중 17B가 활성화되는 구조인데, Dense 층과 MoE 층을 교차해서 배치(interleaved)한 독특한 설계를 보여줘요. 메타의 차세대 모델에 대한 힌트를 얻을 수 있는 부분이에요.
+* <strong>Qwen3 235B-A22B</strong>: 알리바바에서 만든 모델로, 공유 전문가 없이 설계된 MoE 모델이에요. 각 전문가가 독립적으로 작동하는 방식이죠.
+* <strong>Qwen3.5 397B</strong>: 최근에 추가된 아주 거대한 MoE 모델이에요.
 
 ### 3. 하이브리드 및 최신 구조
 
 기존의 트랜스포머 구조를 넘어서려는 시도들도 많이 보여요. 특히 긴 문맥 처리를 위한 혁신들이 눈에 띕니다.
 
-*   <strong>Gemma 3 27B</strong>: 구글의 최신 모델로, 5:1 비율로 슬라이딩 윈도우 어텐션과 글로벌 어텐션을 섞어서 사용해요. 효율성과 성능의 균형을 잡으려는 시도죠.
-*   <strong>Qwen3 Next 80B-A3B</strong>: Gated DeltaNet 구조를 채택한 하이브리드 모델이에요.
-*   <strong>Kimi Linear 48B</strong>: Linear Attention과 MLA를 결합해서 효율성을 높였어요. 문맥이 길어져도 계산량이 급격히 늘어나지 않는 게 장점이에요.
-*   <strong>Nemotron 3</strong>: 엔비디아에서 만든 모델로, Mamba-2 구조를 기반으로 하고 있어요. RNN의 장점과 트랜스포머의 장점을 합치려는 시도죠.
-*   <strong>Ling 2.5</strong>: 무려 1T(1조) 파라미터 규모를 자랑하는 거대 모델이에요.
-*   <strong>Sarvam 30B/105B</strong>: 인도에서 만든 모델로, 지역 특화된 언어와 문화적 맥락을 잘 이해하도록 설계되었어요.
+* <strong>Gemma 3 27B</strong>: 구글의 최신 모델로, 5:1 비율로 슬라이딩 윈도우 어텐션과 글로벌 어텐션을 섞어서 사용해요. 효율성과 성능의 균형을 잡으려는 시도죠.
+* <strong>Qwen3 Next 80B-A3B</strong>: Gated DeltaNet 구조를 채택한 하이브리드 모델이에요.
+* <strong>Kimi Linear 48B</strong>: Linear Attention과 MLA를 결합해서 효율성을 높였어요. 문맥이 길어져도 계산량이 급격히 늘어나지 않는 게 장점이에요.
+* <strong>Nemotron 3</strong>: 엔비디아에서 만든 모델로, Mamba-2 구조를 기반으로 하고 있어요. RNN의 장점과 트랜스포머의 장점을 합치려는 시도죠.
+* <strong>Ling 2.5</strong>: 무려 1T(1조) 파라미터 규모를 자랑하는 거대 모델이에요.
+* <strong>Sarvam 30B/105B</strong>: 인도에서 만든 모델로, 지역 특화된 언어와 문화적 맥락을 잘 이해하도록 설계되었어요.
 
 그 외에도 <strong>GLM-4.5 355B</strong>는 에이전트 지향적인 설계를 가지고 있고, OpenAI에서 공개한 오픈 웨이트 모델인 <strong>GPT-OSS 20B/120B</strong>도 갤러리에 포함되어 있어요.
 
-🎯 <strong>핵심</strong>: 최근 모델들은 성능을 위해 MLA나 Linear Attention 같은 기술을 적극적으로 도입하고 있어요.
+ <strong>핵심</strong>: 최근 모델들은 성능을 위해 MLA나 Linear Attention 같은 기술을 적극적으로 도입하고 있어요.
 
 ## 용어 정리: 이것만 알아도 아키텍처가 보여요
 
 갤러리를 보다 보면 낯선 용어들이 많이 나올 거예요. Tom이 간단하게 정리해 드릴게요.
 
-*   <strong>GQA (Grouped-Query Attention)</strong>: 여러 개의 Query가 하나의 Key-Value 쌍을 공유하는 방식이에요. 메모리 사용량을 줄이면서도 성능은 유지할 수 있죠.
-*   <strong>RoPE (Rotary Positional Embedding)</strong>: 단어의 위치 정보를 회전 행렬을 이용해 인코딩하는 방식이에요. 상대적인 위치를 더 잘 파악하게 해 줘요.
-*   <strong>MLA (Multi-head Latent Attention)</strong>: DeepSeek에서 선보인 기술로, KV 캐시의 크기를 획기적으로 줄여주는 어텐션 방식이에요.
-*   <strong>MoE (Mixture of Experts)</strong>: 여러 개의 '전문가' 네트워크를 두고, 입력값에 따라 필요한 전문가만 호출해서 사용하는 방식이에요.
+* <strong>GQA (Grouped-Query Attention)</strong>: 여러 개의 Query가 하나의 Key-Value 쌍을 공유하는 방식이에요. 메모리 사용량을 줄이면서도 성능은 유지할 수 있죠.
+* <strong>RoPE (Rotary Positional Embedding)</strong>: 단어의 위치 정보를 회전 행렬을 이용해 인코딩하는 방식이에요. 상대적인 위치를 더 잘 파악하게 해 줘요.
+* <strong>MLA (Multi-head Latent Attention)</strong>: DeepSeek에서 선보인 기술로, KV 캐시의 크기를 획기적으로 줄여주는 어텐션 방식이에요.
+* <strong>MoE (Mixture of Experts)</strong>: 여러 개의 '전문가' 네트워크를 두고, 입력값에 따라 필요한 전문가만 호출해서 사용하는 방식이에요.
 
 ## 아키텍처의 수렴, 그리고 차별화
 
@@ -78,7 +78,7 @@ draft: false
 
 그렇다면 어디서 차이가 날까요? 결국 <strong>데이터 파이프라인</strong>과 <strong>학습 레시피</strong>예요. 어떤 데이터를 어떤 순서로, 얼마나 정교하게 정제해서 먹였느냐가 모델의 성격을 결정짓는 핵심 요소가 된 거죠.
 
-⚠️ <strong>주의</strong>: DeepSeek-R1이 보여준 놀라운 성능도 사실 아키텍처의 혁신보다는 추론 체인에 대한 강화 학습(RL)의 승리라고 보는 시각이 많아요. 구조는 이미 상향 평준화되었고, 이제는 '어떻게 가르치느냐'의 싸움이 된 셈이죠.
+ <strong>주의</strong>: DeepSeek-R1이 보여준 놀라운 성능도 사실 아키텍처의 혁신보다는 추론 체인에 대한 강화 학습(RL)의 승리라고 보는 시각이 많아요. 구조는 이미 상향 평준화되었고, 이제는 '어떻게 가르치느냐'의 싸움이 된 셈이죠.
 
 ## Tom의 생각: 왜 아키텍처를 알아야 할까요?
 
@@ -92,7 +92,7 @@ draft: false
 
 결국 아키텍처를 공부하는 건, 단순히 기술적인 호기심을 채우는 것을 넘어 <strong>비즈니스적인 의사결정</strong>을 내리는 데 큰 도움을 줘요. 어떤 모델을 우리 서비스의 엔진으로 쓸지 결정할 때, 그 엔진의 설계도를 볼 줄 아는 것과 모르는 것은 천지 차이니까요.
 
-💡 <strong>팁</strong>: Sebastian Raschka의 원문 기사인 "The Big LLM Architecture Comparison"과 "A Dream of Spring for Open-Weight LLMs"도 함께 읽어보시는 걸 추천해요. 갤러리에 담긴 도식들이 어떤 맥락에서 그려졌는지 훨씬 깊게 이해할 수 있을 거예요.
+ <strong>팁</strong>: Sebastian Raschka의 원문 기사인 "The Big LLM Architecture Comparison"과 "A Dream of Spring for Open-Weight LLMs"도 함께 읽어보시는 걸 추천해요. 갤러리에 담긴 도식들이 어떤 맥락에서 그려졌는지 훨씬 깊게 이해할 수 있을 거예요.
 
 최신 기술의 흐름을 놓치지 않으려면 이런 갤러리 자료를 즐겨찾기 해두고 틈틈이 들여다보는 습관이 큰 도움이 될 거예요. 저도 새로운 모델이 나올 때마다 이 갤러리가 어떻게 업데이트되는지 계속 지켜볼 생각이에요.
 

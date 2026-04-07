@@ -27,22 +27,22 @@ MCP 서버는 강력하지만, 몇 가지 비용이 따라요.
 
 이 프로젝트의 개발자는 이런 오버헤드를 없애기 위해 완전히 다른 접근을 선택했어요. MCP 서버 대신 <strong>일반 Python CLI 도구</strong>를 만들고, AI 에이전트가 이 CLI를 어떻게 사용해야 하는지를 <strong>SKILL.md 파일에 기술</strong>한 거예요.
 
-## 🎯 핵심 구조
+## 핵심 구조
 
 구조가 정말 깔끔해요.
 
 ```
 linear-agent-skill/
-├── linear_cli.py     # Python CLI (Linear API 래퍼)
-├── SKILL.md          # 에이전트용 사용 가이드
-├── .env              # API 키 (LINEAR_API_KEY)
-└── requirements.txt  # 의존성
+├── linear_cli.py # Python CLI (Linear API 래퍼)
+├── SKILL.md # 에이전트용 사용 가이드
+├──.env # API 키 (LINEAR_API_KEY)
+└── requirements.txt # 의존성
 ```
 
 설정 방법도 놀라울 정도로 간단해요.
 
 ```bash
-# 1. .env에 API 키 넣기
+# 1..env에 API 키 넣기
 LINEAR_API_KEY=lin_api_xxxxxxxxxxxxx
 
 # 2. 끝!
@@ -89,7 +89,7 @@ python linear_cli.py download-attachment --id "att_xxxxx" --output "./downloads/
 
 파일 업로드와 다운로드까지 지원하는 건 MCP 서버에서도 흔치 않은 기능이에요.
 
-## 💡 MCP 대비 약 45% 적은 토큰 소비
+## MCP 대비 약 45% 적은 토큰 소비
 
 이 부분이 가장 흥미로운 결과예요. 왜 토큰이 절약될까요?
 
@@ -110,7 +110,7 @@ python linear_cli.py download-attachment --id "att_xxxxx" --output "./downloads/
 
 CLI + 마크다운이라는 범용적인 형태이기 때문에, 어떤 AI 코딩 도구든 쉽게 통합할 수 있어요. MCP 서버는 MCP를 지원하는 클라이언트에서만 동작하지만, CLI는 bash를 실행할 수 있는 모든 에이전트에서 사용 가능하죠.
 
-## 🎯 AI 에이전트 중심의 출력 최적화
+## AI 에이전트 중심의 출력 최적화
 
 이 프로젝트에서 특히 인상적인 건 출력이 사람이 아니라 <strong>AI 에이전트가 읽기 좋게</strong> 설계되었다는 점이에요.
 

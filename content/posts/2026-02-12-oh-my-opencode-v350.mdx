@@ -15,7 +15,7 @@ draft: true
 
 <strong>Oh My OpenCode v3.5.0</strong>이 나왔어요! 코드네임이 "<strong>Atlas Trusts No One</strong>"인데, 이름부터 강렬하죠. 서브에이전트가 "다 했어요"라고 하면 그대로 믿고 넘어가던 Atlas가, 이제는 <strong>직접 검증</strong>하도록 바뀌었습니다.
 
-## Atlas, 신뢰를 버리다 🔍
+## Atlas, 신뢰를 버리다 
 
 이전까지 Atlas(오케스트레이션 에이전트)는 서브에이전트가 "done"이라고 하면 그냥 넘어갔어요. 테스트 실패, 코드 반만 완성, 요구사항 누락 — 다 무시. "Done"이면 된 거였죠.
 
@@ -26,7 +26,7 @@ draft: true
 - import, 로직, 엣지케이스 검증 — 안 하면 진행 불가
 - <strong>러버스탬핑 금지</strong>
 
-💡 <strong>왜 이게 중요한가:</strong> AI 에이전트가 "완료"라고 했는데 실제로는 절반만 된 경험, 다들 있으시죠? 이제 Oh My OpenCode에서는 오케스트레이터가 자체적으로 검증해서 그런 상황을 방지합니다.
+ <strong>왜 이게 중요한가:</strong> AI 에이전트가 "완료"라고 했는데 실제로는 절반만 된 경험, 다들 있으시죠? 이제 Oh My OpenCode에서는 오케스트레이터가 자체적으로 검증해서 그런 상황을 방지합니다.
 
 ## Boulder Continuation 수정
 
@@ -39,26 +39,26 @@ draft: true
 - 실패 시 카운트 증가, 2번 실패하면 continuation 중단
 - Sisyphus 세션도 boulder continuation 허용
 
-## The Great Split: 645파일 대리팩토링 🏗️
+## The Great Split: 645파일 대리팩토링 
 
 이게 정말 인상적이에요. 25개 이상의 god-file을 분해하고, <strong>200줄 하드 리밋</strong>을 적용했습니다.
 
-| 모듈                          | Before  | After                |
+| 모듈 | Before | After |
 | ----------------------------- | ------- | -------------------- |
-| `src/index.ts`                | 1,004줄 | 88줄 + 4개 파일      |
-| `delegate-task/executor.ts`   | 998줄   | 16줄 + 15개 모듈     |
-| `background-agent/manager.ts` | 1,646줄 | 코어 + 20개 모듈     |
-| `hooks/atlas/index.ts`        | 700줄   | 25줄 + 15개 모듈     |
-| `tools/lsp/client.ts`         | 854줄   | 129줄 + 12개 모듈    |
-| `config/schema.ts`            | 483줄   | 21개 스키마 컴포넌트 |
+| `src/index.ts` | 1,004줄 | 88줄 + 4개 파일 |
+| `delegate-task/executor.ts` | 998줄 | 16줄 + 15개 모듈 |
+| `background-agent/manager.ts` | 1,646줄 | 코어 + 20개 모듈 |
+| `hooks/atlas/index.ts` | 700줄 | 25줄 + 15개 모듈 |
+| `tools/lsp/client.ts` | 854줄 | 129줄 + 12개 모듈 |
+| `config/schema.ts` | 483줄 | 21개 스키마 컴포넌트 |
 
-🎯 <strong>핵심:</strong> `utils.ts` 같은 모호한 이름은 전부 실제 역할을 반영하는 이름으로 변경 — `result-formatter.ts`, `session-formatter.ts`, `tmux-path-resolver.ts` 등.
+ <strong>핵심:</strong> `utils.ts` 같은 모호한 이름은 전부 실제 역할을 반영하는 이름으로 변경 — `result-formatter.ts`, `session-formatter.ts`, `tmux-path-resolver.ts` 등.
 
 <strong>공개 API는 하나도 안 바뀌었어요.</strong> 순수 내부 리팩토링입니다.
 
 ## 기타 주요 변경사항
 
-### 백그라운드 태스크 인터럽트 🔴
+### 백그라운드 태스크 인터럽트 
 
 `promptAsync` 중 실패한 백그라운드 태스크가 이제 "error" 대신 "<strong>interrupt</strong>"로 표시돼요. 로그 뒤지지 않아도 무슨 일인지 바로 알 수 있습니다.
 

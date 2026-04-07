@@ -23,11 +23,11 @@ Claude Code를 쓰다 보면 Skills라는 개념을 자연스럽게 마주치게
 
 ```
 .claude/commands/my-skill/
-├── SKILL.md          # 스킬 설명 및 지시사항
-├── setup.sh          # 환경 설정 스크립트
-├── templates/        # 코드 템플릿
-├── data/             # 참조 데이터
-└── examples/         # 예시 파일들
+├── SKILL.md # 스킬 설명 및 지시사항
+├── setup.sh # 환경 설정 스크립트
+├── templates/ # 코드 템플릿
+├── data/ # 참조 데이터
+└── examples/ # 예시 파일들
 ```
 
 이렇게 폴더로 구성하면 Claude가 스킬을 실행할 때 필요한 모든 컨텍스트를 한 곳에서 가져올 수 있어요. 마크다운 하나에 모든 걸 우겨넣는 것과는 차원이 다른 접근이죠.
@@ -72,7 +72,7 @@ PR을 올리기 전에 제품 요구사항을 충족하는지 자동으로 체�
 
 클라우드 리소스 프로비저닝, 모니터링 설정, 스케일링 정책 관리를 위한 스킬이에요.
 
-## 🎯 핵심 작성 팁
+## 핵심 작성 팁
 
 Anthropic이 수백 개의 스킬을 운용하며 찾아낸 핵심 노하우들이에요. 이 부분이 이 가이드에서 가장 가치 있는 내용이라고 생각해요.
 
@@ -81,13 +81,13 @@ Anthropic이 수백 개의 스킬을 운용하며 찾아낸 핵심 노하우들�
 스킬을 작성할 때 "이렇게 하세요"보다 <strong>"이건 절대 하지 마세요"가 훨씬 효과적</strong>이에요. Claude는 일반적인 지시사항은 어느 정도 스스로 추론할 수 있지만, 프로젝트 고유의 함정(gotchas)은 명시적으로 알려줘야 하거든요.
 
 ```markdown
-## ⚠️ Gotchas
+## Gotchas
 
 - 절대로 `user.email`을 로깅하지 마세요. PII 규정 위반입니다.
 - `DatabasePool.connect()`는 반드시 `try/finally`로 감싸세요.
-  풀이 고갈되면 전체 서비스가 멈춥니다.
+ 풀이 고갈되면 전체 서비스가 멈춥니다.
 - v3 API에서 `createdAt`은 UTC가 아니라 사용자 타임존입니다.
-  반드시 `toUTC()`를 호출하세요.
+ 반드시 `toUTC()`를 호출하세요.
 ```
 
 이런 Gotchas 섹션 하나가 10줄짜리 일반 지시사항보다 Claude의 출력 품질을 훨씬 높여줘요.
@@ -100,10 +100,10 @@ Anthropic이 수백 개의 스킬을 운용하며 찾아낸 핵심 노하우들�
 .claude/commands/api-endpoint/
 ├── SKILL.md
 ├── examples/
-│   ├── good-endpoint.ts    # 모범 사례
-│   └── bad-endpoint.ts     # 안티패턴 (주석으로 설명)
+│ ├── good-endpoint.ts # 모범 사례
+│ └── bad-endpoint.ts # 안티패턴 (주석으로 설명)
 └── templates/
-    └── endpoint.ts.hbs     # 기본 템플릿
+ └── endpoint.ts.hbs # 기본 템플릿
 ```
 
 ### 점진적 공개 (Progressive Disclosure)
@@ -143,13 +143,13 @@ v2.1.78에서 추가된 `CLAUDE_PLUGIN_DATA` 변수를 활용하면 스킬이 �
 
 ```
 my-project/
-├── .claude/
-│   └── commands/
-│       ├── deploy/
-│       ├── review/
-│       └── scaffold/
+├──.claude/
+│ └── commands/
+│ ├── deploy/
+│ ├── review/
+│ └── scaffold/
 ├── src/
-└── ...
+└──...
 ```
 
 ### 대규모 조직: 내부 플러그인 마켓플레이스
@@ -158,20 +158,20 @@ my-project/
 
 마켓플레이스를 통해 검증된 스킬을 팀 간에 공유하면 중복 개발을 줄이고, 베스트 프랙티스를 조직 전체로 확산시킬 수 있어요.
 
-## 💡 PreToolUse 훅으로 스킬 사용량 로깅
+## PreToolUse 훅으로 스킬 사용량 로깅
 
 스킬이 많아지면 "어떤 스킬이 실제로 많이 쓰이는지"를 파악하는 게 중요해져요. `PreToolUse` 훅을 활용하면 스킬 호출을 자동으로 로깅할 수 있어요.
 
 ```json
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Skill",
-        "command": "echo \"$(date) | $SKILL_NAME\" >> ~/.claude/skill-usage.log"
-      }
-    ]
-  }
+ "hooks": {
+ "PreToolUse": [
+ {
+ "matcher": "Skill",
+ "command": "echo \"$(date) | $SKILL_NAME\" >> ~/.claude/skill-usage.log"
+ }
+ ]
+ }
 }
 ```
 
