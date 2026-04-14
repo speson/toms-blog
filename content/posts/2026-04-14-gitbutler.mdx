@@ -1,5 +1,6 @@
 ---
 title: "GitButler — GitHub 공동창업자가 Git을 처음부터 다시 만든 이유"
+thumbnail: "/thumbnails/gitbutler.png"
 description: "GitHub 공동창업자이자 Pro Git 저자인 Scott Chacon이 AI 시대에 맞는 새로운 Git 클라이언트를 만들었어요. a16z로부터 $1,700만 투자까지 유치한 GitButler, 뭐가 다른지 정리해 봤어요."
 date: "2026-04-14"
 tags: ["Git", "개발도구", "오픈소스", "AI"]
@@ -28,13 +29,21 @@ GitButler는 이 근본적인 질문에서 출발해요 — "지금 시대에 �
 
 기존 Git GUI와는 접근 자체가 다릅니다.
 
-<strong>스테이징 제거</strong>: `git add` 단계가 없어요. 변경사항을 바로 커밋할 수 있어서 Git 입문자의 진입 장벽이 크게 낮아져요.
+<strong>스테이징 제거</strong>: `git add` 단계가 없어요. 변경사항을 바로 커밋할
+수 있어서 Git 입문자의 진입 장벽이 크게 낮아져요.
 
-<strong>병렬 브랜치(Virtual Branches)</strong>: 여러 브랜치를 동시에 활성 상태로 유지할 수 있어요. worktree를 따로 만들 필요 없이, 하나의 작업 디렉토리에서 논리적으로 격리된 작업을 병렬로 진행할 수 있어요. 이건 꽤 혁신적인 개념이에요.
+<strong>병렬 브랜치(Virtual Branches)</strong>: 여러 브랜치를 동시에 활성 상태로
+유지할 수 있어요. worktree를 따로 만들 필요 없이, 하나의 작업 디렉토리에서
+논리적으로 격리된 작업을 병렬로 진행할 수 있어요. 이건 꽤 혁신적인 개념이에요.
 
-<strong>스택 브랜치(Stacked Branches)</strong>: 브랜치를 계층적으로 쌓아서 관리해요. 큰 PR을 여러 개의 작은 PR로 나누는 stacked PR 워크플로우를 네이티브로 지원하는 거예요.
+<strong>스택 브랜치(Stacked Branches)</strong>: 브랜치를 계층적으로 쌓아서
+관리해요. 큰 PR을 여러 개의 작은 PR로 나누는 stacked PR 워크플로우를 네이티브로
+지원하는 거예요.
 
-<strong>AI 에이전트 통합</strong>: Cursor, Windsurf, Claude Code 같은 AI 도구와의 연동을 핵심으로 설계했어요. 최근 0.16 업데이트에서는 Agent 탭이 추가돼서, 브랜치별로 독립적인 Claude Code 세션을 실행할 수 있게 됐어요. 커밋 관리 자동화나 세이브포인트 생성도 지원해요.
+<strong>AI 에이전트 통합</strong>: Cursor, Windsurf, Claude Code 같은 AI
+도구와의 연동을 핵심으로 설계했어요. 최근 0.16 업데이트에서는 Agent 탭이
+추가돼서, 브랜치별로 독립적인 Claude Code 세션을 실행할 수 있게 됐어요. 커밋
+관리 자동화나 세이브포인트 생성도 지원해요.
 
 참고: 기술 스택도 현대적이에요. 데스크톱 앱은 Tauri(Rust) 기반이고, 프론트엔드는 Svelte + TypeScript, CLI는 `but`이라는 이름으로 Rust 엔진을 공유해요.
 
@@ -67,7 +76,9 @@ GitButler는 <strong>Fair Source License</strong>를 채택하고 있어요. 코
 
 솔직히 Git의 스테이징 개념을 없앤다는 건 처음에 좀 파격적으로 느껴졌어요. 근데 AI 에이전트가 코드를 작성하는 흐름을 생각하면, 에이전트가 만든 변경사항을 일일이 `git add`하는 건 확실히 구시대적이긴 해요.
 
-<strong>가장 주목할 포인트는 병렬 브랜치 개념이에요.</strong> AI 에이전트 여러 개가 각각 다른 작업을 동시에 진행하는 미래를 상상하면, 브랜치를 동시에 활성화해서 관리하는 기능은 단순한 편의가 아니라 필수가 될 수 있어요.
+<strong>가장 주목할 포인트는 병렬 브랜치 개념이에요.</strong> AI 에이전트 여러
+개가 각각 다른 작업을 동시에 진행하는 미래를 상상하면, 브랜치를 동시에
+활성화해서 관리하는 기능은 단순한 편의가 아니라 필수가 될 수 있어요.
 
 GitHub를 만든 사람이 "Git은 이제 부족하다"고 말하는 건, 그 자체로 시대가 바뀌고 있다는 신호예요. 당장 갈아타지 않더라도, GitButler가 제시하는 방향성은 알아둘 가치가 있어요.
 
