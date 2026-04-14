@@ -1,0 +1,78 @@
+---
+title: "GitButler — GitHub 공동창업자가 Git을 처음부터 다시 만든 이유"
+description: "GitHub 공동창업자이자 Pro Git 저자인 Scott Chacon이 AI 시대에 맞는 새로운 Git 클라이언트를 만들었어요. a16z로부터 $1,700만 투자까지 유치한 GitButler, 뭐가 다른지 정리해 봤어요."
+date: "2026-04-14"
+tags: ["Git", "개발도구", "오픈소스", "AI"]
+category: "ai-news"
+subcategory: "tools"
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=28488"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Git을 매일 쓰면서도 "이게 왜 이렇게 불편하지?"라고 생각해 본 적 있으시죠? GitHub를 공동 창업하고, <strong>Pro Git</strong>이라는 책까지 쓴 사람도 같은 생각을 했나 봐요. Scott Chacon이 직접 나서서 Git 클라이언트를 처음부터 다시 만들었거든요. 그게 바로 <strong>GitButler</strong>예요.
+
+## Git이 15년째 그대로라는 문제
+
+Scott Chacon은 이번 투자 발표에서 이렇게 말했어요.
+
+> "개발 관행이 Git이 할 수 있는 것에 억지로 맞춰져 온 지 너무 오래됐다."
+
+생각해 보면 맞는 말이에요. Git은 2005년에 리누스 토르발스가 리눅스 커널 개발용으로 만든 도구예요. 그 이후로 개발 환경은 완전히 달라졌는데, <strong>브랜치-스테이징-커밋이라는 기본 워크플로우는 거의 변하지 않았어요</strong>. AI 에이전트가 코드를 짜는 시대에 `git add -p`로 한 줄씩 스테이징하고 있는 게 좀 아이러니하죠.
+
+GitButler는 이 근본적인 질문에서 출발해요 — "지금 시대에 맞는 버전 관리는 어떤 모습이어야 하는가?"
+
+## GitButler가 다르게 하는 것들
+
+기존 Git GUI와는 접근 자체가 다릅니다.
+
+<strong>스테이징 제거</strong>: `git add` 단계가 없어요. 변경사항을 바로 커밋할 수 있어서 Git 입문자의 진입 장벽이 크게 낮아져요.
+
+<strong>병렬 브랜치(Virtual Branches)</strong>: 여러 브랜치를 동시에 활성 상태로 유지할 수 있어요. worktree를 따로 만들 필요 없이, 하나의 작업 디렉토리에서 논리적으로 격리된 작업을 병렬로 진행할 수 있어요. 이건 꽤 혁신적인 개념이에요.
+
+<strong>스택 브랜치(Stacked Branches)</strong>: 브랜치를 계층적으로 쌓아서 관리해요. 큰 PR을 여러 개의 작은 PR로 나누는 stacked PR 워크플로우를 네이티브로 지원하는 거예요.
+
+<strong>AI 에이전트 통합</strong>: Cursor, Windsurf, Claude Code 같은 AI 도구와의 연동을 핵심으로 설계했어요. 최근 0.16 업데이트에서는 Agent 탭이 추가돼서, 브랜치별로 독립적인 Claude Code 세션을 실행할 수 있게 됐어요. 커밋 관리 자동화나 세이브포인트 생성도 지원해요.
+
+참고: 기술 스택도 현대적이에요. 데스크톱 앱은 Tauri(Rust) 기반이고, 프론트엔드는 Svelte + TypeScript, CLI는 `but`이라는 이름으로 Rust 엔진을 공유해요.
+
+## a16z의 $1,700만 투자, 의미하는 것
+
+Andreessen Horowitz(a16z) 주도로 Series A에서 $1,700만(약 230억 원)을 유치했어요. Fly Ventures와 A Capital도 참여했고, a16z의 Peter Levine이 이사회에 합류했어요.
+
+이 투자가 의미 있는 건 단순히 금액 때문이 아니에요. a16z가 베팅한 건 <strong>"AI 에이전트 시대에 버전 관리의 역할이 근본적으로 바뀔 것"</strong>이라는 테제예요. 사람과 사람 사이의 협업뿐 아니라, <strong>사람과 AI 에이전트 사이의 협업</strong>을 전제로 한 도구가 필요하다는 거죠.
+
+GitHub 공동창업자라는 이력이 이 투자에 큰 역할을 했을 거예요. Git의 문제점을 가장 잘 아는 사람이 해결책을 들고 나왔으니까요.
+
+## 라이선스는 어떻게 되나요?
+
+GitButler는 <strong>Fair Source License</strong>를 채택하고 있어요. 코드를 자유롭게 열람하고 기여할 수 있지만, 경쟁 제품을 만드는 데는 제한이 있어요. 그리고 2년이 지나면 MIT 라이선스로 전환돼요. GitHub에서 현재 약 20,000개 이상의 스타를 받고 있어요.
+
+주의: 완전한 오픈소스(OSI 정의)는 아니에요. 코드를 볼 수 있고 기여도 가능하지만, 상업적 이용에 일부 제한이 있다는 점은 알아두세요.
+
+## 누가 관심을 가져야 할까?
+
+모든 개발자가 당장 갈아탈 필요는 없어요. 하지만 이런 분들이라면 한번 살펴볼 만해요.
+
+- AI 코딩 도구(Cursor, Claude Code 등)를 적극적으로 쓰고 있는 분
+- stacked PR 워크플로우에 관심이 있지만 설정이 번거로웠던 분
+- Git의 스테이징 개념이 불필요하게 복잡하다고 느끼는 분
+- 여러 작업을 동시에 진행하면서 브랜치 전환에 지친 분
+
+참고: GeekNews 댓글을 보면, 큰 저장소에서의 성능 이슈나 기존 Git과의 병행 사용이 어렵다는 피드백도 있었어요. 규모가 큰 프로젝트에서는 아직 검증이 필요한 부분이 있을 수 있어요.
+
+## Tom의 생각
+
+솔직히 Git의 스테이징 개념을 없앤다는 건 처음에 좀 파격적으로 느껴졌어요. 근데 AI 에이전트가 코드를 작성하는 흐름을 생각하면, 에이전트가 만든 변경사항을 일일이 `git add`하는 건 확실히 구시대적이긴 해요.
+
+<strong>가장 주목할 포인트는 병렬 브랜치 개념이에요.</strong> AI 에이전트 여러 개가 각각 다른 작업을 동시에 진행하는 미래를 상상하면, 브랜치를 동시에 활성화해서 관리하는 기능은 단순한 편의가 아니라 필수가 될 수 있어요.
+
+GitHub를 만든 사람이 "Git은 이제 부족하다"고 말하는 건, 그 자체로 시대가 바뀌고 있다는 신호예요. 당장 갈아타지 않더라도, GitButler가 제시하는 방향성은 알아둘 가치가 있어요.
+
+---
+
+- GitButler 공식 사이트: [gitbutler.com](https://gitbutler.com/)
+- GitHub 저장소: [github.com/gitbutlerapp/gitbutler](https://github.com/gitbutlerapp/gitbutler)
+- GeekNews 원문: [news.hada.io/topic?id=28488](https://news.hada.io/topic?id=28488)

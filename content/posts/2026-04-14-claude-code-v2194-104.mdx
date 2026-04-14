@@ -1,0 +1,116 @@
+---
+title: "Claude Code v2.1.94~104: Mantle 지원, NO_FLICKER 포커스 뷰, 팀 온보딩 명령어까지"
+description: "Claude Code v2.1.94에서 Amazon Bedrock Mantle 지원과 CJK 텍스트 깨짐 수정이 들어왔고, v2.1.97은 NO_FLICKER 포커스 뷰와 MCP 메모리 누수 수정, v2.1.101은 /team-onboarding과 OS CA 인증서 자동 신뢰까지 추가됐어요."
+date: "2026-04-14"
+tags: ["Claude Code", "Anthropic", "AI", "개발도구"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.101"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+[지난 글](/posts/2026-04-06-claude-code-v2190-92)에서 v2.1.90~92의 /powerup 레슨과 MCP 500K 결과 지원을 다뤘는데요, 이번에는 v2.1.94부터 v2.1.104까지를 한꺼번에 정리해요. 릴리스가 많지만 실질적 내용이 있는 버전은 <strong>v2.1.94, v2.1.96, v2.1.97, v2.1.101</strong> 네 개이고, 나머지는 내부 빌드라서 생략했어요.
+
+## v2.1.94 — Mantle 지원과 대규모 버그 수정
+
+이번 묶음에서 가장 볼륨이 큰 릴리스예요.
+
+### Amazon Bedrock Mantle 지원
+
+`CLAUDE_CODE_USE_MANTLE=1` 환경 변수를 설정하면 <strong>Amazon Bedrock powered by Mantle</strong>을 사용할 수 있게 됐어요. 그리고 API 키, Bedrock/Vertex/Foundry, Team, Enterprise 사용자의 <strong>기본 에포트 레벨이 medium에서 high로</strong> 변경됐어요. 기존 설정이 있다면 `/effort` 명령어로 조절 가능해요.
+
+### 플러그인 시스템 개선
+
+- 플러그인 스킬이 디렉토리 이름 대신 <strong>프론트매터의 `name` 필드</strong>를 호출 이름으로 사용해요 — 설치 방식에 관계없이 이름이 일관돼요
+- `keep-coding-instructions` 프론트매터 필드와 `hookSpecificOutput.sessionTitle` 훅 지원 추가
+- YAML 프론트매터에 정의된 플러그인 훅이 무시되던 문제, `CLAUDE_PLUGIN_ROOT` 관련 경로 문제 등 수정
+
+### CJK 텍스트 깨짐 수정
+
+참고: 한국어, 일본어, 중국어 등 <strong>멀티바이트 텍스트가 stream-json 처리 시 U+FFFD로 깨지던 문제</strong>가 해결됐어요. UTF-8 시퀀스가 청크 경계에서 잘리는 게 원인이었는데, CJK 사용자에게는 꽤 체감되는 수정이에요.
+
+### 기타 주목할 버그 수정
+
+- 429 레이트 리밋 응답 후 에이전트가 <strong>멈춰 보이는 문제</strong> — 이제 에러가 바로 표시돼요
+- macOS에서 로그인 키체인이 잠겨 있을 때 Console 로그인이 조용히 실패하던 문제 수정, `claude doctor`로 진단 가능
+- tmux + xterm.js 기반 터미널(VS Code, Hyper, Tabby)에서 링크 클릭 시 <strong>브라우저 탭이 두 개 열리던 문제</strong> 수정
+- Shift+Space가 검색 입력에서 "space"라는 문자를 삽입하던 문제 수정
+- `--resume`이 다른 워크트리의 세션을 바로 재개하도록 개선
+
+## v2.1.96 — Bedrock 인증 핫픽스
+
+단일 수정이지만 중요해요. v2.1.94에서 도입된 회귀로 `AWS_BEARER_TOKEN_BEDROCK` 또는 `CLAUDE_CODE_SKIP_BEDROCK_AUTH`를 사용할 때 <strong>403 "Authorization header is missing" 에러</strong>가 발생하던 문제가 수정됐어요.
+
+주의: Bedrock 사용자라면 v2.1.94를 건너뛰고 v2.1.96 이상으로 업데이트하세요.
+
+## v2.1.97 — NO_FLICKER 포커스 뷰와 MCP 안정성
+
+### 포커스 뷰 토글
+
+`NO_FLICKER` 모드에서 <strong>Ctrl+O</strong>를 누르면 포커스 뷰로 전환돼요. 프롬프트, 도구 실행 요약(편집 diffstat 포함), 최종 응답만 보여주는 모드라서 긴 세션에서 핵심만 빠르게 확인할 때 유용해요.
+
+### MCP 메모리 누수 수정
+
+MCP HTTP/SSE 연결이 서버 재접속 시 <strong>시간당 약 50MB의 버퍼 누수</strong>가 있었는데 해결됐어요. MCP 서버를 장시간 연결해두는 분이라면 반드시 업데이트하세요.
+
+### 보안 강화
+
+- `--dangerously-skip-permissions`가 보호 경로 쓰기 승인 후 조용히 accept-edits 모드로 격하되던 문제 수정
+- Bash 도구 권한 검사가 강화되고, 환경 변수 접두사와 네트워크 리다이렉트 관련 체크가 촘촘해졌어요
+- `permissions.deny` 규칙이 PreToolUse 훅의 `permissionDecision: "ask"`보다 <strong>확실히 우선</strong>하도록 수정
+
+### /resume 피커 대규모 수정
+
+`/resume` 관련 문제가 한꺼번에 잡혔어요 — `--resume <name>` 편집 불가, Ctrl+A 새로고침 시 검색 초기화, 빈 목록 탐색 불가, 태스크 상태 텍스트가 대화 요약을 덮어쓰는 문제 등이 모두 수정됐어요.
+
+### 기타 개선
+
+- 429 재시도가 소규모 `Retry-After`에서 모든 시도를 13초 만에 소진하던 문제에 지수 백오프 적용
+- 서브에이전트의 작업 디렉토리가 부모 세션의 Bash 도구로 누출되던 문제 수정
+- `NO_FLICKER` 모드에서 한국어/일본어/유니코드 복사 시 텍스트 깨짐 수정 (Windows)
+- Cedar 정책 파일 구문 강조 지원 추가
+
+## v2.1.101 — /team-onboarding과 OS CA 자동 신뢰
+
+### /team-onboarding 명령어
+
+새 팀원을 위한 기능이에요. `/team-onboarding`을 실행하면 현재 로컬 Claude Code 사용 패턴을 분석해서 <strong>팀원용 램프업 가이드를 자동 생성</strong>해줘요. 이전 v2.1.90의 `/powerup`과 함께 쓰면 온보딩이 한층 수월해질 거예요.
+
+### OS CA 인증서 자동 신뢰
+
+기업 환경에서 TLS 프록시를 사용하는 경우, 이제 <strong>추가 설정 없이 OS CA 인증서 스토어를 자동으로 신뢰</strong>해요. 번들 CA만 사용하려면 `CLAUDE_CODE_CERT_STORE=bundled`로 설정하면 돼요.
+
+팁: 사내 프록시 때문에 인증서 문제를 겪던 분들은 이 업데이트만으로 해결될 수 있어요.
+
+### 안정성 개선
+
+- 명령 주입 취약점 수정 — LSP 바이너리 감지의 POSIX `which` 폴백
+- 긴 세션에서 메시지 목록의 이전 복사본이 메모리에 수십 개씩 쌓이던 누수 수정
+- 하드코딩된 5분 요청 타임아웃이 느린 백엔드(로컬 LLM, extended thinking)를 중단하던 문제 — 이제 `API_TIMEOUT_MS` 설정이 정상 적용돼요
+- `/btw`가 매 사용 시 전체 대화를 디스크에 기록하던 문제 수정
+
+### 기타 주목할 변경
+
+- `/ultraplan`이 웹 설정 없이 <strong>기본 클라우드 환경을 자동 생성</strong>
+- 레이트 리밋 재시도 메시지가 어떤 한도에 걸렸는지와 리셋 시점을 표시
+- Grep 도구의 내장 ripgrep 경로가 stale해지면 시스템 `rg`로 폴백 후 자동 복구
+- `ctrl+]`, `ctrl+\`, `ctrl+^` 키바인딩이 Terminal.app, iTerm2, xterm에서 동작하지 않던 문제 수정
+
+## v2.1.100, v2.1.104
+
+릴리스 태그는 존재하지만 변경 사항이 공개되지 않았어요. 내부 빌드이거나 인프라 변경으로 보여요.
+
+## 총평
+
+10개 버전을 아우르지만 핵심은 세 가지예요. <strong>v2.1.94의 Mantle/CJK 지원</strong>, <strong>v2.1.97의 NO_FLICKER 포커스 뷰와 보안 강화</strong>, <strong>v2.1.101의 팀 온보딩과 엔터프라이즈 인증서 지원</strong>이에요.
+
+개인적으로는 v2.1.97의 MCP 메모리 누수 수정이 가장 실질적으로 와닿았어요. MCP 서버를 하루 종일 연결해두는 패턴을 쓰고 있었거든요. 그리고 CJK 텍스트 깨짐 수정은 한국어 사용자라면 반드시 업데이트할 이유가 돼요.
+
+팀 도입을 고려하는 분이라면 `/powerup` + `/team-onboarding` 조합을 꼭 써보세요.
+
+---
+
+<strong>원문</strong>: [v2.1.101](https://github.com/anthropics/claude-code/releases/tag/v2.1.101) · [v2.1.97](https://github.com/anthropics/claude-code/releases/tag/v2.1.97) · [v2.1.96](https://github.com/anthropics/claude-code/releases/tag/v2.1.96) · [v2.1.94](https://github.com/anthropics/claude-code/releases/tag/v2.1.94)
