@@ -1,0 +1,50 @@
+---
+name: AI 에이전트
+type: topic
+post_count: 8
+key_entities:
+  ["OpenAI Agents SDK", "Codex", "oh-my-agent", "Praktika", "OpenAI Harness팀"]
+tags: ["에이전트", "AI"]
+---
+
+# AI 에이전트
+
+## 개요
+
+단순 챗봇을 넘어 자율적으로 작업을 계획하고 실행하는 AI 에이전트 아키텍처를 다루는 주제. Codex 에이전트 루프 해부, 멀티 에이전트 시스템, 에이전트 프로토콜(MCP, A2A 등), 그리고 Agentic Engine Optimization(AEO) 같은 새로운 개념까지 8개 포스트가 다룬다.
+
+## 핵심 포인트
+
+- OpenAI Codex의 에이전트 루프는 프롬프트 구성, 모델 추론, 도구 호출 세 단계로 구성되며 반복 실행 구조를 가짐
+- OpenAI Harness팀은 5개월간 수동 코드 0줄, 100% Codex만으로 제품을 만들어 에이전트 퍼스트 개발의 가능성을 실증
+- Praktika는 GPT-4.1과 GPT-5.2를 결합한 멀티 에이전트 아키텍처로 실시간 적응형 언어 학습 튜터를 구현
+- oh-my-agent는 Clarification Debt 스코어링과 역할 기반 팀 구조로 에이전트를 제어하는 오픈소스 하네스 프레임워크
+- AI 에이전트 프로토콜이 6가지(MCP, A2A, UCP, AP2, A2UI, AG-UI)로 분화됨. 각 프로토콜은 도구-에이전트, 에이전트-에이전트, 에이전트-UI 연결 등 다른 문제를 해결
+- OpenAI Agents SDK는 오케스트레이션 레이어(하네스)와 코드 실행 환경(샌드박스)을 분리하는 방향으로 진화. 재시도, 인증, 상태 관리를 SDK가 내부적으로 처리
+- AEO(Agentic Engine Optimization)는 AI 코딩 에이전트가 문서를 읽는 방식에 맞춰 최적화하는 새로운 개념으로 SEO의 에이전트 시대 후속 전략
+
+## 관련 포스트
+
+| 날짜       | 제목                                         | 관점                                                             |
+| ---------- | -------------------------------------------- | ---------------------------------------------------------------- |
+| 2026-01-25 | [[2026-01-25-openai-codex-agent-loop]]       | OpenAI Codex 에이전트 루프 기술적 해부                           |
+| 2026-01-26 | [[2026-01-26-praktika-ai-language-learning]] | Praktika의 멀티 에이전트 언어 튜터 시스템                        |
+| 2026-01-29 | [[2026-01-29-openai-in-house-data-agent]]    | OpenAI 내부 데이터 에이전트 - GPT-5, Codex, Memory 활용          |
+| 2026-02-12 | [[2026-02-12-harness-engineering-codex]]     | OpenAI Harness팀의 100% Codex 개발 실험                          |
+| 2026-03-16 | [[2026-03-16-oh-my-agent]]                   | oh-my-agent - Clarification Debt 스코어링 기반 에이전트 제어     |
+| 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]]      | AI 에이전트 프로토콜 6가지 완벽 가이드                           |
+| 2026-04-16 | [[2026-04-16-agentic-engine-optimization]]   | AEO - AI 에이전트 시대의 새로운 최적화 전략                      |
+| 2026-04-16 | [[2026-04-16-openai-agents-sdk-evolution]]   | OpenAI Agents SDK 진화 - 네이티브 샌드박스, 모델 네이티브 하네스 |
+
+## 관련 토픽
+
+- [[ai-coding-tools]]
+- [[mcp]]
+- [[open-source-ai]]
+- [[llm-models]]
+
+## 관련 엔티티
+
+- [[openai]]
+- [[anthropic]]
+- [[claude-code]]

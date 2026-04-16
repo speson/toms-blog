@@ -109,28 +109,60 @@ tom-project/
 
 ---
 
+## Wiki (LLM Knowledge Base)
+
+Karpathy의 LLM Wiki 패턴 적용. 뉴스를 발행할 때마다 위키가 자동 업데이트되어 지식이 복리로 쌓임.
+
+### 구조
+
+```
+content/wiki/
+├── index.md              # 전체 위키 카탈로그
+├── log.md                # 활동 이력 (인제스트, 린트 등)
+├── entities/             # 기업/제품 페이지 (OpenAI, Claude Code 등)
+├── topics/               # 기술 트렌드/개념 (AI 코딩 도구, MCP 등)
+└── synthesis/            # 종합 분석 (자동 생성)
+```
+
+### 위키 규칙
+
+- 위키는 LLM이 작성/유지. 사용자는 소스 큐레이션과 질문에 집중
+- `/publish` 시 관련 엔티티/토픽 페이지 자동 업데이트
+- `/wiki-lint`로 주기적 상태 점검
+- 블로그에서 실제 다룬 내용만 기록 (외부 추측 X)
+- 교차참조: 관련 페이지 간 `[[링크]]` 유지
+
+### 위키가 콘텐츠에 미치는 영향
+
+- `/publish` 시: 위키에서 관련 맥락을 읽고 포스트에 반영 (이전 소식과의 연결, 트렌드 변화)
+- `/write` 시: 위키에서 커버리지 갭/트렌드 분석하여 추천
+
+---
+
 ## Workflow (Semi-Manual)
 
 ```
 1. /fetch-news              # RSS 뉴스 수집 + 리스트 표시
 2. "1, 3, 5번 선택"          # 뉴스 선택
-3. /publish                 # 선택된 뉴스로 포스트 발행
+3. /publish                 # 선택된 뉴스로 포스트 발행 + 위키 자동 업데이트
 4. /commit --push           # 커밋 및 배포
+5. /wiki-lint               # 주기적 위키 상태 점검 (선택)
 ```
 
 ---
 
 ## Commands
 
-| Command           | Description                        |
-| ----------------- | ---------------------------------- |
-| `pnpm dev`        | 개발 서버 실행                     |
-| `pnpm build`      | 프로덕션 빌드                      |
-| `pnpm fetch-news` | RSS 뉴스 수집 (CLI)                |
-| `/fetch-news`     | 뉴스 수집 + 선택 UI                |
-| `/publish`        | 선택된 뉴스로 포스트 발행          |
-| `/commit`         | Conventional Commits 형식으로 커밋 |
-| `/commit --push`  | 커밋 후 자동 push                  |
+| Command           | Description                               |
+| ----------------- | ----------------------------------------- |
+| `pnpm dev`        | 개발 서버 실행                            |
+| `pnpm build`      | 프로덕션 빌드                             |
+| `pnpm fetch-news` | RSS 뉴스 수집 (CLI)                       |
+| `/fetch-news`     | 뉴스 수집 + 선택 UI                       |
+| `/publish`        | 선택된 뉴스로 포스트 발행 + 위키 업데이트 |
+| `/wiki-lint`      | 위키 상태 점검 및 개선 제안               |
+| `/commit`         | Conventional Commits 형식으로 커밋        |
+| `/commit --push`  | 커밋 후 자동 push                         |
 
 ---
 
