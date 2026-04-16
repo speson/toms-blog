@@ -1,0 +1,62 @@
+---
+title: "Anthropic Mythos, 32단계 네트워크 공격을 10분 만에 — 사이버보안은 작업증명이 됐다"
+description: "Anthropic의 비공개 LLM Mythos가 32단계 기업 네트워크 공격 시뮬레이션을 완주했어요. 보안이 토큰 투입량 경쟁, 즉 작업증명(Proof of Work) 구조로 변하고 있다는 분석이에요."
+date: "2026-04-16"
+tags: ["AI", "Anthropic", "보안", "Mythos"]
+category: "ai-news"
+subcategory: "news"
+source: "geeknews"
+sourceUrl: "https://news.hada.io/topic?id=28594"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+이전에 [프롬프트 인젝션 완전 가이드](/posts/2026-03-23-prompt-injection-guide)와 [OpenAI Safety Bug Bounty](/posts/2026-03-23-openai-safety-bug-bounty) 글에서 AI 보안 이야기를 다뤘는데요, 이번에는 한 단계 더 나간 소식이에요. Anthropic의 비공개 LLM <strong>Mythos</strong>가 기업 네트워크 공격 시뮬레이션에서 놀라운 성과를 보여줬고, 이를 계기로 사이버보안의 패러다임 자체가 바뀌고 있다는 주장이 나왔어요.
+
+## Mythos가 뭔가요
+
+Mythos는 Anthropic이 개발한 새로운 LLM인데, 일반에 공개되지 않았어요. Anthropic 스스로도 "컴퓨터 보안 과제에서 놀라울 정도로 뛰어나다"고 평가했고, 대신 핵심 소프트웨어 제작자들에게만 제한적으로 접근을 허용했어요. 이유는 간단해요 — 이 모델의 보안 공격 능력이 너무 강력해서, 방어 체계를 먼저 강화할 시간을 주기 위해서예요.
+
+## 32단계 공격 시뮬레이션, 10회 중 3회 성공
+
+영국 정부 산하 <strong>AI Security Institute(AISI)</strong>가 Mythos를 테스트했어요. 시뮬레이션 이름은 <strong>"The Last Ones"</strong>로, 초기 정찰부터 전체 네트워크 장악까지 32단계로 구성된 기업 네트워크 공격 시나리오예요. 인간 전문가가 수행하면 약 20시간이 걸리는 작업이에요.
+
+결과가 꽤 충격적이었어요.
+
+- Mythos는 <strong>10회 시도 중 3회 완전 성공</strong>
+- 경쟁 모델(Opus 4.6, GPT-5.4)은 성공률 0회
+- 시도당 <strong>1억 토큰(약 12,500달러)</strong> 예산 사용
+- 토큰 예산을 늘릴수록 성능이 <strong>계속 향상</strong> — 수확 체감 없음
+
+참고: AISI는 "테스트된 토큰 예산 범위 내에서 모델이 계속 진전을 보였다"고 밝혔어요. 즉, 돈을 더 쓰면 더 잘한다는 이야기예요.
+
+## 보안 = 작업증명(Proof of Work)
+
+원문 저자 Drew Breunig의 핵심 주장은 이래요. 보안이 이제 암호화폐의 작업증명처럼 작동한다는 거예요. 시스템을 방어하려면 <strong>공격자가 쓰는 토큰보다 더 많은 토큰을 투입</strong>해야 해요. 영리한 설계보다 순수한 연산 자원 투입량이 승패를 결정하는 구조가 된 거예요.
+
+이건 "저온의 복권"과 비슷해요 — 토큰을 사서 돌리면, 어쩌면 취약점을 발견할 수 있어요. 공격자도 방어자도 같은 게임을 하고 있는 셈이에요.
+
+## 개발 프로세스가 바뀐다
+
+이 변화가 실무에 미치는 영향도 구체적으로 제시됐어요. 기존의 <strong>개발 - 리뷰</strong> 2단계 프로세스에서 <strong>개발 - 리뷰 - 하드닝</strong> 3단계로 확장된다는 거예요.
+
+1. <strong>개발</strong>: 기능 구현과 사용자 피드백 반영
+2. <strong>리뷰</strong>: 리팩터링, 문서화, 품질 개선
+3. <strong>하드닝</strong>: 예산이 허락하는 한도 내에서 자동화된 취약점 탐색 수행
+
+첫 단계는 인간의 시간이 한계 요인이고, 마지막 단계는 비용이 한계 요인이에요. Anthropic은 이미 코드 리뷰 전용 서비스를 제공하고 있고, 리뷰당 15~20달러 수준이에요.
+
+## 오픈소스에는 양날의 검
+
+보안이 토큰 투입량에 비례한다면, 많은 기업이 공동으로 투자하는 오픈소스 라이브러리가 오히려 더 안전해질 수 있어요. 하지만 반대로 널리 사용되는 OSS는 공격 가치도 높기 때문에, 공격자도 더 많은 자원을 투입할 유인이 생겨요. 최근 <strong>LiteLLM</strong>과 <strong>Axios</strong> 공급망 공격이 그 사례예요.
+
+Andrej Karpathy는 "단순한 기능은 의존성 대신 LLM으로 직접 구현하는 게 낫다"고 언급하기도 했어요.
+
+## 마무리
+
+주의: 모델의 추론 효율이 개선되어 토큰 비용이 줄어들더라도, 보안 강화 비용은 공격의 시장 가치에 의해 결정돼요. 값싼 추론이 온다고 해서 보안 비용이 같이 줄어드는 건 아니라는 뜻이에요.
+
+Mythos 한 모델의 성과를 일반화하기엔 이르지만, 방향성은 분명해 보여요. 보안은 점점 더 <strong>자원 투입량의 경쟁</strong>이 되고 있고, 개발 워크플로우에 하드닝 단계를 추가하는 게 선택이 아닌 필수가 되어가고 있어요.
+
+참고: [원문 — Cybersecurity Is Proof of Work Now (dbreunig.com)](https://www.dbreunig.com/2026/04/14/cybersecurity-is-proof-of-work-now.html)

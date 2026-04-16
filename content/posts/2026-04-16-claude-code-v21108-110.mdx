@@ -1,0 +1,77 @@
+---
+title: "Claude Code v2.1.108~110: /tui 풀스크린 모드, 세션 리캡, 푸시 알림까지"
+description: "Claude Code v2.1.108에서 1시간 프롬프트 캐시 TTL 설정과 세션 리캡 기능이 추가됐고, v2.1.110은 /tui 풀스크린 모드와 모바일 푸시 알림, MCP 안정성 수정까지 한꺼번에 들어왔어요."
+date: "2026-04-16"
+tags: ["Claude Code", "Anthropic", "AI", "개발도구"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.110"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+[지난 글](/posts/2026-04-14-claude-code-v2194-104)에서 v2.1.94~104의 Mantle 지원과 NO_FLICKER 포커스 뷰를 다뤘는데요, 이번에는 v2.1.108부터 v2.1.110까지를 묶어서 정리해요. v2.1.109는 사소한 UI 개선이라 v2.1.108과 v2.1.110이 핵심이에요.
+
+## v2.1.108 — 프롬프트 캐시 제어와 세션 리캡
+
+이번 묶음에서 가장 변경이 많은 릴리스예요.
+
+### 프롬프트 캐시 TTL 직접 설정
+
+`ENABLE_PROMPT_CACHING_1H` 환경 변수로 API 키, Bedrock, Vertex, Foundry에서 <strong>1시간 프롬프트 캐시 TTL</strong>을 사용할 수 있게 됐어요. 반대로 `FORCE_PROMPT_CACHING_5M`으로 5분 TTL을 강제할 수도 있어요. 기존 `ENABLE_PROMPT_CACHING_1H_BEDROCK`은 deprecated 되었지만 아직 동작해요.
+
+참고: `DISABLE_TELEMETRY`를 설정한 구독자가 1시간이 아니라 5분 캐시로 빠지던 버그도 함께 수정됐어요.
+
+### 세션 리캡 기능
+
+대화 세션에 돌아왔을 때 <strong>이전 맥락을 자동으로 요약</strong>해주는 리캡 기능이 추가됐어요. `/config`에서 설정하거나 `/recap` 명령어로 수동 호출할 수 있어요. 텔레메트리를 끈 환경에서는 `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` 환경 변수로 활성화하면 돼요.
+
+### 슬래시 명령어와 UX 개선
+
+- 모델이 `/init`, `/review`, `/security-review` 같은 <strong>빌트인 슬래시 명령어를 스스로 발견하고 실행</strong>할 수 있게 됐어요
+- `/undo`가 `/rewind`의 별칭으로 추가됐어요
+- `/model`로 대화 중간에 모델을 바꾸면 <strong>전체 히스토리를 캐시 없이 다시 읽는다</strong>는 경고가 표시돼요
+- `/resume` 선택 화면이 현재 디렉토리 세션을 기본으로 보여주고, `Ctrl+A`로 전체 프로젝트를 볼 수 있어요
+- 파일 읽기, 편집, 구문 강조 시 <strong>언어 문법을 온디맨드로 로딩</strong>해서 메모리 사용량이 줄었어요
+
+### 주요 버그 수정
+
+- `/login` 코드 입력란에서 붙여넣기가 안 되던 문제 수정 (v2.1.105 회귀)
+- auto 모드에서 안전 분류기 트랜스크립트가 컨텍스트 윈도우를 초과하면 Agent 도구가 권한을 요청하던 문제 수정
+- `CLAUDE_ENV_FILE`이 `#` 주석으로 끝나면 Bash 도구 출력이 비어버리던 문제 수정
+- `language` 설정 시 악센트, 움라우트 등 분음 부호가 응답에서 누락되던 문제 수정
+
+## v2.1.109 — 씽킹 인디케이터 개선
+
+extended-thinking 인디케이터에 <strong>회전하는 진행 힌트</strong>가 추가됐어요. 작은 변경이지만 긴 사고 과정에서 멈춤 없이 진행 중임을 확인할 수 있어서 체감 차이가 있어요.
+
+## v2.1.110 — /tui 풀스크린과 푸시 알림
+
+### /tui 풀스크린 모드
+
+`/tui fullscreen`을 실행하면 <strong>같은 대화 안에서 깜빡임 없는 풀스크린 렌더링</strong>으로 전환할 수 있어요. 기존 `Ctrl+O`는 일반/상세 트랜스크립트 토글 전용으로 바뀌었고, 포커스 뷰는 새로 추가된 `/focus` 명령어로 분리됐어요.
+
+### 푸시 알림 도구
+
+Remote Control이 활성화되어 있고 "Push when Claude decides" 설정을 켜면, Claude가 <strong>모바일 푸시 알림을 직접 보낼 수 있게</strong> 됐어요. 긴 작업을 걸어두고 자리를 비울 때 유용해요.
+
+### 기타 개선사항
+
+- `autoScrollEnabled` 설정으로 풀스크린 모드에서 자동 스크롤을 끌 수 있어요
+- `Ctrl+G` 외부 에디터에 Claude의 마지막 응답을 주석으로 포함하는 옵션 추가
+- Write 도구가 IDE diff에서 사용자가 내용을 수정한 후 수락했을 때 모델에게 알려줘요
+- Bash 도구가 문서화된 최대 타임아웃을 초과하는 값을 거부해요
+- `--resume`/`--continue`가 만료되지 않은 예약 작업을 복원해요
+
+### 주요 버그 수정
+
+- MCP 서버 연결이 응답 중간에 끊기면 도구 호출이 무한 대기하던 문제 수정
+- macOS Terminal.app에서 시작 시 렌더링이 깨지던 문제 수정
+- 신뢰할 수 없는 파일명을 통한 <strong>명령어 주입 보안 취약점</strong> 수정
+- `PermissionRequest` 훅의 `updatedInput`이 `permissions.deny` 규칙을 우회하던 보안 문제 수정
+
+---
+
+이번 묶음의 핵심은 <strong>/tui 풀스크린 모드</strong>와 <strong>세션 리캡</strong>이에요. 특히 /tui는 터미널 환경에서 Claude Code를 쓸 때의 시각적 경험을 크게 개선해주는 변화라서, 풀스크린 작업을 좋아하는 분이라면 바로 써보시길 추천해요.
