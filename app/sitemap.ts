@@ -7,13 +7,15 @@ import {
   getSubcategories,
   getSubcategoryHref,
 } from "@/lib/posts";
+import { getAllEntities, getEntityHref } from "@/lib/wiki";
 
 const BASE_URL = "https://toms-blog.co.kr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
-  const latestPostDate = posts.length > 0 ? new Date(posts[0].date) : new Date("2026-01-01");
+  const latestPostDate =
+    posts.length > 0 ? new Date(posts[0].date) : new Date("2026-01-01");
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/posts/${post.slug}`,
@@ -46,6 +48,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 0.5,
   }));
+
+  const entityEntries: MetadataRoute.Sitemap = getAllEntities().map(
+    (entity) => ({
+      url: `${BASE_URL}${getEntityHref(entity.id)}`,
+      lastModified: entity.lastCovered
+        ? new Date(entity.lastCovered)
+        : latestPostDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })
+  );
 
   return [
     {
@@ -87,6 +100,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categoryEntries,
     ...subcategoryEntries,
     ...tagEntries,
+    ...entityEntries,
     ...postEntries,
   ];
 }

@@ -9,6 +9,12 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-6">
           <Link
+            href="/entities"
+            className="text-sm text-zinc-400 transition-colors hover:text-white"
+          >
+            Entities
+          </Link>
+          <Link
             href="/about"
             className="text-sm text-zinc-400 transition-colors hover:text-white"
           >
