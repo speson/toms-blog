@@ -9,6 +9,16 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-04-20] ingest | 4개 포스트 발행
+
+- [[2026-04-20-claude-opus-4-7]] — Claude Opus 4.7 + 시스템 프롬프트 변경
+- [[2026-04-20-senior-developers-code-editors]] — AI 시대 시니어 개발자 역할
+- [[2026-04-20-claude-design]] — Claude Design 리서치 프리뷰
+- [[2026-04-20-codex-for-everything]] — Codex 대규모 업데이트
+- 업데이트된 위키: entities/anthropic, entities/codex, entities/openai, topics/ai-coding-tools, topics/llm-models
+
+---
+
 ## [2026-04-16] ingest | Karpathy의 LLM Wiki 패턴 칼럼
 
 - 신규 포스트: [[2026-04-16-llm-wiki-pattern]]

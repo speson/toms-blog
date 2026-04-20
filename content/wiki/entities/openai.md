@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-04-16"
-post_count: 21
+last_covered: "2026-04-20"
+post_count: 22
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -34,6 +34,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Model Spec 설계 철학 공개, 100페이지 모델 행동 프레임워크 — [[2026-03-30-openai-model-spec]]
 - Safety Bug Bounty 프로그램 시작, 최대 $7,500 — [[2026-03-30-openai-safety-bug-bounty]]
 - Agents SDK 대규모 업데이트, 네이티브 샌드박스·오픈소스 하네스 도입 — [[2026-04-16-openai-agents-sdk-evolution]]
+- Codex 대규모 업데이트, 에이전트 기능 전방위 확장 — [[2026-04-20-codex-for-everything]]
 
 ## 타임라인
 
@@ -56,6 +57,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-03-30 | Model Spec 설계 철학 공개                     | [[2026-03-30-openai-model-spec]]           |
 | 2026-03-30 | Safety Bug Bounty 프로그램 시작               | [[2026-03-30-openai-safety-bug-bounty]]    |
 | 2026-04-16 | Agents SDK 대규모 업데이트                    | [[2026-04-16-openai-agents-sdk-evolution]] |
+| 2026-04-20 | Codex 대규모 업데이트                         | [[2026-04-20-codex-for-everything]]        |
 
 ## 관련 엔티티
 

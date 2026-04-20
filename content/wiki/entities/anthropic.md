@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-04-16"
-post_count: 16
+last_covered: "2026-04-20"
+post_count: 18
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -24,6 +24,8 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - Claude Sonnet 4.6 출시, Opus급 성능을 Sonnet 가격에 — [[2026-02-19-claude-sonnet-46]]
 - Vercept 인수, Claude 컴퓨터 사용 능력 15%→72.5%로 향상 — [[2026-03-05-anthropic-acquires-vercept]]
 - Claude Code Skills 운용 노하우 공개 — [[2026-03-23-claude-code-skills]]
+- Claude Opus 4.7 출시, 시스템 프롬프트 변경 사항 포함 — [[2026-04-20-claude-opus-4-7]]
+- Claude Design 리서치 프리뷰 공개 — [[2026-04-20-claude-design]]
 
 ## 타임라인
 
@@ -36,6 +38,8 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-02-19 | Claude Sonnet 4.6 출시                   | [[2026-02-19-claude-sonnet-46]]            |
 | 2026-03-05 | Vercept 인수, 컴퓨터 사용 능력 대폭 향상 | [[2026-03-05-anthropic-acquires-vercept]]  |
 | 2026-03-23 | Claude Code Skills 실전 가이드 공개      | [[2026-03-23-claude-code-skills]]          |
+| 2026-04-20 | Claude Opus 4.7 출시                     | [[2026-04-20-claude-opus-4-7]]             |
+| 2026-04-20 | Claude Design 리서치 프리뷰 공개         | [[2026-04-20-claude-design]]               |
 
 ## 관련 엔티티
 

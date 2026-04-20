@@ -1,13 +1,14 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 14
+post_count: 15
 key_entities:
   [
     "GPT-5.2",
     "GPT-5.3",
     "GPT-5.4",
     "Claude Opus 4.6",
+    "Claude Opus 4.7",
     "Claude Sonnet 4.6",
     "Gemini 3",
     "Gemini 3.1",
@@ -53,6 +54,7 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 | 2026-03-30 | [[2026-03-30-gemini-31-flash-live]]     | Gemini 3.1 Flash Live — 실시간 음성 AI 새 기준                              |
 | 2026-04-14 | [[2026-04-14-meta-new-ai-model]]        | Meta 새 AI 모델 패밀리 — Llama 아닌 부분 오픈소스 전략                      |
 | 2026-04-16 | [[2026-04-16-gemini-31-flash-tts]]      | Gemini 3.1 Flash TTS — AI 음성 생성 세밀 제어                               |
+| 2026-04-20 | [[2026-04-20-claude-opus-4-7]]          | Claude Opus 4.7 출시 — 시스템 프롬프트 변경 사항 포함                       |
 
 ## 관련 토픽
 

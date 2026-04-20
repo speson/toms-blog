@@ -3,8 +3,8 @@ name: OpenAI Codex
 type: entity
 aliases: [Codex, Codex CLI, Codex Security]
 first_covered: "2026-01-25"
-last_covered: "2026-04-16"
-post_count: 8
+last_covered: "2026-04-20"
+post_count: 9
 related_entities: [openai, chatgpt, gpt-5, claude-code]
 tags: [AI, OpenAI, Codex, 코딩, 에이전트, 보안]
 ---
@@ -25,6 +25,7 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 - Sora·Codex 무제한 사용을 위한 실시간 크레딧 아키텍처 공개 — [[2026-02-23-openai-beyond-rate-limits]]
 - Codex Security 리서치 프리뷰, 코드 취약점 탐지·패치 제안 AI 에이전트 — [[2026-03-10-codex-security-preview]]
 - Astral(uv, ruff) 인수, Codex 성장 가속화 위한 Python 도구 통합 — [[2026-03-23-openai-acquires-astral]]
+- Codex 대규모 업데이트, 에이전트 기능 전방위 확장 — [[2026-04-20-codex-for-everything]]
 
 ## 타임라인
 
@@ -38,6 +39,7 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 | 2026-02-23 | Sora·Codex 무제한 액세스 아키텍처 공개  | [[2026-02-23-openai-beyond-rate-limits]]  |
 | 2026-03-10 | Codex Security 리서치 프리뷰 공개       | [[2026-03-10-codex-security-preview]]     |
 | 2026-03-23 | Astral 인수(Codex 성장 목적)            | [[2026-03-23-openai-acquires-astral]]     |
+| 2026-04-20 | Codex 대규모 업데이트                   | [[2026-04-20-codex-for-everything]]       |
 
 ## 관련 엔티티
 
