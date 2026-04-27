@@ -1,5 +1,6 @@
 ---
 title: "MoE 아키텍처 해설: DeepSeek V4가 1.6조 파라미터인데 싸게 돌아가는 이유"
+thumbnail: "/thumbnails/moe-architecture-explained.png"
 description: "Mixture of Experts 아키텍처를 쉽게 풀어봤습니다. 1.6조 파라미터 중 490억만 활성화하는 구조가 어떻게 가격 대비 성능 3~5배 개선을 만드는지 알아봤어요."
 date: "2026-04-27"
 tags: ["AI", "LLM", "DeepSeek", "MoE"]
@@ -40,7 +41,9 @@ DeepSeek V4-Pro는 <strong>1.6조(1,600B) 파라미터</strong>를 가지고 있
 
 MoE가 만능이 아닌 이유가 있어요.
 
-<strong>모든 전문가를 메모리에 올려야 해요.</strong> 추론 시 49B만 계산에 쓰지만, 1.6조 파라미터 전부가 GPU VRAM에 올라가 있어야 해요. 어느 전문가가 호출될지 모르니까요.
+<strong>모든 전문가를 메모리에 올려야 해요.</strong> 추론 시 49B만 계산에
+쓰지만, 1.6조 파라미터 전부가 GPU VRAM에 올라가 있어야 해요. 어느 전문가가
+호출될지 모르니까요.
 
 DeepSeek V4-Pro를 혼자 돌리려면 수백 기가바이트의 VRAM이 필요해요. 개인이 로컬에서 돌리기 어려운 이유가 여기 있어요. 클라우드 API로 쓸 때는 이 부담을 서비스 제공자가 지니까 사용자가 체감하기 어렵지만요.
 
