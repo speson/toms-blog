@@ -9,6 +9,17 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-04-27] ingest | 5개 포스트 발행
+
+- [[2026-04-27-gpt-5-5]] — GPT-5.5 출시
+- [[2026-04-27-swe-bench-limitations]] — SWE-bench 벤치마크 한계 분석
+- [[2026-04-27-claude-code-v21118-120]] — Claude Code v2.1.118~120
+- [[2026-04-27-microsoft-openai-partnership]] — MS-OpenAI 파트너십 재편
+- [[2026-04-27-moe-architecture-explained]] — MoE 아키텍처 해설
+- 업데이트된 위키: entities/openai, entities/claude-code, entities/gpt-5, topics/ai-coding-tools, topics/llm-models
+
+---
+
 ## [2026-04-20] ingest | 4개 포스트 발행
 
 - [[2026-04-20-claude-opus-4-7]] — Claude Opus 4.7 + 시스템 프롬프트 변경

@@ -1,7 +1,7 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 15
+post_count: 17
 key_entities:
   [
     "GPT-5.2",
@@ -35,26 +35,29 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 - Gemini 3.1 Flash-Lite는 Gemini 3 라인 중 가장 빠르고 저렴한 선택지. 비용 대비 성능이 핵심 포지셔닝
 - LLM 아키텍처는 Dense → MoE(Mixture of Experts) → Hybrid 구조로 진화. Sebastian Raschka의 182메가픽셀 갤러리가 2024~2026년 주요 모델 구조 차이를 시각화
 - Meta가 Llama와 별개로 완전히 새로운 모델 패밀리를 '부분 오픈소스' 전략으로 준비 중. Scale AI 인수 후 Alexandr Wang이 주도하는 프로젝트
+- MoE(Mixture of Experts) 아키텍처가 대형 언어 모델의 사실상 표준으로 자리잡는 중. GPT-4, Gemini 1.5, DeepSeek 등 주요 모델이 MoE를 채택하며 Dense 모델 대비 파라미터 효율을 대폭 향상
 
 ## 관련 포스트
 
-| 날짜       | 제목                                    | 관점                                                                        |
-| ---------- | --------------------------------------- | --------------------------------------------------------------------------- |
-| 2026-02-12 | [[2026-02-12-claude-opus-46]]           | Claude Opus 4.6 출시 — GDPval-AA +144 Elo, 보안 프로브 6개 신규             |
-| 2026-02-13 | [[2026-02-13-gemini-3-deep-think]]      | Gemini 3 Deep Think — 과학/공학 전문 추론 모드 업그레이드                   |
-| 2026-02-13 | [[2026-02-13-gpt53-codex-spark]]        | GPT-5.3-Codex-Spark — OpenAI 최초 실시간 코딩 모델                          |
-| 2026-02-19 | [[2026-02-19-claude-sonnet-46]]         | Claude Sonnet 4.6 — Opus급 성능을 Sonnet 가격에                             |
-| 2026-02-19 | [[2026-02-19-ai-model-comparison-2026]] | 2026년 2월 주요 모델 실사용 비교 — GPT-5.2 vs Claude Sonnet 4.6 vs Gemini 2 |
-| 2026-02-19 | [[2026-02-19-gemini-ecosystem-guide]]   | 개발자를 위한 Gemini 생태계 완전 가이드 2026                                |
-| 2026-03-05 | [[2026-03-05-gemini-3-1-flash-lite]]    | Gemini 3.1 Flash-Lite — 가장 빠르고 저렴한 Gemini 3 모델                    |
-| 2026-03-05 | [[2026-03-05-gpt-5-3-instant]]          | GPT-5.3 Instant — 더 자연스럽고 덜 거부하는 ChatGPT                         |
-| 2026-03-10 | [[2026-03-10-gpt-5-4]]                  | GPT-5.4 — 코딩·컴퓨터 사용·도구 검색 통합 모델                              |
-| 2026-03-16 | [[2026-03-16-llm-architecture-gallery]] | LLM 아키텍처 갤러리 — Dense/MoE/Hybrid 구조 진화 시각화                     |
-| 2026-03-23 | [[2026-03-23-gpt-5-4-mini-nano]]        | GPT-5.4 mini·nano — 더 작고 빠르고 저렴한 티어 추가                         |
-| 2026-03-30 | [[2026-03-30-gemini-31-flash-live]]     | Gemini 3.1 Flash Live — 실시간 음성 AI 새 기준                              |
-| 2026-04-14 | [[2026-04-14-meta-new-ai-model]]        | Meta 새 AI 모델 패밀리 — Llama 아닌 부분 오픈소스 전략                      |
-| 2026-04-16 | [[2026-04-16-gemini-31-flash-tts]]      | Gemini 3.1 Flash TTS — AI 음성 생성 세밀 제어                               |
-| 2026-04-20 | [[2026-04-20-claude-opus-4-7]]          | Claude Opus 4.7 출시 — 시스템 프롬프트 변경 사항 포함                       |
+| 날짜       | 제목                                      | 관점                                                                        |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------------- |
+| 2026-02-12 | [[2026-02-12-claude-opus-46]]             | Claude Opus 4.6 출시 — GDPval-AA +144 Elo, 보안 프로브 6개 신규             |
+| 2026-02-13 | [[2026-02-13-gemini-3-deep-think]]        | Gemini 3 Deep Think — 과학/공학 전문 추론 모드 업그레이드                   |
+| 2026-02-13 | [[2026-02-13-gpt53-codex-spark]]          | GPT-5.3-Codex-Spark — OpenAI 최초 실시간 코딩 모델                          |
+| 2026-02-19 | [[2026-02-19-claude-sonnet-46]]           | Claude Sonnet 4.6 — Opus급 성능을 Sonnet 가격에                             |
+| 2026-02-19 | [[2026-02-19-ai-model-comparison-2026]]   | 2026년 2월 주요 모델 실사용 비교 — GPT-5.2 vs Claude Sonnet 4.6 vs Gemini 2 |
+| 2026-02-19 | [[2026-02-19-gemini-ecosystem-guide]]     | 개발자를 위한 Gemini 생태계 완전 가이드 2026                                |
+| 2026-03-05 | [[2026-03-05-gemini-3-1-flash-lite]]      | Gemini 3.1 Flash-Lite — 가장 빠르고 저렴한 Gemini 3 모델                    |
+| 2026-03-05 | [[2026-03-05-gpt-5-3-instant]]            | GPT-5.3 Instant — 더 자연스럽고 덜 거부하는 ChatGPT                         |
+| 2026-03-10 | [[2026-03-10-gpt-5-4]]                    | GPT-5.4 — 코딩·컴퓨터 사용·도구 검색 통합 모델                              |
+| 2026-03-16 | [[2026-03-16-llm-architecture-gallery]]   | LLM 아키텍처 갤러리 — Dense/MoE/Hybrid 구조 진화 시각화                     |
+| 2026-03-23 | [[2026-03-23-gpt-5-4-mini-nano]]          | GPT-5.4 mini·nano — 더 작고 빠르고 저렴한 티어 추가                         |
+| 2026-03-30 | [[2026-03-30-gemini-31-flash-live]]       | Gemini 3.1 Flash Live — 실시간 음성 AI 새 기준                              |
+| 2026-04-14 | [[2026-04-14-meta-new-ai-model]]          | Meta 새 AI 모델 패밀리 — Llama 아닌 부분 오픈소스 전략                      |
+| 2026-04-16 | [[2026-04-16-gemini-31-flash-tts]]        | Gemini 3.1 Flash TTS — AI 음성 생성 세밀 제어                               |
+| 2026-04-20 | [[2026-04-20-claude-opus-4-7]]            | Claude Opus 4.7 출시 — 시스템 프롬프트 변경 사항 포함                       |
+| 2026-04-27 | [[2026-04-27-gpt-5-5]]                    | GPT-5.5 출시                                                                |
+| 2026-04-27 | [[2026-04-27-moe-architecture-explained]] | MoE 아키텍처 해설 — Mixture of Experts 표준화 분석                          |
 
 ## 관련 토픽
 

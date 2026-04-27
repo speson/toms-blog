@@ -10,10 +10,11 @@ aliases:
     GPT-5.4,
     GPT-5.4 mini,
     GPT-5.4 nano,
+    GPT-5.5,
   ]
 first_covered: "2026-01-26"
-last_covered: "2026-03-23"
-post_count: 7
+last_covered: "2026-04-27"
+post_count: 8
 related_entities: [openai, chatgpt, codex]
 tags: [AI, OpenAI, GPT-5, 언어모델, 모델릴리스]
 ---
@@ -32,6 +33,7 @@ OpenAI의 GPT-5 계열 모델 시리즈. 블로그에서는 GPT-5의 업무 활�
 - GPT-5.3 Instant, 불필요한 거부 26.8% 감소·환각 22.5% 감소 — [[2026-03-05-gpt-5-3-instant]]
 - GPT-5.4 출시, 네이티브 컴퓨터 사용·1M 토큰 컨텍스트·Tool Search·SOTA 코딩 — [[2026-03-10-gpt-5-4]]
 - GPT-5.4 mini·nano 출시, 코딩·도구 사용·멀티모달 추론 최적화 경량 모델 — [[2026-03-23-gpt-5-4-mini-nano]]
+- GPT-5.5 출시 — [[2026-04-27-gpt-5-5]]
 
 ## 타임라인
 
@@ -43,6 +45,7 @@ OpenAI의 GPT-5 계열 모델 시리즈. 블로그에서는 GPT-5의 업무 활�
 | 2026-03-05 | GPT-5.3 Instant 출시                  | [[2026-03-05-gpt-5-3-instant]]           |
 | 2026-03-10 | GPT-5.4 출시                          | [[2026-03-10-gpt-5-4]]                   |
 | 2026-03-23 | GPT-5.4 mini·nano 출시                | [[2026-03-23-gpt-5-4-mini-nano]]         |
+| 2026-04-27 | GPT-5.5 출시                          | [[2026-04-27-gpt-5-5]]                   |
 
 ## 관련 엔티티
 
