@@ -29,12 +29,17 @@ export async function generateMetadata({
   const description = `${decodedTag} 태그가 포함된 글 ${posts.length}개를 모아보세요.`;
   const url = `${BASE_URL}/tags/${encodeURIComponent(decodedTag)}`;
 
+  const MIN_POSTS_FOR_INDEX = 3;
+
   return {
     title,
     description,
     alternates: {
       canonical: `/tags/${encodeURIComponent(decodedTag)}`,
     },
+    ...(posts.length < MIN_POSTS_FOR_INDEX && {
+      robots: { index: false, follow: true },
+    }),
     openGraph: {
       title,
       description,

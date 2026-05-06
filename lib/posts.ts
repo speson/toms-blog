@@ -173,3 +173,24 @@ export function formatDate(date: string): string {
     day: "numeric",
   });
 }
+
+export function getTagPostCount(tag: string): number {
+  return getPostsByTag(tag).length;
+}
+
+export function getLatestPostDateForTag(tag: string): Date {
+  const posts = getPostsByTag(tag);
+  return posts.length > 0 ? new Date(posts[0].date) : new Date("2026-01-01");
+}
+
+export function getLatestPostDateForCategory(category: Category): Date {
+  const posts = getPostsByCategory(category);
+  return posts.length > 0 ? new Date(posts[0].date) : new Date("2026-01-01");
+}
+
+export function getLatestPostDateForSubcategory(
+  subcategory: Subcategory
+): Date {
+  const posts = getPostsBySubcategory(subcategory);
+  return posts.length > 0 ? new Date(posts[0].date) : new Date("2026-01-01");
+}

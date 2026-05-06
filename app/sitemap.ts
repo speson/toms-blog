@@ -4,12 +4,19 @@ import {
   getAllPosts,
   getAllTags,
   getCategoryHref,
+  getLatestPostDateForCategory,
+  getLatestPostDateForSubcategory,
+  getLatestPostDateForTag,
   getSubcategories,
   getSubcategoryHref,
+  getTagPostCount,
 } from "@/lib/posts";
 import { getAllEntities, getEntityHref } from "@/lib/wiki";
 
 const BASE_URL = "https://toms-blog.co.kr";
+
+/** Minimum number of posts for a tag page to be included in sitemap */
+const MIN_TAG_POSTS_FOR_SITEMAP = 3;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
@@ -27,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const categoryEntries: MetadataRoute.Sitemap = getAllCategories().map(
     (category) => ({
       url: `${BASE_URL}${getCategoryHref(category)}`,
-      lastModified: latestPostDate,
+      lastModified: getLatestPostDateForCategory(category),
       changeFrequency: "weekly",
       priority: 0.7,
     })
@@ -36,18 +43,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const subcategoryEntries: MetadataRoute.Sitemap = getSubcategories().map(
     (subcategory) => ({
       url: `${BASE_URL}${getSubcategoryHref("ai-news", subcategory)}`,
-      lastModified: latestPostDate,
+      lastModified: getLatestPostDateForSubcategory(subcategory),
       changeFrequency: "weekly",
       priority: 0.6,
     })
   );
 
-  const tagEntries: MetadataRoute.Sitemap = getAllTags().map((tag) => ({
-    url: `${BASE_URL}/tags/${encodeURIComponent(tag)}`,
-    lastModified: latestPostDate,
-    changeFrequency: "weekly",
-    priority: 0.5,
-  }));
+  // Only include tags with enough posts to be meaningful
+  const tagEntries: MetadataRoute.Sitemap = getAllTags()
+    .filter((tag) => getTagPostCount(tag) >= MIN_TAG_POSTS_FOR_SITEMAP)
+    .map((tag) => ({
+      url: `${BASE_URL}/tags/${encodeURIComponent(tag)}`,
+      lastModified: getLatestPostDateForTag(tag),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    }));
 
   const entityEntries: MetadataRoute.Sitemap = getAllEntities().map(
     (entity) => ({

@@ -52,22 +52,14 @@ export const metadata: Metadata = {
       "application/rss+xml": "https://toms-blog.co.kr/feed.xml",
     },
   },
-  ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
-  process.env.NEXT_PUBLIC_NAVER_VERIFICATION
-    ? {
-        verification: {
-          ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && {
-            google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
-          }),
-          other: {
-            ...(process.env.NEXT_PUBLIC_NAVER_VERIFICATION && {
-              "naver-site-verification":
-                process.env.NEXT_PUBLIC_NAVER_VERIFICATION,
-            }),
-          },
-        },
-      }
-    : {}),
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
+    other: {
+      ...(process.env.NEXT_PUBLIC_NAVER_VERIFICATION && {
+        "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION,
+      }),
+    },
+  },
 };
 
 export const viewport: Viewport = {
