@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-04-27"
-post_count: 24
+last_covered: "2026-05-06"
+post_count: 26
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -37,6 +37,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Codex 대규모 업데이트, 에이전트 기능 전방위 확장 — [[2026-04-20-codex-for-everything]]
 - GPT-5.5 출시, 차세대 언어 모델 업그레이드 — [[2026-04-27-gpt-5-5]]
 - Microsoft 파트너십 재편, 협력 구조 개편 발표 — [[2026-04-27-microsoft-openai-partnership]]
+- GPT-5.5 Instant 출시, 속도와 비용 최적화 경량 버전 — [[2026-05-06-gpt-5-5-instant]]
+- GPT-5 고블린 버그 공개, 특정 입력에서 일관성 무너지는 행동 분석 — [[2026-05-06-gpt-5-goblin-bug]]
 
 ## 타임라인
 
@@ -62,6 +64,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-04-20 | Codex 대규모 업데이트                         | [[2026-04-20-codex-for-everything]]         |
 | 2026-04-27 | GPT-5.5 출시                                  | [[2026-04-27-gpt-5-5]]                      |
 | 2026-04-27 | Microsoft 파트너십 재편 발표                  | [[2026-04-27-microsoft-openai-partnership]] |
+| 2026-05-06 | GPT-5.5 Instant 출시                          | [[2026-05-06-gpt-5-5-instant]]              |
+| 2026-05-06 | GPT-5 고블린 버그 공개                        | [[2026-05-06-gpt-5-goblin-bug]]             |
 
 ## 관련 엔티티
 

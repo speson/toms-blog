@@ -3,8 +3,8 @@ name: Gemini
 type: entity
 aliases: [Gemini 3, Gemini 3.1]
 first_covered: "2026-01-28"
-last_covered: "2026-04-16"
-post_count: 11
+last_covered: "2026-05-06"
+post_count: 12
 related_entities: [google, openai, anthropic]
 tags: [AI, Google, Gemini, 언어모델, 멀티모달]
 ---
@@ -27,6 +27,7 @@ Google의 AI 모델 시리즈. 블로그에서는 Gemini 3, Gemini 3.1 계열의
 - Gemini 3.1 Flash Live, 실시간 음성 대화 최적화 모델 공개 — [[2026-03-30-gemini-31-flash-live]]
 - Lyria 3 Gemini API 개발자 공개, 음악 생성 섹션별 제어 가능 — [[2026-03-30-google-lyria-3]]
 - Gemini 3.1 Flash TTS, 70개 이상 언어·오디오 태그로 세밀한 음성 제어 — [[2026-04-16-gemini-31-flash-tts]]
+- Gemini 추천 기능이 소셜 엔지니어링 공격 벡터로 악용된 해킹 사례 — [[2026-05-06-gemini-recommendation-hack]]
 
 ## 타임라인
 
@@ -42,6 +43,7 @@ Google의 AI 모델 시리즈. 블로그에서는 Gemini 3, Gemini 3.1 계열의
 | 2026-03-30 | Gemini 3.1 Flash Live 공개                | [[2026-03-30-gemini-31-flash-live]]           |
 | 2026-03-30 | Lyria 3 Gemini API 개발자 공개            | [[2026-03-30-google-lyria-3]]                 |
 | 2026-04-16 | Gemini 3.1 Flash TTS 출시                 | [[2026-04-16-gemini-31-flash-tts]]            |
+| 2026-05-06 | Gemini 추천 해킹 사건 — 소셜 엔지니어링   | [[2026-05-06-gemini-recommendation-hack]]     |
 
 ## 관련 엔티티
 

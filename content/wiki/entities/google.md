@@ -3,8 +3,8 @@ name: Google AI
 type: entity
 aliases: [Google, Google DeepMind]
 first_covered: "2026-01-25"
-last_covered: "2026-04-16"
-post_count: 13
+last_covered: "2026-05-06"
+post_count: 15
 related_entities: [gemini, anthropic, openai]
 tags: [AI, Google, 검색, 모델릴리스, 생산성]
 ---
@@ -26,6 +26,8 @@ Gemini 모델 시리즈, Google 검색 AI 기능, DeepMind 연구 등을 포함�
 - Google Stitch 공개, 자연어로 UI 디자인 생성 — [[2026-03-23-google-stitch]]
 - Lyria 3 음악 생성 모델 Gemini API로 개발자 공개 — [[2026-03-30-google-lyria-3]]
 - Gemini 3.1 Flash TTS, 70개 이상 언어 지원 음성 생성 — [[2026-04-16-gemini-31-flash-tts]]
+- Gemini 추천 기능을 통한 소셜 엔지니어링 해킹 사례 분석 — [[2026-05-06-gemini-recommendation-hack]]
+- Gemma 4 MTP(Multi-Token Prediction) 기능 은폐 논란 — [[2026-05-06-gemma-4-mtp-controversy]]
 
 ## 타임라인
 
@@ -44,6 +46,8 @@ Gemini 모델 시리즈, Google 검색 AI 기능, DeepMind 연구 등을 포함�
 | 2026-03-30 | Lyria 3 Gemini API 개발자 공개              | [[2026-03-30-google-lyria-3]]                 |
 | 2026-03-30 | Gemini 3.1 Flash Live 공개                  | [[2026-03-30-gemini-31-flash-live]]           |
 | 2026-04-16 | Gemini 3.1 Flash TTS 출시                   | [[2026-04-16-gemini-31-flash-tts]]            |
+| 2026-05-06 | Gemini 추천 해킹 사건 공개                  | [[2026-05-06-gemini-recommendation-hack]]     |
+| 2026-05-06 | Gemma 4 MTP 은폐 논란 발생                  | [[2026-05-06-gemma-4-mtp-controversy]]        |
 
 ## 관련 엔티티
 
