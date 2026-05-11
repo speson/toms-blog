@@ -9,6 +9,41 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-05-11] ingest | OpenAI Codex 보안 운영 전략
+
+- [[2026-05-11-openai-codex-security-operations]] — OpenAI Codex 보안 운영 전략
+- 업데이트된 위키: entities/openai, entities/codex, topics/ai-agents, topics/ai-security
+
+---
+
+## [2026-05-11] ingest | GPT-5.5-Cyber 공개
+
+- [[2026-05-11-gpt-5-5-cyber]] — GPT-5.5-Cyber 공개: 보안 연구자를 위한 특화 모델
+- 업데이트된 위키: entities/openai, topics/ai-security
+
+---
+
+## [2026-05-11] ingest | Oh My OpenCode v4.0.0
+
+- [[2026-05-11-oh-my-opencode-v400]] — Oh My OpenCode v4.0.0: 팀 모드로 멀티에이전트 협업
+- 업데이트된 위키: entities/oh-my-opencode, topics/ai-agents, topics/ai-coding-tools
+
+---
+
+## [2026-05-11] ingest | Anthropic SDK에 Managed Agents 등장
+
+- [[2026-05-11-anthropic-sdk-managed-agents]] — Anthropic SDK에 Managed Agents 등장
+- 업데이트된 위키: entities/anthropic, topics/ai-agents
+
+---
+
+## [2026-05-11] ingest | Claude 사용량 한도 2배 인상 + SpaceX 파트너십
+
+- [[2026-05-11-claude-usage-limits-spacex]] — Claude 사용량 한도 2배 인상 + SpaceX 파트너십
+- 업데이트된 위키: entities/anthropic, entities/claude-code, topics/ai-coding-tools
+
+---
+
 ## [2026-04-27] ingest | 5개 포스트 발행
 
 - [[2026-04-27-gpt-5-5]] — GPT-5.5 출시

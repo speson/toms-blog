@@ -1,7 +1,7 @@
 ---
 name: AI 코딩 도구
 type: topic
-post_count: 52
+post_count: 54
 key_entities:
   [
     "Claude Code",
@@ -89,6 +89,8 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-04-27 | [[2026-04-27-claude-code-v21118-120]]            | Claude Code v2.1.118~120 — vim visual mode, /config persist, custom themes |
 | 2026-05-06 | [[2026-05-06-claude-code-k-shaped-productivity]] | K자형 생산성의 함정 — AI 도구 도입 후 개발자 생산성 양극화 분석            |
 | 2026-05-06 | [[2026-05-06-claude-code-v21128-131]]            | Claude Code v2.1.128~131 — 최신 릴리스 누적 개선 사항                      |
+| 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]               | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                          |
+| 2026-05-11 | [[2026-05-11-claude-usage-limits-spacex]]        | Claude 사용량 한도 2배 인상 + SpaceX 파트너십 — 인프라 확장                |
 
 ## 관련 토픽
 

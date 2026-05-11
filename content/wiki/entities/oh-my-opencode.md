@@ -3,8 +3,8 @@ name: Oh My OpenCode
 type: entity
 aliases: [OMOC]
 first_covered: "2026-01-24"
-last_covered: "2026-02-19"
-post_count: 8
+last_covered: "2026-05-11"
+post_count: 9
 related_entities: [opencode, claude-code, anthropic]
 tags: [AI, Oh My OpenCode, 오픈소스, 개발도구, 오케스트레이션]
 ---
@@ -25,6 +25,7 @@ GitHub 스타 22K 이상의 오픈소스 AI 에이전트 오케스트레이션 �
 - v3.2.3: Exa·Tavily 웹서치 프로바이더 선택, 스킬 파일 폴더 정리 — [[2026-02-05-oh-my-opencode-v323]]
 - v3.5.0: Atlas Trusts No One, 서브에이전트 결과 수동 검증, 645개 파일 리팩토링 — [[2026-02-12-oh-my-opencode-v350]]
 - v3.0→v3.5 3주간 진화 종합 분석 — [[2026-02-19-oh-my-opencode-evolution]]
+- v4.0.0: 팀 모드로 멀티에이전트 협업 지원 — [[2026-05-11-oh-my-opencode-v400]]
 
 ## 타임라인
 
@@ -38,6 +39,7 @@ GitHub 스타 22K 이상의 오픈소스 AI 에이전트 오케스트레이션 �
 | 2026-02-05 | v3.2.3: 웹서치 프로바이더 선택 기능      | [[2026-02-05-oh-my-opencode-v323]]      |
 | 2026-02-12 | v3.5.0: Atlas Trusts No One              | [[2026-02-12-oh-my-opencode-v350]]      |
 | 2026-02-19 | v3.0→v3.5 3주간 진화 종합 분석           | [[2026-02-19-oh-my-opencode-evolution]] |
+| 2026-05-11 | v4.0.0: 팀 모드 멀티에이전트 협업        | [[2026-05-11-oh-my-opencode-v400]]      |
 
 ## 관련 엔티티
 

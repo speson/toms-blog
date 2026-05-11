@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-05-06"
-post_count: 23
+last_covered: "2026-05-11"
+post_count: 24
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -38,6 +38,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 - v2.1.118~120: vim visual mode, /config persist, custom themes — [[2026-04-27-claude-code-v21118-120]]
 - K자형 생산성 분석: AI 도구 도입으로 개발자 생산성이 K자형으로 분화되는 현상 — [[2026-05-06-claude-code-k-shaped-productivity]]
 - v2.1.128~131: 최신 릴리스 누적 개선 사항 — [[2026-05-06-claude-code-v21128-131]]
+- Claude 사용량 한도 2배 인상, SpaceX 파트너십으로 인프라 확장 — [[2026-05-11-claude-usage-limits-spacex]]
 
 ## 타임라인
 
@@ -64,6 +65,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 | 2026-04-27 | v2.1.118~120: vim visual mode, /config persist, custom themes | [[2026-04-27-claude-code-v21118-120]]            |
 | 2026-05-06 | K자형 생산성 분석 — AI 도구로 인한 개발자 생산성 양극화       | [[2026-05-06-claude-code-k-shaped-productivity]] |
 | 2026-05-06 | v2.1.128~131: 최신 릴리스 누적 개선                           | [[2026-05-06-claude-code-v21128-131]]            |
+| 2026-05-11 | Claude 사용량 한도 2배 인상 + SpaceX 파트너십                 | [[2026-05-11-claude-usage-limits-spacex]]        |
 
 ## 관련 엔티티
 

@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 8
+post_count: 10
 key_entities:
   [
     "Promptfoo",
@@ -31,15 +31,17 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 
 ## 관련 포스트
 
-| 날짜       | 제목                                          | 관점                                                                 |
-| ---------- | --------------------------------------------- | -------------------------------------------------------------------- |
-| 2026-02-19 | [[2026-02-19-prompt-injection-guide]]         | 프롬프트 인젝션 유형·방어 전략 완전 가이드                           |
-| 2026-03-10 | [[2026-03-10-openai-acquires-promptfoo]]      | OpenAI의 AI 보안 테스트 내재화 — Promptfoo 인수                      |
-| 2026-03-10 | [[2026-03-10-codex-security-preview]]         | Codex Security 리서치 프리뷰 — AI 취약점 탐지·패치 에이전트          |
-| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]]       | OpenAI Safety Bug Bounty — AI 전용 취약점 신고 프로그램              |
-| 2026-04-01 | [[2026-04-01-chatgpt-cloudflare-react-state]] | Cloudflare Turnstile의 55개 속성 수집 실태 — 프라이버시 vs 봇 방어   |
-| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]           | Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스                    |
-| 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]           | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
+| 날짜       | 제목                                            | 관점                                                                 |
+| ---------- | ----------------------------------------------- | -------------------------------------------------------------------- |
+| 2026-02-19 | [[2026-02-19-prompt-injection-guide]]           | 프롬프트 인젝션 유형·방어 전략 완전 가이드                           |
+| 2026-03-10 | [[2026-03-10-openai-acquires-promptfoo]]        | OpenAI의 AI 보안 테스트 내재화 — Promptfoo 인수                      |
+| 2026-03-10 | [[2026-03-10-codex-security-preview]]           | Codex Security 리서치 프리뷰 — AI 취약점 탐지·패치 에이전트          |
+| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]]         | OpenAI Safety Bug Bounty — AI 전용 취약점 신고 프로그램              |
+| 2026-04-01 | [[2026-04-01-chatgpt-cloudflare-react-state]]   | Cloudflare Turnstile의 55개 속성 수집 실태 — 프라이버시 vs 봇 방어   |
+| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]             | Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스                    |
+| 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]             | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
+| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]] | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
+| 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                    | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
 
 ## 관련 토픽
 
