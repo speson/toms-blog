@@ -1,5 +1,6 @@
 ---
 title: "Anthropic SDK에 Managed Agents 등장: 멀티에이전트 공식 지원"
+thumbnail: "/thumbnails/anthropic-sdk-managed-agents.png"
 description: "Anthropic SDK TypeScript v0.95.0, Python v0.100.0에 Managed Agents, 웹훅, Vault 검증이 추가됐어요. 멀티에이전트 오케스트레이션이 SDK 레벨에서 공식 지원되기 시작한 거예요."
 date: "2026-05-11"
 tags: ["AI", "Anthropic", "Claude", "SDK", "에이전트"]
@@ -28,7 +29,8 @@ Managed Agents는 이 문제를 SDK 레벨에서 해결하려는 시도예요. �
 
 ## 웹훅: 이벤트 기반 통합
 
-<strong>웹훅 기능</strong>도 새로 추가됐어요. 에이전트의 실행 완료, 상태 변경 같은 이벤트를 외부 시스템으로 전달할 수 있어요.
+<strong>웹훅 기능</strong>도 새로 추가됐어요. 에이전트의 실행 완료, 상태 변경
+같은 이벤트를 외부 시스템으로 전달할 수 있어요.
 
 이게 Managed Agents와 결합되면 꽤 강력해져요. 에이전트가 작업을 완료했을 때 Slack으로 알림을 보내거나, CI/CD 파이프라인의 다음 단계를 트리거하거나, 결과를 데이터베이스에 기록하는 식의 워크플로우를 이벤트 기반으로 구성할 수 있어요.
 
@@ -36,7 +38,8 @@ Managed Agents는 이 문제를 SDK 레벨에서 해결하려는 시도예요. �
 
 ## Vault 검증: 크레덴셜 관리
 
-<strong>Vault validation</strong>도 눈에 띄는 추가 기능이에요. 에이전트가 외부 서비스에 접근할 때 필요한 인증 정보를 안전하게 관리하는 구조예요.
+<strong>Vault validation</strong>도 눈에 띄는 추가 기능이에요. 에이전트가 외부
+서비스에 접근할 때 필요한 인증 정보를 안전하게 관리하는 구조예요.
 
 에이전트가 실제 업무를 자동화하려면 결국 외부 API를 호출해야 하는데, 그때마다 API 키를 에이전트에게 직접 넘기는 건 보안상 좋지 않아요. Vault를 통해 크레덴셜을 중앙에서 관리하고, 에이전트별로 접근 권한을 제어할 수 있다면 훨씬 안전해지죠. 프로덕션 환경에서 에이전트를 운영하려는 팀에게 반가운 기능이에요.
 

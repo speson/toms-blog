@@ -1,5 +1,6 @@
 ---
 title: "OpenAI Codex 보안 운영 전략: 샌드박싱부터 텔레메트리까지"
+thumbnail: "/thumbnails/running-codex-safely.png"
 description: "OpenAI가 Codex를 어떻게 안전하게 운영하는지 정리했어요. 샌드박싱, 승인 메커니즘, 네트워크 정책, 에이전트 텔레메트리까지 — 코딩 에이전트를 도입하려는 팀이라면 참고할 만한 내용이에요."
 date: "2026-05-11"
 tags: ["AI", "OpenAI", "Codex", "보안", "에이전트"]
@@ -67,7 +68,8 @@ OpenAI가 이 글을 공개한 타이밍이 흥미로워요. Codex의 엔터프�
 - <strong>샌드박싱</strong>: 실행 환경을 격리해서 피해 범위를 제한
 - <strong>승인 메커니즘</strong>: 위험도별로 사용자 승인을 요구
 - <strong>네트워크 정책</strong>: 화이트리스트 기반으로 외부 접근을 제한
-- <strong>에이전트 텔레메트리</strong>: 에이전트의 행동과 추론 과정을 구조적으로 기록
+- <strong>에이전트 텔레메트리</strong>: 에이전트의 행동과 추론 과정을 구조적으로
+  기록
 
 각 레이어가 독립적으로 작동하면서 동시에 중첩돼요. 하나가 뚫려도 다른 레이어가 잡아주는 방어 깊이(defense in depth) 전략이에요.
 
