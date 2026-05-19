@@ -1,5 +1,6 @@
 ---
 title: "Oh My OpenCode v4.2.0: 안정성의 기초를 다지다"
+thumbnail: "/thumbnails/oh-my-opencode-v420-reliability.png"
 description: "OmO v4.2.0은 '안정성 기초 공사' 릴리스예요. 세션 API 레이스 컨디션 해결, LSP에서 MCP로 전환, 1M 컨텍스트 해제까지 — 357개 커밋이 담긴 대규모 패치예요."
 date: "2026-05-19"
 tags: ["AI", "Oh My OpenCode", "개발도구", "오픈소스"]
@@ -28,10 +29,14 @@ OmO 팀이 내놓은 해결책은 <strong>Prompt-Async-Gate</strong>라는 새�
 
 핵심 메커니즘은 이래요:
 
-- <strong>Reservation Map</strong>: 세션 ID를 키로 하는 예약 맵이에요. 하나의 세션에서 동시에 여러 프롬프트가 날아가는 걸 원천 차단해요
-- <strong>30초 디스패치 타임아웃</strong>: `Promise.race`를 써서 30초 안에 디스패치되지 않으면 자동으로 해제돼요. 무한 대기를 방지하는 안전장치예요
-- <strong>250ms 포스트 디스패치 홀드</strong>: 디스패치 직후에 250ms 동안 다음 프롬프트를 잡아둬요. 네트워크 지연으로 인한 미세한 타이밍 충돌까지 막는 거예요
-- <strong>TypeScript AST 감사</strong>: CI에서 게이트를 우회하는 코드가 있으면 빌드를 실패시켜요
+- <strong>Reservation Map</strong>: 세션 ID를 키로 하는 예약 맵이에요. 하나의
+  세션에서 동시에 여러 프롬프트가 날아가는 걸 원천 차단해요
+- <strong>30초 디스패치 타임아웃</strong>: `Promise.race`를 써서 30초 안에
+  디스패치되지 않으면 자동으로 해제돼요. 무한 대기를 방지하는 안전장치예요
+- <strong>250ms 포스트 디스패치 홀드</strong>: 디스패치 직후에 250ms 동안 다음
+  프롬프트를 잡아둬요. 네트워크 지연으로 인한 미세한 타이밍 충돌까지 막는 거예요
+- <strong>TypeScript AST 감사</strong>: CI에서 게이트를 우회하는 코드가 있으면
+  빌드를 실패시켜요
 
 마지막 AST 감사가 특히 인상적이에요. 런타임 보호만으로는 누군가 게이트를 안 거치고 직접 API를 호출하는 걸 막을 수 없거든요. <strong>코드 레벨에서 강제하는 정적 분석까지 넣은 건</strong> 같은 실수가 반복되지 않게 하겠다는 의지가 보여요. 이런 접근이 "The Reliability Foundation"이라는 이름에 어울리는 것 같아요.
 

@@ -1,5 +1,6 @@
 ---
 title: "Claude Code v2.1.142~144: 에이전트 플래그 대거 추가와 백그라운드 세션 개선"
+thumbnail: "/thumbnails/claude-code-v21142-144.png"
 description: "Claude Code가 일주일 사이에 세 번이나 업데이트됐어요. claude agents 플래그 추가, 플러그인 의존성 관리, 백그라운드 세션 /resume까지 — 에이전트 기능이 빠르게 성숙해지고 있어요."
 date: "2026-05-19"
 tags: ["AI", "Claude Code", "개발도구", "릴리스"]
@@ -43,8 +44,12 @@ Fast 모드의 기본 모델이 <strong>Opus 4.7</strong>로 올라갔어요. �
 
 ### 버그 수정
 
-- <strong>MCP_TOOL_TIMEOUT</strong>이 원격 서버에 적용되지 않던 문제가 수정됐어요. 로컬 서버에만 타임아웃이 걸리던 거였는데, 원격 MCP 서버를 쓰는 분들은 꼭 업데이트하세요.
-- <strong>백그라운드 세션</strong>이 기존에 생성해둔 git worktree를 인식하지 못하던 문제도 잡혔어요. worktree 기반으로 병렬 작업을 많이 하는 분들에게 중요한 수정이에요.
+- <strong>MCP_TOOL_TIMEOUT</strong>이 원격 서버에 적용되지 않던 문제가
+  수정됐어요. 로컬 서버에만 타임아웃이 걸리던 거였는데, 원격 MCP 서버를 쓰는
+  분들은 꼭 업데이트하세요.
+- <strong>백그라운드 세션</strong>이 기존에 생성해둔 git worktree를 인식하지
+  못하던 문제도 잡혔어요. worktree 기반으로 병렬 작업을 많이 하는 분들에게
+  중요한 수정이에요.
 
 ## v2.1.143 주요 변경
 
@@ -84,9 +89,12 @@ Windows 사용자를 위한 개선이에요. PowerShell 도구가 기본적으�
 
 ### 안정성 수정 모음
 
-- <strong>터미널 셀프 힐링</strong> — 출력이 깨졌을 때 자동으로 복구하는 기능 추가
-- <strong>긴 세션 점진적 손상</strong> — 매우 긴 세션에서 데이터가 서서히 깨지던 문제 수정
-- <strong>MCP paginated tools/list</strong> — 페이지네이션된 도구 목록에서 첫 페이지만 반환하던 버그 수정
+- <strong>터미널 셀프 힐링</strong> — 출력이 깨졌을 때 자동으로 복구하는 기능
+  추가
+- <strong>긴 세션 점진적 손상</strong> — 매우 긴 세션에서 데이터가 서서히 깨지던
+  문제 수정
+- <strong>MCP paginated tools/list</strong> — 페이지네이션된 도구 목록에서 첫
+  페이지만 반환하던 버그 수정
 - <strong>SDK/headless MCP 시작</strong> — 최대 2초 더 빨라졌어요
 - "extra usage"가 <strong>"usage credits"</strong>로 명칭 변경
 
