@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-05-11"
-post_count: 28
+last_covered: "2026-05-19"
+post_count: 29
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -41,6 +41,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - GPT-5 고블린 버그 공개, 특정 입력에서 일관성 무너지는 행동 분석 — [[2026-05-06-gpt-5-goblin-bug]]
 - Codex 보안 운영 전략 공개 — [[2026-05-11-openai-codex-security-operations]]
 - GPT-5.5-Cyber 공개, 보안 연구자를 위한 특화 모델 — [[2026-05-11-gpt-5-5-cyber]]
+- Dell 파트너십으로 Codex 기업 온프레미스 배포 지원 — [[2026-05-19-openai-dell-codex-enterprise]]
 
 ## 타임라인
 
@@ -70,6 +71,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-05-06 | GPT-5 고블린 버그 공개                        | [[2026-05-06-gpt-5-goblin-bug]]                 |
 | 2026-05-11 | Codex 보안 운영 전략 공개                     | [[2026-05-11-openai-codex-security-operations]] |
 | 2026-05-11 | GPT-5.5-Cyber 공개                            | [[2026-05-11-gpt-5-5-cyber]]                    |
+| 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십         | [[2026-05-19-openai-dell-codex-enterprise]]     |
 
 ## 관련 엔티티
 

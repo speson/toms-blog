@@ -1,7 +1,7 @@
 ---
 name: AI 에이전트
 type: topic
-post_count: 11
+post_count: 13
 key_entities:
   ["OpenAI Agents SDK", "Codex", "oh-my-agent", "Praktika", "OpenAI Harness팀"]
 tags: ["에이전트", "AI"]
@@ -25,19 +25,21 @@ tags: ["에이전트", "AI"]
 
 ## 관련 포스트
 
-| 날짜       | 제목                                            | 관점                                                             |
-| ---------- | ----------------------------------------------- | ---------------------------------------------------------------- |
-| 2026-01-25 | [[2026-01-25-openai-codex-agent-loop]]          | OpenAI Codex 에이전트 루프 기술적 해부                           |
-| 2026-01-26 | [[2026-01-26-praktika-ai-language-learning]]    | Praktika의 멀티 에이전트 언어 튜터 시스템                        |
-| 2026-01-29 | [[2026-01-29-openai-in-house-data-agent]]       | OpenAI 내부 데이터 에이전트 - GPT-5, Codex, Memory 활용          |
-| 2026-02-12 | [[2026-02-12-harness-engineering-codex]]        | OpenAI Harness팀의 100% Codex 개발 실험                          |
-| 2026-03-16 | [[2026-03-16-oh-my-agent]]                      | oh-my-agent - Clarification Debt 스코어링 기반 에이전트 제어     |
-| 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]]         | AI 에이전트 프로토콜 6가지 완벽 가이드                           |
-| 2026-04-16 | [[2026-04-16-agentic-engine-optimization]]      | AEO - AI 에이전트 시대의 새로운 최적화 전략                      |
-| 2026-04-16 | [[2026-04-16-openai-agents-sdk-evolution]]      | OpenAI Agents SDK 진화 - 네이티브 샌드박스, 모델 네이티브 하네스 |
-| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]] | Codex 보안 운영 전략 — 에이전트 보안 관리                        |
-| 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]              | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                |
-| 2026-05-11 | [[2026-05-11-anthropic-sdk-managed-agents]]     | Anthropic SDK Managed Agents — SDK 레벨 에이전트 관리            |
+| 날짜       | 제목                                             | 관점                                                              |
+| ---------- | ------------------------------------------------ | ----------------------------------------------------------------- |
+| 2026-01-25 | [[2026-01-25-openai-codex-agent-loop]]           | OpenAI Codex 에이전트 루프 기술적 해부                            |
+| 2026-01-26 | [[2026-01-26-praktika-ai-language-learning]]     | Praktika의 멀티 에이전트 언어 튜터 시스템                         |
+| 2026-01-29 | [[2026-01-29-openai-in-house-data-agent]]        | OpenAI 내부 데이터 에이전트 - GPT-5, Codex, Memory 활용           |
+| 2026-02-12 | [[2026-02-12-harness-engineering-codex]]         | OpenAI Harness팀의 100% Codex 개발 실험                           |
+| 2026-03-16 | [[2026-03-16-oh-my-agent]]                       | oh-my-agent - Clarification Debt 스코어링 기반 에이전트 제어      |
+| 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]]          | AI 에이전트 프로토콜 6가지 완벽 가이드                            |
+| 2026-04-16 | [[2026-04-16-agentic-engine-optimization]]       | AEO - AI 에이전트 시대의 새로운 최적화 전략                       |
+| 2026-04-16 | [[2026-04-16-openai-agents-sdk-evolution]]       | OpenAI Agents SDK 진화 - 네이티브 샌드박스, 모델 네이티브 하네스  |
+| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]]  | Codex 보안 운영 전략 — 에이전트 보안 관리                         |
+| 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]               | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                 |
+| 2026-05-11 | [[2026-05-11-anthropic-sdk-managed-agents]]      | Anthropic SDK Managed Agents — SDK 레벨 에이전트 관리             |
+| 2026-05-19 | [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] | Anthropic SDK 셀프 호스팅 샌드박스 — 에이전트 실행 환경 자체 구축 |
+| 2026-05-19 | [[2026-05-19-anthropic-acquires-stainless]]      | Stainless 인수 — SDK 자동 생성·MCP 커넥터 생성 내재화             |
 
 ## 관련 토픽
 

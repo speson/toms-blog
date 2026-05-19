@@ -1,7 +1,7 @@
 ---
 name: MCP (Model Context Protocol)
 type: topic
-post_count: 14
+post_count: 15
 key_entities:
   [
     "Anthropic",
@@ -32,22 +32,23 @@ AI 모델이 외부 도구·데이터에 접근하는 방식을 표준화한 프
 
 ## 관련 포스트
 
-| 날짜       | 제목                                    | 관점                                                                   |
-| ---------- | --------------------------------------- | ---------------------------------------------------------------------- |
-| 2026-01-29 | [[2026-01-29-oh-my-opencode-v317]]      | Oh My OpenCode v3.1.7 — MCP OAuth 2.1 완전 구현                        |
-| 2026-02-05 | [[2026-02-05-claude-code-v2130]]        | Claude Code v2.1.30 — MCP OAuth Dynamic Client Registration 개선       |
-| 2026-02-05 | [[2026-02-05-xcode-claude-agent-sdk]]   | Xcode + Claude Code MCP 통합 실전 가이드                               |
-| 2026-03-10 | [[2026-03-10-gpt-5-4]]                  | GPT-5.4의 MCP Atlas 벤치마크 — 36개 서버 연결 시 토큰 47% 절감         |
-| 2026-03-16 | [[2026-03-16-claude-code-v2174-76]]     | Claude Code v2.1.76 — MCP Elicitation 도입, 인터랙티브 워크플로우 가능 |
-| 2026-03-16 | [[2026-03-16-tidesurf]]                 | TideSurf 웹 에이전트의 MCP 서버 지원                                   |
-| 2026-03-23 | [[2026-03-23-linear-agent-skill]]       | Linear MCP를 CLI + Agent Skill로 대체 — 토큰 45% 절감                  |
-| 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]] | MCP부터 AG-UI까지 6가지 에이전트 프로토콜 완벽 가이드                  |
-| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]] | OpenAI Safety Bug Bounty의 MCP 리스크 항목                             |
-| 2026-03-30 | [[2026-03-30-claude-code-v2183-85]]     | Claude Code v2.1.83~85 — MCP 서버 환경변수 지원                        |
-| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]     | Claude Code v2.1.91 — MCP 500K 대용량 결과 지원                        |
-| 2026-04-14 | [[2026-04-14-claude-code-v2194-104]]    | Claude Code v2.1.97 — MCP 메모리 누수(시간당 50MB) 수정                |
-| 2026-04-14 | [[2026-04-14-opencode-v140-143]]        | OpenCode v1.4.0 — MCP OAuth 리다이렉트 URI 설정 지원                   |
-| 2026-04-16 | [[2026-04-16-claude-code-v21108-110]]   | Claude Code v2.1.110 — MCP 서버 연결 끊김 시 무한 대기 버그 수정       |
+| 날짜       | 제목                                        | 관점                                                                   |
+| ---------- | ------------------------------------------- | ---------------------------------------------------------------------- |
+| 2026-01-29 | [[2026-01-29-oh-my-opencode-v317]]          | Oh My OpenCode v3.1.7 — MCP OAuth 2.1 완전 구현                        |
+| 2026-02-05 | [[2026-02-05-claude-code-v2130]]            | Claude Code v2.1.30 — MCP OAuth Dynamic Client Registration 개선       |
+| 2026-02-05 | [[2026-02-05-xcode-claude-agent-sdk]]       | Xcode + Claude Code MCP 통합 실전 가이드                               |
+| 2026-03-10 | [[2026-03-10-gpt-5-4]]                      | GPT-5.4의 MCP Atlas 벤치마크 — 36개 서버 연결 시 토큰 47% 절감         |
+| 2026-03-16 | [[2026-03-16-claude-code-v2174-76]]         | Claude Code v2.1.76 — MCP Elicitation 도입, 인터랙티브 워크플로우 가능 |
+| 2026-03-16 | [[2026-03-16-tidesurf]]                     | TideSurf 웹 에이전트의 MCP 서버 지원                                   |
+| 2026-03-23 | [[2026-03-23-linear-agent-skill]]           | Linear MCP를 CLI + Agent Skill로 대체 — 토큰 45% 절감                  |
+| 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]]     | MCP부터 AG-UI까지 6가지 에이전트 프로토콜 완벽 가이드                  |
+| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]]     | OpenAI Safety Bug Bounty의 MCP 리스크 항목                             |
+| 2026-03-30 | [[2026-03-30-claude-code-v2183-85]]         | Claude Code v2.1.83~85 — MCP 서버 환경변수 지원                        |
+| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]         | Claude Code v2.1.91 — MCP 500K 대용량 결과 지원                        |
+| 2026-04-14 | [[2026-04-14-claude-code-v2194-104]]        | Claude Code v2.1.97 — MCP 메모리 누수(시간당 50MB) 수정                |
+| 2026-04-14 | [[2026-04-14-opencode-v140-143]]            | OpenCode v1.4.0 — MCP OAuth 리다이렉트 URI 설정 지원                   |
+| 2026-04-16 | [[2026-04-16-claude-code-v21108-110]]       | Claude Code v2.1.110 — MCP 서버 연결 끊김 시 무한 대기 버그 수정       |
+| 2026-05-19 | [[2026-05-19-anthropic-acquires-stainless]] | Stainless 인수 — MCP 커넥터 자동 생성 역량 내재화                      |
 
 ## 관련 토픽
 

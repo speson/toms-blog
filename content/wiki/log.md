@@ -9,6 +9,17 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-05-19] ingest | 5개 포스트 발행
+
+- [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] — Anthropic SDK에 셀프 호스팅 샌드박스 추가
+- [[2026-05-19-claude-code-v21142-144]] — Claude Code v2.1.142~144: 에이전트 플래그와 백그라운드 세션
+- [[2026-05-19-anthropic-acquires-stainless]] — Anthropic이 Stainless를 인수한 이유
+- [[2026-05-19-openai-dell-codex-enterprise]] — OpenAI + Dell: Codex가 기업 온프레미스로 간다
+- [[2026-05-19-oh-my-opencode-v420]] — Oh My OpenCode v4.2.0: 안정성의 기초를 다지다
+- 업데이트된 위키: entities/anthropic, entities/claude-code, entities/openai, entities/codex, entities/oh-my-opencode, topics/ai-agents, topics/ai-coding-tools, topics/ai-security, topics/mcp
+
+---
+
 ## [2026-05-11] ingest | OpenAI Codex 보안 운영 전략
 
 - [[2026-05-11-openai-codex-security-operations]] — OpenAI Codex 보안 운영 전략

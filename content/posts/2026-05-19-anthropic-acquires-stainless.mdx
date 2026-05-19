@@ -1,0 +1,63 @@
+---
+title: "Anthropic이 Stainless를 인수한 이유: SDK 자동 생성의 핵심을 품다"
+description: "Anthropic이 SDK 자동 생성 도구 Stainless를 인수했어요. OpenAI SDK도 만들던 그 회사를 가져간 거예요. 에이전트 시대를 위한 개발자 생태계 전략이 본격화되고 있어요."
+date: "2026-05-19"
+tags: ["AI", "Anthropic", "SDK", "MCP", "에이전트"]
+category: "ai-news"
+subcategory: "news"
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/news/anthropic-acquires-stainless"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Anthropic이 <strong>Stainless</strong>를 인수했어요. 5월 18일에 공식 발표가 나왔는데, 이건 단순한 인수합병 뉴스가 아니에요. AI 업계의 개발자 생태계 전략이 근본적으로 바뀌고 있다는 신호라고 생각해요.
+
+Stainless라는 이름이 생소할 수 있는데, 개발자라면 이미 이 회사의 산출물을 쓰고 있을 가능성이 높아요. Anthropic의 공식 SDK, OpenAI의 공식 SDK, Cloudflare의 SDK... 이 모든 게 Stainless가 자동 생성한 거예요. 수백 개 기업의 SDK가 이 회사 하나를 거쳐서 나온 거예요.
+
+## Stainless가 뭘 하는 회사인가
+
+Stainless는 2022년에 설립된 회사로, API 스펙을 넣으면 <strong>SDK, CLI, MCP 서버 커넥터</strong>를 자동으로 생성해주는 도구를 만들어요. 지원하는 언어도 TypeScript, Python, Go, Java, Kotlin까지 폭이 넓어요.
+
+창업자 Alex Rattray가 이번 인수에 대해 남긴 말이 인상적이에요. "SDK는 그것이 감싸는 API만큼의 정성을 받을 자격이 있다(SDKs deserve as much care as the APIs they wrap)." 실제로 SDK 품질이 개발자 경험에 미치는 영향은 엄청나거든요. API가 아무리 좋아도 SDK가 불편하면 개발자는 떠나요.
+
+Anthropic은 초기부터 Stainless를 써서 공식 SDK를 생성해왔어요. 지난주에 다뤘던 TypeScript SDK v0.95.0과 Python SDK v0.100.0의 동시 릴리즈가 가능했던 것도, Stainless의 자동 생성 파이프라인 덕분이었던 거예요. API 스펙 하나를 업데이트하면 여러 언어의 SDK가 동시에 나오는 구조니까요.
+
+## 왜 지금 인수했을까
+
+Anthropic의 플랫폼 엔지니어링 총괄 Katelyn Lesse가 핵심을 짚었어요. <strong>"에이전트는 연결할 수 있는 것만큼만 유용하다(Agents are only as useful as what they can connect to)."</strong>
+
+이 한 문장에 인수의 이유가 다 담겨 있다고 봐요. 지금 AI 업계의 프론티어는 "답변하는 모델"에서 "행동하는 에이전트"로 옮겨가고 있어요. 에이전트가 실제로 뭔가를 하려면 외부 서비스와 연결되어야 하고, 그 연결의 품질은 SDK와 커넥터가 결정해요.
+
+바로 며칠 전에 Anthropic SDK에 Managed Agents가 추가된 걸 다뤘었는데, 이번 인수와 연결하면 그림이 더 선명해져요. Managed Agents로 에이전트를 오케스트레이션하고, Stainless로 에이전트가 연결할 수 있는 커넥터를 대량 생산하겠다는 거예요. 양쪽을 다 가져간 거죠.
+
+## MCP와의 연결 고리
+
+특히 주목할 부분은 Stainless가 <strong>MCP 서버 커넥터</strong> 생성도 지원한다는 점이에요. Anthropic이 주도하고 있는 MCP(Model Context Protocol)는 에이전트가 외부 도구와 데이터에 접근하는 표준 프로토콜이에요.
+
+MCP 생태계가 성장하려면 다양한 서비스에 대한 MCP 서버가 많이 만들어져야 해요. 그런데 이걸 일일이 수작업으로 만드는 건 비효율적이죠. Stainless의 자동 생성 파이프라인이 있으면, API 스펙만 있으면 MCP 서버 커넥터를 자동으로 찍어낼 수 있어요. MCP 생태계의 확장 속도가 완전히 달라지는 거예요.
+
+Anthropic이 MCP라는 프로토콜을 만들고, 그 프로토콜 위의 커넥터를 대량 생산할 수 있는 도구까지 확보한 셈이에요. 플랫폼 전략의 수직 통합이에요.
+
+## 업계에 미치는 영향
+
+여기서 재미있는 점이 있어요. <strong>OpenAI의 공식 SDK도 Stainless가 생성한 거예요.</strong> 수백 개 기업이 Stainless에 의존하고 있어요. Anthropic이 이 회사를 인수했다는 건, 경쟁사들 입장에서는 꽤 불편한 상황이 될 수 있어요.
+
+물론 Stainless가 기존 고객 지원을 당장 중단하지는 않을 거예요. 하지만 장기적으로 보면, Anthropic 내부에 들어간 Stainless의 기술이 Anthropic 생태계에 최적화되는 방향으로 발전할 가능성이 높아요. OpenAI나 다른 회사들이 SDK 생성 도구를 자체 개발하거나 대안을 찾아야 하는 시점이 올 수도 있어요.
+
+이건 마치 클라우드 전쟁 초기에 핵심 인프라 도구를 확보하는 것과 비슷한 패턴이에요. 모델 성능 경쟁이 어느 정도 수렴하고 나면, 결국 개발자 생태계와 플랫폼의 완성도가 승부를 가르거든요.
+
+## 개발자 관점에서 보면
+
+단기적으로는 큰 변화가 없을 거예요. Stainless를 쓰고 있던 기업들은 계속 쓸 수 있을 거고, Anthropic SDK의 품질이 당장 급변하지도 않을 거예요.
+
+하지만 중장기적으로 보면, Anthropic의 개발자 도구 스택이 상당히 강력해질 거라고 봐요. SDK 자동 생성, MCP 커넥터 자동 생성, Managed Agents, 웹훅, Vault까지. 에이전트를 만들고 운영하는 데 필요한 거의 모든 것을 Anthropic이 직접 제공하는 구조가 만들어지고 있어요.
+
+개인적으로 이번 인수가 의미 있다고 보는 이유는, Anthropic이 "모델 회사"에서 "플랫폼 회사"로의 전환을 진지하게 추진하고 있다는 걸 보여주기 때문이에요. 모델만 잘 만드는 건 더 이상 충분하지 않아요. 그 모델 위에서 개발자들이 뭔가를 만들 수 있는 생태계를 누가 더 잘 구축하느냐가 다음 승부처예요.
+
+Alex Rattray의 말처럼, SDK는 API만큼의 정성을 받을 자격이 있어요. 그리고 이제 그 정성을 쏟을 수 있는 위치를 Anthropic이 확보한 거예요.
+
+---
+
+원문: [Anthropic acquires Stainless](https://www.anthropic.com/news/anthropic-acquires-stainless)

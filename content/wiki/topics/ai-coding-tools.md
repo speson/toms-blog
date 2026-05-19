@@ -1,7 +1,7 @@
 ---
 name: AI 코딩 도구
 type: topic
-post_count: 54
+post_count: 57
 key_entities:
   [
     "Claude Code",
@@ -91,6 +91,9 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-05-06 | [[2026-05-06-claude-code-v21128-131]]            | Claude Code v2.1.128~131 — 최신 릴리스 누적 개선 사항                      |
 | 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]               | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                          |
 | 2026-05-11 | [[2026-05-11-claude-usage-limits-spacex]]        | Claude 사용량 한도 2배 인상 + SpaceX 파트너십 — 인프라 확장                |
+| 2026-05-19 | [[2026-05-19-claude-code-v21142-144]]            | Claude Code v2.1.142~144 — 에이전트 플래그, 백그라운드 세션                |
+| 2026-05-19 | [[2026-05-19-oh-my-opencode-v420]]               | Oh My OpenCode v4.2.0 — 안정성 기초 개선                                   |
+| 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]      | OpenAI + Dell — Codex 기업 온프레미스 배포                                 |
 
 ## 관련 토픽
 

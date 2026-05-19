@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 10
+post_count: 11
 key_entities:
   [
     "Promptfoo",
@@ -42,6 +42,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]             | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
 | 2026-05-11 | [[2026-05-11-openai-codex-security-operations]] | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
 | 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                    | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
+| 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]     | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
 
 ## 관련 토픽
 
