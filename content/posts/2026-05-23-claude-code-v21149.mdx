@@ -1,5 +1,6 @@
 ---
 title: "Claude Code v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션, GFM 체크박스 렌더링"
+thumbnail: "/thumbnails/claude-code-v21149.png"
 description: "이번 릴리스에서 /usage가 한도 사용량을 스킬·서브에이전트·플러그인·MCP 서버별로 쪼개 보여줘요. 한도 관리에 직접 도움 되는 업데이트라 정리해 봤어요."
 date: "2026-05-23"
 tags: ["AI", "Claude Code", "개발도구", "릴리스"]
@@ -73,13 +74,23 @@ PowerShell 환경에서 네이티브 실행파일과 스크립트의 사전 승�
 
 이번에 잡힌 버그 중 일상 사용에 영향이 큰 것들을 골라봤어요.
 
-- <strong>find 명령어가 macOS 시스템 파일 테이블을 고갈시키는 문제</strong> 수정 — 큰 디렉토리 트리에서 발생하던 이슈
-- <strong>관리 설정 승인 다이얼로그가 시작 시 터미널을 멈추게 하던 문제</strong> 수정
-- <strong>/ultraplan과 원격 세션 생성이 "Could not capture uncommitted changes" 오류로 실패하던 문제</strong> 수정
+- <strong>find 명령어가 macOS 시스템 파일 테이블을 고갈시키는 문제</strong> 수정
+  — 큰 디렉토리 트리에서 발생하던 이슈
+- <strong>관리 설정 승인 다이얼로그가 시작 시 터미널을 멈추게 하던 문제</strong>
+  수정
+- <strong>
+    /ultraplan과 원격 세션 생성이 "Could not capture uncommitted changes" 오류로
+    실패하던 문제
+  </strong>
+  수정
 - <strong>경로에 공백이 들어가면 otelHeadersHelper가 실패하던 버그</strong> 수정
-- <strong>thinking 스피너가 도구 호출 사이에 계속 황색으로 남던 문제</strong> 수정
+- <strong>thinking 스피너가 도구 호출 사이에 계속 황색으로 남던 문제</strong>
+  수정
 - <strong>Ctrl+O로 트랜스크립트 뷰가 동결되던 문제</strong> 수정
-- <strong>프롬프트 히스토리 편집 시 화살표 키로 이동하면 변경사항이 사라지던 버그</strong> 수정
+- <strong>
+    프롬프트 히스토리 편집 시 화살표 키로 이동하면 변경사항이 사라지던 버그
+  </strong>
+  수정
 
 특히 thinking 스피너 색이 안 돌아오던 거랑 트랜스크립트 뷰 동결은 제가 자주 겪던 거였어요. 이런 게 다음 릴리스에서 자연스럽게 잡히는 게 Claude Code의 빠른 사이클의 장점이에요.
 

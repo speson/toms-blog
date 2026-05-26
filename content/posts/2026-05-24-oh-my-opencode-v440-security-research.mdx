@@ -1,5 +1,6 @@
 ---
 title: "Oh My OpenCode v4.4.0: /security-research — 5인 적대적 보안팀을 한 명령으로 띄우는 스킬"
+thumbnail: "/thumbnails/oh-my-opencode-v440-security-research.png"
 description: "Oh My OpenCode v4.4.0의 핵심은 /security-research 스킬이에요. 5명의 보안 전문가 에이전트를 한 명령으로 띄우고, 실제 익스플로잇 경로가 있는 취약점만 보고하도록 만든 새로운 팀 모드 활용 사례예요."
 date: "2026-05-24"
 tags: ["AI", "Oh My OpenCode", "개발도구", "오픈소스", "보안"]
@@ -23,11 +24,11 @@ Oh My OpenCode v4.4.0이 공개됐어요. 이번 릴리스의 핵심은 단 하�
 
 이 한 줄을 입력하면 5명 팀이 가동돼요. 구성은 이렇게 짜여 있어요.
 
-- <strong>3명의 취약점 헌터 (Vulnerability Hunters)</strong>
-  - Surface 헌터 — 표면적 취약점(XSS, CSRF, 잘못된 검증 등)
-  - Auth/Data 헌터 — 인증·인가·데이터 보안 이슈
-  - Runtime/Supply Chain 헌터 — 런타임 및 공급망 취약점
-- <strong>2명의 PoC 엔지니어 (PoC Engineers)</strong> — 발견된 취약점의 실제 공격 코드 작성
+- <strong>3명의 취약점 헌터 (Vulnerability Hunters)</strong>- Surface 헌터 —
+  표면적 취약점(XSS, CSRF, 잘못된 검증 등) - Auth/Data 헌터 — 인증·인가·데이터
+  보안 이슈 - Runtime/Supply Chain 헌터 — 런타임 및 공급망 취약점
+- <strong>2명의 PoC 엔지니어 (PoC Engineers)</strong> — 발견된 취약점의 실제
+  공격 코드 작성
 
 각 헌터가 자기 전문 영역만 깊게 파고, 발견한 게 있으면 PoC 엔지니어가 실제 공격 시나리오를 만들어 검증하는 구조예요. <strong>역할 분담이 뚜렷한 보안 팀을 그대로 에이전트로 옮긴 형태</strong>죠.
 
@@ -35,7 +36,10 @@ Oh My OpenCode v4.4.0이 공개됐어요. 이번 릴리스의 핵심은 단 하�
 
 이 스킬에서 가장 인상적인 부분이에요. 릴리스 노트에 명시된 원칙이 있어요.
 
-<strong>"Every finding is calibrated by actual exploitability — no severity without an attack path."</strong>
+<strong>
+  "Every finding is calibrated by actual exploitability — no severity without an
+  attack path."
+</strong>
 
 번역하면 "모든 발견은 실제 익스플로잇 가능성으로 보정한다 — 공격 경로 없는 심각도는 없다"예요. 무슨 뜻이냐면, <strong>이론적으로는 위험해 보이지만 실제로 공격이 가능한 경로가 없는 경우는 보고에서 빼버린다</strong>는 거예요.
 
@@ -61,8 +65,8 @@ Oh My OpenCode v4.4.0이 공개됐어요. 이번 릴리스의 핵심은 단 하�
 // oh-my-opencode.jsonc
 {
   "team_mode": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }
 ```
 
@@ -78,9 +82,12 @@ Oh My OpenCode v4.4.0이 공개됐어요. 이번 릴리스의 핵심은 단 하�
 
 제 생각엔 이 스킬은 다음 시나리오에서 특히 가치가 있어요.
 
-- <strong>출시 전 보안 점검</strong> — 코드 동결 직전에 한 번 돌려서 P1급 취약점 찾기
-- <strong>PR 리뷰 보조</strong> — 보안 민감 코드(인증, 결제, 권한 관리 등)에 대한 PR을 머지하기 전에 추가 검토
-- <strong>레거시 코드베이스 감사</strong> — 오래된 코드의 보안 부채를 한 번에 훑어보기
+- <strong>출시 전 보안 점검</strong> — 코드 동결 직전에 한 번 돌려서 P1급 취약점
+  찾기
+- <strong>PR 리뷰 보조</strong> — 보안 민감 코드(인증, 결제, 권한 관리 등)에
+  대한 PR을 머지하기 전에 추가 검토
+- <strong>레거시 코드베이스 감사</strong> — 오래된 코드의 보안 부채를 한 번에
+  훑어보기
 
 다만 한계도 명확해요. AI 기반이라 <strong>학습 데이터에 없는 새로운 공격 기법은 발견하지 못할 수 있어요</strong>. 그리고 실제 침투 테스트(red team) 수준의 깊이는 아직 못 따라가요. 어디까지나 "1차 자동 점검"이라는 위치로 보는 게 맞아요.
 
