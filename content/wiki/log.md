@@ -9,6 +9,17 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-05-26] ingest | 5개 포스트 발행
+
+- [[2026-05-20-gemini-3-5-frontier]] — Gemini 3.5 출시: frontier intelligence with action
+- [[2026-05-20-openai-disproves-geometry-conjecture]] — OpenAI 모델이 80년 묵은 수학 추측을 반증
+- [[2026-05-22-virgin-atlantic-codex]] — Virgin Atlantic이 Codex로 모바일 앱을 재출시한 이야기
+- [[2026-05-23-claude-code-v21149]] — Claude Code v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션
+- [[2026-05-24-oh-my-opencode-v440-security-research]] — Oh My OpenCode v4.4.0: /security-research 5인 보안팀 스킬
+- 업데이트된 위키: entities/gemini, entities/google, entities/openai, entities/codex, entities/claude-code, entities/oh-my-opencode, topics/ai-coding-tools, topics/ai-security, topics/ai-agents, topics/llm-models, topics/open-source-ai
+
+---
+
 ## [2026-05-19] ingest | 5개 포스트 발행
 
 - [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] — Anthropic SDK에 셀프 호스팅 샌드박스 추가

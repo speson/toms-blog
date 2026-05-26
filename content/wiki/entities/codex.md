@@ -3,8 +3,8 @@ name: OpenAI Codex
 type: entity
 aliases: [Codex, Codex CLI, Codex Security]
 first_covered: "2026-01-25"
-last_covered: "2026-05-19"
-post_count: 11
+last_covered: "2026-05-22"
+post_count: 12
 related_entities: [openai, chatgpt, gpt-5, claude-code]
 tags: [AI, OpenAI, Codex, 코딩, 에이전트, 보안]
 ---
@@ -28,22 +28,24 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 - Codex 대규모 업데이트, 에이전트 기능 전방위 확장 — [[2026-04-20-codex-for-everything]]
 - Codex 보안 운영 전략 공개, 프로덕션 환경 보안 가이드 — [[2026-05-11-openai-codex-security-operations]]
 - Dell 파트너십으로 Codex 기업 온프레미스 배포 지원, 엔터프라이즈 시장 본격 진출 — [[2026-05-19-openai-dell-codex-enterprise]]
+- Virgin Atlantic 케이스: Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건으로 휴가 시즌 마감 달성 — [[2026-05-22-virgin-atlantic-codex]]
 
 ## 타임라인
 
-| 날짜       | 내용                                    | 포스트                                          |
-| ---------- | --------------------------------------- | ----------------------------------------------- |
-| 2026-01-25 | Codex CLI 에이전트 루프 기술 공개       | [[2026-01-25-openai-codex-agent-loop]]          |
-| 2026-01-29 | GPT-5·Codex·Memory 데이터 에이전트 공개 | [[2026-01-29-openai-in-house-data-agent]]       |
-| 2026-02-03 | Codex macOS 앱 출시                     | [[2026-02-03-openai-codex-app]]                 |
-| 2026-02-12 | Harness팀 Codex 전용 개발 사례 공개     | [[2026-02-12-harness-engineering-codex]]        |
-| 2026-02-13 | GPT-5.3-Codex-Spark 발표                | [[2026-02-13-gpt53-codex-spark]]                |
-| 2026-02-23 | Sora·Codex 무제한 액세스 아키텍처 공개  | [[2026-02-23-openai-beyond-rate-limits]]        |
-| 2026-03-10 | Codex Security 리서치 프리뷰 공개       | [[2026-03-10-codex-security-preview]]           |
-| 2026-03-23 | Astral 인수(Codex 성장 목적)            | [[2026-03-23-openai-acquires-astral]]           |
-| 2026-04-20 | Codex 대규모 업데이트                   | [[2026-04-20-codex-for-everything]]             |
-| 2026-05-11 | Codex 보안 운영 전략 공개               | [[2026-05-11-openai-codex-security-operations]] |
-| 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십   | [[2026-05-19-openai-dell-codex-enterprise]]     |
+| 날짜       | 내용                                      | 포스트                                          |
+| ---------- | ----------------------------------------- | ----------------------------------------------- |
+| 2026-01-25 | Codex CLI 에이전트 루프 기술 공개         | [[2026-01-25-openai-codex-agent-loop]]          |
+| 2026-01-29 | GPT-5·Codex·Memory 데이터 에이전트 공개   | [[2026-01-29-openai-in-house-data-agent]]       |
+| 2026-02-03 | Codex macOS 앱 출시                       | [[2026-02-03-openai-codex-app]]                 |
+| 2026-02-12 | Harness팀 Codex 전용 개발 사례 공개       | [[2026-02-12-harness-engineering-codex]]        |
+| 2026-02-13 | GPT-5.3-Codex-Spark 발표                  | [[2026-02-13-gpt53-codex-spark]]                |
+| 2026-02-23 | Sora·Codex 무제한 액세스 아키텍처 공개    | [[2026-02-23-openai-beyond-rate-limits]]        |
+| 2026-03-10 | Codex Security 리서치 프리뷰 공개         | [[2026-03-10-codex-security-preview]]           |
+| 2026-03-23 | Astral 인수(Codex 성장 목적)              | [[2026-03-23-openai-acquires-astral]]           |
+| 2026-04-20 | Codex 대규모 업데이트                     | [[2026-04-20-codex-for-everything]]             |
+| 2026-05-11 | Codex 보안 운영 전략 공개                 | [[2026-05-11-openai-codex-security-operations]] |
+| 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십     | [[2026-05-19-openai-dell-codex-enterprise]]     |
+| 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시 | [[2026-05-22-virgin-atlantic-codex]]            |
 
 ## 관련 엔티티
 

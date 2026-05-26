@@ -1,0 +1,94 @@
+---
+title: "Claude Code v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션, GFM 체크박스 렌더링"
+description: "이번 릴리스에서 /usage가 한도 사용량을 스킬·서브에이전트·플러그인·MCP 서버별로 쪼개 보여줘요. 한도 관리에 직접 도움 되는 업데이트라 정리해 봤어요."
+date: "2026-05-23"
+tags: ["AI", "Claude Code", "개발도구", "릴리스"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.149"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Claude Code v2.1.149가 공개됐어요. 최근 [[2026-05-19-claude-code-v21142-144]]에서 에이전트 플래그 대거 추가를 다뤘는데, 이번 릴리스는 그보다는 <strong>사용자가 체감하는 일상적인 기능 개선</strong>이 중심이에요. 그중 `/usage` 카테고리별 분석은 한도 관리하는 분들에게 굉장히 실용적이라 따로 짚어볼게요.
+
+## /usage 카테고리별 분석 — 한도 어디서 빠지는지 보인다
+
+이번 릴리스의 핵심이에요. 기존 `/usage`는 사용량 총량만 보여줬는데, 이제 <strong>카테고리별로 쪼개진 분석</strong>이 나와요.
+
+- <strong>Skills</strong>
+- <strong>Subagents</strong>
+- <strong>Plugins</strong>
+- <strong>MCP 서버별 비용</strong>
+
+저는 평소에 MCP 서버를 4~5개 띄워놓고 작업하는데, 한도가 빨리 떨어질 때마다 "이게 어디서 새는 거지?" 싶었어요. 이제는 그 답이 바로 보여요. 무거운 MCP 서버 하나가 토큰을 다 잡아먹고 있다거나, 자주 안 쓰는 스킬이 컨텍스트를 점유하고 있다거나 — 이런 걸 데이터로 확인할 수 있게 된 거죠.
+
+팁: Pro 한도(주간)에 가까워질 때마다 `/usage`를 돌려서 어디서 비용이 새는지 살펴보고, 무거운 항목을 일시적으로 비활성화하는 식으로 운영하면 한도 관리가 훨씬 수월해져요.
+
+## /diff 키보드 내비게이션 — 마우스에서 해방
+
+`/diff`에 키보드 내비게이션이 추가됐어요. vim 사용자라면 반가운 변화일 거예요.
+
+- <strong>화살표 키, j/k</strong> — 한 줄씩 스크롤
+- <strong>PgUp/PgDn</strong> — 페이지 단위 이동
+- <strong>Space</strong> — 점프
+- <strong>Home/End</strong> — 처음/끝으로 이동
+
+긴 diff를 읽을 때 마우스 휠을 굴리는 게 손에 안 맞았는데, 이제 키보드만으로 빠르게 훑을 수 있어요. 사소해 보이지만 매일 쓰는 기능이라 누적 체감이 크더라고요.
+
+## GFM 체크박스 렌더링
+
+마크다운에서 체크박스를 제대로 렌더링하기 시작했어요.
+
+```markdown
+- [ ] 할 일
+- [x] 완료
+```
+
+이게 그동안은 그냥 점으로만 표시됐는데, 이제 정상적으로 체크박스 형태로 보여요. 사소하지만 PR 설명이나 작업 목록을 다룰 때 시각적으로 훨씬 명확해졌어요.
+
+## 엔터프라이즈 설정 — allowAllClaudeAiMcps
+
+기업 환경에서 쓰는 분들을 위한 옵션이에요. `managed-mcp.json`으로 관리하던 MCP 연결과 함께 <strong>claude.ai 클라우드 MCP 커넥터도 같이 로드</strong>할 수 있게 됐어요. `allowAllClaudeAiMcps`라는 설정이 새로 추가됐는데, IT 관리자가 사내 정책에 맞게 MCP 사용을 통제하기 좋아진 셈이에요.
+
+## 보안 수정 — PowerShell, git worktree 권한
+
+보안 관련 수정이 여러 건 있어요. 그중 눈에 띄는 것들이에요.
+
+<strong>PowerShell 권한 우회 차단</strong>
+
+`cd..`, `cd\`, `cd~`, `X:` 같은 PowerShell 내장 cd 함수가 권한 검사를 우회하던 문제가 잡혔어요. Windows 환경에서 Claude Code를 쓰는 분들은 꼭 업데이트하세요.
+
+<strong>git worktree 샌드박스 권한 정정</strong>
+
+git worktree 모드에서 공유되는 `.git` 디렉토리 권한이 너무 넓게 잡혀 있었는데, 이제 `hooks/`와 `config`는 거부되도록 좁혀졌어요. worktree 기반 작업의 보안 경계가 한 단계 강화된 거예요.
+
+<strong>PowerShell prefix/wildcard 규칙</strong>
+
+PowerShell 환경에서 네이티브 실행파일과 스크립트의 사전 승인 규칙이 제대로 동작하도록 수정됐어요.
+
+## 자잘하지만 체감 큰 버그 수정들
+
+이번에 잡힌 버그 중 일상 사용에 영향이 큰 것들을 골라봤어요.
+
+- <strong>find 명령어가 macOS 시스템 파일 테이블을 고갈시키는 문제</strong> 수정 — 큰 디렉토리 트리에서 발생하던 이슈
+- <strong>관리 설정 승인 다이얼로그가 시작 시 터미널을 멈추게 하던 문제</strong> 수정
+- <strong>/ultraplan과 원격 세션 생성이 "Could not capture uncommitted changes" 오류로 실패하던 문제</strong> 수정
+- <strong>경로에 공백이 들어가면 otelHeadersHelper가 실패하던 버그</strong> 수정
+- <strong>thinking 스피너가 도구 호출 사이에 계속 황색으로 남던 문제</strong> 수정
+- <strong>Ctrl+O로 트랜스크립트 뷰가 동결되던 문제</strong> 수정
+- <strong>프롬프트 히스토리 편집 시 화살표 키로 이동하면 변경사항이 사라지던 버그</strong> 수정
+
+특히 thinking 스피너 색이 안 돌아오던 거랑 트랜스크립트 뷰 동결은 제가 자주 겪던 거였어요. 이런 게 다음 릴리스에서 자연스럽게 잡히는 게 Claude Code의 빠른 사이클의 장점이에요.
+
+## 총평
+
+v2.1.149는 한마디로 <strong>"매일 쓰는 사람을 위한 QoL 릴리스"</strong>예요. 가장 큰 변화는 `/usage` 카테고리별 분석이고, 그 외는 자잘하지만 누적 체감이 큰 개선들이에요. 보안 수정도 여러 건 들어갔으니 사용 중인 분이라면 업데이트를 미루지 말고 진행하는 게 좋겠어요.
+
+참고: Claude Code의 한도 관리가 점점 디테일해지고 있어요. [[2026-05-11-claude-usage-limits-spacex]]에서 다룬 한도 2배 인상과 함께 보면, Anthropic이 사용자에게 한도 자체보다 <strong>"한도 안에서 어떻게 효율적으로 쓸지"</strong>의 도구를 제공하는 방향으로 가고 있는 게 보여요.
+
+---
+
+원문: [Claude Code v2.1.149 Release Notes](https://github.com/anthropics/claude-code/releases/tag/v2.1.149)

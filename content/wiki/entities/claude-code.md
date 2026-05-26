@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-05-19"
-post_count: 25
+last_covered: "2026-05-23"
+post_count: 26
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -40,6 +40,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 - v2.1.128~131: 최신 릴리스 누적 개선 사항 — [[2026-05-06-claude-code-v21128-131]]
 - Claude 사용량 한도 2배 인상, SpaceX 파트너십으로 인프라 확장 — [[2026-05-11-claude-usage-limits-spacex]]
 - v2.1.142~144: 에이전트 플래그와 백그라운드 세션 기능 추가 — [[2026-05-19-claude-code-v21142-144]]
+- v2.1.149: /usage 카테고리별 분석(스킬·서브에이전트·플러그인·MCP), /diff 키보드 내비게이션, GFM 체크박스 렌더링 — [[2026-05-23-claude-code-v21149]]
 
 ## 타임라인
 
@@ -68,6 +69,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 | 2026-05-06 | v2.1.128~131: 최신 릴리스 누적 개선                           | [[2026-05-06-claude-code-v21128-131]]            |
 | 2026-05-11 | Claude 사용량 한도 2배 인상 + SpaceX 파트너십                 | [[2026-05-11-claude-usage-limits-spacex]]        |
 | 2026-05-19 | v2.1.142~144: 에이전트 플래그, 백그라운드 세션                | [[2026-05-19-claude-code-v21142-144]]            |
+| 2026-05-23 | v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션     | [[2026-05-23-claude-code-v21149]]                |
 
 ## 관련 엔티티
 

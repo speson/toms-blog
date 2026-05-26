@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 11
+post_count: 12
 key_entities:
   [
     "Promptfoo",
@@ -28,21 +28,23 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 - OpenAI Safety Bug Bounty는 기존 보안 취약점 바운티와 별개로, 프롬프트 인젝션·에이전트 하이재킹·데이터 유출 등 AI 특유의 리스크를 신고하면 최대 $7,500 지급
 - Cloudflare Turnstile이 ChatGPT 입력 시 브라우저 지문 28개, 네트워크 정보 5개, React 앱 상태 3개 등 총 55개 속성을 수집한다는 사실이 보안 연구자에 의해 공개. 봇 방어와 프라이버시의 경계 문제를 재조명
 - Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스에서 PowerShell 취약점 4가지와 원격 정책 강제(fail-closed) 기능이 추가됨. AI 코딩 도구에 대한 엔터프라이즈 보안 요구가 구체화되고 있음
+- Oh My OpenCode v4.4.0의 /security-research가 5인 적대적 보안팀(취약점 헌터 3 + PoC 엔지니어 2)을 한 명령으로 띄우는 첫 도메인 특화 팀 모드 스킬. CWE/OWASP WSTG·ASVS/CVSS v4.0 채택, "실제 익스플로잇 경로 없는 심각도는 보고하지 않음" 원칙으로 오탐 최소화
 
 ## 관련 포스트
 
-| 날짜       | 제목                                            | 관점                                                                 |
-| ---------- | ----------------------------------------------- | -------------------------------------------------------------------- |
-| 2026-02-19 | [[2026-02-19-prompt-injection-guide]]           | 프롬프트 인젝션 유형·방어 전략 완전 가이드                           |
-| 2026-03-10 | [[2026-03-10-openai-acquires-promptfoo]]        | OpenAI의 AI 보안 테스트 내재화 — Promptfoo 인수                      |
-| 2026-03-10 | [[2026-03-10-codex-security-preview]]           | Codex Security 리서치 프리뷰 — AI 취약점 탐지·패치 에이전트          |
-| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]]         | OpenAI Safety Bug Bounty — AI 전용 취약점 신고 프로그램              |
-| 2026-04-01 | [[2026-04-01-chatgpt-cloudflare-react-state]]   | Cloudflare Turnstile의 55개 속성 수집 실태 — 프라이버시 vs 봇 방어   |
-| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]             | Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스                    |
-| 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]             | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
-| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]] | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
-| 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                    | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
-| 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]     | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
+| 날짜       | 제목                                                 | 관점                                                                 |
+| ---------- | ---------------------------------------------------- | -------------------------------------------------------------------- |
+| 2026-02-19 | [[2026-02-19-prompt-injection-guide]]                | 프롬프트 인젝션 유형·방어 전략 완전 가이드                           |
+| 2026-03-10 | [[2026-03-10-openai-acquires-promptfoo]]             | OpenAI의 AI 보안 테스트 내재화 — Promptfoo 인수                      |
+| 2026-03-10 | [[2026-03-10-codex-security-preview]]                | Codex Security 리서치 프리뷰 — AI 취약점 탐지·패치 에이전트          |
+| 2026-03-30 | [[2026-03-30-openai-safety-bug-bounty]]              | OpenAI Safety Bug Bounty — AI 전용 취약점 신고 프로그램              |
+| 2026-04-01 | [[2026-04-01-chatgpt-cloudflare-react-state]]        | Cloudflare Turnstile의 55개 속성 수집 실태 — 프라이버시 vs 봇 방어   |
+| 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]                  | Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스                    |
+| 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]                  | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
+| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]]      | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
+| 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                         | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
+| 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]          | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
+| 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]] | OMOC /security-research — 5인 적대적 보안팀 스킬                     |
 
 ## 관련 토픽
 

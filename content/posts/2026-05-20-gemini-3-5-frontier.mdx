@@ -1,0 +1,79 @@
+---
+title: "Gemini 3.5 출시: 'frontier intelligence with action', 에이전트 작업에 초점을 맞춘 모델"
+description: "Google I/O 2026에서 Gemini 3.5가 공개됐어요. 'action'이라는 키워드가 인상적인데, 단순 대화가 아니라 장기 에이전트 작업을 빠르게 굴리는 데 최적화된 모델이에요."
+date: "2026-05-20"
+tags: ["AI", "Google", "Gemini", "에이전트"]
+category: "ai-news"
+source: "google"
+sourceUrl: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+Google I/O 2026 키노트에서 가장 비중 있게 다뤄진 발표가 바로 <strong>Gemini 3.5</strong>예요. 1년 전쯤 Gemini 3 출시 때 "frontier intelligence"라는 표현을 썼는데, 이번에는 한 단어가 추가됐어요. <strong>"frontier intelligence with action"</strong>. 모델이 단순히 똑똑한 데 그치지 않고, 멀티스텝 작업을 끝까지 굴려서 결과를 내는 데 초점을 맞췄다는 메시지예요.
+
+이번 발표의 핵심을 정리해 볼게요.
+
+## 라인업: Flash 먼저, Pro는 다음 달
+
+Gemini 3.5는 이전 세대와 마찬가지로 라인업으로 출시돼요.
+
+- <strong>Gemini 3.5 Flash</strong> — 오늘 바로 사용 가능
+- <strong>Gemini 3.5 Pro</strong> — 다음 달 출시 예정 (현재 Google 내부에서 사용 중)
+
+이번에 Flash를 먼저 띄운 게 흥미로워요. Google이 강조하는 메시지가 "frontier-level intelligence at exceptional speed"인데, <strong>Flash가 이미 다른 회사의 프런티어 모델 수준의 지능을 갖췄으면서 속도는 4배 빠르다</strong>는 주장을 하고 있거든요. 가격도 경쟁 모델 대비 약 50% 저렴하다고 해요. Pro를 굳이 기다리지 않아도 충분히 일감을 굴릴 수 있다는 자신감이 느껴져요.
+
+## 벤치마크 — 코딩과 에이전트 작업에 강점
+
+발표에 인용된 벤치마크 수치들이에요.
+
+- <strong>Terminal-Bench 2.1: 76.2%</strong> — 터미널 기반 에이전트 작업 평가
+- <strong>GDPval-AA: 1656 Elo</strong> — 일반 작업 평가
+- <strong>MCP Atlas: 83.6%</strong> — MCP 도구 호출 능력
+- <strong>CharXiv Reasoning: 84.2%</strong> — 멀티모달 추론
+- 출력 속도: 경쟁 프런티어 모델 대비 4배
+
+Terminal-Bench와 MCP Atlas 점수가 같이 강조된 게 의미심장해요. "에이전트로서 도구를 잘 호출하고, 터미널 환경에서 작업을 끝까지 굴린다"는 게 이번 모델의 정체성이라는 메시지예요. SWE-bench가 [[2026-04-27-swe-bench-limitations]]에서 다뤘듯이 변별력을 잃어가고 있는데, Google은 Terminal-Bench 같은 에이전트 중심 벤치마크로 무게중심을 옮긴 거죠.
+
+## 'Action'이 의미하는 것 — 장기 에이전트 작업
+
+발표문에서 "action"이라는 단어가 반복적으로 등장하는데, 정확히 무슨 뜻일까요. Google이 든 예시들을 보면 명확해져요.
+
+- <strong>코딩 작업</strong> — 단순 코드 생성이 아니라, 요구사항부터 PR 머지까지 끝까지 굴리는 작업
+- <strong>금융 문서 준비</strong> — 감사, 보고서 작성 등 여러 자료를 종합해야 하는 작업
+- <strong>자산 카테고라이징</strong> — 대량의 데이터를 분류·정리하는 반복 작업
+- <strong>고객 온보딩</strong> — 신규 고객 등록 절차를 자동화하는 워크플로우
+
+공통점은 "한 번의 호출로 답이 나오는 게 아니라, 여러 단계를 거쳐서 끝까지 가야 결과가 나오는 작업"이에요. 이런 작업에서는 <strong>모델 한 번의 IQ보다 끈기 있게 멀티스텝을 굴리는 능력</strong>이 더 중요한데, 3.5 Flash가 그쪽에 최적화돼 있다는 주장이에요.
+
+## 어디서 쓸 수 있나
+
+3.5 Flash는 출시와 동시에 여러 곳에 동시 배포됐어요.
+
+- Gemini 앱 (글로벌)
+- Google Search AI Mode (글로벌)
+- <strong>Google Antigravity</strong> — I/O 2026에서 새로 발표된 에이전트 플랫폼
+- Gemini API (Google AI Studio, Android Studio)
+- <strong>Gemini Enterprise Agent Platform</strong>
+- Gemini Enterprise
+
+개발자가 가장 빨리 접할 수 있는 경로는 <strong>Gemini API</strong>예요. 기존에 Gemini 3.1을 쓰고 있던 분이라면 모델 ID만 갈아끼우면 바로 테스트해 볼 수 있어요. Antigravity는 별도 플랫폼이라 따로 다뤄볼 만한 주제예요.
+
+## 직전 세대와 비교해서
+
+Gemini 3.1 Flash-Lite를 [[2026-03-05-gemini-3-1-flash-lite]]에서 다룬 적이 있어요. 그때 키워드는 "가장 빠르고 저렴한 Gemini 3"이었는데, 이번 3.5 Flash는 그보다 한 단계 위 포지션이에요. <strong>속도와 가격은 Flash 라인의 강점을 유지하면서, 지능은 Pro 수준에 가깝게 끌어올린 모델</strong>이라고 보면 돼요.
+
+이전 세대 Gemini 3 Deep Think가 ARC-AGI-2에서 84.6%를 찍었던 게 [[2026-02-13-gemini-3-deep-think]] 시점이었는데, 3.5 시대에는 추론 능력보다 에이전트 실행력 쪽에 무게중심이 옮겨간 게 보여요. 시장이 "더 똑똑한 모델"에서 "더 일을 잘 끝내는 모델"로 평가 기준을 옮기고 있는 흐름과 일치해요.
+
+## 총평
+
+Gemini 3.5는 한마디로 <strong>"에이전트 시대의 Flash"</strong>예요. 비싸고 느린 프런티어 모델 대신, 빠르고 저렴하면서도 멀티스텝 작업을 끝까지 굴릴 수 있는 모델을 만든다는 방향이 명확해요. Anthropic의 Claude Haiku, OpenAI의 GPT-5 mini 같은 경쟁 라인업과 직접 부딪치는 포지션이 됐어요.
+
+참고: Pro가 나오기 전까지는 Flash로 충분한 작업이 많아요. API 비용이 부담되는 경우 3.5 Flash로 옮겨보는 걸 추천해요. 특히 MCP 도구를 많이 호출하는 에이전트 워크플로우라면 체감 차이가 클 거예요.
+
+다음 달에 Pro가 나오면 더 종합적인 비교가 가능해질 거예요. 일단 Flash부터 손에 익혀두는 게 좋겠어요.
+
+---
+
+원문: [Gemini 3.5: frontier intelligence with action](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/)

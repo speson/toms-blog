@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-05-19"
-post_count: 29
+last_covered: "2026-05-22"
+post_count: 31
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -42,36 +42,40 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Codex 보안 운영 전략 공개 — [[2026-05-11-openai-codex-security-operations]]
 - GPT-5.5-Cyber 공개, 보안 연구자를 위한 특화 모델 — [[2026-05-11-gpt-5-5-cyber]]
 - Dell 파트너십으로 Codex 기업 온프레미스 배포 지원 — [[2026-05-19-openai-dell-codex-enterprise]]
+- OpenAI 모델이 80년 묵은 이산기하학 추측을 반증, AI가 수학적 발견의 주체로 등장한 첫 사례 — [[2026-05-20-openai-disproves-geometry-conjecture]]
+- Virgin Atlantic이 Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건 달성 — [[2026-05-22-virgin-atlantic-codex]]
 
 ## 타임라인
 
-| 날짜       | 내용                                          | 포스트                                          |
-| ---------- | --------------------------------------------- | ----------------------------------------------- |
-| 2026-01-23 | ChatGPT PostgreSQL 스케일링 아키텍처 공개     | [[2026-01-23-openai-postgresql-scaling]]        |
-| 2026-01-25 | Codex 에이전트 루프 기술 공개                 | [[2026-01-25-openai-codex-agent-loop]]          |
-| 2026-01-28 | EU Economic Blueprint 2.0 발표                | [[2026-01-28-openai-eu-blueprint]]              |
-| 2026-01-29 | 사내 데이터 에이전트(GPT-5·Codex·Memory) 공개 | [[2026-01-29-openai-in-house-data-agent]]       |
-| 2026-02-03 | Codex macOS 앱 출시                           | [[2026-02-03-openai-codex-app]]                 |
-| 2026-02-12 | ChatGPT 광고 테스트 시작                      | [[2026-02-12-chatgpt-ads-testing]]              |
-| 2026-02-13 | GPT-5.3-Codex-Spark 발표                      | [[2026-02-13-gpt53-codex-spark]]                |
-| 2026-02-19 | ChatGPT Lockdown Mode 도입                    | [[2026-02-19-chatgpt-lockdown-mode]]            |
-| 2026-02-23 | Beyond Rate Limits 아키텍처 공개              | [[2026-02-23-openai-beyond-rate-limits]]        |
-| 2026-03-05 | GPT-5.3 Instant 출시                          | [[2026-03-05-gpt-5-3-instant]]                  |
-| 2026-03-10 | Promptfoo 인수 발표                           | [[2026-03-10-openai-acquires-promptfoo]]        |
-| 2026-03-10 | GPT-5.4 출시                                  | [[2026-03-10-gpt-5-4]]                          |
-| 2026-03-23 | GPT-5.4 mini·nano 출시                        | [[2026-03-23-gpt-5-4-mini-nano]]                |
-| 2026-03-23 | Astral(uv, ruff) 인수 발표                    | [[2026-03-23-openai-acquires-astral]]           |
-| 2026-03-30 | Model Spec 설계 철학 공개                     | [[2026-03-30-openai-model-spec]]                |
-| 2026-03-30 | Safety Bug Bounty 프로그램 시작               | [[2026-03-30-openai-safety-bug-bounty]]         |
-| 2026-04-16 | Agents SDK 대규모 업데이트                    | [[2026-04-16-openai-agents-sdk-evolution]]      |
-| 2026-04-20 | Codex 대규모 업데이트                         | [[2026-04-20-codex-for-everything]]             |
-| 2026-04-27 | GPT-5.5 출시                                  | [[2026-04-27-gpt-5-5]]                          |
-| 2026-04-27 | Microsoft 파트너십 재편 발표                  | [[2026-04-27-microsoft-openai-partnership]]     |
-| 2026-05-06 | GPT-5.5 Instant 출시                          | [[2026-05-06-gpt-5-5-instant]]                  |
-| 2026-05-06 | GPT-5 고블린 버그 공개                        | [[2026-05-06-gpt-5-goblin-bug]]                 |
-| 2026-05-11 | Codex 보안 운영 전략 공개                     | [[2026-05-11-openai-codex-security-operations]] |
-| 2026-05-11 | GPT-5.5-Cyber 공개                            | [[2026-05-11-gpt-5-5-cyber]]                    |
-| 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십         | [[2026-05-19-openai-dell-codex-enterprise]]     |
+| 날짜       | 내용                                          | 포스트                                              |
+| ---------- | --------------------------------------------- | --------------------------------------------------- |
+| 2026-01-23 | ChatGPT PostgreSQL 스케일링 아키텍처 공개     | [[2026-01-23-openai-postgresql-scaling]]            |
+| 2026-01-25 | Codex 에이전트 루프 기술 공개                 | [[2026-01-25-openai-codex-agent-loop]]              |
+| 2026-01-28 | EU Economic Blueprint 2.0 발표                | [[2026-01-28-openai-eu-blueprint]]                  |
+| 2026-01-29 | 사내 데이터 에이전트(GPT-5·Codex·Memory) 공개 | [[2026-01-29-openai-in-house-data-agent]]           |
+| 2026-02-03 | Codex macOS 앱 출시                           | [[2026-02-03-openai-codex-app]]                     |
+| 2026-02-12 | ChatGPT 광고 테스트 시작                      | [[2026-02-12-chatgpt-ads-testing]]                  |
+| 2026-02-13 | GPT-5.3-Codex-Spark 발표                      | [[2026-02-13-gpt53-codex-spark]]                    |
+| 2026-02-19 | ChatGPT Lockdown Mode 도입                    | [[2026-02-19-chatgpt-lockdown-mode]]                |
+| 2026-02-23 | Beyond Rate Limits 아키텍처 공개              | [[2026-02-23-openai-beyond-rate-limits]]            |
+| 2026-03-05 | GPT-5.3 Instant 출시                          | [[2026-03-05-gpt-5-3-instant]]                      |
+| 2026-03-10 | Promptfoo 인수 발표                           | [[2026-03-10-openai-acquires-promptfoo]]            |
+| 2026-03-10 | GPT-5.4 출시                                  | [[2026-03-10-gpt-5-4]]                              |
+| 2026-03-23 | GPT-5.4 mini·nano 출시                        | [[2026-03-23-gpt-5-4-mini-nano]]                    |
+| 2026-03-23 | Astral(uv, ruff) 인수 발표                    | [[2026-03-23-openai-acquires-astral]]               |
+| 2026-03-30 | Model Spec 설계 철학 공개                     | [[2026-03-30-openai-model-spec]]                    |
+| 2026-03-30 | Safety Bug Bounty 프로그램 시작               | [[2026-03-30-openai-safety-bug-bounty]]             |
+| 2026-04-16 | Agents SDK 대규모 업데이트                    | [[2026-04-16-openai-agents-sdk-evolution]]          |
+| 2026-04-20 | Codex 대규모 업데이트                         | [[2026-04-20-codex-for-everything]]                 |
+| 2026-04-27 | GPT-5.5 출시                                  | [[2026-04-27-gpt-5-5]]                              |
+| 2026-04-27 | Microsoft 파트너십 재편 발표                  | [[2026-04-27-microsoft-openai-partnership]]         |
+| 2026-05-06 | GPT-5.5 Instant 출시                          | [[2026-05-06-gpt-5-5-instant]]                      |
+| 2026-05-06 | GPT-5 고블린 버그 공개                        | [[2026-05-06-gpt-5-goblin-bug]]                     |
+| 2026-05-11 | Codex 보안 운영 전략 공개                     | [[2026-05-11-openai-codex-security-operations]]     |
+| 2026-05-11 | GPT-5.5-Cyber 공개                            | [[2026-05-11-gpt-5-5-cyber]]                        |
+| 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십         | [[2026-05-19-openai-dell-codex-enterprise]]         |
+| 2026-05-20 | OpenAI 모델, 이산기하학 추측 반증             | [[2026-05-20-openai-disproves-geometry-conjecture]] |
+| 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시     | [[2026-05-22-virgin-atlantic-codex]]                |
 
 ## 관련 엔티티
 
