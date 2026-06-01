@@ -9,6 +9,18 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-01] ingest | 5개 포스트 발행
+
+- [[2026-06-01-claude-opus-4-8]] — Claude Opus 4.8 출시: 4.7 대비 코드 결함 4배 감소, Fast 모드 3배 저렴
+- [[2026-06-01-anthropic-series-h-65b]] — Anthropic, Series H로 $65B 조달 ($965B 밸류, $47B 런레이트)
+- [[2026-06-01-claude-code-v21157-159]] — Claude Code v2.1.157~159: Auto 모드 클라우드 확장, skills 플러그인 자동 로드
+- [[2026-06-01-gemini-omni-3-5-io-2026]] — Gemini Omni와 Gemini 3.5 Flash: I/O 2026, 영상 생성과 에이전트의 두 갈래
+- [[2026-06-01-anthropic-korea-kiyoung-choi]] — Anthropic, 한국 대표에 최기영 선임 + 서울 오피스
+- 업데이트된 위키: entities/anthropic, entities/claude-code, entities/gemini, entities/google, topics/llm-models, topics/ai-coding-tools
+- 참고: GEMINI_API_KEY 정지(CONSUMER_SUSPENDED)로 썸네일 생성 실패 → 5개 포스트 모두 thumbnail 필드 생략(OG 폴백)
+
+---
+
 ## [2026-05-26] ingest | 5개 포스트 발행
 
 - [[2026-05-20-gemini-3-5-frontier]] — Gemini 3.5 출시: frontier intelligence with action

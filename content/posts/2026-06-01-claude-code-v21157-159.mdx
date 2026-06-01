@@ -1,0 +1,60 @@
+---
+title: "Claude Code v2.1.157~159: Auto 모드 클라우드 확장, .claude/skills 플러그인 자동 로드"
+description: "Claude Code가 v2.1.157부터 159까지 연달아 올라왔어요. .claude/skills 플러그인 자동 로드, Bedrock/Vertex/Foundry로 확장된 Auto 모드, 그리고 워크트리 개선과 수많은 버그 수정을 정리했어요."
+date: "2026-06-01"
+tags: ["AI", "Claude", "개발도구"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.158"
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+지난번 v2.1.149를 다룬 뒤로 Claude Code가 또 한참 올라왔어요. 이번엔 v2.1.157, 158, 159 세 버전을 한 번에 정리할게요. 마이너 버전이지만 그 안에 <strong>플러그인 자동 로드</strong>와 <strong>Auto 모드 확장</strong>처럼 워크플로우를 바꾸는 변화가 들어 있어서, 묶어서 볼 가치가 있어요.
+
+## v2.1.157: 플러그인 시스템이 한결 편해졌어요
+
+이번 릴리스에서 가장 반가운 변화는 플러그인 쪽이에요.
+
+<strong>.claude/skills 디렉토리의 플러그인이 자동으로 로드돼요.</strong> 마켓플레이스를 거칠 필요가 없어진 거예요. 예전엔 플러그인을 쓰려면 마켓플레이스 등록이라는 단계가 있었는데, 이제 그냥 `.claude/skills`에 넣어두면 알아서 잡아줘요. 프로젝트별로 커스텀 스킬을 만들어 쓰는 입장에서 이건 마찰을 확 줄여주는 변화예요.
+
+여기에 <strong>`claude plugin init <name>`</strong> 명령이 추가됐어요. `.claude/skills` 안에 새 플러그인 골격을 만들어주는 스캐폴딩 명령이에요. 직접 디렉토리 구조 만들 필요 없이 한 줄로 시작할 수 있어요. `/plugin` 인자에 자동완성도 생겼는데, 서브커맨드, 설치된 플러그인 이름, 알려진 마켓플레이스의 플러그인까지 다 잡아줘요.
+
+에이전트와 워크트리 쪽도 손봤어요.
+
+- `settings.json`의 `agent` 필드가 디스패치된 세션에도 적용돼요. `--agent <name>`으로 덮어쓸 수 있고요.
+- `EnterWorktree`로 세션 중간에 Claude가 관리하는 워크트리 사이를 전환할 수 있게 됐어요.
+- Claude가 관리하는 워크트리는 작업이 끝나면 잠금이 풀려서 `git worktree remove`/`prune`로 정리할 수 있어요.
+- 30일 보관 기간이 지난 백그라운드 에이전트 워크트리가 고아로 남던 문제도 고쳤어요.
+
+버그 수정도 양이 상당해요. 처리 불가능한 이미지(0바이트, 손상 파일)가 요청을 크래시시키던 문제, 백그라운드 세션이 절전 후 깨어났을 때 모델에 잘못된 날짜를 보여주던 문제, `--resume` 관련 여러 이슈, VS Code/Cursor/Windsurf에서 우클릭 붙여넣기가 중복되던 문제 등을 손봤어요. WSL 환경의 이미지 붙여넣기와 스크린샷 붙여넣기도 개선했고요.
+
+참고: VS Code에서 Opus 4.8의 Fast 모드 표시기가 안 나오던 문제도 이번에 고쳐졌어요. Opus 4.8이 막 나온 시점이라 발 빠르게 대응한 거죠.
+
+## v2.1.158: Auto 모드가 주요 클라우드로 확장됐어요
+
+이번 버전의 핵심은 한 줄이에요. <strong>Auto 모드가 Bedrock, Vertex, Foundry에서 Opus 4.7과 4.8용으로 제공돼요.</strong>
+
+활성화는 환경 변수 하나로 해요.
+
+```bash
+CLAUDE_CODE_ENABLE_AUTO_MODE=1
+```
+
+그동안 Auto 모드를 쓰려면 환경이 제한적이었는데, 이제 AWS Bedrock, Google Vertex AI, Anthropic Foundry 세 곳에서 다 쓸 수 있게 됐어요. 기업 환경에서 Claude Code를 자사 클라우드 계정으로 돌리는 경우가 많은데, 그런 셋업에서도 Auto 모드를 활용할 수 있게 된 게 의미가 커요. 사내 인프라 정책상 특정 클라우드만 써야 하는 팀들한테 특히 반가운 변화예요.
+
+## v2.1.159: 내부 정비
+
+v2.1.159는 내부 인프라 개선만 담긴 유지보수 릴리스예요. 사용자가 체감할 변화는 없어요. 이런 버전도 꾸준히 나온다는 게 오히려 안정적으로 관리되고 있다는 신호라고 봐요.
+
+## 정리하면
+
+세 버전을 묶어 보면 흐름이 보여요. v2.1.157은 <strong>플러그인 진입 장벽을 낮췄고</strong>, v2.1.158은 <strong>Auto 모드를 기업 클라우드로 넓혔어요</strong>. 커스텀 스킬을 쉽게 만들어 쓰고, 그걸 다양한 클라우드 환경에서 자동으로 돌리는 방향이에요.
+
+개인적으로는 `.claude/skills` 자동 로드가 제일 마음에 들어요. 프로젝트마다 반복하는 작업을 스킬로 만들어두면 마켓플레이스 거치지 않고 바로 쓸 수 있으니까, 나만의 워크플로우를 구축하기가 훨씬 수월해졌거든요. 여러분도 한 번 `claude plugin init`으로 가벼운 스킬 하나 만들어보세요. 생각보다 쓸모가 많을 거예요.
+
+---
+
+원문: [Claude Code v2.1.158](https://github.com/anthropics/claude-code/releases/tag/v2.1.158) · [v2.1.157](https://github.com/anthropics/claude-code/releases/tag/v2.1.157) · [v2.1.159](https://github.com/anthropics/claude-code/releases/tag/v2.1.159)

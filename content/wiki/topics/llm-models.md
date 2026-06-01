@@ -1,7 +1,7 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 18
+post_count: 20
 key_entities:
   [
     "GPT-5.2",
@@ -9,9 +9,12 @@ key_entities:
     "GPT-5.4",
     "Claude Opus 4.6",
     "Claude Opus 4.7",
+    "Claude Opus 4.8",
     "Claude Sonnet 4.6",
     "Gemini 3",
     "Gemini 3.1",
+    "Gemini 3.5",
+    "Gemini Omni",
     "Meta 새 모델",
   ]
 tags: ["LLM", "모델 릴리스", "모델비교", "언어 모델"]
@@ -38,6 +41,8 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 - MoE(Mixture of Experts) 아키텍처가 대형 언어 모델의 사실상 표준으로 자리잡는 중. GPT-4, Gemini 1.5, DeepSeek 등 주요 모델이 MoE를 채택하며 Dense 모델 대비 파라미터 효율을 대폭 향상
 - Gemini 3.5는 "frontier intelligence with action"을 전면에 내세우며 에이전트 작업 실행력에 집중. Flash가 먼저 출시되어 경쟁 프런티어 모델 대비 4배 빠른 출력·50% 저렴한 가격으로 포지셔닝. Terminal-Bench 76.2%·MCP Atlas 83.6% 등 에이전트 중심 벤치마크 강조
 - OpenAI 모델이 80년 묵은 unit distance problem 관련 추측을 반증하며 AI가 수학적 발견의 주체로 등장. 추론 모델의 활용처가 학술 연구까지 확장
+- Claude Opus 4.8은 벤치마크 점수보다 신뢰성에 초점. Opus 4.7 대비 코드 결함을 놓칠 확률 약 4배 감소, 모르는 것을 정직하게 표시, 도구 호출 효율 개선. 가격은 동일($5/$25)하되 Fast 모드가 3배 저렴해짐($10/$50). 정렬 평가에서 친사회성 최고치·오정렬 행동 감소를 동시 달성하며 "성능과 안전성 동시 개선" 서사 강화
+- Gemini Omni는 Google의 새 영상 생성 모델로, 이미지·오디오·비디오·텍스트 등 어떤 입력이든 영상으로 변환. 캐릭터·물리·장면 연속성 일관성 유지와 대화형 편집이 차별점. 모델 경쟁이 텍스트·코딩을 넘어 멀티모달 생성으로 확장되는 흐름을 보여줌
 
 ## 관련 포스트
 
@@ -62,6 +67,8 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 | 2026-04-27 | [[2026-04-27-moe-architecture-explained]]           | MoE 아키텍처 해설 — Mixture of Experts 표준화 분석                          |
 | 2026-05-20 | [[2026-05-20-gemini-3-5-frontier]]                  | Gemini 3.5 — frontier intelligence with action, 에이전트 작업 최적화        |
 | 2026-05-20 | [[2026-05-20-openai-disproves-geometry-conjecture]] | OpenAI 모델, 80년 묵은 이산기하학 추측 반증 — AI가 발견자로 등장            |
+| 2026-06-01 | [[2026-06-01-claude-opus-4-8]]                      | Claude Opus 4.8 — 코드 결함 4배 감소, Fast 모드 3배 저렴, 정렬 최고치       |
+| 2026-06-01 | [[2026-06-01-gemini-omni-3-5-io-2026]]              | Gemini Omni & 3.5 Flash — 영상 생성 모델과 에이전트 모델의 두 갈래          |
 
 ## 관련 토픽
 
