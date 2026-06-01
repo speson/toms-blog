@@ -1,5 +1,6 @@
 ---
 title: "Claude Code v2.1.157~159: Auto 모드 클라우드 확장, .claude/skills 플러그인 자동 로드"
+thumbnail: "/thumbnails/claude-code-v21157-159.png"
 description: "Claude Code가 v2.1.157부터 159까지 연달아 올라왔어요. .claude/skills 플러그인 자동 로드, Bedrock/Vertex/Foundry로 확장된 Auto 모드, 그리고 워크트리 개선과 수많은 버그 수정을 정리했어요."
 date: "2026-06-01"
 tags: ["AI", "Claude", "개발도구"]
@@ -18,7 +19,11 @@ draft: false
 
 이번 릴리스에서 가장 반가운 변화는 플러그인 쪽이에요.
 
-<strong>.claude/skills 디렉토리의 플러그인이 자동으로 로드돼요.</strong> 마켓플레이스를 거칠 필요가 없어진 거예요. 예전엔 플러그인을 쓰려면 마켓플레이스 등록이라는 단계가 있었는데, 이제 그냥 `.claude/skills`에 넣어두면 알아서 잡아줘요. 프로젝트별로 커스텀 스킬을 만들어 쓰는 입장에서 이건 마찰을 확 줄여주는 변화예요.
+<strong>.claude/skills 디렉토리의 플러그인이 자동으로 로드돼요.</strong>
+마켓플레이스를 거칠 필요가 없어진 거예요. 예전엔 플러그인을 쓰려면 마켓플레이스
+등록이라는 단계가 있었는데, 이제 그냥 `.claude/skills`에 넣어두면 알아서
+잡아줘요. 프로젝트별로 커스텀 스킬을 만들어 쓰는 입장에서 이건 마찰을 확
+줄여주는 변화예요.
 
 여기에 <strong>`claude plugin init <name>`</strong> 명령이 추가됐어요. `.claude/skills` 안에 새 플러그인 골격을 만들어주는 스캐폴딩 명령이에요. 직접 디렉토리 구조 만들 필요 없이 한 줄로 시작할 수 있어요. `/plugin` 인자에 자동완성도 생겼는데, 서브커맨드, 설치된 플러그인 이름, 알려진 마켓플레이스의 플러그인까지 다 잡아줘요.
 
