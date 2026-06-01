@@ -124,9 +124,7 @@ export default async function SubcategoryPage({
 
         <div className="flex flex-col lg:flex-row lg:gap-8">
           <section className="min-w-0 flex-1">
-            <Suspense fallback={null}>
-              <PostList posts={posts} />
-            </Suspense>
+            <PostList posts={posts} />
           </section>
           <Suspense fallback={null}>
             <CategorySidebar />

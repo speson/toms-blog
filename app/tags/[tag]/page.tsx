@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd, CollectionPageJsonLd, PostList } from "@/components";
@@ -98,9 +97,7 @@ export default async function TagPage({ params }: TagPageProps) {
           <p className="text-lg text-zinc-400">{description}</p>
         </section>
 
-        <Suspense fallback={null}>
-          <PostList posts={posts} />
-        </Suspense>
+        <PostList posts={posts} />
       </div>
     </>
   );

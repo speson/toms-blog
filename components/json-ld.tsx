@@ -67,6 +67,8 @@ export function ArticleJsonLd({
     author: {
       "@type": "Person",
       name: "Tom",
+      url: "https://toms-blog.co.kr/about",
+      sameAs: ["https://github.com/speson"],
     },
     publisher: {
       "@type": "Organization",

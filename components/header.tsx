@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+const NAV_LINKS = [
+  { href: "/categories", label: "카테고리" },
+  { href: "/tags", label: "태그" },
+  { href: "/entities", label: "Entities" },
+  { href: "/search", label: "검색" },
+  { href: "/about", label: "소개" },
+  { href: "/contact", label: "문의" },
+];
+
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800 bg-black/80 backdrop-blur-md">
@@ -7,25 +16,16 @@ export function Header() {
         <Link href="/" className="text-xl font-bold text-white">
           Tom&apos;s Blog
         </Link>
-        <div className="flex items-center gap-6">
-          <Link
-            href="/entities"
-            className="text-sm text-zinc-400 transition-colors hover:text-white"
-          >
-            Entities
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm text-zinc-400 transition-colors hover:text-white"
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm text-zinc-400 transition-colors hover:text-white"
-          >
-            Contact
-          </Link>
+        <div className="flex items-center gap-4 overflow-x-auto sm:gap-6">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="shrink-0 text-sm text-zinc-400 transition-colors hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>

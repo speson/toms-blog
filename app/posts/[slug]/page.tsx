@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
-import { ArticleJsonLd, BreadcrumbJsonLd, TableOfContents } from "@/components";
+import {
+  ArticleJsonLd,
+  AuthorBox,
+  BreadcrumbJsonLd,
+  TableOfContents,
+} from "@/components";
 import {
   CATEGORY_LABELS,
   SUBCATEGORY_LABELS,
@@ -149,6 +154,14 @@ export default async function PostPage({ params }: PostPageProps) {
                 )}
               </div>
               <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+                <Link
+                  href="/about"
+                  rel="author"
+                  className="font-medium text-zinc-300 transition-colors hover:text-white"
+                >
+                  Tom
+                </Link>
+                <span>•</span>
                 <time>{formatDate(post.date)}</time>
                 <span>•</span>
                 <span>{readingTime}분 읽기</span>
@@ -179,9 +192,22 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             </header>
 
+            {post.tldrVerdict && (
+              <div className="mb-10 rounded-xl border border-purple-500/20 bg-purple-500/5 p-5">
+                <p className="mb-1 text-xs font-semibold tracking-wider text-purple-400 uppercase">
+                  한줄평
+                </p>
+                <p className="leading-relaxed text-zinc-200">
+                  {post.tldrVerdict}
+                </p>
+              </div>
+            )}
+
             <div className="prose prose-invert max-w-none">
               <MDXContent code={post.body.code} />
             </div>
+
+            <AuthorBox />
 
             {relatedPosts.length > 0 && (
               <section className="mt-16 border-t border-zinc-800 pt-10">
