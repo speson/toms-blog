@@ -13,7 +13,7 @@ draft: false
 
 안녕하세요, Tom입니다.
 
-Anthropic SDK에 또 의미 있는 업데이트가 나왔어요. TypeScript SDK v0.97.0과 Python SDK v0.103.0에서 <strong>셀프 호스팅 샌드박스(Self-Hosted Sandboxes)</strong>가 추가됐어요. 지난주에 다뤘던 v0.95.0의 Managed Agents에 이어서, 이번에는 에이전트의 코드 실행 환경을 자체 인프라에서 돌릴 수 있게 된 거예요.
+Anthropic SDK에 또 의미 있는 업데이트가 나왔어요. TypeScript SDK v0.97.0과 Python SDK v0.103.0에서 <strong>셀프 호스팅 샌드박스(Self-Hosted Sandboxes)</strong>가 추가됐어요. 지난주에 다뤘던 [v0.95.0의 Managed Agents](/posts/2026-05-11-anthropic-sdk-managed-agents)에 이어서, 이번에는 에이전트의 코드 실행 환경을 자체 인프라에서 돌릴 수 있게 된 거예요.
 
 ## 셀프 호스팅 샌드박스가 뭔가요
 
@@ -31,6 +31,8 @@ Cloud Managed Agents(CMA)에서 에이전트가 코드를 실행해야 할 때, 
 
 셋째, <strong>커스텀 런타임</strong>이에요. 특정 라이브러리가 사전 설치돼야 한다거나, 특정 버전의 런타임이 필요하다거나 하는 요구사항을 직접 제어할 수 있어요. Anthropic이 제공하는 기본 샌드박스 환경에 맞춰야 했던 제약이 사라지는 거예요.
 
+개인적으로 한국 개발자 입장에서는 첫 번째 데이터 주권 이슈가 가장 와닿는 부분인 것 같아요. 국내 금융이나 공공 쪽은 데이터가 외부 인프라로 나가는 것 자체에 민감한 경우가 많아서, 에이전트의 코드 실행 환경까지 자사 인프라 안에 둘 수 있다는 점이 도입 검토의 문턱을 꽤 낮춰줄 것 같다는 생각이 들어요.
+
 ## v0.95.0에서 v0.97.0으로: 빠른 진화
 
 지난 포스트에서 다뤘던 v0.95.0이 Managed Agents를 처음 도입한 버전이었어요. 멀티에이전트 오케스트레이션, 웹훅, Vault 검증이 들어갔죠. 그로부터 불과 2주 만에 셀프 호스팅 샌드박스까지 추가된 거예요. 릴리즈 속도가 상당히 빨라요.
@@ -39,7 +41,7 @@ Cloud Managed Agents(CMA)에서 에이전트가 코드를 실행해야 할 때, 
 
 ## Stainless 인수와의 연결고리
 
-타이밍이 흥미로운 게, Anthropic이 최근 <strong>Stainless</strong>를 인수했어요. Stainless는 Anthropic SDK의 코드를 자동 생성해주던 회사예요. OpenAI SDK도 Stainless가 만들었죠. 지금까지 Anthropic과 OpenAI 모두 Stainless의 고객이었는데, Anthropic이 아예 이 회사를 인수해버린 거예요.
+타이밍이 흥미로운 게, Anthropic이 최근 [Stainless를 인수](/posts/2026-05-19-anthropic-acquires-stainless)했어요. Stainless는 Anthropic SDK의 코드를 자동 생성해주던 회사예요. OpenAI SDK도 Stainless가 만들었죠. 지금까지 Anthropic과 OpenAI 모두 Stainless의 고객이었는데, Anthropic이 아예 이 회사를 인수해버린 거예요.
 
 SDK 코드 생성 도구를 내재화했다는 건, 앞으로 SDK 릴리즈 속도와 품질을 더 직접적으로 통제하겠다는 의미예요. v0.95.0에서 v0.97.0까지 2주 만에 이렇게 큰 기능이 추가된 것도, 아마 이런 내재화의 효과가 반영되기 시작한 게 아닐까 싶어요. OpenAI 입장에서는 자기 SDK를 만들어주던 회사가 경쟁사에 인수된 셈이니, SDK 생성 파이프라인을 새로 구축해야 하는 상황이 됐어요. 이 부분도 지켜볼 포인트예요.
 

@@ -23,7 +23,7 @@ Stainless는 2022년에 설립된 회사로, API 스펙을 넣으면 <strong>SDK
 
 창업자 Alex Rattray가 이번 인수에 대해 남긴 말이 인상적이에요. "SDK는 그것이 감싸는 API만큼의 정성을 받을 자격이 있다(SDKs deserve as much care as the APIs they wrap)." 실제로 SDK 품질이 개발자 경험에 미치는 영향은 엄청나거든요. API가 아무리 좋아도 SDK가 불편하면 개발자는 떠나요.
 
-Anthropic은 초기부터 Stainless를 써서 공식 SDK를 생성해왔어요. 지난주에 다뤘던 TypeScript SDK v0.95.0과 Python SDK v0.100.0의 동시 릴리즈가 가능했던 것도, Stainless의 자동 생성 파이프라인 덕분이었던 거예요. API 스펙 하나를 업데이트하면 여러 언어의 SDK가 동시에 나오는 구조니까요.
+Anthropic은 초기부터 Stainless를 써서 공식 SDK를 생성해왔어요. 지난주에 다뤘던 [TypeScript SDK v0.95.0과 Python SDK v0.100.0의 동시 릴리즈](/posts/2026-05-11-anthropic-sdk-managed-agents)가 가능했던 것도, Stainless의 자동 생성 파이프라인 덕분이었던 거예요. API 스펙 하나를 업데이트하면 여러 언어의 SDK가 동시에 나오는 구조니까요.
 
 ## 왜 지금 인수했을까
 
@@ -31,11 +31,11 @@ Anthropic의 플랫폼 엔지니어링 총괄 Katelyn Lesse가 핵심을 짚었�
 
 이 한 문장에 인수의 이유가 다 담겨 있다고 봐요. 지금 AI 업계의 프론티어는 "답변하는 모델"에서 "행동하는 에이전트"로 옮겨가고 있어요. 에이전트가 실제로 뭔가를 하려면 외부 서비스와 연결되어야 하고, 그 연결의 품질은 SDK와 커넥터가 결정해요.
 
-바로 며칠 전에 Anthropic SDK에 Managed Agents가 추가된 걸 다뤘었는데, 이번 인수와 연결하면 그림이 더 선명해져요. Managed Agents로 에이전트를 오케스트레이션하고, Stainless로 에이전트가 연결할 수 있는 커넥터를 대량 생산하겠다는 거예요. 양쪽을 다 가져간 거죠.
+바로 며칠 전에 [Anthropic SDK에 Managed Agents가 추가된 것](/posts/2026-05-11-anthropic-sdk-managed-agents)을 다뤘었는데, 이번 인수와 연결하면 그림이 더 선명해져요. Managed Agents로 에이전트를 오케스트레이션하고, Stainless로 에이전트가 연결할 수 있는 커넥터를 대량 생산하겠다는 거예요. 양쪽을 다 가져간 거죠.
 
 ## MCP와의 연결 고리
 
-특히 주목할 부분은 Stainless가 <strong>MCP 서버 커넥터</strong> 생성도 지원한다는 점이에요. Anthropic이 주도하고 있는 MCP(Model Context Protocol)는 에이전트가 외부 도구와 데이터에 접근하는 표준 프로토콜이에요.
+특히 주목할 부분은 Stainless가 <strong>MCP 서버 커넥터</strong> 생성도 지원한다는 점이에요. Anthropic이 주도하고 있는 MCP(Model Context Protocol)는 에이전트가 외부 도구와 데이터에 접근하는 표준 프로토콜이에요. MCP가 다른 에이전트 프로토콜들과 어떤 자리에 있는지는 [AI 에이전트 프로토콜 가이드](/posts/2026-03-23-ai-agent-protocols-guide)에서 정리한 적이 있어요.
 
 MCP 생태계가 성장하려면 다양한 서비스에 대한 MCP 서버가 많이 만들어져야 해요. 그런데 이걸 일일이 수작업으로 만드는 건 비효율적이죠. Stainless의 자동 생성 파이프라인이 있으면, API 스펙만 있으면 MCP 서버 커넥터를 자동으로 찍어낼 수 있어요. MCP 생태계의 확장 속도가 완전히 달라지는 거예요.
 
@@ -52,6 +52,8 @@ Anthropic이 MCP라는 프로토콜을 만들고, 그 프로토콜 위의 커넥
 ## 개발자 관점에서 보면
 
 단기적으로는 큰 변화가 없을 거예요. Stainless를 쓰고 있던 기업들은 계속 쓸 수 있을 거고, Anthropic SDK의 품질이 당장 급변하지도 않을 거예요.
+
+개인적으로 한국 개발자 입장에서는, Stainless가 TypeScript, Python뿐 아니라 Java와 Kotlin까지 자동 생성을 지원한다는 점이 눈에 들어와요. 국내 서비스 백엔드는 여전히 Java/Kotlin 비중이 큰데, Anthropic 공식 SDK가 이 언어들에서도 같은 파이프라인으로 꾸준히 관리된다면, JVM 환경에서 Claude를 붙이는 부담이 그만큼 줄어드는 흐름인 것 같아요.
 
 하지만 중장기적으로 보면, Anthropic의 개발자 도구 스택이 상당히 강력해질 거라고 봐요. SDK 자동 생성, MCP 커넥터 자동 생성, Managed Agents, 웹훅, Vault까지. 에이전트를 만들고 운영하는 데 필요한 거의 모든 것을 Anthropic이 직접 제공하는 구조가 만들어지고 있어요.
 
