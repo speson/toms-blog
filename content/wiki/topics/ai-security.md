@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 12
+post_count: 13
 key_entities:
   [
     "Promptfoo",
@@ -29,6 +29,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 - Cloudflare Turnstile이 ChatGPT 입력 시 브라우저 지문 28개, 네트워크 정보 5개, React 앱 상태 3개 등 총 55개 속성을 수집한다는 사실이 보안 연구자에 의해 공개. 봇 방어와 프라이버시의 경계 문제를 재조명
 - Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스에서 PowerShell 취약점 4가지와 원격 정책 강제(fail-closed) 기능이 추가됨. AI 코딩 도구에 대한 엔터프라이즈 보안 요구가 구체화되고 있음
 - Oh My OpenCode v4.4.0의 /security-research가 5인 적대적 보안팀(취약점 헌터 3 + PoC 엔지니어 2)을 한 명령으로 띄우는 첫 도메인 특화 팀 모드 스킬. CWE/OWASP WSTG·ASVS/CVSS v4.0 채택, "실제 익스플로잇 경로 없는 심각도는 보고하지 않음" 원칙으로 오탐 최소화
+- 거버넌스가 보안 담론의 전면으로: OpenAI(Frontier Governance Framework·서드파티 평가 플레이북·선거 안전 S.1213/S.2346)와 Anthropic('대화 확대'·도덕적 형성)이 EU AI Act·캘리포니아 TFAIA 발효 직전 동시 발표. "안전 확보"보다 "안전을 누가 정의하느냐(평가 표준 선점)"의 협상 신호로 읽힘
 
 ## 관련 포스트
 
@@ -45,6 +46,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                         | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
 | 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]          | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
 | 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]] | OMOC /security-research — 5인 적대적 보안팀 스킬                     |
+| 2026-06-02 | [[2026-06-02-frontier-ai-governance-signals]]        | 프론티어 거버넌스 동시 발표 = 규제 전야 표준 선점 (칼럼)             |
 
 ## 관련 토픽
 

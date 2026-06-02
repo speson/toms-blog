@@ -9,6 +9,16 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-03] publish | thesis-first 배치 3편 (새 콘텐츠 모델 첫 적용)
+
+- [[2026-06-02-ai-coding-token-waste]] — 토큰의 2%만 코드에 쓰인다: AI 코딩 평가축이 속도→효율로 (비교/관점 칼럼, 출처 3건 합성)
+- [[2026-06-02-enterprise-ai-graduation]] — 5월, AI 코딩이 '파일럿'을 졸업했다: Cisco·MUFG·KPMG 변곡점 (종합 다이제스트, 출처 5건)
+- [[2026-06-02-frontier-ai-governance-signals]] — AI 회사들이 갑자기 거버넌스를 말하는 이유: 규제 전야 신호 (관점 칼럼, 출처 4건)
+- 모두 단일출처 요약이 아니라 다중출처 근거 + 내 주장(thesis) 구조. 적대적 검증 통과, 수치 WebSearch 교차검증 완료
+- 업데이트된 위키: entities/openai, topics/ai-coding-tools, topics/ai-security, index
+
+---
+
 ## [2026-06-02] write | thesis 칼럼 1편 (콘텐츠 모델 전환 시연)
 
 - [[2026-06-02-anthropic-s1-ipo-reading]] — Anthropic S-1 제출을 자금·모델·인프라·시장 확장과 한 흐름으로 읽은 관점 칼럼

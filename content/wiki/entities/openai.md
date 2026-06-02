@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-05-22"
-post_count: 31
+last_covered: "2026-06-02"
+post_count: 33
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -44,6 +44,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Dell 파트너십으로 Codex 기업 온프레미스 배포 지원 — [[2026-05-19-openai-dell-codex-enterprise]]
 - OpenAI 모델이 80년 묵은 이산기하학 추측을 반증, AI가 수학적 발견의 주체로 등장한 첫 사례 — [[2026-05-20-openai-disproves-geometry-conjecture]]
 - Virgin Atlantic이 Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건 달성 — [[2026-05-22-virgin-atlantic-codex]]
+- 엔터프라이즈 AI 도입 변곡점 분석 — Cisco·MUFG·KPMG·Endava·세무 에이전트 5개 사례로 '파일럿→핵심 업무' 전환 논증 (칼럼) — [[2026-06-02-enterprise-ai-graduation]]
+- 프론티어 거버넌스 동시 발표를 규제 전야 포지셔닝으로 읽은 칼럼 — Frontier Governance Framework·서드파티 평가 플레이북·선거 안전(S.1213/S.2346) — [[2026-06-02-frontier-ai-governance-signals]]
 
 ## 타임라인
 
@@ -76,6 +78,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십         | [[2026-05-19-openai-dell-codex-enterprise]]         |
 | 2026-05-20 | OpenAI 모델, 이산기하학 추측 반증             | [[2026-05-20-openai-disproves-geometry-conjecture]] |
 | 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시     | [[2026-05-22-virgin-atlantic-codex]]                |
+| 2026-06-02 | 엔터프라이즈 AI '파일럿 졸업' 변곡점 분석     | [[2026-06-02-enterprise-ai-graduation]]             |
+| 2026-06-02 | 프론티어 거버넌스 = 규제 전야 포지셔닝 칼럼   | [[2026-06-02-frontier-ai-governance-signals]]       |
 
 ## 관련 엔티티
 
