@@ -13,9 +13,11 @@ export function TableOfContents() {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
+    // Only headings with an id are linkable; skip id-less headings (e.g.
+    // page-level sections without a slug) so the TOC never renders a dead "#".
     const elements = Array.from(
       document.querySelectorAll("article h2, article h3")
-    );
+    ).filter((element) => element.id);
 
     const items: TocItem[] = elements.map((element) => ({
       id: element.id,

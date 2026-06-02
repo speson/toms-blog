@@ -211,7 +211,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
             {relatedPosts.length > 0 && (
               <section className="mt-16 border-t border-zinc-800 pt-10">
-                <h2 className="mb-6 text-2xl font-semibold text-white">
+                <h2
+                  id="related-posts"
+                  className="mb-6 scroll-mt-24 text-2xl font-semibold text-white"
+                >
                   관련 글
                 </h2>
                 <div className="grid gap-4 md:grid-cols-3">
