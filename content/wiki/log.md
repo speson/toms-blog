@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-02] write | thesis 칼럼 1편 (콘텐츠 모델 전환 시연)
+
+- [[2026-06-02-anthropic-s1-ipo-reading]] — Anthropic S-1 제출을 자금·모델·인프라·시장 확장과 한 흐름으로 읽은 관점 칼럼
+- 콘텐츠 모델 전환: 뉴스 1:1 요약 → "출처는 근거, 척추는 내 관점" (`.claude/content-model.md` 신설, publish/write/writing-style 워크플로우 재설계)
+- 업데이트된 위키: entities/anthropic, index
+
+---
+
 ## [2026-06-01] ingest | 5개 포스트 발행
 
 - [[2026-06-01-claude-opus-4-8]] — Claude Opus 4.8 출시: 4.7 대비 코드 결함 4배 감소, Fast 모드 3배 저렴

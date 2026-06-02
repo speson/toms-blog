@@ -1,7 +1,7 @@
 ---
 name: Wiki Index
 description: 전체 위키 페이지 카탈로그
-updated: "2026-06-01"
+updated: "2026-06-02"
 ---
 
 # Wiki Index
@@ -13,7 +13,7 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 | 페이지                                       | 설명                               | 포스트 수 |
 | -------------------------------------------- | ---------------------------------- | --------- |
 | [openai](entities/openai.md)                 | OpenAI - GPT, ChatGPT, Codex 등    | 31        |
-| [anthropic](entities/anthropic.md)           | Anthropic - Claude, Claude Code 등 | 25        |
+| [anthropic](entities/anthropic.md)           | Anthropic - Claude, Claude Code 등 | 26        |
 | [google](entities/google.md)                 | Google AI - Gemini, Android 등     | 17        |
 | [claude-code](entities/claude-code.md)       | Claude Code - AI 코딩 에이전트     | 27        |
 | [opencode](entities/opencode.md)             | OpenCode - 오픈소스 AI 코딩 도구   | 14        |
@@ -42,4 +42,4 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 
 ---
 
-마지막 업데이트: 2026-06-01
+마지막 업데이트: 2026-06-02

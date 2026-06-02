@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-06-01"
-post_count: 25
+last_covered: "2026-06-02"
+post_count: 26
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -33,6 +33,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - Claude Opus 4.8 출시 — Opus 4.7 대비 코드 결함 4배 감소, Fast 모드 3배 저렴, 정렬 평가 최고치 — [[2026-06-01-claude-opus-4-8]]
 - Series H로 $65B 조달, 기업가치 $965B·런레이트 매출 $47B 돌파 — [[2026-06-01-anthropic-series-h-65b]]
 - 서울 오피스 개설 앞두고 최기영 한국 대표 선임, 인구 대비 Claude 사용률 3.5배 — [[2026-06-01-anthropic-korea-kiyoung-choi]]
+- 비공개 S-1 SEC 제출(조건부 IPO) — 자금·모델·인프라·시장 확장을 한 흐름으로 읽은 칼럼 — [[2026-06-02-anthropic-s1-ipo-reading]]
 
 ## 타임라인
 
@@ -54,6 +55,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-06-01 | Claude Opus 4.8 출시                           | [[2026-06-01-claude-opus-4-8]]                   |
 | 2026-06-01 | Series H $65B 조달 ($965B 밸류, $47B 런레이트) | [[2026-06-01-anthropic-series-h-65b]]            |
 | 2026-06-01 | 최기영 한국 대표 선임 + 서울 오피스            | [[2026-06-01-anthropic-korea-kiyoung-choi]]      |
+| 2026-06-02 | 비공개 S-1 SEC 제출 (조건부 IPO) — 분석 칼럼   | [[2026-06-02-anthropic-s1-ipo-reading]]          |
 
 ## 관련 엔티티
 
