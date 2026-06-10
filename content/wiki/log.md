@@ -9,6 +9,17 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-10] publish | thesis-first 배치 4편
+
+- [[2026-06-10-claude-fable-5-mythos-5]] — Fable 5: '가장 센 모델'보다 '위험을 가두는 방식'이 진짜 뉴스 (관점 칼럼)
+- [[2026-06-10-openai-confidential-s1]] — OpenAI도 S-1: 양강 동시 상장 준비 = 자본시장 경쟁 (Anthropic S-1 칼럼 후속)
+- [[2026-06-10-ai-cyber-threats-mitre]] — AI 사이버 위협: 공격자가 똑똑해진 게 아니라 문턱이 사라졌다 (관점 칼럼)
+- [[2026-06-10-codex-enterprise-continued]] — 엔터프라이즈 졸업 그 다음: Notion·Nextdoor·LSEG 생산성 재배치 (다이제스트, enterprise-graduation 후속)
+- 모두 다중출처 근거 + 내 주장 구조. 적대적 검증 통과(OpenAI S-1 재무 수치는 WebSearch로 $852B 밸류·$20B ARR·26%/27% 지분·2029 흑자 전망 모두 실재 확인). 썸네일 OG 폴백
+- 업데이트된 위키: entities/anthropic, entities/openai, topics/ai-security, topics/ai-coding-tools, topics/llm-models, index
+
+---
+
 ## [2026-06-03] publish | thesis-first 배치 3편 (새 콘텐츠 모델 첫 적용)
 
 - [[2026-06-02-ai-coding-token-waste]] — 토큰의 2%만 코드에 쓰인다: AI 코딩 평가축이 속도→효율로 (비교/관점 칼럼, 출처 3건 합성)

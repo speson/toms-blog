@@ -1,7 +1,7 @@
 ---
 name: AI 코딩 도구
 type: topic
-post_count: 64
+post_count: 65
 key_entities:
   [
     "Claude Code",
@@ -106,6 +106,7 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-06-01 | [[2026-06-01-claude-code-v21157-159]]                | Claude Code v2.1.157~159 — skills 플러그인 자동 로드, Auto 모드 클라우드 확장 |
 | 2026-06-02 | [[2026-06-02-ai-coding-token-waste]]                 | 토큰의 2%만 코드에 쓰인다 — AI 코딩 평가축이 속도→효율로 (칼럼)               |
 | 2026-06-02 | [[2026-06-02-enterprise-ai-graduation]]              | 5월, AI 코딩이 '파일럿'을 졸업했다 — 엔터프라이즈 도입 변곡점 (다이제스트)    |
+| 2026-06-10 | [[2026-06-10-codex-enterprise-continued]]            | 엔터프라이즈 졸업 그 다음 — Notion·Nextdoor·LSEG, 생산성 재배치 (다이제스트)  |
 
 ## 관련 토픽
 

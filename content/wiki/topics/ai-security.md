@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 13
+post_count: 15
 key_entities:
   [
     "Promptfoo",
@@ -30,6 +30,8 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 - Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스에서 PowerShell 취약점 4가지와 원격 정책 강제(fail-closed) 기능이 추가됨. AI 코딩 도구에 대한 엔터프라이즈 보안 요구가 구체화되고 있음
 - Oh My OpenCode v4.4.0의 /security-research가 5인 적대적 보안팀(취약점 헌터 3 + PoC 엔지니어 2)을 한 명령으로 띄우는 첫 도메인 특화 팀 모드 스킬. CWE/OWASP WSTG·ASVS/CVSS v4.0 채택, "실제 익스플로잇 경로 없는 심각도는 보고하지 않음" 원칙으로 오탐 최소화
 - 거버넌스가 보안 담론의 전면으로: OpenAI(Frontier Governance Framework·서드파티 평가 플레이북·선거 안전 S.1213/S.2346)와 Anthropic('대화 확대'·도덕적 형성)이 EU AI Act·캘리포니아 TFAIA 발효 직전 동시 발표. "안전 확보"보다 "안전을 누가 정의하느냐(평가 표준 선점)"의 협상 신호로 읽힘
+- 위험 능력의 '거부' 대신 '격리 배포': Claude Fable 5(Mythos급, 일반 안전 버전)는 문제 요청을 거부하지 않고 Opus 4.8로 라우팅(세션 5% 미만), 사이버·생물화학·디스틸레이션 3대 영역 차단. 무방비 Mythos 5는 Project Glasswing 파트너 전용. 외부 버그바운티 1,000시간+에서 universal jailbreak 0건. 능력 경쟁이 '능력을 어떻게 가둬 배포하느냐' 설계 경쟁으로 이동
+- AI가 공격의 '천장'이 아니라 '바닥'을 바꾼다: Anthropic의 832개 악성 계정 1년 분석(MITRE ATT&CK 매핑) — 67.3%가 멀웨어 개발에 AI 사용, medium+ 위험 비율 33%→56%(1.7배), 공격이 초기침투에서 post-compromise로 이동. 핵심 빈틈은 ATT&CK에 칸이 없는 'agentic orchestration'(모델이 공격 단계를 자율 연결). 스킬 기반 위험 평가 프레임의 한계
 
 ## 관련 포스트
 
@@ -47,6 +49,8 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]          | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
 | 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]] | OMOC /security-research — 5인 적대적 보안팀 스킬                     |
 | 2026-06-02 | [[2026-06-02-frontier-ai-governance-signals]]        | 프론티어 거버넌스 동시 발표 = 규제 전야 표준 선점 (칼럼)             |
+| 2026-06-10 | [[2026-06-10-claude-fable-5-mythos-5]]               | Fable 5 — 위험 능력의 '거부' 대신 '격리 배포' 설계 (칼럼)            |
+| 2026-06-10 | [[2026-06-10-ai-cyber-threats-mitre]]                | AI 사이버 위협 832건 MITRE 매핑 — agentic orchestration 빈틈 (칼럼)  |
 
 ## 관련 토픽
 

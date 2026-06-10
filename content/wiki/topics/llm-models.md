@@ -1,7 +1,7 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 20
+post_count: 21
 key_entities:
   [
     "GPT-5.2",
@@ -15,6 +15,8 @@ key_entities:
     "Gemini 3.1",
     "Gemini 3.5",
     "Gemini Omni",
+    "Claude Fable 5",
+    "Claude Mythos 5",
     "Meta 새 모델",
   ]
 tags: ["LLM", "모델 릴리스", "모델비교", "언어 모델"]
@@ -69,6 +71,7 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 | 2026-05-20 | [[2026-05-20-openai-disproves-geometry-conjecture]] | OpenAI 모델, 80년 묵은 이산기하학 추측 반증 — AI가 발견자로 등장            |
 | 2026-06-01 | [[2026-06-01-claude-opus-4-8]]                      | Claude Opus 4.8 — 코드 결함 4배 감소, Fast 모드 3배 저렴, 정렬 최고치       |
 | 2026-06-01 | [[2026-06-01-gemini-omni-3-5-io-2026]]              | Gemini Omni & 3.5 Flash — 영상 생성 모델과 에이전트 모델의 두 갈래          |
+| 2026-06-10 | [[2026-06-10-claude-fable-5-mythos-5]]              | Claude Fable 5 / Mythos 5 — 역대 최강 모델을 '거부 대신 격리'로 안전 배포   |
 
 ## 관련 토픽
 

@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-06-02"
-post_count: 33
+last_covered: "2026-06-10"
+post_count: 35
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -46,6 +46,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Virgin Atlantic이 Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건 달성 — [[2026-05-22-virgin-atlantic-codex]]
 - 엔터프라이즈 AI 도입 변곡점 분석 — Cisco·MUFG·KPMG·Endava·세무 에이전트 5개 사례로 '파일럿→핵심 업무' 전환 논증 (칼럼) — [[2026-06-02-enterprise-ai-graduation]]
 - 프론티어 거버넌스 동시 발표를 규제 전야 포지셔닝으로 읽은 칼럼 — Frontier Governance Framework·서드파티 평가 플레이북·선거 안전(S.1213/S.2346) — [[2026-06-02-frontier-ai-governance-signals]]
+- 비공개 S-1 SEC 제출 — Anthropic에 이은 양강 동시 상장 준비를 '자본시장 경쟁'으로 읽고 지배구조 차이를 짚은 칼럼 — [[2026-06-10-openai-confidential-s1]]
+- Codex 엔터프라이즈 후속 다이제스트 — Notion·Nextdoor·LSEG, '도입'에서 '개발 생산성 재배치'로 — [[2026-06-10-codex-enterprise-continued]]
 
 ## 타임라인
 
@@ -80,6 +82,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시     | [[2026-05-22-virgin-atlantic-codex]]                |
 | 2026-06-02 | 엔터프라이즈 AI '파일럿 졸업' 변곡점 분석     | [[2026-06-02-enterprise-ai-graduation]]             |
 | 2026-06-02 | 프론티어 거버넌스 = 규제 전야 포지셔닝 칼럼   | [[2026-06-02-frontier-ai-governance-signals]]       |
+| 2026-06-10 | 비공개 S-1 제출 — 양강 동시 상장 준비 칼럼    | [[2026-06-10-openai-confidential-s1]]               |
+| 2026-06-10 | Codex 엔터프라이즈 후속 — 생산성 재배치       | [[2026-06-10-codex-enterprise-continued]]           |
 
 ## 관련 엔티티
 
