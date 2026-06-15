@@ -1,7 +1,7 @@
 ---
 name: AI 코딩 도구
 type: topic
-post_count: 65
+post_count: 66
 key_entities:
   [
     "Claude Code",
@@ -39,6 +39,7 @@ tags: ["개발도구", "AI", "코딩"]
 - 플러그인 마찰 제거와 멀티클라우드 자동화: Claude Code v2.1.157에서 `.claude/skills` 플러그인이 마켓플레이스 없이 자동 로드되고 `plugin init` 스캐폴딩이 추가됨. v2.1.158에서는 Auto 모드가 Bedrock/Vertex/Foundry로 확장(Opus 4.7/4.8)되어, 사내 클라우드 정책에 묶인 기업도 자동 모드 활용 가능. 커스텀 스킬 제작·배포의 진입 장벽이 낮아지는 흐름
 - 평가축 이동(속도→효율): AI 코딩 경쟁이 "얼마나 빨리 만드나"에서 "얼마나 안 낭비하나(토큰·유지보수)"로 이동. claude-ns-hub의 "토큰 2%만 코드 생산에 쓰임" 측정, '바이브코딩=ADHD 증폭기'의 유지보수 부채, O'Reilly Codecon의 '손→안목' 장인정신 논의가 같은 방향을 가리킴
 - 엔터프라이즈 도입 변곡점: 2026년 5월 Cisco(빌드 20%↓·결함 처리량 10-15배)·MUFG(3.5만 명)·KPMG(27.6만 명)·Endava·세무 에이전트(정확도 25%→97%) 발표가 동시 등장. AI 코딩이 '파일럿 실험'에서 '틀리면 책임지는 핵심 업무'로 한 단계 넘어가는 신호
+- 무인 실행 시대로의 전환 — 같은 주(6/15 발행) oh-my-opencode(백그라운드 wake routing 신뢰성·Windows ARM/Codex 크로스환경), Claude Code(enforceAvailableModels 모델 허용목록 거버넌스 + 백그라운드 에이전트 respawn/daemon 수정), OpenCode(MCP 호환·세션 복구·이식성)가 동시에 같은 세 방향(무인 실행 신뢰성·크로스환경 생존·한도 거버넌스)을 손봄. 경쟁축이 생성 품질에서 운영 신뢰성으로 이동
 
 ## 관련 포스트
 
@@ -107,6 +108,7 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-06-02 | [[2026-06-02-ai-coding-token-waste]]                 | 토큰의 2%만 코드에 쓰인다 — AI 코딩 평가축이 속도→효율로 (칼럼)               |
 | 2026-06-02 | [[2026-06-02-enterprise-ai-graduation]]              | 5월, AI 코딩이 '파일럿'을 졸업했다 — 엔터프라이즈 도입 변곡점 (다이제스트)    |
 | 2026-06-10 | [[2026-06-10-codex-enterprise-continued]]            | 엔터프라이즈 졸업 그 다음 — Notion·Nextdoor·LSEG, 생산성 재배치 (다이제스트)  |
+| 2026-06-15 | [[2026-06-15-coding-agents-background-autonomy]]     | 코딩 에이전트가 잠든 사이 일한다 — 무인 실행·크로스환경·거버넌스 (다이제스트) |
 
 ## 관련 토픽
 

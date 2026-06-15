@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 15
+post_count: 16
 key_entities:
   [
     "Promptfoo",
@@ -32,6 +32,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 - 거버넌스가 보안 담론의 전면으로: OpenAI(Frontier Governance Framework·서드파티 평가 플레이북·선거 안전 S.1213/S.2346)와 Anthropic('대화 확대'·도덕적 형성)이 EU AI Act·캘리포니아 TFAIA 발효 직전 동시 발표. "안전 확보"보다 "안전을 누가 정의하느냐(평가 표준 선점)"의 협상 신호로 읽힘
 - 위험 능력의 '거부' 대신 '격리 배포': Claude Fable 5(Mythos급, 일반 안전 버전)는 문제 요청을 거부하지 않고 Opus 4.8로 라우팅(세션 5% 미만), 사이버·생물화학·디스틸레이션 3대 영역 차단. 무방비 Mythos 5는 Project Glasswing 파트너 전용. 외부 버그바운티 1,000시간+에서 universal jailbreak 0건. 능력 경쟁이 '능력을 어떻게 가둬 배포하느냐' 설계 경쟁으로 이동
 - AI가 공격의 '천장'이 아니라 '바닥'을 바꾼다: Anthropic의 832개 악성 계정 1년 분석(MITRE ATT&CK 매핑) — 67.3%가 멀웨어 개발에 AI 사용, medium+ 위험 비율 33%→56%(1.7배), 공격이 초기침투에서 post-compromise로 이동. 핵심 빈틈은 ATT&CK에 칸이 없는 'agentic orchestration'(모델이 공격 단계를 자율 연결). 스킬 기반 위험 평가 프레임의 한계
+- 자율 안전의 한계 — 미 정부가 6/12 Fable 5·Mythos 5 전 고객 접근 중단 지시. 거부→라우팅·frontier_llm refusal 카테고리 등 안전 레이어가 SDK까지 내려와 있었지만 배포 권한 결정에선 변수가 아니었음. 첫 Anthropic Public Record: 71% 정부 규제 지지·15%만 AI 기업 신뢰. 잘 설계된 자율 안전은 필요조건이되 충분조건은 아님
 
 ## 관련 포스트
 
@@ -51,6 +52,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-06-02 | [[2026-06-02-frontier-ai-governance-signals]]        | 프론티어 거버넌스 동시 발표 = 규제 전야 표준 선점 (칼럼)             |
 | 2026-06-10 | [[2026-06-10-claude-fable-5-mythos-5]]               | Fable 5 — 위험 능력의 '거부' 대신 '격리 배포' 설계 (칼럼)            |
 | 2026-06-10 | [[2026-06-10-ai-cyber-threats-mitre]]                | AI 사이버 위협 832건 MITRE 매핑 — agentic orchestration 빈틈 (칼럼)  |
+| 2026-06-15 | [[2026-06-15-fable-5-government-suspension]]         | 정부가 Fable 5 접근 중단 — 자율 안전 설계의 한계 (칼럼)              |
 
 ## 관련 토픽
 

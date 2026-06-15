@@ -1,0 +1,64 @@
+---
+title: "내가 칭찬한 그 안전 설계를, 정부가 닷새 만에 막았다 — Fable 5 접근 중단이 말하는 것"
+description: "닷새 전 저는 Fable 5의 진짜 뉴스가 '위험 능력을 거부가 아니라 라우팅으로 가둔 자체 설계'라고 썼어요. 그런데 미국 정부가 그 설계를 인정하지 않고 모델 접근 자체를 끊었습니다. 같은 날 나온 여론조사는 미국인의 15%만 AI 기업의 자율 판단을 믿는다고 말하고요. 잘 만든 자율 안전이 충분조건이 아니라는 신호를 따라가 봤어요."
+date: "2026-06-15"
+tags: ["AI", "Anthropic", "Claude", "AI안전", "거버넌스", "규제"]
+category: "ai-news"
+subcategory: "column"
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/news/fable-mythos-access"
+tldrVerdict: "프론티어 AI에서 '잘 설계된 자율 안전'은 충분조건이 아니에요. Fable 5 접근 중단은 모델을 배포할 권한이 기업의 안전 설계가 아니라 정부 손에 있다는 걸 보여줬어요."
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+닷새 전에 저는 Claude Fable 5를 두고 "헤드라인은 역대 최강이지만, 진짜 읽어야 할 건 벤치마크가 아니라 위험 능력을 거부가 아니라 라우팅과 분리로 가둔 설계"라고 썼어요. 능력 경쟁은 끝났고 이제 '어떻게 가두느냐'가 경쟁 축이라고요. ([Fable 5: '가장 센 모델'보다 '위험을 가두는 방식'이 진짜 뉴스](/posts/2026-06-10-claude-fable-5-mythos-5))
+
+그 글을 쓴 지 정확히 닷새 만에, 그 설계는 작동할 기회조차 받지 못했어요. 미국 정부가 Fable 5와 Mythos 5에 대한 접근을 끊으라고 지시했고, Anthropic은 따랐습니다. 제가 척추로 삼았던 "잘 가두는 설계"가, 모델을 시장에 둘지 말지를 정하는 자리에서는 변수가 안 됐다는 거예요. 오늘은 이 이야기를 하려고 해요.
+
+## 무슨 일이 있었나
+
+[Anthropic 발표](https://www.anthropic.com/news/fable-mythos-access)에 따르면, 2026년 6월 12일 오후 5시 21분(미 동부시간) 미국 정부로부터 국가안보 권한을 근거로 한 지시를 받았고, 그에 따라 <strong>모든 고객</strong>에 대해 Fable 5와 Mythos 5 접근을 즉시 차단했어요. 다른 모델들은 영향을 받지 않았고요. Fable에는 30일 데이터 보존 요건이 붙었고, 일부 Anthropic 직원을 포함한 외국 국적자도 이 지시의 영향을 받습니다.
+
+정부 측 논리는 "탈옥(jailbreak) 기법을 발견했다"는 거였어요. Anthropic은 그 기법을 검토한 뒤 정면으로 이견을 냈습니다. UK AISI와 외부 조직, 내부 팀까지 동원해 "총 수천 시간"을 레드팀했고, 시연에서 드러난 건 "이미 알려진 소수의 사소한 취약점"이며 다른 모델에도 흔하게 존재하는 수준이라고요. Anthropic의 표현을 그대로 옮기면 이래요.
+
+"perfect jailbreak resistance is not currently possible for any model provider" (어떤 모델 제공사도 완벽한 탈옥 저항은 현재 불가능하다)
+
+"we disagree that the finding of a narrow potential jailbreak should be cause for recalling a commercial model" (좁은 범위의 잠재적 탈옥을 발견한 것이 상용 모델을 회수할 근거가 된다는 데 동의하지 않는다)
+
+즉 회사는 "우리 안전 설계는 업계 표준만큼 충분하다"고 주장하는데, 정부는 그 판단을 받아들이지 않고 스위치를 내려버린 거예요.
+
+## 한 가지 아이러니: 안전 레이어는 이미 코드에 있었다
+
+여기서 제가 닷새 전 글과 이어 붙여 보고 싶은 게 있어요. 제가 칭찬했던 "거부 대신 라우팅" 메커니즘은 추상적인 설계 철학이 아니라 이미 코드로 배포된 상태였거든요.
+
+6월 9일, 그러니까 정부 지시가 나오기 사흘 전에 Anthropic Python SDK v0.108.0이 ["add support for claude-mythos-5 and claude-fable-5, with support for server-side fallbacks on refusal"](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.108.0)을 추가했어요. 같은 날 TypeScript SDK는 ["add `frontier_llm` refusal category"](https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.104.1)를 넣었고요. 거부가 발생하면 약한 모델로 흘려보내는 fallback, 프론티어 모델 전용 거부 카테고리 — 제가 "이게 진짜 뉴스"라고 했던 격리 설계가 SDK 레벨까지 내려와 있었던 거예요.
+
+그런데도 결과는 모델 자체의 접근 차단이었어요. <strong>기술적 안전 레이어가 존재하느냐는, 그 모델을 시장에 둘지 결정하는 자리에서 핵심 변수가 아니었다</strong>는 게 이번 사건이 드러낸 지점이에요. 회사가 아무리 정교하게 가둬도, '가둔 채로 내보내도 되는가'를 정하는 건 회사가 아니더라고요.
+
+## 같은 날, 또 하나의 숫자
+
+공교롭게도 Anthropic은 같은 6월 12일에 [첫 Anthropic Public Record](https://www.anthropic.com/news/anthropic-public-record) 결과도 공개했어요. 미국인 51,993명을 대상으로 한 여론조사인데, 두 숫자가 눈에 띄었어요.
+
+하나는 71%가 정부의 AI 개발·규제 관여를 지지한다는 것(민주 79%, 공화 68%, 무당층 69%로 진영을 가리지 않아요). 다른 하나는 <strong>AI 기업이 AI를 어떻게 개발하고 쓸지 결정하는 것을 신뢰한다고 답한 사람은 15%뿐</strong>이라는 거예요.
+
+저는 이 두 발표가 같은 날 나온 게 우연만은 아니라고 봐요. 한쪽에서는 정부가 "당신들 판단을 못 믿겠으니 내린다"고 하고, 다른 쪽 데이터에서는 대중이 "원래 그 판단 안 믿었다"고 답하는 거죠. 제가 6월 초에 ["AI 회사들이 갑자기 거버넌스를 말하는 이유"](/posts/2026-06-02-frontier-ai-governance-signals)에서 던졌던 질문, "누가 평가의 표준을 쓰느냐"의 답이 이번에 한 줄 나온 셈이에요. 적어도 이번엔, 회사가 아니라 정부가 일방적으로 썼어요.
+
+## 이렇게 볼 수도 있어요
+
+물론 Anthropic 말이 맞을 수도 있어요. 정말로 흔한 취약점 하나로 상용 모델을 통째로 막은 거라면, 이건 과잉 대응이고 나쁜 선례예요. 또 이번 조치를 순수한 'AI 안전' 문제로만 읽는 것도 조심스러워요. 국가안보 권한을 근거로 들었다는 건 수출통제·지정학 같은, 탈옥 기술력과는 다른 축의 논리가 깔려 있을 수 있다는 뜻이거든요. 단발성 조치로 끝나고 곧 풀릴 가능성도 있고요.
+
+하지만 그 모든 단서를 붙여도 방향 자체는 또렷해요. 프론티어 모델일수록, 잘 만들었느냐와 무관하게, 배포 여부가 회사 바깥의 결정에 묶인다는 거예요.
+
+## 한국 개발자 입장에서
+
+Claude의 상위 모델을 실제 제품에 끼워 쓰는 한국 팀이라면, 이번 일은 추상적인 미국 정치 뉴스가 아니에요. <strong>모델 접근이 기술 성숙도가 아니라 미국의 국가안보·수출통제 판단에 의해 하루아침에 끊길 수 있다</strong>는 운영 리스크가 현실로 한 번 찍힌 거예요. 그것도 사전 예고 없이, 오후 5시 21분에요.
+
+그래서 두 가지가 더 무겁게 다가와요. 첫째, 단일 프론티어 모델에 핵심 경로를 통째로 의존하는 설계는 위험해요. 역설적이게도 이번에 SDK에 들어간 "거부 시 fallback" 같은 메커니즘을, 안전 용도가 아니라 가용성 보험으로 한 번 더 생각하게 돼요. 모델 하나가 사라져도 서비스가 죽지 않는 폴백 경로 말이에요. 둘째, 이런 결정의 테이블에 한국은 앉아 있지 않아요. EU AI Act나 미국 규제 논의에 한국 개발자의 사용 맥락이 반영될 통로는 사실상 없죠. 우리가 쓰는 도구의 생사가 우리가 참여하지 못하는 방에서 정해진다는 감각은, 적어도 머릿속 한쪽에 켜 두는 게 맞다고 봐요.
+
+저는 Fable 5 사건을 "안전 기술이 부족했다"는 이야기로 읽지 않아요. 오히려 안전 기술은 SDK까지 내려와 있었어요. 진짜 메시지는 이거예요. 프론티어 AI에서 자율적으로 잘 설계한 안전은 필요조건일지언정 충분조건이 아니다 — 신뢰도, 배포 권한도, 이미 회사 손을 떠나기 시작했다.
+
+---
+
+근거가 된 소식: [Statement on the US government directive to suspend access to Fable 5 and Mythos 5 (Anthropic)](https://www.anthropic.com/news/fable-mythos-access), [Results from the first Anthropic Public Record (Anthropic)](https://www.anthropic.com/news/anthropic-public-record), [anthropic-sdk-python v0.108.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.108.0), [anthropic-sdk-typescript sdk-v0.104.1](https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.104.1)

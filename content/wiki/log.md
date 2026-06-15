@@ -9,6 +9,17 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-15] publish | thesis-first 배치 3편
+
+- [[2026-06-15-fable-5-government-suspension]] — 정부가 Fable 5·Mythos 5 접근 중단: 자율 안전 설계가 정교해도 배포 권한은 규제 당국에 (칼럼, 6/10 Fable 5·6/2 거버넌스 후속)
+- [[2026-06-15-anthropic-si-channel-war]] — 모델이 아니라 SI 채널을 사들인다: TCS·DXC 규제산업 파트너십 + OpenAI Partner Network (칼럼, enterprise-graduation 후속)
+- [[2026-06-15-coding-agents-background-autonomy]] — 코딩 에이전트가 잠든 사이 일한다: oh-my-opencode·Claude Code·OpenCode 릴리스를 무인 실행/크로스환경/거버넌스로 묶은 다이제스트형 칼럼
+- 모두 다중출처 근거 + 내 주장 구조. 사실 검증: Anthropic 페이지 3건 직접 확인, OpenAI 페이지는 Cloudflare 차단으로 보도 기준 표기, GitHub 릴리스 9건 확인. 썸네일 GEMINI_API_KEY 미설정으로 OG 폴백
+- 편집 판단: Claude Corps(#22)는 비영리 펠로우십이라 SI thesis와 무관해 제외, BBVA(#18)는 출처 간 수치 충돌로 비중 축소
+- 업데이트된 위키: entities/anthropic, entities/openai, entities/claude-code, entities/opencode, entities/oh-my-opencode, topics/ai-security, topics/ai-coding-tools, index
+
+---
+
 ## [2026-06-10] publish | thesis-first 배치 4편
 
 - [[2026-06-10-claude-fable-5-mythos-5]] — Fable 5: '가장 센 모델'보다 '위험을 가두는 방식'이 진짜 뉴스 (관점 칼럼)

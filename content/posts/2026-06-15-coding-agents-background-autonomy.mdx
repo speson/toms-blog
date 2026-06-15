@@ -1,0 +1,56 @@
+---
+title: "코딩 에이전트가 잠든 사이에 일한다 — 이번 주 릴리스 세 갈래가 가리키는 같은 방향"
+description: "이번 주 oh-my-opencode·Claude Code·OpenCode가 쏟아낸 릴리스를 겹쳐 보면, 경쟁이 '얼마나 잘 생성하나'에서 '사람이 안 볼 때 알아서 도느냐, 도구와 OS 경계를 넘어 살아남느냐, 한도를 거버넌스로 묶느냐'로 옮겨갔어요. 세 프로젝트가 같은 주에 같은 방향을 가리킨 게 우연이 아니라고 봐요."
+date: "2026-06-15"
+tags: ["AI", "개발도구", "오픈소스", "에이전트", "Claude"]
+category: "ai-news"
+subcategory: "column"
+source: "github"
+sourceUrl: "https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.9.2"
+tldrVerdict: "코딩 에이전트의 경쟁축이 생성 품질에서 '무인 실행 신뢰성·크로스환경 생존·한도 거버넌스'로 넘어갔어요. 이번 주 세 프로젝트의 릴리스가 같은 방향을 가리켜요."
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+코딩 에이전트 릴리스 노트는 보통 따로 보면 자잘해요. 버그 수정, 호환성 개선, 패치. 그런데 이번 주에 oh-my-opencode, Claude Code, OpenCode가 거의 동시에 낸 릴리스들을 한자리에 모아 놓으니 같은 문장이 읽혔어요. <strong>이제 다들 '더 잘 생성하는 법'이 아니라 '사람이 안 보는 동안 알아서 도는 법'을 고치고 있다</strong>는 거예요.
+
+2주 전에 ["토큰의 2%만 코드에 쓰인다"](/posts/2026-06-02-ai-coding-token-waste)에서 AI 코딩의 평가축이 속도에서 효율로 넘어갔다고 썼는데, 이번 릴리스들은 그다음 칸을 보여줘요. 에이전트가 '내가 직접 돌리는 루프'에서 '깨어나 알아서 일하는 프로세스'로 넘어가는 지점이요.
+
+## 신호 1: 백그라운드 에이전트를 '확실히 깨운다'
+
+가장 또렷한 건 oh-my-opencode v4.9.2예요. 릴리스 제목이 아예 ["Reliable Background-Agent Wake Routing"](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.9.2)이에요. 백그라운드 작업이 끝났을 때 부모 세션을 깨우는 신호가, 프롬프트 게이트가 바빠서 처리 중이면 조용히 유실되던 문제를 고쳤어요. 노트의 표현을 옮기면 "a background completion that lands while the gate is busy no longer silently drops the wake"예요. 여러 인스턴스가 동시에 돌 때 라우트가 섞이지 않게 격리도 넣었고, 동작이 마음에 안 들면 `experimental.disable_live_parent_wake_routing`로 끌 수 있는 탈출구까지 달았어요.
+
+이게 사소해 보여도, 저는 여기에 방향이 다 담겨 있다고 봐요. 백그라운드 에이전트의 핵심 난제는 '일을 잘하느냐'가 아니라 '끝났을 때 빠짐없이 깨어나느냐'거든요. 깨우는 신호 하나 유실되면 에이전트는 다 해 놓고도 멈춰 있어요. 릴리스 헤드라인이 생성 품질이 아니라 '깨우기 신뢰성'이라는 것 자체가, 무게중심이 어디로 갔는지 말해줘요.
+
+그리고 이건 oh-my-opencode만의 고민이 아니에요. 같은 주 [Claude Code v2.1.176](https://github.com/anthropics/claude-code/releases/tag/v2.1.176)도 백그라운드 관련 수정이 한 묶음이었어요. 예약된 wake 중에 열린 PR이 검색에 안 잡히던 것, 백그라운드 세션이 'Working'으로 영원히 멈춰 보이던 것, Windows 데몬이 안 뜨던 것, 손상된 상태 파일에서 세션을 되살리는 것까지. 두 프로젝트가 같은 주에 같은 종류의 버그를 줄줄이 잡고 있다는 건, 백그라운드 자동화가 지금 막 실전에 올라오면서 험한 모서리들이 한꺼번에 드러나는 단계라는 뜻이에요.
+
+## 신호 2: 도구와 OS 경계를 넘어 산다
+
+다음 신호는 이식성이에요. oh-my-opencode v4.10.0은 설치가 더 이상 미리 깔린 바이너리를 가정하지 않고 런타임 구성요소를 직접 받아와요(체크섬 고정). Windows와 Windows ARM(windows-arm64 패키지)을 정식 지원하고, Codex·LazyCodex 런타임을 직접 프로비저닝하고, Kimi K2.7 같은 다른 모델용 프롬프트 변형까지 넣었어요. 한 도구가 특정 OS·특정 모델·특정 설치 환경에 묶여 있던 시절에서, 어디에 떨어뜨려도 알아서 자리 잡는 쪽으로 가는 거예요.
+
+OpenCode v1.17.5~1.17.7도 결이 같아요. MCP 호환성을 높이려고 클라이언트 지원 능력을 명시적으로 선언하게 했고("declaring OpenCode's supported client capabilities"), 끊긴 MCP 세션을 복구하고, MCP 서버가 현재 워크스페이스를 루트로 받게 하고, 플러그인이 기본 포트를 가정하는 대신 활성 서버를 재사용하게 했어요. 프로젝트 복사·세션 이동 같은 이식성 흐름도 손봤고요. 화려한 기능은 아니지만, 에이전트가 여러 도구·여러 워크스페이스 사이를 오가며 살아남는 데 필요한 배관이에요.
+
+저는 이 두 갈래(무인 실행 + 크로스환경)가 한 몸이라고 봐요. 에이전트를 백그라운드에 올려 두려면, 그게 내 맥북에서든 회사 윈도우 서버에서든 동일하게 깨어나고 동일하게 복구돼야 하니까요.
+
+## 신호 3: 한도와 모델을 '거버넌스'로 묶는다
+
+세 번째 신호는 Claude Code 쪽에서 또렷해요. v2.1.175가 `enforceAvailableModels` 관리 설정을 추가했어요. 노트를 옮기면, `availableModels` 허용 목록이 Default 모델까지 제약하고, 사용자나 프로젝트 설정이 관리자가 정한 목록을 임의로 넓히지 못하게 막아요. v2.1.176은 여기서 더 조여서, 환경 변수로 차단된 모델로 우회하는 걸 막고 `/fast`가 허용 목록 밖 모델로 전환하려 하면 거부하게 했어요.
+
+이건 개인 편의 기능이 아니라 조직용 통제 장치예요. 에이전트가 백그라운드에서 알아서 도는 시대가 오면, "이 에이전트가 어떤 모델을, 어디 클라우드에서, 얼마나 쓰게 둘 것인가"가 곧 비용이자 보안이 되거든요. 5월에 본 [Anthropic SDK의 Managed Agents](/posts/2026-05-11-anthropic-sdk-managed-agents)나 [oh-my-opencode의 신뢰성 작업](/posts/2026-05-19-oh-my-opencode-v420-reliability)과 이어지는 흐름이에요. 자유롭게 돌게 풀어주는 만큼, 그 자유를 가두는 울타리도 같이 깔리는 거죠.
+
+## 이렇게 볼 수도 있어요
+
+과장하지 않을게요. 이번 건 죄다 포인트 릴리스라 개별 신호는 작아요. 그리고 wake routing·respawn·데몬 같은 버그가 이렇게 쏟아진다는 건, 거꾸로 백그라운드 자동화가 아직 안정 단계가 아니라는 방증이기도 해요. 사람이 안 보는 사이 알아서 도는 에이전트는 잘못 도는 것도 사람이 안 볼 때 일어나니까요. 무인 실행은 편의인 동시에 새로운 리스크예요. 모델 허용 목록 같은 거버넌스도 통제와 자유도 제약 사이의 트레이드오프고요. v2.1.177은 릴리스 노트가 비어 있어서 뭐가 바뀌었는지 확인도 안 됐어요. 그러니 "패러다임 전환"까지 갈 이야기는 아니에요.
+
+다만 세 프로젝트가 같은 주에 같은 세 방향(무인 실행 신뢰성, 크로스환경 생존, 한도 거버넌스)을 동시에 손봤다는 건, 적어도 업계가 같은 다음 문제를 풀고 있다는 신호로는 충분하다고 봐요.
+
+## 한국 개발자 입장에서
+
+실무에 붙이려는 분께 세 가지로 정리할게요. 첫째, 백그라운드 에이전트를 진짜 업무에 올릴 거면 '깨어나는 신뢰성'을 먼저 보세요. 이번 수정 목록이 곧 점검 항목이에요. wake 신호 유실, 'Working' 무한 표시, 손상된 상태에서의 복구 같은 게 여전히 깨질 수 있는 부분이거든요. 둘째, `enforceAvailableModels` 같은 모델 허용 목록은 Bedrock·Vertex 같은 사내 클라우드 정책을 가진 한국 기업에 실질적인 통제 수단이에요. 어떤 에이전트가 어떤 모델을 쓰는지 조직 차원에서 못 박을 수 있다는 건, 도입 품의 통과의 열쇠가 되기도 해요. 셋째, Windows·Windows ARM 정식 지원은 윈도우 사내 환경이 많은 한국 조직엔 의외로 큰 의미예요. 그동안 'macOS·리눅스 우선' 도구들이 윈도우에서 겉돌던 마찰이 줄어드는 거니까요.
+
+한 줄로 줄이면 이래요. 코딩 에이전트의 다음 경쟁은 데모에서 멋지게 만드는 게 아니라, 아무도 안 보는 새벽 세 시에 조용히, 끝까지, 정해진 울타리 안에서 도는 거예요. 이번 주 릴리스들은 다들 그 방향을 보고 있었어요.
+
+---
+
+근거가 된 소식: [oh-my-opencode v4.9.2 — Reliable Background-Agent Wake Routing](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.9.2), [oh-my-opencode v4.10.0](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.10.0), [Claude Code v2.1.175](https://github.com/anthropics/claude-code/releases/tag/v2.1.175), [Claude Code v2.1.176](https://github.com/anthropics/claude-code/releases/tag/v2.1.176), [OpenCode v1.17.5](https://github.com/anomalyco/opencode/releases/tag/v1.17.5), [OpenCode v1.17.7](https://github.com/anomalyco/opencode/releases/tag/v1.17.7)
