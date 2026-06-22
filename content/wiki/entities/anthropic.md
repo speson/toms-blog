@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-06-15"
-post_count: 30
+last_covered: "2026-06-22"
+post_count: 31
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -38,6 +38,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - 1년치 AI 사이버 위협 832건 MITRE ATT&CK 매핑 — AI가 공격 문턱을 낮추고 'agentic orchestration'이 ATT&CK 빈틈이라는 분석 — [[2026-06-10-ai-cyber-threats-mitre]]
 - Fable 5·Mythos 5 미 정부 접근 중단(6/12) — 자율 안전 설계가 정교해도 배포 권한은 규제 당국에 있다는 칼럼 + 첫 Public Record(미국인 15%만 AI 기업 신뢰) — [[2026-06-15-fable-5-government-suspension]]
 - TCS·DXC 규제산업 파트너십 — 모델이 아니라 'SI 채널'을 사들이는 다음 전장 칼럼 — [[2026-06-15-anthropic-si-channel-war]]
+- 서울 오피스 개소 + 과기정통부 MOU(한국어 모델 안전성 평가) + NAVER·Nexon·LG CNS·한화·Samsung SDS 배포 — 삼성을 두고 OpenAI와 동시 공략한 '한국 상륙' 칼럼 — [[2026-06-22-ai-labs-land-in-korea]]
 
 ## 타임라인
 
@@ -64,6 +65,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-06-10 | AI 사이버 위협 832건 MITRE 매핑 — 위협 분석 칼럼                   | [[2026-06-10-ai-cyber-threats-mitre]]            |
 | 2026-06-15 | 미 정부, Fable 5·Mythos 5 접근 중단 — 자율 안전 설계의 한계 (칼럼) | [[2026-06-15-fable-5-government-suspension]]     |
 | 2026-06-15 | TCS·DXC 규제산업 파트너십 — SI 채널 전쟁 시작 (칼럼)               | [[2026-06-15-anthropic-si-channel-war]]          |
+| 2026-06-22 | 서울 오피스 개소 + 정부 MOU + 대기업 배포 — '한국 상륙' 칼럼       | [[2026-06-22-ai-labs-land-in-korea]]             |
 
 ## 관련 엔티티
 

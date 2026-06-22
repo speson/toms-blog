@@ -9,6 +9,16 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-06-22] publish | thesis-first 배치 2편
+
+- [[2026-06-22-ai-from-benchmark-to-clinic]] — AI 의료·과학 성과 3건(희귀병 진단 NEJM AI / GPT-5.4 화학자 / AMIE Nature)이 공유하는 'AI 가설 생성 + 사람 검증' 분업 칼럼 (5/20 기하 추측 반증·2/19 AI for science 후속)
+- [[2026-06-22-ai-labs-land-in-korea]] — Anthropic 서울 오피스·정부 MOU + 삼성전자 ChatGPT/Codex 전사 배포: 삼성을 두고 양 진영이 동시 공략한 '한국 상륙' 칼럼 (6/15 SI 채널 전쟁·6/2 S-1 후속)
+- 선택 항목: #1, #13, #14, #19, #20, #22 (의료/과학 4건 → 1편, 한국 2건 → 1편으로 합성)
+- 업데이트된 위키: entities/openai(+2), entities/anthropic(+1), entities/google(+1), index
+- 신규 토픽: topics/ai-for-science (포스트 5건 연결 — 1/26·2/19·2/19·5/20·6/22)
+
+---
+
 ## [2026-06-15] publish | thesis-first 배치 3편
 
 - [[2026-06-15-fable-5-government-suspension]] — 정부가 Fable 5·Mythos 5 접근 중단: 자율 안전 설계가 정교해도 배포 권한은 규제 당국에 (칼럼, 6/10 Fable 5·6/2 거버넌스 후속)

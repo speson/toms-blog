@@ -1,7 +1,7 @@
 ---
 name: Wiki Index
 description: 전체 위키 페이지 카탈로그
-updated: "2026-06-15"
+updated: "2026-06-22"
 ---
 
 # Wiki Index
@@ -12,9 +12,9 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 
 | 페이지                                       | 설명                               | 포스트 수 |
 | -------------------------------------------- | ---------------------------------- | --------- |
-| [openai](entities/openai.md)                 | OpenAI - GPT, ChatGPT, Codex 등    | 36        |
-| [anthropic](entities/anthropic.md)           | Anthropic - Claude, Claude Code 등 | 30        |
-| [google](entities/google.md)                 | Google AI - Gemini, Android 등     | 17        |
+| [openai](entities/openai.md)                 | OpenAI - GPT, ChatGPT, Codex 등    | 38        |
+| [anthropic](entities/anthropic.md)           | Anthropic - Claude, Claude Code 등 | 31        |
+| [google](entities/google.md)                 | Google AI - Gemini, Android 등     | 18        |
 | [claude-code](entities/claude-code.md)       | Claude Code - AI 코딩 에이전트     | 28        |
 | [opencode](entities/opencode.md)             | OpenCode - 오픈소스 AI 코딩 도구   | 15        |
 | [gemini](entities/gemini.md)                 | Gemini - Google의 LLM 모델         | 14        |
@@ -25,14 +25,15 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 
 ## Topics (주제/트렌드)
 
-| 페이지                                       | 설명                          | 포스트 수 |
-| -------------------------------------------- | ----------------------------- | --------- |
-| [ai-coding-tools](topics/ai-coding-tools.md) | AI 코딩 도구 생태계 비교/분석 | 66        |
-| [open-source-ai](topics/open-source-ai.md)   | 오픈소스 AI 프로젝트 동향     | 22        |
-| [ai-agents](topics/ai-agents.md)             | AI 에이전트 기술/트렌드       | 16        |
-| [ai-security](topics/ai-security.md)         | AI 보안, 프롬프트 인젝션 등   | 16        |
-| [mcp](topics/mcp.md)                         | Model Context Protocol        | 15        |
-| [llm-models](topics/llm-models.md)           | LLM 모델 릴리스/비교          | 21        |
+| 페이지                                       | 설명                            | 포스트 수 |
+| -------------------------------------------- | ------------------------------- | --------- |
+| [ai-coding-tools](topics/ai-coding-tools.md) | AI 코딩 도구 생태계 비교/분석   | 66        |
+| [open-source-ai](topics/open-source-ai.md)   | 오픈소스 AI 프로젝트 동향       | 22        |
+| [ai-agents](topics/ai-agents.md)             | AI 에이전트 기술/트렌드         | 16        |
+| [ai-security](topics/ai-security.md)         | AI 보안, 프롬프트 인젝션 등     | 16        |
+| [mcp](topics/mcp.md)                         | Model Context Protocol          | 15        |
+| [llm-models](topics/llm-models.md)           | LLM 모델 릴리스/비교            | 21        |
+| [ai-for-science](topics/ai-for-science.md)   | AI for Science (의료·과학 연구) | 5         |
 
 ## Synthesis (종합 분석)
 
@@ -42,4 +43,4 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 
 ---
 
-마지막 업데이트: 2026-06-15
+마지막 업데이트: 2026-06-22

@@ -3,8 +3,8 @@ name: Google AI
 type: entity
 aliases: [Google, Google DeepMind]
 first_covered: "2026-01-25"
-last_covered: "2026-06-01"
-post_count: 17
+last_covered: "2026-06-22"
+post_count: 18
 related_entities: [gemini, anthropic, openai]
 tags: [AI, Google, 검색, 모델릴리스, 생산성]
 ---
@@ -30,6 +30,7 @@ Gemini 모델 시리즈, Google 검색 AI 기능, DeepMind 연구 등을 포함�
 - Gemma 4 MTP(Multi-Token Prediction) 기능 은폐 논란 — [[2026-05-06-gemma-4-mtp-controversy]]
 - Google I/O 2026 — Gemini 3.5 Flash 출시, 에이전트 작업 최적화 모델 공개 — [[2026-05-20-gemini-3-5-frontier]]
 - Google I/O 2026 데모 — Gemini Omni 영상 생성 모델 공개, 3.5 Flash 에이전트 능력 시연 — [[2026-06-01-gemini-omni-3-5-io-2026]]
+- 의료 AI AMIE, 만성질환 관리에서 1차 진료의 21명과 블라인드 비교(Nature) — 관리 추론 대등, 계획 정밀도·가이드라인 부합도 우위. 'AI 가설 생성+사람 검증' 칼럼의 근거 — [[2026-06-22-ai-from-benchmark-to-clinic]]
 
 ## 타임라인
 
@@ -52,6 +53,7 @@ Gemini 모델 시리즈, Google 검색 AI 기능, DeepMind 연구 등을 포함�
 | 2026-05-06 | Gemma 4 MTP 은폐 논란 발생                  | [[2026-05-06-gemma-4-mtp-controversy]]        |
 | 2026-05-20 | I/O 2026 — Gemini 3.5 Flash 출시            | [[2026-05-20-gemini-3-5-frontier]]            |
 | 2026-06-01 | I/O 2026 — Gemini Omni 영상 생성 모델 공개  | [[2026-06-01-gemini-omni-3-5-io-2026]]        |
+| 2026-06-22 | 의료 AI AMIE, PCP와 블라인드 비교 (Nature)  | [[2026-06-22-ai-from-benchmark-to-clinic]]    |
 
 ## 관련 엔티티
 
