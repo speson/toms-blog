@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-06-15"
-post_count: 28
+last_covered: "2026-07-03"
+post_count: 29
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -43,37 +43,39 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 - v2.1.149: /usage 카테고리별 분석(스킬·서브에이전트·플러그인·MCP), /diff 키보드 내비게이션, GFM 체크박스 렌더링 — [[2026-05-23-claude-code-v21149]]
 - v2.1.157~159: `.claude/skills` 플러그인 자동 로드·`plugin init` 스캐폴딩, Auto 모드 Bedrock/Vertex/Foundry 확장(Opus 4.7/4.8) — [[2026-06-01-claude-code-v21157-159]]
 - v2.1.175~177: enforceAvailableModels 모델 거버넌스 + 백그라운드 에이전트 다수 수정, '무인 실행' 다이제스트의 일부 — [[2026-06-15-coding-agents-background-autonomy]]
+- v2.1.198: 서브에이전트 기본 백그라운드 실행 + worktree 자동 커밋·푸시·드래프트 PR, 서브에이전트·압축의 모델/확장사고 상속 — '대화 상대에서 비동기 동료로' 칼럼 — [[2026-07-03-claude-code-subagents-background-default]]
 
 ## 타임라인
 
-| 날짜       | 내용                                                                    | 포스트                                           |
-| ---------- | ----------------------------------------------------------------------- | ------------------------------------------------ |
-| 2026-01-23 | v2.1.16: 태스크 관리 시스템, VSCode 플러그인 관리                       | [[2026-01-23-claude-code-v2116]]                 |
-| 2026-01-25 | v2.1.19: 태스크 관리 환경변수, VSCode 세션 포크                         | [[2026-01-25-claude-code-v2119]]                 |
-| 2026-02-05 | v2.1.30: PDF 페이지 범위 지정                                           | [[2026-02-05-claude-code-v2130]]                 |
-| 2026-02-05 | v2.1.31: 세션 재개 힌트, 일본어 지원                                    | [[2026-02-05-claude-code-v2131]]                 |
-| 2026-02-12 | v2.1.39: 터미널 렌더링 성능 개선                                        | [[2026-02-12-claude-code-v2139]]                 |
-| 2026-02-13 | v2.1.41: auth 명령어, Windows ARM64 지원                                | [[2026-02-13-claude-code-v2141]]                 |
-| 2026-02-19 | v2.1.47: 역대 최대 규모 버그 수정                                       | [[2026-02-19-claude-code-v2147]]                 |
-| 2026-02-19 | 한 달 추적기(v2.1.16→v2.1.47) 분석                                      | [[2026-02-19-claude-code-one-month-tracker]]     |
-| 2026-03-05 | HTTP Hooks 기능 추가                                                    | [[2026-03-05-claude-code-http-hooks]]            |
-| 2026-03-10 | v2.1.71~72: /loop, Tool Search                                          | [[2026-03-10-claude-code-v2172]]                 |
-| 2026-03-16 | v2.1.74~76: MCP Elicitation, /effort                                    | [[2026-03-16-claude-code-v2174-76]]              |
-| 2026-03-23 | Skills 실전 가이드 발행                                                 | [[2026-03-23-claude-code-skills]]                |
-| 2026-03-23 | v2.1.77~79: 64K 토큰, 메모리 최적화                                     | [[2026-03-23-claude-code-v2177-79]]              |
-| 2026-03-30 | v2.1.83~85: 조건부 훅, PowerShell, 팀 정책                              | [[2026-03-30-claude-code-v2183-85]]              |
-| 2026-04-01 | v2.1.86~87: 버그 수정, 토큰 절약                                        | [[2026-04-01-claude-code-v2186-87]]              |
-| 2026-04-06 | v2.1.90~92: /powerup, MCP 500K 지원                                     | [[2026-04-06-claude-code-v2190-92]]              |
-| 2026-04-14 | v2.1.94~104: Mantle, NO_FLICKER, 팀 온보딩                              | [[2026-04-14-claude-code-v2194-104]]             |
-| 2026-04-16 | v2.1.108~110: /tui 풀스크린, 세션 리캡, 푸시 알림                       | [[2026-04-16-claude-code-v21108-110]]            |
-| 2026-04-27 | v2.1.118~120: vim visual mode, /config persist, custom themes           | [[2026-04-27-claude-code-v21118-120]]            |
-| 2026-05-06 | K자형 생산성 분석 — AI 도구로 인한 개발자 생산성 양극화                 | [[2026-05-06-claude-code-k-shaped-productivity]] |
-| 2026-05-06 | v2.1.128~131: 최신 릴리스 누적 개선                                     | [[2026-05-06-claude-code-v21128-131]]            |
-| 2026-05-11 | Claude 사용량 한도 2배 인상 + SpaceX 파트너십                           | [[2026-05-11-claude-usage-limits-spacex]]        |
-| 2026-05-19 | v2.1.142~144: 에이전트 플래그, 백그라운드 세션                          | [[2026-05-19-claude-code-v21142-144]]            |
-| 2026-05-23 | v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션               | [[2026-05-23-claude-code-v21149]]                |
-| 2026-06-01 | v2.1.157~159: skills 플러그인 자동 로드, Auto 모드 클라우드 확장        | [[2026-06-01-claude-code-v21157-159]]            |
-| 2026-06-15 | v2.1.175~177: enforceAvailableModels 거버넌스, 백그라운드 에이전트 수정 | [[2026-06-15-coding-agents-background-autonomy]] |
+| 날짜       | 내용                                                                    | 포스트                                                  |
+| ---------- | ----------------------------------------------------------------------- | ------------------------------------------------------- |
+| 2026-01-23 | v2.1.16: 태스크 관리 시스템, VSCode 플러그인 관리                       | [[2026-01-23-claude-code-v2116]]                        |
+| 2026-01-25 | v2.1.19: 태스크 관리 환경변수, VSCode 세션 포크                         | [[2026-01-25-claude-code-v2119]]                        |
+| 2026-02-05 | v2.1.30: PDF 페이지 범위 지정                                           | [[2026-02-05-claude-code-v2130]]                        |
+| 2026-02-05 | v2.1.31: 세션 재개 힌트, 일본어 지원                                    | [[2026-02-05-claude-code-v2131]]                        |
+| 2026-02-12 | v2.1.39: 터미널 렌더링 성능 개선                                        | [[2026-02-12-claude-code-v2139]]                        |
+| 2026-02-13 | v2.1.41: auth 명령어, Windows ARM64 지원                                | [[2026-02-13-claude-code-v2141]]                        |
+| 2026-02-19 | v2.1.47: 역대 최대 규모 버그 수정                                       | [[2026-02-19-claude-code-v2147]]                        |
+| 2026-02-19 | 한 달 추적기(v2.1.16→v2.1.47) 분석                                      | [[2026-02-19-claude-code-one-month-tracker]]            |
+| 2026-03-05 | HTTP Hooks 기능 추가                                                    | [[2026-03-05-claude-code-http-hooks]]                   |
+| 2026-03-10 | v2.1.71~72: /loop, Tool Search                                          | [[2026-03-10-claude-code-v2172]]                        |
+| 2026-03-16 | v2.1.74~76: MCP Elicitation, /effort                                    | [[2026-03-16-claude-code-v2174-76]]                     |
+| 2026-03-23 | Skills 실전 가이드 발행                                                 | [[2026-03-23-claude-code-skills]]                       |
+| 2026-03-23 | v2.1.77~79: 64K 토큰, 메모리 최적화                                     | [[2026-03-23-claude-code-v2177-79]]                     |
+| 2026-03-30 | v2.1.83~85: 조건부 훅, PowerShell, 팀 정책                              | [[2026-03-30-claude-code-v2183-85]]                     |
+| 2026-04-01 | v2.1.86~87: 버그 수정, 토큰 절약                                        | [[2026-04-01-claude-code-v2186-87]]                     |
+| 2026-04-06 | v2.1.90~92: /powerup, MCP 500K 지원                                     | [[2026-04-06-claude-code-v2190-92]]                     |
+| 2026-04-14 | v2.1.94~104: Mantle, NO_FLICKER, 팀 온보딩                              | [[2026-04-14-claude-code-v2194-104]]                    |
+| 2026-04-16 | v2.1.108~110: /tui 풀스크린, 세션 리캡, 푸시 알림                       | [[2026-04-16-claude-code-v21108-110]]                   |
+| 2026-04-27 | v2.1.118~120: vim visual mode, /config persist, custom themes           | [[2026-04-27-claude-code-v21118-120]]                   |
+| 2026-05-06 | K자형 생산성 분석 — AI 도구로 인한 개발자 생산성 양극화                 | [[2026-05-06-claude-code-k-shaped-productivity]]        |
+| 2026-05-06 | v2.1.128~131: 최신 릴리스 누적 개선                                     | [[2026-05-06-claude-code-v21128-131]]                   |
+| 2026-05-11 | Claude 사용량 한도 2배 인상 + SpaceX 파트너십                           | [[2026-05-11-claude-usage-limits-spacex]]               |
+| 2026-05-19 | v2.1.142~144: 에이전트 플래그, 백그라운드 세션                          | [[2026-05-19-claude-code-v21142-144]]                   |
+| 2026-05-23 | v2.1.149: /usage 카테고리별 분석, /diff 키보드 내비게이션               | [[2026-05-23-claude-code-v21149]]                       |
+| 2026-06-01 | v2.1.157~159: skills 플러그인 자동 로드, Auto 모드 클라우드 확장        | [[2026-06-01-claude-code-v21157-159]]                   |
+| 2026-06-15 | v2.1.175~177: enforceAvailableModels 거버넌스, 백그라운드 에이전트 수정 | [[2026-06-15-coding-agents-background-autonomy]]        |
+| 2026-07-03 | v2.1.198: 서브에이전트 기본 백그라운드화 + worktree 자동 PR (칼럼)      | [[2026-07-03-claude-code-subagents-background-default]] |
 
 ## 관련 엔티티
 

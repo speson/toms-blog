@@ -1,7 +1,7 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 21
+post_count: 22
 key_entities:
   [
     "GPT-5.2",
@@ -17,6 +17,7 @@ key_entities:
     "Gemini Omni",
     "Claude Fable 5",
     "Claude Mythos 5",
+    "Claude Sonnet 5",
     "Meta 새 모델",
   ]
 tags: ["LLM", "모델 릴리스", "모델비교", "언어 모델"]
@@ -45,6 +46,7 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 - OpenAI 모델이 80년 묵은 unit distance problem 관련 추측을 반증하며 AI가 수학적 발견의 주체로 등장. 추론 모델의 활용처가 학술 연구까지 확장
 - Claude Opus 4.8은 벤치마크 점수보다 신뢰성에 초점. Opus 4.7 대비 코드 결함을 놓칠 확률 약 4배 감소, 모르는 것을 정직하게 표시, 도구 호출 효율 개선. 가격은 동일($5/$25)하되 Fast 모드가 3배 저렴해짐($10/$50). 정렬 평가에서 친사회성 최고치·오정렬 행동 감소를 동시 달성하며 "성능과 안전성 동시 개선" 서사 강화
 - Gemini Omni는 Google의 새 영상 생성 모델로, 이미지·오디오·비디오·텍스트 등 어떤 입력이든 영상으로 변환. 캐릭터·물리·장면 연속성 일관성 유지와 대화형 편집이 차별점. 모델 경쟁이 텍스트·코딩을 넘어 멀티모달 생성으로 확장되는 흐름을 보여줌
+- Claude Sonnet 5는 Opus 4.8에 근접한 성능을 프로모션 $2/$10(정가 $3/$15)에 제공하며 전 플랜 기본 모델이 됨. 2월 Sonnet 4.6의 'Opus급을 Sonnet 가격에' 서사를 이어받되, 이번엔 성능뿐 아니라 가격까지 내리며 티어를 가르는 축이 '성능'에서 '가격·먼저 도달한 시간'으로 이동. 위험 능력(사이버)은 현재 Opus보다 의도적으로 낮춰, 능력과 배포 범위를 분리하는 설계
 
 ## 관련 포스트
 
@@ -72,6 +74,7 @@ OpenAI(GPT-5.x 시리즈), Anthropic(Claude 4.6 라인), Google(Gemini 3.x 시�
 | 2026-06-01 | [[2026-06-01-claude-opus-4-8]]                      | Claude Opus 4.8 — 코드 결함 4배 감소, Fast 모드 3배 저렴, 정렬 최고치       |
 | 2026-06-01 | [[2026-06-01-gemini-omni-3-5-io-2026]]              | Gemini Omni & 3.5 Flash — 영상 생성 모델과 에이전트 모델의 두 갈래          |
 | 2026-06-10 | [[2026-06-10-claude-fable-5-mythos-5]]              | Claude Fable 5 / Mythos 5 — 역대 최강 모델을 '거부 대신 격리'로 안전 배포   |
+| 2026-07-03 | [[2026-07-03-claude-sonnet-5]]                      | Claude Sonnet 5 — Opus 4.8 근접 성능을 프로모션 $2/$10에, 전 플랜 기본 모델 |
 
 ## 관련 토픽
 

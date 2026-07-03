@@ -1,7 +1,7 @@
 ---
 name: AI for Science
 type: topic
-post_count: 5
+post_count: 6
 key_entities:
   [
     "OpenAI o3 Deep Research",
@@ -9,6 +9,8 @@ key_entities:
     "Google AMIE",
     "Anthropic AI for Science",
     "Molecule.one",
+    "Claude Science",
+    "GeneBench-Pro",
   ]
 tags: ["AI for Science", "의료", "신약", "연구", "수학"]
 ---
@@ -28,16 +30,18 @@ AI가 시험 문제 풀이나 요약 같은 데모를 넘어, 실제 과학·의
 - Google AMIE는 진단을 넘어 만성질환 관리로 영역을 확장, 1차 진료의 21명과 블라인드 비교(Nature)에서 관리 추론은 대등하고 치료 계획 정밀도·가이드라인 부합도는 유의하게 우위. 단 환자 역할 배우 대상으로 실제 임상은 아님
 - 관통하는 패턴: 'AI 가설 생성 + 사람 검증'이라는 분업. 자율 의사결정이 아니라 그 직전 단계이며, 출력의 근거(유전자·논문·실험)를 사람이 추적·검증할 수 있게 설계하는 것이 핵심. 책임이 따르는 도메인 전반에 적용되는 설계 원칙으로 확장 가능
 - 한계와 경계: 논문 게재와 규제 승인·임상 도입 사이에는 여전히 큰 간극이 있고, 대부분 결과는 당사자·협업사가 직접 발표한 것이라 선택 공개 가능성을 감안해 읽어야 한다
+- 2026년 6~7월, '도구'와 '측정'이 동시에 등장. Anthropic Claude Science(과학용 워크벤치: 인용·계산 검증 리뷰어 에이전트, 감사 가능 산출물, 로컬 실행, 60+ 생명과학 스킬, UniProt·PDB·Ensembl 연결)는 'AI 가설 생성 + 사람 검증' 분업을 제품으로 굳혔다. 같은 시기 OpenAI GeneBench-Pro(유전체학·정량생물학 129문제, 결정론적 채점)는 최고 모델 GPT-5.6 Sol Pro도 31.5%·Claude Opus 4.8 16.0%로, 그 검증자가 왜 필요한지를 숫자로 확인. 벤치마크가 재는 건 지식이 아니라 'research taste'(어떤 질문을 데이터가 뒷받침하는지에 대한 판단)라는 점이 핵심
 
 ## 관련 포스트
 
-| 날짜       | 제목                                                | 관점                                                               |
-| ---------- | --------------------------------------------------- | ------------------------------------------------------------------ |
-| 2026-01-26 | [[2026-01-26-claude-accelerating-science]]          | Claude로 과학 연구 가속 — Biomni·MozzareLLM·Lundberg Lab           |
-| 2026-02-19 | [[2026-02-19-ai-transforming-science]]              | AI가 바꾸는 과학 연구 — 2026년 실험실의 혁명                       |
-| 2026-02-19 | [[2026-02-19-gpt52-theoretical-physics]]            | GPT-5.2, 이론물리학 새 공식 유도                                   |
-| 2026-05-20 | [[2026-05-20-openai-disproves-geometry-conjecture]] | OpenAI 모델, 80년 묵은 수학 추측 반증 — AI가 발견자가 된 사건      |
-| 2026-06-22 | [[2026-06-22-ai-from-benchmark-to-clinic]]          | 의료·과학 성과 3건의 공통 패턴 — 'AI 가설 생성 + 사람 검증' (칼럼) |
+| 날짜       | 제목                                                | 관점                                                                                                        |
+| ---------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 2026-01-26 | [[2026-01-26-claude-accelerating-science]]          | Claude로 과학 연구 가속 — Biomni·MozzareLLM·Lundberg Lab                                                    |
+| 2026-02-19 | [[2026-02-19-ai-transforming-science]]              | AI가 바꾸는 과학 연구 — 2026년 실험실의 혁명                                                                |
+| 2026-02-19 | [[2026-02-19-gpt52-theoretical-physics]]            | GPT-5.2, 이론물리학 새 공식 유도                                                                            |
+| 2026-05-20 | [[2026-05-20-openai-disproves-geometry-conjecture]] | OpenAI 모델, 80년 묵은 수학 추측 반증 — AI가 발견자가 된 사건                                               |
+| 2026-06-22 | [[2026-06-22-ai-from-benchmark-to-clinic]]          | 의료·과학 성과 3건의 공통 패턴 — 'AI 가설 생성 + 사람 검증' (칼럼)                                          |
+| 2026-07-03 | [[2026-07-03-ai-science-workbench-vs-benchmark]]    | 같은 주 '작업대(Claude Science) vs 시험지(GeneBench-Pro)' — 최고 모델 31.5%, 도구와 측정이 동시 등장 (칼럼) |
 
 ## 관련 토픽
 

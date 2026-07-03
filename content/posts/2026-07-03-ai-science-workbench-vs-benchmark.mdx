@@ -1,0 +1,52 @@
+---
+title: "같은 주에 '과학용 작업대'와 '과학 시험지'가 나왔다 — 그리고 시험지는 아직 못 푼다고 답했다"
+description: "Anthropic은 과학자용 워크벤치 Claude Science를, OpenAI는 유전체학 벤치마크 GeneBench-Pro를 거의 같은 시점에 내놨어요. 한쪽은 'AI로 과학하는 도구'를, 다른 쪽은 'AI가 과학을 하는가'를 측정해요. 그리고 그 측정값(최고 31.5%)이 지금 우리가 어디쯤 있는지 냉정하게 말해줘요."
+date: "2026-07-03"
+tags: ["AI", "Anthropic", "OpenAI", "연구"]
+category: "ai-news"
+subcategory: "column"
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/news/claude-science-ai-workbench"
+tldrVerdict: "Claude Science(작업대)와 GeneBench-Pro(시험지)가 같은 주에 나왔어요. 도구는 'AI 가설 생성 + 사람 검증'이라는 분업을 제품으로 굳히고, 벤치마크는 최고 모델도 31.5%밖에 못 푼다며 사람이 아직 필요하다고 확인해줘요. 둘은 모순이 아니라 같은 이야기의 앞뒷면이에요."
+draft: false
+---
+
+안녕하세요, Tom입니다.
+
+며칠 사이에 AI와 과학을 두고 성격이 정반대인 발표가 두 개 나왔어요. Anthropic은 과학자가 실제로 연구를 굴리는 도구, Claude Science를 내놨어요. OpenAI는 AI가 유전체학 문제를 얼마나 푸는지 재는 시험지, GeneBench-Pro를 냈고요. 하나는 "자, 이걸로 과학하세요"이고 다른 하나는 "AI가 과학을 하긴 하나?"예요. 저는 이 둘을 따로 읽으면 안 된다고 봐요. <strong>도구와 시험지가 같은 주에 나왔다는 게, 지금 이 분야가 어느 단계에 와 있는지를 정확히 보여주거든요.</strong>
+
+## 작업대: Claude Science
+
+먼저 [Claude Science](https://www.anthropic.com/news/claude-science-ai-workbench)부터 볼게요. Anthropic은 이걸 "연구자가 가장 많이 쓰는 도구와 패키지를 통합하고, 감사 가능한(auditable) 산출물을 만들고, 컴퓨팅 자원에 유연하게 접근하게 해주는 앱"이라고 설명해요. 문헌 분석부터 실험까지 여러 단계의 연구 워크플로우를 다루고, 코드 이력이 전부 남는 재현 가능한 산출물을 만들어요. 단백질 3D 구조, 유전체 트랙, 화학 구조를 화면에서 바로 렌더링하고, 노트북부터 HPC 클러스터, 온디맨드 GPU까지 자원을 관리하고요.
+
+기능 나열보다 제 눈에 띈 건 두 가지예요. 첫째, <strong>인용과 계산을 검증하는 리뷰어 에이전트</strong>가 들어 있어요. 둘째, 민감한 데이터셋을 기관 인프라에 두려고 로컬에서 돌 수 있고(현재 macOS·Linux 베타), 분석 세션을 포크해서 다른 접근을 병렬로 실험할 수 있어요. 유전체학·단일세포 분석·프로테오믹스·구조생물학용 스킬이 60개 넘게 기본 탑재돼 있고, UniProt·PDB·Ensembl 같은 DB에 전문 에이전트로 연결돼요. 제공 대상은 Pro·Max·Team·Enterprise고, 학술기관·비영리는 할인된 Team 플랜을 쓸 수 있어요.
+
+## 시험지: GeneBench-Pro
+
+같은 시기에 나온 [GeneBench-Pro](https://openai.com/index/introducing-genebench-pro)는 방향이 정반대예요. OpenAI가 6월 30일 공개한 이 벤치마크는 유전체학·정량생물학·중개의학에 걸친 129개의 합성 문제로 구성돼요. 통계유전학, 암 유전체학, 약물유전체학, 법의유전학 등 10개 영역을 다루고, 각 문제는 일부러 노이즈를 섞은 현실적인 데이터셋과 어떤 의사결정으로 이어지는 목표 추정치를 짝지어 놔요. [보도에 따르면](https://www.techtimes.com/articles/319495/20260702/openai-genomics-benchmark-ai-judgment-gap-exposed-research-grade-tasks.htm) 모든 문제가 알려진 인과 구조에서 생성돼 정답 채점이 결정론적이라, 긴 호흡의 과학 벤치마크를 무너뜨리는 채점 기준 변동 문제를 피했다고 해요.
+
+점수가 이 발표의 핵심이에요. [집계에 따르면](https://aiweekly.co/alerts/openais-genebench-pro-stumps-top-models-gpt-56-tops-at-315) 최고 추론 설정의 GPT-5.6 Sol Pro가 31.5%, GPT-5.6 Sol이 28.7%, Claude Opus 4.8이 16.0%, Gemini 3.5 Flash가 8.1%였어요. <strong>가장 잘하는 프런티어 모델도 연구급 유전체학 문제를 셋 중 하나도 못 푼다</strong>는 얘기예요. OpenAI는 이 벤치마크가 재는 게 단순 지식이 아니라 "research taste", 즉 어떤 질문을 데이터가 뒷받침할 수 있는지, 언제 초기 진단이 모델을 바꿔야 하는지, 언제 결과가 결정을 내려도 될 만큼 익었는지 같은 판단의 연쇄라고 설명해요.
+
+## 그래서 무엇을 말하나
+
+얼핏 두 발표는 모순처럼 보여요. 한쪽은 "AI로 과학하는 시대가 왔다"는 제품이고, 다른 쪽은 "AI는 아직 과학 못 한다"는 성적표니까요. 그런데 저는 둘이 <strong>같은 이야기의 앞뒷면</strong>이라고 봐요.
+
+지난주에 [의료·과학 성과 3건을 묶으며](/posts/2026-06-22-ai-from-benchmark-to-clinic) "지금 일어나는 건 AI 의사가 아니라 'AI 가설 생성기 + 사람 검증자'라는 분업"이라고 썼어요. 이번 두 발표가 그 분업을 양쪽에서 증명해요. Claude Science는 <strong>그 분업을 제품으로 굳힌 것</strong>이에요. 인용·계산을 검증하는 리뷰어 에이전트, 코드 이력이 다 남는 감사 가능한 산출물, 세션 포크 같은 건 전부 "AI가 낸 걸 사람이 추적하고 확인한다"를 도구로 만든 거잖아요. AI가 결론을 내리는 자율 과학자가 아니라, 사람이 검증할 수 있게 근거를 남기는 작업대인 거예요.
+
+GeneBench-Pro는 <strong>왜 그 분업이 필요한지를 숫자로 못 박아요.</strong> 최고 모델이 31.5%라는 건, 지금 AI에게 유전체학 연구를 통째로 맡기면 안 된다는 뜻이에요. 특히 그 벤치마크가 지식이 아니라 "판단(research taste)"을 잰다는 게 핵심이에요. 사실을 아느냐가 아니라, 이 데이터로 무슨 질문에 답할 수 있는지를 아느냐를 재는데 거기서 무너진다는 거니까요. 바로 그 판단을 사람이 채워야 해서 검증자가 필요한 거고요.
+
+## 이렇게 볼 수도 있어요
+
+물론 각 발표의 이해관계를 빼고 읽으면 안 돼요. Claude Science는 Anthropic이 파는 제품이고, "감사 가능"이나 "재현 가능"은 아직 마케팅 문구지 제가 랩에서 검증한 게 아니에요. GeneBench-Pro도 OpenAI가 설계한 시험지라, 문제 구성에 따라 점수는 얼마든지 달라질 수 있어요. 129개 합성 문제가 실제 연구의 난이도를 대표하는지도 따져봐야 하고요. 낮은 점수가 "AI가 무능하다"가 아니라 "이 시험이 유독 어렵게 설계됐다"일 수도 있어요.
+
+그래도 저는 방향이 분명하다고 봐요. 한 회사가 도구를 팔고 다른 회사가 시험지를 내는데, 둘 다 "AI 단독"이 아니라 "사람과 함께"를 전제로 깔고 있어요. 과대 서사였다면 벤치마크 점수를 이렇게 낮게 내놓지도, 리뷰어 에이전트 같은 검증 장치를 제품 전면에 두지도 않았을 거예요.
+
+## 한국 개발자 입장에서
+
+두 가지를 챙기면 좋겠어요. 첫째, AI를 책임이 따르는 도메인(의료·바이오·금융·법무)에 붙이려는 분이라면 Claude Science의 <strong>설계 패턴</strong>을 그대로 참고할 만해요. 인용·계산 검증 에이전트, 모든 산출물에 코드·근거 이력 남기기, 세션 포크로 대안 탐색. 이건 유전체학에만 쓰는 기능이 아니라 "AI 출력을 사람이 감사할 수 있게 만드는" 일반 설계예요. [1월에 다룬 Claude로 연구를 가속하는 흐름](/posts/2026-01-26-claude-accelerating-science)이 이제 전용 도구로 제품화된 거고요.
+
+둘째, 벤치마크 점수를 도입 판단의 온도계로 쓰세요. 31.5%라는 숫자는 "이 영역은 아직 사람 검증 없이 자동화하면 안 된다"는 신호예요. 반대로 어떤 작업의 벤치마크가 이미 높다면 거긴 자동화를 더 밀어도 되고요. "AI가 과학을 한다더라"는 헤드라인 대신, 내 도메인에서 모델이 실제로 몇 점인지를 보고 자동화 수준을 정하는 게 훨씬 실용적이에요. 도구와 시험지가 같이 나온 이번 주가, 그 둘을 같이 보라고 알려주는 것 같아요.
+
+---
+
+근거가 된 소식: [Claude Science, an AI workbench for scientists (Anthropic)](https://www.anthropic.com/news/claude-science-ai-workbench), [Introducing GeneBench-Pro (OpenAI)](https://openai.com/index/introducing-genebench-pro), [OpenAI Genomics Benchmark: AI Judgment Gap Exposed (TechTimes)](https://www.techtimes.com/articles/319495/20260702/openai-genomics-benchmark-ai-judgment-gap-exposed-research-grade-tasks.htm), [GeneBench-Pro scores (AI Weekly)](https://aiweekly.co/alerts/openais-genebench-pro-stumps-top-models-gpt-56-tops-at-315)

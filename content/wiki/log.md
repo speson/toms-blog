@@ -9,6 +9,19 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-03] publish | thesis-first 배치 4편
+
+- [[2026-07-03-claude-sonnet-5]] — Claude Sonnet 5: '중급이 플래그십 단가를 무너뜨린다'는 가격 붕괴 칼럼. Opus 4.8 근접 성능을 프로모션 $2/$10에, 전 플랜 기본 (2/19 Sonnet 4.6·6/1 Opus 4.8 후속)
+- [[2026-07-03-ai-science-workbench-vs-benchmark]] — 같은 주 Claude Science(작업대) vs GeneBench-Pro(시험지): 도구와 측정이 동시 등장, 최고 모델 31.5%가 'AI 가설 생성 + 사람 검증' 분업을 확인 (6/22 benchmark-to-clinic 후속)
+- [[2026-07-03-claude-code-subagents-background-default]] — Claude Code v2.1.198 서브에이전트 기본 백그라운드화: 에이전트를 '대화 상대'가 아니라 '비동기 동료'로 (6/15 무인 실행 트렌드가 기본값으로)
+- [[2026-07-03-openai-core-dump-epidemiology]] — OpenAI가 18년 libunwind 버그를 잡은 열쇠는 '더 똑똑한 AI'가 아니라 역학(epidemiology)적 문제 재정의, AI는 파이프라인 도구 (5/6 K자형 생산성 연결)
+- 선택 항목: #2, #21, #22, #24, #26 (과학 2건 #26+#21 → 1편으로 합성, 나머지 단독)
+- 사실 검증: Anthropic 페이지 2건(Sonnet 5·Claude Science) + GitHub 릴리스 2건(v2.1.197·198) 직접 확인. OpenAI 2건(GeneBench-Pro·core dump)은 Cloudflare 403으로 WebSearch 2차 출처(TechTimes/AI Weekly/ChipOS/Let's Data Science) 기준 표기. 썸네일 GEMINI_API_KEY 미설정으로 4편 모두 OG 폴백
+- 업데이트된 위키: entities/anthropic(+2), entities/openai(+2), entities/claude-code(+1), topics/llm-models(+1), topics/ai-for-science(+1), topics/ai-agents(+1), index
+- 신규 엔티티 후보(미생성, 사용자 확인 대기): Claude Science, GeneBench-Pro
+
+---
+
 ## [2026-06-22] publish | thesis-first 배치 2편
 
 - [[2026-06-22-ai-from-benchmark-to-clinic]] — AI 의료·과학 성과 3건(희귀병 진단 NEJM AI / GPT-5.4 화학자 / AMIE Nature)이 공유하는 'AI 가설 생성 + 사람 검증' 분업 칼럼 (5/20 기하 추측 반증·2/19 AI for science 후속)
