@@ -3,6 +3,7 @@ import {
   getAllCategories,
   getAllPosts,
   getAllTags,
+  getArchivePageCount,
   getCategoryHref,
   getLatestPostDateForCategory,
   getLatestPostDateForSubcategory,
@@ -96,11 +97,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: `${BASE_URL}/search`,
+      url: `${BASE_URL}/posts`,
       lastModified: latestPostDate,
-      changeFrequency: "weekly",
-      priority: 0.5,
+      changeFrequency: "daily",
+      priority: 0.7,
     },
+    ...Array.from(
+      { length: Math.max(0, getArchivePageCount() - 1) },
+      (_, i) => ({
+        url: `${BASE_URL}/posts/page/${i + 2}`,
+        lastModified: latestPostDate,
+        changeFrequency: "weekly" as const,
+        priority: 0.4,
+      })
+    ),
     {
       url: `${BASE_URL}/tags`,
       lastModified: latestPostDate,

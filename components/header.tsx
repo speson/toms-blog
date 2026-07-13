@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const NAV_LINKS = [
+  { href: "/posts", label: "전체 글" },
   { href: "/categories", label: "카테고리" },
   { href: "/tags", label: "태그" },
   { href: "/entities", label: "Entities" },

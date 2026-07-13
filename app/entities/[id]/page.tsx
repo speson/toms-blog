@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!entity) return {};
 
   const title = `${entity.name} - 관련 포스트 모아보기`;
-  const description = `${entity.name} 관련 AI 뉴스와 분석을 ${entity.postCount}개 포스트로 모아 볼 수 있습니다.`;
+  const description = `${entity.name} 관련 AI 뉴스와 분석을 ${getPostsForEntity(entity).length}개 포스트로 모아 볼 수 있습니다.`;
   const url = `${BASE_URL}${getEntityHref(id)}`;
 
   return {
@@ -70,7 +70,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
   // Parse timeline from wiki content
   const timelineLines = entity.content
     .split("\n")
-    .filter((line) => line.startsWith("|") && line.includes("2026"))
+    .filter((line) => line.startsWith("|") && /20\d{2}/.test(line))
     .map((line) => {
       const cols = line
         .split("|")

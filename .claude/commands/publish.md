@@ -54,9 +54,10 @@
 
 모든 포스트는 `.claude/writing-style.md`의 Tom 스타일 가이드를 따릅니다:
 
-- 개인적 인사로 시작: "안녕하세요, Tom입니다."
+- 고정 인사말 금지: "안녕하세요, Tom입니다."로 시작하지 않는다. 첫 문장은 글마다 다르게, 주장/질문으로 시작
 - 대화체 한국어 사용: "~입니다" 대신 "~예요/해요"
-- 개인 경험과 의견을 자연스럽게 녹여내기: "제가 써본 결과", "이 부분이 특히 좋았어요"
+- 경험 주장은 실제로 한 것만: 사용해보지 않은 것에 "제가 써본 결과" 같은 표현 금지. 의견은 의견으로("~라고 생각해요", "~로 보여요")
+- 구조도 글마다 다르게: "총평/마무리/제 생각" 같은 스톡 헤딩을 반복하지 않고 글의 논증에 맞는 헤딩 사용
 - 이모지 절대 금지: 본문/헤딩/리스트 어디에도 이모지를 넣지 않음
 - 팁/주의는 평문으로: "팁:", "주의:", "참고:" 같은 텍스트로 명시
 
@@ -88,7 +89,7 @@
 title: "[주장·질문이 드러나는 제목] — [핵심 한 줄]"
 description: "[내 관점이 담긴 2-3문장. 무엇을 주장/분석하는 글인지]"
 date: "YYYY-MM-DD"
-tags: ["AI", "적절한태그"]
+tags: ["적절한태그1", "적절한태그2"] # 3글 이상 모일 구체적 태그만. 범용 "AI" 태그 금지
 category: "ai-news" # ai-news | by-tom
 subcategory: "column" # 칼럼/분석=column, 단순소식=news, 릴리스=releases
 source: "anthropic" # 트리거 출처(anthropic|openai|google|geeknews|github), 자체기획=original
@@ -97,10 +98,9 @@ thumbnail: "/thumbnails/{slug}.png" # 생성 실패 시 생략
 draft: false
 ---
 
-안녕하세요, Tom입니다.
-
-[첫 문단부터 내 주장/질문을 던진다. 출처 소개가 아니라 "X는 사실 Y인 것 같아요" /
-"왜 지금 모두 Z로 가는 걸까요?" 같은 훅으로 시작.]
+[첫 문단부터 내 주장/질문을 던진다. 고정 인사말 없이, 출처 소개가 아니라
+"X는 사실 Y인 것 같아요" / "왜 지금 모두 Z로 가는 걸까요?" 같은 훅으로 시작.
+도입 방식은 글마다 달라야 한다.]
 
 ## [주장을 뒷받침하는 사실 — 근거]
 
@@ -125,14 +125,18 @@ draft: false
 
 ## 태그 가이드
 
-| Source               | 기본 태그              |
-| -------------------- | ---------------------- |
-| openai               | AI, OpenAI             |
-| anthropic            | AI, Anthropic, Claude  |
-| google               | AI, Google             |
-| github (claude-code) | AI, Claude, 개발도구   |
-| github (opencode)    | AI, 개발도구, 오픈소스 |
-| github (sdk)         | AI, SDK, 개발          |
+| Source               | 기본 태그          |
+| -------------------- | ------------------ |
+| openai               | OpenAI             |
+| anthropic            | Anthropic, Claude  |
+| google               | Google             |
+| github (claude-code) | Claude, 개발도구   |
+| github (opencode)    | 개발도구, 오픈소스 |
+| github (sdk)         | SDK, 개발          |
+
+주의: 범용 "AI" 태그는 사용하지 않는다 (거의 모든 글에 붙어 태그 기능을 상실).
+태그는 3개 이상의 글이 모일 수 있는 구체적인 것만 사용하고, 새 태그를 만들기 전에
+기존 태그(`getAllTags`)에 합칠 수 있는지 먼저 확인한다.
 
 ## 위키 업데이트 규칙
 

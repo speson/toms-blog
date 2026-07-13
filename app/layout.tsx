@@ -17,12 +17,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://toms-blog.co.kr"),
   title: {
-    default: "Tom's Blog",
+    default: "Tom's Blog — AI 뉴스와 개발 트렌드",
     template: "%s | Tom's Blog",
   },
   description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
   openGraph: {
-    title: "Tom's Blog",
+    title: "Tom's Blog — AI 뉴스와 개발 트렌드",
     description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
     url: "https://toms-blog.co.kr",
     siteName: "Tom's Blog",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tom's Blog",
+    title: "Tom's Blog — AI 뉴스와 개발 트렌드",
     description: "AI 뉴스와 개발 트렌드를 다루는 기술 블로그",
     images: ["/images/toms-blog-main-og.png"],
   },

@@ -17,6 +17,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
   getTagHref,
+  getTagPostCount,
   getSubcategoryHref,
 } from "@/lib/posts";
 import { calculateReadingTime } from "@/lib/reading-time";
@@ -117,6 +118,18 @@ export default async function PostPage({ params }: PostPageProps) {
       <BreadcrumbJsonLd
         items={[
           { name: "홈", url: BASE_URL },
+          {
+            name: CATEGORY_LABELS[post.category],
+            url: `${BASE_URL}${getCategoryHref(post.category)}`,
+          },
+          ...(post.subcategory
+            ? [
+                {
+                  name: SUBCATEGORY_LABELS[post.subcategory],
+                  url: `${BASE_URL}${getSubcategoryHref(post.category, post.subcategory)}`,
+                },
+              ]
+            : []),
           { name: post.title, url: postUrl },
         ]}
       />
@@ -179,17 +192,24 @@ export default async function PostPage({ params }: PostPageProps) {
                   </>
                 )}
               </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <Link
-                    key={tag}
-                    href={getTagHref(tag)}
-                    className="rounded-full bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
-                  >
-                    {tag}
-                  </Link>
-                ))}
-              </div>
+              {/* Only link tags that have indexable tag pages (>= 3 posts),
+                  so post pages stop funneling crawlers into noindex URLs. */}
+              {post.tags.filter((tag) => getTagPostCount(tag) >= 3).length >
+                0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {post.tags
+                    .filter((tag) => getTagPostCount(tag) >= 3)
+                    .map((tag) => (
+                      <Link
+                        key={tag}
+                        href={getTagHref(tag)}
+                        className="rounded-full bg-purple-500/10 px-3 py-1 text-sm text-purple-400"
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                </div>
+              )}
             </header>
 
             {post.tldrVerdict && (

@@ -45,7 +45,7 @@ export default function Home() {
           {hasMore && (
             <div className="mt-8 text-center">
               <Link
-                href="/categories/ai-news"
+                href="/posts"
                 className="inline-block rounded-lg border border-zinc-800 bg-zinc-900/50 px-5 py-2.5 text-sm text-zinc-300 transition-colors hover:border-zinc-700 hover:text-white"
               >
                 전체 글 보기 ({allPosts.length}개)
