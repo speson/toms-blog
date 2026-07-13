@@ -3,7 +3,7 @@ title: "OpenCode 한 달 사용 후기: Claude Code의 무료 대안이 될 수 
 thumbnail: "/thumbnails/opencode-introduction.png"
 description: "GitHub 스타 85K의 오픈소스 AI 코딩 에이전트 OpenCode를 한 달간 사용해본 솔직한 후기입니다. 설치부터 실제 활용까지, 장단점을 모두 공개합니다."
 date: "2026-01-24"
-tags: ["AI", "개발도구", "오픈소스", "OpenCode"]
+tags: ["개발도구", "오픈소스", "OpenCode"]
 source: "original"
 sourceUrl: "https://opencode.ai"
 category: "by-tom"
@@ -63,29 +63,29 @@ brew install anomalyco/tap/opencode
 
  <strong>주의:</strong> Node.js 18+가 필요합니다. 설치 전에 확인하세요.
 
-## 실제 사용해보니
+## 뜯어보면 이런 도구예요
 
-### 좋았던 점
+### 강점
 
 <strong>1. AI 모델 선택의 자유</strong>
 
-Claude Code는 Claude만 쓸 수 있는데, OpenCode는 Claude, GPT, Gemini 중에서 골라 쓸 수 있습니다. 저는 Claude 3.5 Sonnet을 주로 쓰는데, 가끔 GPT-4o로 바꿔서 써보기도 해요.
+Claude Code는 Claude만 쓸 수 있는데, OpenCode는 Claude, GPT, Gemini 중에서 골라 쓸 수 있습니다. 작업 성격에 따라 모델을 바꿔 쓸 수 있다는 게 구조적인 차별점이에요.
 
- <strong>팁:</strong> Claude 3.5 Sonnet이 코딩에서는 여전히 최고입니다. GPT-4o는 빠르지만 코드 품질은 Sonnet이 더 나아요.
+ <strong>참고:</strong> 커뮤니티 후기를 보면 코딩 품질은 Claude Sonnet, 응답 속도는 GPT-4o를 선호하는 평이 많아요.
 
 <strong>2. LSP 지원이 기본 내장</strong>
 
-TypeScript 프로젝트에서 타입 에러를 찾아내는 능력이 인상적이었어요. Claude Code보다 코드 분석이 더 정확한 느낌입니다.
+LSP가 기본 내장이라 TypeScript 타입 에러 같은 정적 분석 정보를 모델이 직접 활용해요. 사용자들이 코드 분석 정확도를 강점으로 꼽는 이유예요.
 
 <strong>3. 확장성</strong>
 
-오픈소스라서 필요하면 직접 수정할 수 있습니다. 저는 프롬프트 템플릿을 약간 커스터마이징해서 쓰고 있어요.
+오픈소스라서 필요하면 직접 수정할 수 있습니다. 프롬프트 템플릿 커스터마이징 같은 것도 코드 레벨에서 가능해요.
 
-### 아쉬웠던 점
+### 한계
 
 <strong>1. UI가 좀 투박해요</strong>
 
-Claude Code보다 TUI가 덜 세련된 느낌입니다. 기능은 다 있는데, 눈으로 보기에는 Claude Code가 더 예쁘더라고요.
+Claude Code보다 TUI가 덜 세련됐다는 평이 많습니다. 기능은 다 있는데, 마감 완성도는 상용 도구 쪽이 앞서는 편이에요.
 
 <strong>2. 초기 설정이 필요함</strong>
 
@@ -113,7 +113,7 @@ Claude Code는 바로 쓸 수 있는데, OpenCode는 API 키 설정 같은 초�
 
 OpenCode는 Claude Code의 <strong>무료 대안으로서 충분히 경쟁력</strong> 있습니다. UI는 덜 세련됐지만 기능은 거의 비슷하고, 오히려 AI 모델 선택의 자유도가 더 높아요.
 
- <strong>비용 절약 팁:</strong> Claude Code 월 $20 vs OpenCode $0. 1년이면 <strong>$240 절약</strong>됩니다. 성능 차이는 거의 없어요.
+ <strong>비용 절약 팁:</strong> Claude Code 월 $20 vs OpenCode $0. 1년이면 <strong>$240 절약</strong>됩니다. 기능 커버리지는 거의 비슷해요.
 
 물론 Claude Code의 공식 지원과 안정성이 필요하신 분들은 월 $20을 내고 쓰는 것도 충분히 가치 있습니다. 하지만 비용을 절약하고 싶으신 분들은 OpenCode를 강력히 추천드립니다.
 

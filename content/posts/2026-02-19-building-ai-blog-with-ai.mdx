@@ -3,7 +3,7 @@ title: "AI 블로그를 AI로 만들기: Next.js + MDX + Claude Code 실전 후�
 thumbnail: "/thumbnails/building-ai-blog-with-ai.png"
 description: "AI 뉴스 블로그를 Claude Code로 만들고 운영하는 전 과정을 공개합니다. 프로젝트 셋업부터 뉴스 수집, 자동 발행, SEO까지 — 비용 $0으로 달성한 방법이에요."
 date: "2026-02-19T12:00:00"
-tags: ["AI", "Claude", "Next.js", "블로그", "개발"]
+tags: ["Claude", "Next.js", "블로그", "개발"]
 source: "original"
 sourceUrl: ""
 category: "by-tom"
@@ -73,7 +73,7 @@ bg-zinc-900/50 backdrop-blur-md rounded-xl border border-zinc-800
 4. /commit --push → 커밋 및 Vercel 배포
 ```
 
-이 4단계면 뉴스 수집부터 배포까지 <strong>5분 안에</strong> 끝나요.
+이 4단계로 뉴스 수집부터 배포까지 이어져요. 초안 생성 자체는 몇 분이면 되지만, 어떤 뉴스를 다룰지 고르고 글의 각도를 잡아 확인하는 건 사람 몫이에요.
 
 ### 뉴스 소스
 
@@ -106,9 +106,9 @@ pnpm fetch-news --source=ai --limit=5
 여기서 핵심은 <strong>Writing Style Guide</strong>예요:
 
 - "~예요/해요" 대화체 사용
-- 개인적 경험과 의견 포함
-- 이모지 마커 활용 ()
-- "안녕하세요, Tom입니다." 인트로
+- 사실과 의견을 구분하고, 실제로 경험하지 않은 건 경험처럼 쓰지 않기
+- 이모지 금지, 강조는 HTML 태그로
+- 고정 인사말 대신 글마다 다른 도입 (주장/질문으로 시작)
 
 AI가 쓰더라도 <strong>Tom의 목소리</strong>가 느껴지도록 가이드를 꽤 자세하게 작성했어요.
 
