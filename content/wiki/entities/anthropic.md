@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-03"
-post_count: 33
+last_covered: "2026-07-14"
+post_count: 34
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -41,6 +41,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - 서울 오피스 개소 + 과기정통부 MOU(한국어 모델 안전성 평가) + NAVER·Nexon·LG CNS·한화·Samsung SDS 배포 — 삼성을 두고 OpenAI와 동시 공략한 '한국 상륙' 칼럼 — [[2026-06-22-ai-labs-land-in-korea]]
 - Claude Sonnet 5 출시 — Opus 4.8에 근접한 성능을 프로모션 $2/$10(정가 $3/$15)에, 전 플랜 기본 모델. '중급이 플래그십 단가를 무너뜨린다'는 가격 붕괴 칼럼 (2/19 Sonnet 4.6 서사 후속) — [[2026-07-03-claude-sonnet-5]]
 - Claude Science 출시 — 과학자용 AI 워크벤치(인용·계산 검증 리뷰어 에이전트, 감사 가능 산출물, 로컬 실행, 60+ 스킬). OpenAI GeneBench-Pro와 묶어 '작업대 vs 시험지' 칼럼 — [[2026-07-03-ai-science-workbench-vs-benchmark]]
+- UST 파트너십 — Claude Code를 반도체 검증 플랫폼 iDEC에 내장(피지컬 AI = 산업 엔지니어링), 직원 2만 명 Claude 교육 커밋. SI 채널 전략의 실물 사례 — [[2026-07-14-enterprise-ai-default-not-choice]]
 
 ## 타임라인
 
@@ -70,6 +71,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-06-22 | 서울 오피스 개소 + 정부 MOU + 대기업 배포 — '한국 상륙' 칼럼        | [[2026-06-22-ai-labs-land-in-korea]]             |
 | 2026-07-03 | Claude Sonnet 5 출시 — Opus급 성능·프로모션 $2/$10 (가격 붕괴 칼럼) | [[2026-07-03-claude-sonnet-5]]                   |
 | 2026-07-03 | Claude Science 출시 — 과학용 워크벤치 (작업대 vs 시험지 칼럼)       | [[2026-07-03-ai-science-workbench-vs-benchmark]] |
+| 2026-07-14 | UST 파트너십 — iDEC 반도체 검증에 Claude 내장 (기본값화 칼럼)       | [[2026-07-14-enterprise-ai-default-not-choice]] |
 
 ## 관련 엔티티
 

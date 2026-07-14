@@ -3,8 +3,8 @@ name: Gemini
 type: entity
 aliases: [Gemini 3, Gemini 3.1, Gemini 3.5, Gemini Omni]
 first_covered: "2026-01-28"
-last_covered: "2026-06-01"
-post_count: 14
+last_covered: "2026-07-14"
+post_count: 15
 related_entities: [google, openai, anthropic]
 tags: [AI, Google, Gemini, 언어모델, 멀티모달]
 ---
@@ -30,6 +30,7 @@ Google의 AI 모델 시리즈. 블로그에서는 Gemini 3, Gemini 3.1 계열의
 - Gemini 추천 기능이 소셜 엔지니어링 공격 벡터로 악용된 해킹 사례 — [[2026-05-06-gemini-recommendation-hack]]
 - Gemini 3.5 Flash 출시 — frontier intelligence with action, 에이전트 작업 최적화 (Terminal-Bench 76.2%, 출력 속도 4배) — [[2026-05-20-gemini-3-5-frontier]]
 - Google I/O 2026 데모 — Gemini Omni(어떤 입력이든 영상 생성, 대화형 편집·장면 일관성)와 Gemini 3.5 Flash(에이전트·코딩, Antigravity 하니스) 9개 데모 공개 — [[2026-06-01-gemini-omni-3-5-io-2026]]
+- Gemini API Managed Agents 확장 — background:true 백그라운드 실행(폴링·재접속), 원격 MCP 연결, 상호작용당 통상 10만~300만 토큰. 감독 수단은 cancel/삭제뿐 — '멈추는 능력' 칼럼 — [[2026-07-14-agents-learn-to-stop]]
 
 ## 타임라인
 
@@ -48,6 +49,7 @@ Google의 AI 모델 시리즈. 블로그에서는 Gemini 3, Gemini 3.1 계열의
 | 2026-05-06 | Gemini 추천 해킹 사건 — 소셜 엔지니어링           | [[2026-05-06-gemini-recommendation-hack]]     |
 | 2026-05-20 | Gemini 3.5 Flash 출시 — frontier with action      | [[2026-05-20-gemini-3-5-frontier]]            |
 | 2026-06-01 | I/O 2026 — Gemini Omni 영상 생성 + 3.5 Flash 데모 | [[2026-06-01-gemini-omni-3-5-io-2026]]        |
+| 2026-07-14 | Managed Agents 확장 — 백그라운드 실행·원격 MCP    | [[2026-07-14-agents-learn-to-stop]] |
 
 ## 관련 엔티티
 

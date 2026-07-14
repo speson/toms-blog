@@ -3,8 +3,8 @@ name: Oh My OpenCode
 type: entity
 aliases: [OMOC]
 first_covered: "2026-01-24"
-last_covered: "2026-06-15"
-post_count: 12
+last_covered: "2026-07-14"
+post_count: 13
 related_entities: [opencode, claude-code, anthropic]
 tags: [AI, Oh My OpenCode, 오픈소스, 개발도구, 오케스트레이션]
 ---
@@ -29,6 +29,7 @@ GitHub 스타 22K 이상의 오픈소스 AI 에이전트 오케스트레이션 �
 - v4.2.0: 안정성 기초 개선, 신뢰도 향상 릴리스 — [[2026-05-19-oh-my-opencode-v420]]
 - v4.4.0: /security-research 팀 모드 스킬 — 5인 적대적 보안팀(취약점 헌터 3 + PoC 엔지니어 2), CWE/OWASP/CVSS v4.0 표준 채택, 실제 익스플로잇 경로 기반 검증 — [[2026-05-24-oh-my-opencode-v440-security-research]]
 - v4.9.2~4.10.0: Reliable Background-Agent Wake Routing(백그라운드 완료 신호 유실 방지)과 Windows ARM·Codex 크로스환경 런타임 프로비저닝 — '잠든 사이 일하는 에이전트' 칼럼의 핵심 근거 — [[2026-06-15-coding-agents-background-autonomy]]
+- v4.18.0: 8시간 폭주 Codex 런 부검 — 모든 의도 선언에 정지 조건 의무화(WHEN TO STOP), 서브에이전트 GOAL/STOP WHEN/EVIDENCE 계약, 정지 조건 충족 시 즉시 종료(보너스 리팩토링 금지) — [[2026-07-14-agents-learn-to-stop]]
 
 ## 타임라인
 
@@ -46,6 +47,7 @@ GitHub 스타 22K 이상의 오픈소스 AI 에이전트 오케스트레이션 �
 | 2026-05-19 | v4.2.0: 안정성 기초 개선                          | [[2026-05-19-oh-my-opencode-v420]]                   |
 | 2026-05-24 | v4.4.0: /security-research 팀 모드 스킬           | [[2026-05-24-oh-my-opencode-v440-security-research]] |
 | 2026-06-15 | v4.9.2~4.10.0: 백그라운드 wake routing·크로스환경 | [[2026-06-15-coding-agents-background-autonomy]]     |
+| 2026-07-14 | v4.18.0: 정지 계약 도입 — 8시간 폭주 부검         | [[2026-07-14-agents-learn-to-stop]] |
 
 ## 관련 엔티티
 

@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-03"
-post_count: 40
+last_covered: "2026-07-14"
+post_count: 41
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -53,6 +53,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - 삼성전자에 ChatGPT Enterprise·Codex 전사 배포(최대 규모급, 한국 Codex WAU 2월 대비 ~800%↑) — Anthropic 서울 진출과 겹쳐 본 '한국 상륙' 칼럼 — [[2026-06-22-ai-labs-land-in-korea]]
 - GeneBench-Pro 공개(6/30) — 유전체학·정량생물학·중개의학 129문제 벤치마크. 최고 모델 GPT-5.6 Sol Pro도 31.5%, Claude Opus 4.8 16.0%로 'AI가 아직 연구급 과학을 못 푼다'. Claude Science와 묶은 '작업대 vs 시험지' 칼럼 — [[2026-07-03-ai-science-workbench-vs-benchmark]]
 - 코어덤프 역학(epidemiology)으로 18년 된 GNU libunwind 레이스 버그 + Azure 하드웨어 결함을 분리 규명 — '열쇠는 더 똑똑한 AI가 아니라 문제 재정의, AI는 대량 분석 파이프라인 도구' 칼럼 — [[2026-07-03-openai-core-dump-epidemiology]]
+- 도이치텔레콤 AI 네이티브 전환 사례(546% 사용 증가·5만 MAU·통화 요약 수시간→수분, 벤더 보고) + GPT-5.6이 M365 Copilot 'preferred model'로(자동 라우팅, Bloomberg MAI 보도 이틀 뒤) — '기본값화' 칼럼 — [[2026-07-14-enterprise-ai-default-not-choice]]
 
 ## 타임라인
 
@@ -94,6 +95,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-06-22 | 삼성에 ChatGPT·Codex 전사 배포 — 한국 상륙 칼럼                | [[2026-06-22-ai-labs-land-in-korea]]                |
 | 2026-07-03 | GeneBench-Pro 공개 — 유전체학 벤치마크 (작업대 vs 시험지 칼럼) | [[2026-07-03-ai-science-workbench-vs-benchmark]]    |
 | 2026-07-03 | 코어덤프 역학으로 18년 libunwind 버그 규명 (칼럼)              | [[2026-07-03-openai-core-dump-epidemiology]]        |
+| 2026-07-14 | 도이치텔레콤 사례 + GPT-5.6 M365 기본 모델화 (기본값화 칼럼)   | [[2026-07-14-enterprise-ai-default-not-choice]] |
 
 ## 관련 엔티티
 

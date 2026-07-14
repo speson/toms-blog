@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-14] publish | thesis-first 칼럼 2편
+
+- 신규 포스트: [[2026-07-14-agents-learn-to-stop]], [[2026-07-14-enterprise-ai-default-not-choice]]
+- 업데이트된 위키: entities/claude-code, entities/gemini, entities/oh-my-opencode, entities/openai, entities/anthropic, topics/ai-agents
+- 비고: Gemini API 키 정지(CONSUMER_SUSPENDED)로 썸네일 생성 실패 — OG 이미지 폴백, 키 재발급 후 생성 예정
+
+---
+
 ## [2026-07-03] publish | thesis-first 배치 4편
 
 - [[2026-07-03-claude-sonnet-5]] — Claude Sonnet 5: '중급이 플래그십 단가를 무너뜨린다'는 가격 붕괴 칼럼. Opus 4.8 근접 성능을 프로모션 $2/$10에, 전 플랜 기본 (2/19 Sonnet 4.6·6/1 Opus 4.8 후속)

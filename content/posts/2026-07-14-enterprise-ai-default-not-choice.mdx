@@ -1,0 +1,54 @@
+---
+title: "이제 기업은 AI를 '도입'하지 않는다, 기본값으로 깐다 — M365·도이치텔레콤·UST가 보여준 확산의 형태"
+description: "GPT-5.6은 M365 Copilot이 알아서 골라 쓰는 기본 모델이 됐고, 도이치텔레콤은 업무 자체를 AI 전제로 재설계하고 있고, UST는 반도체 검증 플랫폼에 Claude를 내장했어요. 셋의 공통점은 사용자가 AI를 '선택'하는 단계가 사라지고 있다는 거예요. 5월의 졸업, 6월의 재배치에 이어 7월은 기본값화예요."
+date: "2026-07-14"
+tags: ["OpenAI", "Anthropic", "엔터프라이즈"]
+category: "ai-news"
+subcategory: "column"
+source: "openai"
+sourceUrl: "https://openai.com/index/deutsche-telekom"
+tldrVerdict: "엔터프라이즈 AI 확산의 다음 형태는 '직원에게 AI 도구를 주는 것'이 아니라 'AI가 기본값인 업무·플랫폼을 까는 것'이에요. M365의 자동 라우팅, DT의 업무 재설계, UST의 플랫폼 내장이 전부 같은 방향이에요. 기본값을 누가 정하느냐가 다음 벤더 전쟁의 전선입니다."
+draft: false
+---
+
+"우리 회사도 AI 도입했어요"라는 문장이 낡아가고 있어요. 도입이라는 말에는 사람이 도구를 골라서 쓰기 시작했다는 뉘앙스가 있는데, 이번 주에 나온 세 발표에서 AI는 더 이상 누가 골라 쓰는 대상이 아니었거든요. <strong>시스템이 알아서 고르고, 업무 설계에 미리 박혀 있고, 플랫폼 안에 내장되어 나오는 것</strong> — 그게 2026년 7월의 엔터프라이즈 AI예요.
+
+[5월에 저는 AI 코딩이 파일럿을 졸업했다](/posts/2026-06-02-enterprise-ai-graduation)고 썼고, [6월에는 졸업 다음이 시간의 재배치](/posts/2026-06-10-codex-enterprise-continued)라고 썼어요. 이번 달 발표들을 모아 보니 3막의 제목이 정해졌어요. <strong>기본값화</strong>예요.
+
+## 근거 1: M365에서 GPT-5.6은 '고르는 모델'이 아니라 '깔리는 모델'
+
+7월 9일부터 [GPT-5.6이 Microsoft 365 Copilot에 들어갔어요](https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-openai%E2%80%99s-gpt-5-6-in-microsoft-365-copilot/4533152). Word, Excel, PowerPoint, Copilot Chat, 그리고 에이전트 협업 공간인 Cowork까지 다섯 개 표면이에요. 양사가 쓴 표현은 "preferred model"인데, 실체는 이래요. 사용자가 옵트인하는 게 아니라 <strong>Copilot이 작업에 적합하다고 판단하면 알아서 GPT-5.6으로 라우팅</strong>해요. 모델 선택기가 있는 곳에선 직접 고를 수도 있지만, 기본 동선은 시스템이 정해요.
+
+맥락이 하나 더 있어요. 이 발표는 Microsoft가 비용 절감을 위해 Copilot 일부를 자체 MAI 모델로 대체하고 있다는 Bloomberg 보도가 나온 지 <strong>이틀 뒤</strong>에 나왔어요. TechCrunch는 "preferred model이 정확히 뭘 뜻하는지는 양사 모두 정의하지 않았다"고 꼬집었고요. 저는 이 타이밍이 우연이라고 보지 않아요. 수억 명이 쓰는 오피스의 <strong>기본값 자리</strong>를 놓고 신경전이 벌어지고 있는 거예요. 기본값이 곧 시장이니까요.
+
+## 근거 2: 도이치텔레콤 — "AI를 얹는 게 아니라 일을 다시 설계한다"
+
+OpenAI가 공개한 [도이치텔레콤 사례](https://openai.com/index/deutsche-telekom)에서 제일 중요한 건 숫자가 아니라 문장이에요. DT의 최고제품책임자 Jonathan Abrahamson은 이렇게 말해요. "AI 네이티브가 된다는 건 지금 일하는 방식에 AI를 더하는 게 아니다. <strong>일 자체를 다시 설계하는 것</strong>이다."
+
+물론 숫자도 벤더 보고 기준으로는 상당해요. 직원 20만 명 조직에서 ChatGPT·API 도구의 월간 활성 사용자가 5만 명을 넘겼고, 2026년 초 대비 AI 도구 사용량이 546% 늘었다고 해요. 유럽 전역에서 연간 약 4천만 건의 고객 콜을 처리하는 조직인데, 통화 후 요약 작성이 몇 시간에서 몇 분으로 줄었다는 보고도 있어요. 여기서 눈여겨볼 건 적용 위치예요. 고객 상담, 직원 워크플로우, 그리고 <strong>이동통신망 성능 최적화</strong> 같은 네트워크 운영까지 — 코딩 조직에서 검증된 패턴이 통신사의 코어 업무로 번지고 있어요.
+
+## 근거 3: UST — Claude가 반도체 검증 라인 안으로
+
+Anthropic이 공개한 [UST 사례](https://www.anthropic.com/news/ust-claude)는 "피지컬 AI"라는 이름을 달고 있는데, 로봇 이야기가 아니에요. 칩 검증, 공장 결함 감지, 디지털 트윈 같은 <strong>산업 엔지니어링</strong> 이야기예요. UST의 반도체 검증 플랫폼 iDEC에 Claude Code가 들어가서 칩 핀아웃과 하드웨어 회로도를 직접 읽고, 회귀 테스트를 작성·실행하고, 장비 실측 데이터를 디지털 트윈과 대조해 펌웨어 회귀를 잡아내요. UST는 이 파이프라인이 검증 사이클을 50~70% 줄여 나흘 걸리던 턴어라운드를 48시간으로 압축한다고 보고해요(파이프라인 전체의 성과이고, UST 자체 보고 수치예요). 여기에 <strong>직원 2만 명에게 Claude 교육</strong>을 약속했고요.
+
+이 사례가 흥미로운 건 UST가 SI(시스템 통합사)라는 점이에요. [지난달 Anthropic이 TCS·DXC를 채널로 끌어들이는 걸 보며](/posts/2026-06-15-anthropic-si-channel-war) 저는 다음 전장이 SI 채널이라고 썼는데, UST 사례는 그 채널 전략의 실물이에요. 고객사는 Claude를 "도입"하지 않아요. UST의 플랫폼을 사면 <strong>그 안에 Claude가 이미 들어 있는</strong> 거예요.
+
+## 해석: 선택의 단계가 사라지고 있다
+
+세 사례를 관통하는 건 이거예요. AI가 사용자 앞의 선택지에서 <strong>시스템 뒤의 기본값</strong>으로 이동하고 있어요. M365에서는 라우터가 모델을 고르고, DT에서는 업무 설계 단계에 AI가 전제로 박히고, UST에서는 플랫폼에 내장돼 나와요. 셋 다 최종 사용자가 "AI를 쓸까?"를 묻는 순간 자체가 없어요.
+
+이건 [삼성전자가 ChatGPT Enterprise와 Codex를 전사에 깐 것](/posts/2026-06-22-ai-labs-land-in-korea)과도 같은 결이에요. 개인이 구독하는 도구에서 조직이 까는 인프라로, 그리고 이제는 인프라에서 <strong>업무의 전제 조건</strong>으로 한 칸씩 이동 중이에요.
+
+## 이렇게 볼 수도 있어요
+
+유보할 지점이 셋 있어요. 첫째, 이 글의 숫자는 전부 벤더 쪽 보고예요. 546%도, 50~70%도 독립 검증된 수치가 아니고, 특히 UST의 검증 단축은 Claude 단독 효과가 아니라 iDEC 파이프라인 전체의 성과예요. 둘째, "preferred"는 독점이 아니에요. Microsoft는 같은 시기에 자체 MAI 모델을 Copilot에 심고 있고 Anthropic 기술 검토 보도도 있었어요. 기본값 전쟁은 진행형이지 승부가 난 게 아니에요. 셋째, 기본값화는 성공 사례가 홍보되는 속도만큼 실패 사례가 공개되지 않는 영역이라, 지금 보이는 그림에는 생존 편향이 있을 수 있어요.
+
+## 한국 개발자 입장에서
+
+첫째, M365를 쓰는 국내 조직이라면 GPT-5.6 라우팅은 <strong>여러분이 결정하지 않아도 도착하는 변화</strong>예요. 지역·테넌트 설정에 따라 롤아웃이 달라서, IT 관리자라면 어떤 모델이 언제 기본으로 켜지는지 로드맵을 확인해둘 필요가 있어요. 둘째, DT 사례는 국내 통신사와 콜센터 산업에 거의 그대로 대입 가능한 템플릿이에요. "통화 요약 몇 시간→몇 분" 같은 항목은 국내 상담 조직의 도입 품의에 바로 들어갈 수 있는 비교 기준이고요. 셋째, 기본값화의 이면은 종속이에요. 시스템이 모델을 알아서 고르는 세계에서는 <strong>기본값을 바꿀 권한이 누구에게 있는지</strong>가 벤더 협상력의 핵심이 돼요. 도입 검토 시 "기본 모델을 우리가 바꿀 수 있는가"를 계약 질문 목록에 올려두세요.
+
+한 줄로 줄이면 — 5월엔 졸업, 6월엔 재배치, 7월엔 기본값화예요. 다음 분기는 아마 "기본값을 되돌릴 수 있는가"를 두고 싸우게 될 거예요.
+
+---
+
+근거가 된 소식: [How Deutsche Telekom is rewiring telecommunications with AI](https://openai.com/index/deutsche-telekom), [Available today: OpenAI's GPT-5.6 in Microsoft 365 Copilot](https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-openai%E2%80%99s-gpt-5-6-in-microsoft-365-copilot/4533152), [UST is bringing Claude to physical AI](https://www.anthropic.com/news/ust-claude)

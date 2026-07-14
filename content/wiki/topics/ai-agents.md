@@ -1,7 +1,7 @@
 ---
 name: AI 에이전트
 type: topic
-post_count: 17
+post_count: 18
 key_entities:
   ["OpenAI Agents SDK", "Codex", "oh-my-agent", "Praktika", "OpenAI Harness팀"]
 tags: ["에이전트", "AI"]
@@ -26,6 +26,7 @@ tags: ["에이전트", "AI"]
 - 도메인 특화 팀 모드 스킬 등장: Oh My OpenCode /security-research가 5인 보안 전문가 에이전트를 한 명령으로 띄움. 멀티 에이전트가 "팀을 띄울 수 있다"에서 "역할 분담과 산업 표준 채택까지 결합된 도메인 솔루션"으로 진보
 - 엔터프라이즈 케이스 본격화: Virgin Atlantic이 휴가 시즌 절대 마감일에 Codex를 일정 전제로 두고 모바일 앱을 출시, P1 0건 달성. 에이전트가 도구가 아니라 팀원으로 다뤄지는 패턴
 - Claude Code v2.1.198이 서브에이전트를 '기본 백그라운드'로 전환(옵션→기본값). 완료 알림(Notification 훅 agent_needs_input/agent_completed), worktree 자동 커밋·푸시·드래프트 PR, 서브에이전트의 메인 모델·확장사고 상속이 겹치며, 에이전트를 '기다리는 동기 대화'가 아니라 '보내 놓고 알림으로 회수하는 비동기 동료'로 다루는 방식이 기본값이 됨. 6/15 '무인 실행' 트렌드가 제품 기본 동작으로 굳어진 지점
+- 자율 기본값화 이후 '정지 능력'이 제품 표면으로: Claude Code Auto 모드 분류기 폴백(3연속/20회 차단 시 자동 해제), Gemini Interactions의 cancel 엔드포인트, OMO의 WHEN TO STOP·서브에이전트 정지 계약(GOAL/STOP WHEN/EVIDENCE) — 시작하는 능력에서 멈추는 능력으로 경쟁축 이동
 
 ## 관련 포스트
 
@@ -48,6 +49,7 @@ tags: ["에이전트", "AI"]
 | 2026-05-22 | [[2026-05-22-virgin-atlantic-codex]]                    | Virgin Atlantic Codex 케이스 — 에이전트를 일정 전제로 두는 패턴         |
 | 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]]    | OMOC /security-research — 도메인 특화 멀티 에이전트 팀 모드             |
 | 2026-07-03 | [[2026-07-03-claude-code-subagents-background-default]] | 서브에이전트 기본 백그라운드화 — 에이전트를 비동기 동료로 다루는 기본값 |
+| 2026-07-14 | [[2026-07-14-agents-learn-to-stop]] | 자율 기본값화 이후 경쟁축은 '멈추는 능력' — 3사 정지 장치 비교 |
 
 ## 관련 토픽
 

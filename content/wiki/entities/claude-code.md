@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-03"
-post_count: 29
+last_covered: "2026-07-14"
+post_count: 30
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -44,6 +44,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 - v2.1.157~159: `.claude/skills` 플러그인 자동 로드·`plugin init` 스캐폴딩, Auto 모드 Bedrock/Vertex/Foundry 확장(Opus 4.7/4.8) — [[2026-06-01-claude-code-v21157-159]]
 - v2.1.175~177: enforceAvailableModels 모델 거버넌스 + 백그라운드 에이전트 다수 수정, '무인 실행' 다이제스트의 일부 — [[2026-06-15-coding-agents-background-autonomy]]
 - v2.1.198: 서브에이전트 기본 백그라운드 실행 + worktree 자동 커밋·푸시·드래프트 PR, 서브에이전트·압축의 모델/확장사고 상속 — '대화 상대에서 비동기 동료로' 칼럼 — [[2026-07-03-claude-code-subagents-background-default]]
+- v2.1.207~209: Auto 모드가 Bedrock·Vertex·Foundry에서 옵트인 없이 기본 제공(분류기 사전 검토, 3연속/20회 차단 시 폴백, 저장소 설정의 자기 승격 차단) — '멈추는 능력이 제품' 칼럼 — [[2026-07-14-agents-learn-to-stop]]
 
 ## 타임라인
 
@@ -76,6 +77,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 | 2026-06-01 | v2.1.157~159: skills 플러그인 자동 로드, Auto 모드 클라우드 확장        | [[2026-06-01-claude-code-v21157-159]]                   |
 | 2026-06-15 | v2.1.175~177: enforceAvailableModels 거버넌스, 백그라운드 에이전트 수정 | [[2026-06-15-coding-agents-background-autonomy]]        |
 | 2026-07-03 | v2.1.198: 서브에이전트 기본 백그라운드화 + worktree 자동 PR (칼럼)      | [[2026-07-03-claude-code-subagents-background-default]] |
+| 2026-07-14 | v2.1.207~209: Auto 모드 기본화(서드파티 클라우드), 분류기 폴백 (칼럼)   | [[2026-07-14-agents-learn-to-stop]] |
 
 ## 관련 엔티티
 
