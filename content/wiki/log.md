@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-16] publish | 거버넌스 칼럼 1편
+
+- 신규 포스트: [[2026-07-16-anthropic-institutional-trust-signals]]
+- 업데이트된 위키: entities/anthropic
+- 비고: 거버넌스·IPO 태그가 각 3개 글을 채워 색인 가능 태그로 승격. 썸네일은 API 키 정지로 생략(OG 폴백)
+
+---
+
 ## [2026-07-14] publish | thesis-first 칼럼 2편
 
 - 신규 포스트: [[2026-07-14-agents-learn-to-stop]], [[2026-07-14-enterprise-ai-default-not-choice]]

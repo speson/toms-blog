@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-14"
-post_count: 34
+last_covered: "2026-07-16"
+post_count: 35
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -42,6 +42,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - Claude Sonnet 5 출시 — Opus 4.8에 근접한 성능을 프로모션 $2/$10(정가 $3/$15)에, 전 플랜 기본 모델. '중급이 플래그십 단가를 무너뜨린다'는 가격 붕괴 칼럼 (2/19 Sonnet 4.6 서사 후속) — [[2026-07-03-claude-sonnet-5]]
 - Claude Science 출시 — 과학자용 AI 워크벤치(인용·계산 검증 리뷰어 에이전트, 감사 가능 산출물, 로컬 실행, 60+ 스킬). OpenAI GeneBench-Pro와 묶어 '작업대 vs 시험지' 칼럼 — [[2026-07-03-ai-science-workbench-vs-benchmark]]
 - UST 파트너십 — Claude Code를 반도체 검증 플랫폼 iDEC에 내장(피지컬 AI = 산업 엔지니어링), 직원 2만 명 Claude 교육 커밋. SI 채널 전략의 실물 사례 — [[2026-07-14-enterprise-ai-default-not-choice]]
+- 신뢰 신호 4연발(7/9~14) — 벤 버냉키 LTBT 수탁자 선임(연준 의장 출신, 이사 선임권 보유 기구), 캐나다 연구기관 8곳에 CAD 1,000만 기부, 'Inviting hard questions' 공개 추적 캠페인, Reflect 사용 절제 도구. S-1 제출 이후의 '기관화' 칼럼 — [[2026-07-16-anthropic-institutional-trust-signals]]
 
 ## 타임라인
 
@@ -72,6 +73,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-07-03 | Claude Sonnet 5 출시 — Opus급 성능·프로모션 $2/$10 (가격 붕괴 칼럼) | [[2026-07-03-claude-sonnet-5]]                   |
 | 2026-07-03 | Claude Science 출시 — 과학용 워크벤치 (작업대 vs 시험지 칼럼)       | [[2026-07-03-ai-science-workbench-vs-benchmark]] |
 | 2026-07-14 | UST 파트너십 — iDEC 반도체 검증에 Claude 내장 (기본값화 칼럼)       | [[2026-07-14-enterprise-ai-default-not-choice]] |
+| 2026-07-16 | 버냉키 LTBT 합류 + 신뢰 신호 4건 — 기관의 옷 칼럼 | [[2026-07-16-anthropic-institutional-trust-signals]] |
 
 ## 관련 엔티티
 
