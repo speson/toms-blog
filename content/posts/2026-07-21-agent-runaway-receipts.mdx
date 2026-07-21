@@ -1,5 +1,6 @@
 ---
 title: "서브에이전트 2,393개, 로그 731GiB — 에이전트 폭주의 청구서가 도착했다"
+thumbnail: "/thumbnails/agent-runaway-receipts.png"
 description: "지난주 '멈추는 능력이 제품이 됐다'고 썼는데, 일주일 만에 물증이 나왔어요. Codex CLI 사용자의 홈 디렉토리에 쌓인 731.5GiB의 세션 로그, 그리고 같은 주에 OpenCode·Claude Code·oh-my-opencode가 일제히 추가한 깊이 제한·스폰 캡·대기 규율. 폭주는 이제 이론이 아니라 디스크와 청구서의 문제예요."
 date: "2026-07-21"
 tags: ["에이전트", "개발도구", "Claude Code"]
@@ -25,11 +26,32 @@ draft: false
 
 흥미로운 건 경쟁 도구들의 릴리스 노트예요. 같은 주에 나온 변경들이 정확히 이 문제를 겨냥하고 있거든요.
 
-<strong>OpenCode는 깊이를 잘랐어요.</strong> [v1.18.2](https://github.com/anomalyco/opencode/releases/tag/v1.18.2)부터 서브에이전트가 <strong>중첩 서브에이전트를 만드는 걸 기본 차단</strong>하고, 필요하면 `subagent_depth` 설정으로만 풀 수 있게 했어요. 2,393개 같은 숫자는 대부분 에이전트가 에이전트를 낳는 재귀에서 나오니까, 재귀 자체를 기본값에서 제거한 거예요.
+<strong>OpenCode는 깊이를 잘랐어요.</strong>
+[v1.18.2](https://github.com/anomalyco/opencode/releases/tag/v1.18.2)부터
+서브에이전트가 <strong>중첩 서브에이전트를 만드는 걸 기본 차단</strong>하고,
+필요하면 `subagent_depth` 설정으로만 풀 수 있게 했어요. 2,393개 같은 숫자는
+대부분 에이전트가 에이전트를 낳는 재귀에서 나오니까, 재귀 자체를 기본값에서
+제거한 거예요.
 
-<strong>Claude Code는 횟수에 캡을 씌웠어요.</strong> [v2.1.212](https://github.com/anthropics/claude-code/releases/tag/v2.1.212)는 세션당 서브에이전트 생성 한도를 기본 200으로 뒀는데, 릴리스 노트의 표현이 정확히 "runaway delegation loops를 막기 위해"예요. 웹 검색도 세션당 200회 캡이 생겼고요. 이어서 [v2.1.215](https://github.com/anthropics/claude-code/releases/tag/v2.1.215)는 /verify와 /code-review 스킬을 <strong>에이전트가 스스로 실행하지 못하게</strong> 바꿨어요 — 시키지 않은 검증 루프를 도는 과잉 성실함을 껐다는 뜻이에요. v2.1.211엔 이런 항목도 있어요. 백그라운드 에이전트 결과를 보고할 때 "결과를 지어내는 대신 실제 완료를 기다린다." 폭주만큼이나 무서운 게 폭주를 숨기는 보고인데, 그것까지 손댄 거죠.
+<strong>Claude Code는 횟수에 캡을 씌웠어요.</strong>
+[v2.1.212](https://github.com/anthropics/claude-code/releases/tag/v2.1.212)는
+세션당 서브에이전트 생성 한도를 기본 200으로 뒀는데, 릴리스 노트의 표현이 정확히
+"runaway delegation loops를 막기 위해"예요. 웹 검색도 세션당 200회 캡이
+생겼고요. 이어서
+[v2.1.215](https://github.com/anthropics/claude-code/releases/tag/v2.1.215)는
+/verify와 /code-review 스킬을 <strong>에이전트가 스스로 실행하지 못하게</strong>
+바꿨어요 — 시키지 않은 검증 루프를 도는 과잉 성실함을 껐다는 뜻이에요.
+v2.1.211엔 이런 항목도 있어요. 백그라운드 에이전트 결과를 보고할 때 "결과를
+지어내는 대신 실제 완료를 기다린다." 폭주만큼이나 무서운 게 폭주를 숨기는
+보고인데, 그것까지 손댄 거죠.
 
-<strong>oh-my-opencode는 기다림에 규율을 넣었어요.</strong> [v4.18.2](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.18.2)의 부제가 "Waiting-Discipline Patch"인데, 문제 사례가 구체적이에요. 긴 세션에서 에이전트가 <strong>빈 입력을 91번 폴링하며 매번 약 13.4만 토큰</strong>을 태운 실측 로그가 있었대요. 아무것도 안 하면서 컨텍스트 전체를 계속 되새김질한 거예요. 패치 후엔 대기 중 상태 확인이 누적 컨텍스트를 재사용하고, 검증은 입력이 바뀌었을 때만 다시 돌아요.
+<strong>oh-my-opencode는 기다림에 규율을 넣었어요.</strong>
+[v4.18.2](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.18.2)의
+부제가 "Waiting-Discipline Patch"인데, 문제 사례가 구체적이에요. 긴 세션에서
+에이전트가 <strong>빈 입력을 91번 폴링하며 매번 약 13.4만 토큰</strong>을 태운
+실측 로그가 있었대요. 아무것도 안 하면서 컨텍스트 전체를 계속 되새김질한 거예요.
+패치 후엔 대기 중 상태 확인이 누적 컨텍스트를 재사용하고, 검증은 입력이 바뀌었을
+때만 다시 돌아요.
 
 ## 해석: 정지 조건 다음은 자원 상한이에요
 
