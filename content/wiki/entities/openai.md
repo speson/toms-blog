@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-14"
-post_count: 41
+last_covered: "2026-07-21"
+post_count: 43
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -54,6 +54,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - GeneBench-Pro 공개(6/30) — 유전체학·정량생물학·중개의학 129문제 벤치마크. 최고 모델 GPT-5.6 Sol Pro도 31.5%, Claude Opus 4.8 16.0%로 'AI가 아직 연구급 과학을 못 푼다'. Claude Science와 묶은 '작업대 vs 시험지' 칼럼 — [[2026-07-03-ai-science-workbench-vs-benchmark]]
 - 코어덤프 역학(epidemiology)으로 18년 된 GNU libunwind 레이스 버그 + Azure 하드웨어 결함을 분리 규명 — '열쇠는 더 똑똑한 AI가 아니라 문제 재정의, AI는 대량 분석 파이프라인 도구' 칼럼 — [[2026-07-03-openai-core-dump-epidemiology]]
 - 도이치텔레콤 AI 네이티브 전환 사례(546% 사용 증가·5만 MAU·통화 요약 수시간→수분, 벤더 보고) + GPT-5.6이 M365 Copilot 'preferred model'로(자동 라우팅, Bloomberg MAI 보도 이틀 뒤) — '기본값화' 칼럼 — [[2026-07-14-enterprise-ai-default-not-choice]]
+- CFO 사라 프라이어 'AI 시대의 채점표'(유용한 작업·성공 작업당 비용·신뢰성·컴퓨트 수익률) + Cars24 사례(월 100만 분, 리드 12% 회수) — 엔터프라이즈 4막 '채점' 칼럼 — [[2026-07-21-enterprise-ai-scorecard]]
+- 역연방주의 공식화(SB 53·RAISE·SB 315 주법 연합→사실상 국가 표준) + GPT-Red 자동 레드티밍(GPT-5.1 84% 격파, 인간 13%) + 청소년 보호 발표 — Anthropic 기관화와 대칭인 신뢰 전략 칼럼 — [[2026-07-21-openai-reverse-federalism]]
 
 ## 타임라인
 
@@ -96,6 +98,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-07-03 | GeneBench-Pro 공개 — 유전체학 벤치마크 (작업대 vs 시험지 칼럼) | [[2026-07-03-ai-science-workbench-vs-benchmark]]    |
 | 2026-07-03 | 코어덤프 역학으로 18년 libunwind 버그 규명 (칼럼)              | [[2026-07-03-openai-core-dump-epidemiology]]        |
 | 2026-07-14 | 도이치텔레콤 사례 + GPT-5.6 M365 기본 모델화 (기본값화 칼럼)   | [[2026-07-14-enterprise-ai-default-not-choice]] |
+| 2026-07-21 | CFO 채점표 + Cars24 (채점 칼럼) / 역연방주의 + GPT-Red (규제 지도 칼럼) | [[2026-07-21-enterprise-ai-scorecard]] [[2026-07-21-openai-reverse-federalism]] |
 
 ## 관련 엔티티
 

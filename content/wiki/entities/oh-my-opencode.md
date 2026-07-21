@@ -3,8 +3,8 @@ name: Oh My OpenCode
 type: entity
 aliases: [OMOC]
 first_covered: "2026-01-24"
-last_covered: "2026-07-14"
-post_count: 13
+last_covered: "2026-07-21"
+post_count: 14
 related_entities: [opencode, claude-code, anthropic]
 tags: [AI, Oh My OpenCode, 오픈소스, 개발도구, 오케스트레이션]
 ---
@@ -48,6 +48,7 @@ GitHub 스타 22K 이상의 오픈소스 AI 에이전트 오케스트레이션 �
 | 2026-05-24 | v4.4.0: /security-research 팀 모드 스킬           | [[2026-05-24-oh-my-opencode-v440-security-research]] |
 | 2026-06-15 | v4.9.2~4.10.0: 백그라운드 wake routing·크로스환경 | [[2026-06-15-coding-agents-background-autonomy]]     |
 | 2026-07-14 | v4.18.0: 정지 계약 도입 — 8시간 폭주 부검         | [[2026-07-14-agents-learn-to-stop]] |
+| 2026-07-21 | v4.18.2: waiting-discipline(빈 폴링 91회×134k 토큰 사례) | [[2026-07-21-agent-runaway-receipts]] |
 
 ## 관련 엔티티
 

@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 16
+post_count: 17
 key_entities:
   [
     "Promptfoo",

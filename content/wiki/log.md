@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-21] publish | thesis-first 칼럼 3편
+
+- 신규 포스트: [[2026-07-21-agent-runaway-receipts]], [[2026-07-21-enterprise-ai-scorecard]], [[2026-07-21-openai-reverse-federalism]]
+- 업데이트된 위키: entities/openai·claude-code·codex·opencode·oh-my-opencode, topics/ai-agents·ai-security
+- 비고: 규제 태그가 3개 글을 채워 색인 가능 태그로 승격
+
+---
+
 ## [2026-07-16] publish | 거버넌스 칼럼 1편
 
 - 신규 포스트: [[2026-07-16-anthropic-institutional-trust-signals]]

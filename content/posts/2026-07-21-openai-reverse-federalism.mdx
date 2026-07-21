@@ -1,0 +1,48 @@
+---
+title: "Anthropic이 기관의 옷을 입는 동안, OpenAI는 규제 지도를 그린다 — '역연방주의'라는 수"
+description: "OpenAI가 캘리포니아 SB 53, 뉴욕 RAISE, 일리노이 SB 315를 묶어 '주(州)가 먼저, 연방이 따라오는' 역연방주의 전략을 공식화했어요. 자동 레드티밍 GPT-Red와 청소년 보호 발표까지 같은 주에 겹쳐 놓으면, 지난주 Anthropic의 기관화와 정확히 대칭인 신뢰 전략이 보입니다. 같은 목표, 다른 문법이에요."
+date: "2026-07-21"
+tags: ["OpenAI", "거버넌스", "규제"]
+category: "ai-news"
+subcategory: "column"
+source: "openai"
+sourceUrl: "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action"
+tldrVerdict: "상장 전야의 AI 양강이 신뢰를 쌓는 문법이 갈렸어요. Anthropic은 감독기구·기부·공개 추적이라는 '제도'를, OpenAI는 주법 연합·기술적 증명·선제적 보호장치라는 '규제 설계 참여'를 택했어요. 공통점은 하나 — 규칙이 오기 전에 규칙을 자기 손으로 쓴다는 것. 그 규칙은 결국 한국까지 수출됩니다."
+draft: false
+---
+
+지난주 저는 [Anthropic이 연준 의장 출신을 감독기구에 앉히며 '기관의 옷'을 입고 있다](/posts/2026-07-16-anthropic-institutional-trust-signals)고 썼어요. 그럼 같은 상장 전야에 OpenAI는 뭘 하고 있을까요? 답이 같은 주에 나왔어요. 제도를 입는 대신, <strong>규제의 지도를 직접 그리고 있어요.</strong>
+
+7월 15일 OpenAI가 올린 ["미국은 주와 연방의 행동으로 AI 안전을 전진시키고 있다"](https://openai.com/index/advancing-ai-safety-through-state-and-federal-action)는 글로벌정책 총괄 크리스 리헤인 명의의 글이에요(원문은 접근 차단이라 2차 보도 기준). 표면적으론 주(州)법 칭찬인데, 5월에 OpenAI 스스로 이름 붙인 전략의 연장선이에요. <strong>"역연방주의(reverse federalism)"</strong> — 연방이 정하고 주가 따르는 게 아니라, 주들이 먼저 서로를 거울처럼 비추는 법을 만들어 사실상의 국가 표준을 완성한다는 구상이죠. 리헤인은 Politico 인터뷰에서 더 직설적으로 말했어요. "큰 주들이 서로 미러링하게 해서 <strong>사실상(de facto)의 national standard</strong>를 만드는 것."
+
+## 지도에 올라간 세 개의 주
+
+이 전략의 블록은 이미 세 개가 놓였어요. 캘리포니아 <strong>SB 53</strong>(프론티어 AI 투명성법, 2025년 9월), 뉴욕 <strong>RAISE Act</strong>(2025년 12월), 그리고 이번에 OpenAI가 공개 지지한 일리노이 <strong>SB 315</strong>예요. OpenAI가 제안하는 분업 구조도 명확해요. 주는 배포 후 감독(보고·투명성·책임)을, 연방은 배포 전 평가를 맡는다 — 그리고 연방 기구의 역할은 "평가와 권고이지, 승인이나 차단이 아니다"라고 못 박았어요.
+
+여기서 꼭 봐야 할 맥락이 있어요. <strong>OpenAI는 원래 주법을 막는 쪽이었어요.</strong> 2025년 3월 백악관 OSTP 제출문에서 "주 규제로부터의 선점(preemption)을 포함한 책임 보호"를 요구했고, 주법 10년 유예(모라토리엄) 움직임과 같은 편에 섰죠. 그 시도가 좌초된 뒤에 나온 게 역연방주의예요. 즉 이건 철학의 전환이 아니라 <strong>전술의 피벗</strong>이에요. 6월에 의회에 제출한 연방 청사진도 종착지는 여전히 "하나의 연방 프레임"이고요. 주법 연합은 목적지가 아니라, 연방 표준을 자기 설계도대로 만들기 위한 지렛대에 가까워요.
+
+## 같은 주의 나머지 두 발표 — 기술적 증명과 선제적 보호
+
+역연방주의가 '규칙 쓰기'라면, 나머지 두 발표는 '규칙을 지킬 능력의 증명'이에요.
+
+<strong>GPT-Red</strong>는 OpenAI의 내부 자동 레드티밍 모델이에요. 셀프플레이 강화학습으로 공격자 모델을 키워서, 재현된 간접 프롬프트 인젝션 환경에서 GPT-5.1을 <strong>84% 확률로 뚫었어요. 인간 레드팀은 13%</strong>였고요. 이 공격자를 상대로 GPT-5.6을 훈련시켜 최난도 직접 인젝션 벤치마크의 실패율을 6분의 1로 줄였고, 연구자들이 모르던 새 공격 계열("Fake Chain-of-Thought")까지 발견했다고 해요. 수치는 전부 자사 벤치마크지만, 메시지는 분명해요. <strong>"우리는 우리를 공격하는 시스템을 만들 만큼 안전에 진심이다"</strong> — 규제 논의 테이블에서 이만한 입장권이 없죠. ([프롬프트 인젝션이 왜 AI 서비스의 핵심 보안 문제인지](/posts/2026-02-19-prompt-injection-guide)는 예전에 정리해뒀어요.)
+
+<strong>청소년 보호</strong> 발표도 같은 결이에요. "청소년이 안전한 AI에 접근할 자격이 있다"는 제목부터 프레임 싸움인데 — 배제(차단)가 아니라 보호(설계된 접근)가 답이라는 거예요. 연령 추정으로 18세 미만에게 자동 적용되는 청소년 모드, 불확실하면 <strong>더 안전한 쪽을 기본값</strong>으로, 부모 연동 계정의 통제권(조용한 시간, 음성·이미지 끄기, 고위험 신호 알림)까지. 배경엔 캘리포니아 컴패니언 챗봇법 시행과 연방 GUARD 법안(상원 법사위 22-0 통과)이라는 규제 시계가 돌아가고 있어요. 규제가 시키기 전에 먼저 만들어서, 규제가 만들어질 때 참조 모델이 되겠다는 수예요.
+
+## 해석: 같은 목표, 다른 문법
+
+이제 두 회사를 나란히 놓아 볼게요. 지난주 Anthropic의 신호 4개는 <strong>제도적 신뢰</strong>였어요 — 감독기구에 중앙은행 출신, 연구 생태계 기부, 공개 추적 약속, 절제 도구. 이번 주 OpenAI의 신호 3개는 <strong>규제 설계 참여</strong>예요 — 주법 연합으로 표준 만들기, 공격 기술로 방어 능력 증명, 규제 도착 전 선제적 보호장치. 문법은 다르지만 문장은 같아요. [6월 초에 쓴 표현을 다시 쓰면](/posts/2026-06-02-frontier-ai-governance-signals), <strong>"규칙을 남이 쓰기 전에 내가 먼저 쓰겠다"</strong>는 거예요. 그리고 [양사가 나란히 비공개 S-1을 낸](/posts/2026-06-10-openai-confidential-s1) 지금, 이 경쟁의 청중은 규제기관만이 아니라 공개시장이기도 해요.
+
+## 이렇게 볼 수도 있어요
+
+셋을 유보할게요. 첫째, 역연방주의의 <strong>종착지도 결국 선점</strong>이에요. 주법 연합을 칭찬하는 회사가 6월 청사진에선 연방 단일 프레임을 요구했어요 — 주는 사다리이고, 다 오르면 걷어찰 수 있어요. Gizmodo의 논평이 뼈아파요. "규제 공백을 만들면, 그 공백은 채워진다 — 지금은 기업들이 자기 규칙을 스스로 쓰는 중이다." 둘째, GPT-Red의 84%니 6배니 하는 수치는 전부 <strong>자사 설계·자사 채점 벤치마크</strong>예요. 인상적이지만 독립 재현은 없어요. 셋째, 청소년 통계("주간 사용 청소년 10명 중 9명이 학습 목적")는 모수가 '이미 쓰는 청소년'이라 접근 확대를 정당화하는 근거로는 순환적이에요.
+
+## 한국 개발자 입장에서
+
+첫째, <strong>미국 주법의 표준은 수출돼요.</strong> SB 53·RAISE류가 사실상의 표준이 되면, 글로벌 모델 위에 제품을 짓는 한국 팀의 컴플라이언스 전제도 그 문서들이 정해요. 6월 글에서 제안한 "모델 제공자의 거버넌스 문서를 선택 체크리스트에 넣기"가 점점 더 실전 항목이 되는 중이에요. 둘째, <strong>청소년 보호 프레임은 국내에 먼저 도착할 규제예요.</strong> 연령 추정 기본값, 부모 통제, 고위험 알림 같은 설계 패턴은 국내 AI 서비스가 조만간 요구받을 목록의 초안이라고 보고 미리 뜯어볼 가치가 있어요. 셋째, GPT-Red가 보여준 건 <strong>공격 자동화가 방어 요건이 된다</strong>는 방향이에요. 프롬프트 인젝션 방어를 수동 점검으로 하던 팀이라면, 자동화된 적대적 테스트를 파이프라인에 넣는 걸 다음 분기 과제로 잡을 만해요.
+
+한 줄로 줄이면 — Anthropic은 기관이 되는 중이고, OpenAI는 입법이 되는 중이에요. 어느 쪽이 이기든, 그 규칙 위에서 제품을 만드는 건 우리예요.
+
+---
+
+근거가 된 소식: [The US is advancing AI safety through state and federal action](https://openai.com/index/advancing-ai-safety-through-state-and-federal-action) ([Gizmodo 보도](https://gizmodo.com/openai-wants-to-rewrite-its-washington-playbook-with-reverse-federalism-strategy-2000762053)), [GPT-Red: Unlocking Self-Improvement for Robustness](https://openai.com/index/unlocking-self-improvement-gpt-red), [Why teens deserve access to safe AI](https://openai.com/index/why-teens-deserve-access-safe-ai)
