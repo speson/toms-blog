@@ -1,0 +1,48 @@
+---
+title: "젠슨 황의 첫 트윗, 50개사 서명, 2.8조 파라미터 — 오픈 웨이트가 '진영'이 된 주"
+description: "NVIDIA가 주도한 'Open Weights and American AI Leadership' 성명에 Microsoft·Meta·Google, 그리고 OpenAI까지 50개사가 서명했어요. 빠진 건 Amazon과 Anthropic뿐. 같은 주에 2.8조 파라미터 오픈 모델 Kimi K3가 코딩 하네스들의 1군에 편입됐고요. 오픈 웨이트는 이제 이념 논쟁이 아니라 산업 연합이에요."
+date: "2026-07-27"
+tags: ["오픈소스", "개발도구"]
+category: "ai-news"
+subcategory: "column"
+source: "geeknews"
+sourceUrl: "https://images.nvidia.com/pdf/Open-Weights-and-American-AI-Leadership.pdf"
+tldrVerdict: "오픈 웨이트 진영이 일주일 사이 '성명서(50개사)'와 '실물(Kimi K3의 하네스 1군 편입)'을 동시에 확보했어요. OpenAI까지 서명한 지금, 폐쇄 노선은 사실상 Anthropic 혼자예요. 다만 성명엔 구체적 커밋이 0건이고 K3의 '왕관'도 리더보드 1개 기준이니, 열광보다는 협상 카드로 쓰는 게 실용적입니다."
+draft: false
+---
+
+젠슨 황이 생애 첫 X 포스트로 올린 건 신제품이 아니라 성명서였어요. 7월 24일 공개된 ["Open Weights and American AI Leadership"](https://images.nvidia.com/pdf/Open-Weights-and-American-AI-Leadership.pdf) — 미국의 AI 리더십은 "하나의 프론티어 모델이 아니라, 모든 곳으로 확산되는 열린 생태계로 평가받아야 한다"는 문서예요. 시작은 서명사 약 25곳이었는데 하루 만에 <strong>50곳</strong>으로 늘었고, 명단이 흥미로워요. NVIDIA, Microsoft, Meta, Google, AMD, IBM, Hugging Face, Mistral… 그리고 <strong>OpenAI</strong>까지 있어요. 빠진 대형 이름은 Amazon과 Anthropic, 둘뿐이에요.
+
+같은 주에 실물도 도착했어요. Moonshot AI의 <strong>2.8조 파라미터 오픈 웨이트 모델 Kimi K3</strong>가 나왔고, 며칠 만에 [oh-my-opencode가 K3를 1군 지원](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.19.0)("Open models just took the crown")하고 [OpenCode가 Kimi용 adaptive thinking을 넣었어요](https://github.com/anomalyco/opencode/releases/tag/v1.18.4). 성명과 실물이 같은 주에 나온 것 — 저는 이게 우연이 아니라 이번 주의 진짜 뉴스라고 봐요. <strong>오픈 웨이트가 이념 논쟁에서 산업 연합으로 넘어갔어요.</strong>
+
+## 성명이 실제로 주장하는 것
+
+문서를 직접 읽어보면 논리가 네 갈래예요. 경제적 접근성(프론티어 가격 없이 고급 모델 위에 구축), 스택 전반의 경쟁(모델 개발사끼리가 아니라 클라우드·칩·응용·서비스 전체의 경쟁), 고객 통제권(락인 방지), 그리고 안전 — 소수 폐쇄 모델로의 집중이 "단일 실패점"을 만든다는 주장이에요. 1980년대 오픈소스 운동을 역사적 유비로 쓰고, 증류(distillation)를 "부정 유용과 혼동하지 말라"고 옹호하는 대목도 있어요.
+
+동시에 눈여겨볼 건 문서에 <strong>구체적 기업 커밋이 하나도 없다</strong>는 점이에요. 컴퓨트 접근 확대, 공유 학습 자산 투자, 성급한 규제 자제 — 전부 정책 요구예요. 그리고 황 본인은 "세계는 프론티어 폐쇄 모델과 프론티어 오픈 모델이 둘 다 필요하다"고 못 박았어요. 반(反)폐쇄 선언이 아니라, 오픈 진영의 정치적 지위를 끌어올리는 문서인 거죠. [지난주 OpenAI의 역연방주의](/posts/2026-07-21-openai-reverse-federalism)에서 본 것과 같은 문법이에요 — 규칙이 만들어지기 전에 담론의 지형을 먼저 그리는 것.
+
+## 실물: Kimi K3와 하네스의 선택
+
+K3의 스펙은 오픈 웨이트 역사상 처음 보는 급이에요. 2.8T 파라미터 MoE(토큰당 896개 전문가 중 16개 활성), 1M 컨텍스트, 네이티브 비전. API 가격은 캐시 히트 입력 $0.30, 캐시 미스 $3.00, 출력 $15.00/MTok이고요. 성적은 — 독립 평가 기준으로 정직하게 말하면 — <strong>전체 3위</strong>예요. Frontend Code Arena에서는 Fable 5를 제치고 1위를 찍었지만, 종합적으론 Fable 5와 GPT-5.6 Sol 다음이라는 게 중론이고, Moonshot 스스로도 "최상위 폐쇄 모델에는 못 미친다"고 인정해요. 관전 포인트는 격차예요. 오픈-폐쇄 격차가 <strong>3~5개월 수준으로 좁혀졌다</strong>는 평가(Interconnects의 네이선 램버트)가 나왔거든요.
+
+그리고 하네스들의 반응 속도가 이 이야기의 핵심이에요. oh-my-opencode는 K3 전용 프롬프트 변형을 에이전트 역할(Sisyphus·Atlas)별로 만들고 라우팅에 편입했어요. 출시 일주일 안에 오픈 모델이 멀티 에이전트 하네스의 <strong>기본 선택지 후보</strong>로 올라간 거예요. [기본값을 차지하는 자가 시장을 갖는다](/posts/2026-07-14-enterprise-ai-default-not-choice)고 썼는데, 오픈 모델이 이제 그 기본값 경쟁의 참가자가 됐어요.
+
+## 해석: 폐쇄 노선의 고립, 그리고 그 논리
+
+OpenAI가 서명자에 있다는 것의 의미를 짚을 필요가 있어요. 작년까지 "폐쇄 진영"으로 묶이던 회사가 오픈 웨이트 지지 성명에 이름을 올렸다는 건 — gpt-oss류의 오픈 모델을 이미 내놓은 흐름의 연장이긴 해도 — 발견 경로였던 GeekNews 글의 표현대로 <strong>"폐쇄형은 이제 Anthropic뿐일지도"</strong>라는 관측이 과장이 아니게 됐다는 뜻이에요.
+
+다만 Anthropic의 불참을 단순한 고집으로 읽으면 놓치는 게 있어요. [Fable 5/Mythos 5에서 봤듯](/posts/2026-06-10-claude-fable-5-mythos-5), Anthropic의 안전 아키텍처는 위험 능력을 라우팅과 분리로 가둔다는 설계인데, 이 설계는 <strong>가중치를 통제할 수 있을 때만 성립해요.</strong> 성명서도 인정하듯 "한번 풀린 가중치는 개발사의 통제를 벗어나고, 수정본은 추적이 어렵다" — 즉 오픈 웨이트냐 아니냐는 사업 모델 이전에 안전 모델의 선택이기도 해요. 물론 그 안전 논리가 상업적 이해와 정확히 겹친다는 점은, 이번 주 성명의 서명사들에게도 Anthropic에게도 똑같이 적용되는 의심이지만요.
+
+## 이렇게 볼 수도 있어요
+
+셋을 유보할게요. 첫째, <strong>성명은 커밋이 아니에요.</strong> 50개사가 서명했지만 금액도 일정도 없는 정책 요구서고, 서명사들의 이해관계(NVIDIA는 오픈 모델이 늘수록 칩이 팔려요)가 문서의 논리와 정확히 일치해요. GeekNews 댓글의 아이러니 지적도 정당해요 — "그럼 NVIDIA는 CUDA부터 오픈소스화해야" 하는 것 아니냐는 거죠. 둘째, K3의 <strong>"왕관" 주장은 리더보드 1개와 벤더 벤치마크</strong>에 기대요. 독립 종합 평가는 3위고, 확인 시점 기준 가중치는 "7월 27일까지 공개" 약속 상태였어요 — 약속이 지켜지는지가 이 이야기의 신뢰도를 가를 거예요. 셋째, 성명의 배경엔 지정학이 있어요. 최강 오픈 모델이 중국 회사에서 나오는 상황에서 "미국의 오픈 리더십"을 말하는 문서라는 점 — 오픈 생태계 예찬과 국가 경쟁 서사가 한 문서에 공존하고 있어요.
+
+## 한국 개발자 입장에서
+
+첫째, <strong>K3 셀프호스팅은 대부분 조직에 비현실적이에요.</strong> 가중치만 약 1.4TB, 커뮤니티 추산 8노드×8×80GB GPU급이라, 실질 선택지는 API(캐시 히트 $0.30 입력은 확실히 쌉니다) 또는 K3를 편입한 하네스 경유예요. 둘째, 그럼에도 오픈 모델의 1군 편입은 <strong>협상력 도구</strong>예요. 폐쇄 모델 벤더와의 계약 갱신 테이블에서 "대안이 실전 배치 가능하다"는 사실 자체가 가격 레버리지가 돼요. 셋째, 도입 검토 시 라이선스를 실제로 읽으세요. K3는 K2 계열의 수정 MIT로 예상되지만, "오픈 웨이트"라는 말 아래 라이선스 조건은 모델마다 제각각이에요 — 상업 사용·재배포·파생 모델 조항 세 가지는 최소한 확인하고요.
+
+한 줄로 줄이면 — 오픈 웨이트 진영은 이번 주에 성명서와 실물을 동시에 얻었어요. 판이 이념에서 연합으로 넘어간 이상, 이제 질문은 "오픈이 이기나"가 아니라 <strong>"당신의 스택에서 오픈 모델이 어느 자리를 차지하게 할 것인가"</strong>예요.
+
+---
+
+근거가 된 소식: [Open Weights and American AI Leadership (NVIDIA, PDF)](https://images.nvidia.com/pdf/Open-Weights-and-American-AI-Leadership.pdf), [Kimi K3 (Moonshot AI)](https://www.kimi.com/blog/kimi-k3), [oh-my-opencode v4.19.0](https://github.com/code-yeongyu/oh-my-openagent/releases/tag/v4.19.0), [OpenCode v1.18.4](https://github.com/anomalyco/opencode/releases/tag/v1.18.4) (발견 경로: [GeekNews](https://news.hada.io/topic?id=31824))

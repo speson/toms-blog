@@ -1,7 +1,7 @@
 ---
 name: LLM 모델
 type: topic
-post_count: 22
+post_count: 24
 key_entities:
   [
     "GPT-5.2",

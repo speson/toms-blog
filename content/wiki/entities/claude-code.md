@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-21"
-post_count: 31
+last_covered: "2026-07-27"
+post_count: 32
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -80,6 +80,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 | 2026-07-03 | v2.1.198: 서브에이전트 기본 백그라운드화 + worktree 자동 PR (칼럼)      | [[2026-07-03-claude-code-subagents-background-default]] |
 | 2026-07-14 | v2.1.207~209: Auto 모드 기본화(서드파티 클라우드), 분류기 폴백 (칼럼)   | [[2026-07-14-agents-learn-to-stop]] |
 | 2026-07-21 | v2.1.210~215: 스폰 캡·자발 스킬 실행 중단 (폭주 청구서 칼럼)            | [[2026-07-21-agent-runaway-receipts]] |
+| 2026-07-27 | v2.1.219: Opus 5 기본 편입(1M ctx), /fast Opus5·4.8, strictAllowlist    | [[2026-07-27-claude-opus-5]] |
 
 ## 관련 엔티티
 

@@ -4,7 +4,7 @@ type: entity
 aliases: []
 first_covered: "2026-01-24"
 last_covered: "2026-06-15"
-post_count: 13
+post_count: 14
 related_entities: [claude-code, oh-my-opencode, anthropic]
 tags: [AI, OpenCode, 오픈소스, 개발도구, 릴리스]
 ---
@@ -43,6 +43,7 @@ GitHub 스타 85K 이상의 오픈소스 AI 코딩 에이전트. Claude Code의 
 | 2026-04-14 | v1.4.0~1.4.3: 메이저 업데이트               | [[2026-04-14-opencode-v140-143]]                 |
 | 2026-06-15 | v1.17.5~1.17.7: MCP 호환·이식성 개선        | [[2026-06-15-coding-agents-background-autonomy]] |
 | 2026-07-21 | v1.18.2: 중첩 서브에이전트 기본 차단, subagent_depth 제한 | [[2026-07-21-agent-runaway-receipts]] |
+| 2026-07-27 | v1.18.4: Kimi adaptive thinking 지원 — 오픈 웨이트 칼럼    | [[2026-07-27-open-weights-coalition]] |
 
 ## 관련 엔티티
 

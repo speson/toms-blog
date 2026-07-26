@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-27] publish | thesis-first 칼럼 3편 + 모델 가이드 갱신
+
+- 신규 포스트: [[2026-07-27-claude-opus-5]], [[2026-07-27-open-weights-coalition]], [[2026-07-27-openai-vertical-expansion]]
+- 갱신: [[2026-02-19-ai-model-comparison-2026]] (Opus 5 반영, updatedAt 7/27)
+- 업데이트된 위키: entities/anthropic·openai·claude-code·oh-my-opencode·opencode, topics/llm-models
+
+---
+
 ## [2026-07-21] publish | thesis-first 칼럼 3편
 
 - 신규 포스트: [[2026-07-21-agent-runaway-receipts]], [[2026-07-21-enterprise-ai-scorecard]], [[2026-07-21-openai-reverse-federalism]]

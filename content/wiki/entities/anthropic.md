@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-16"
-post_count: 35
+last_covered: "2026-07-27"
+post_count: 36
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -43,6 +43,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - Claude Science 출시 — 과학자용 AI 워크벤치(인용·계산 검증 리뷰어 에이전트, 감사 가능 산출물, 로컬 실행, 60+ 스킬). OpenAI GeneBench-Pro와 묶어 '작업대 vs 시험지' 칼럼 — [[2026-07-03-ai-science-workbench-vs-benchmark]]
 - UST 파트너십 — Claude Code를 반도체 검증 플랫폼 iDEC에 내장(피지컬 AI = 산업 엔지니어링), 직원 2만 명 Claude 교육 커밋. SI 채널 전략의 실물 사례 — [[2026-07-14-enterprise-ai-default-not-choice]]
 - 신뢰 신호 4연발(7/9~14) — 벤 버냉키 LTBT 수탁자 선임(연준 의장 출신, 이사 선임권 보유 기구), 캐나다 연구기관 8곳에 CAD 1,000만 기부, 'Inviting hard questions' 공개 추적 캠페인, Reflect 사용 절제 도구. S-1 제출 이후의 '기관화' 칼럼 — [[2026-07-16-anthropic-institutional-trust-signals]]
+- Claude Opus 5 출시(7/24) — Fable 5 근접 성능을 절반 가격($5/$25, 4.8과 동일)에, 1M 컨텍스트 표준, 분류기 개입 Fable 5 대비 ~85% 감소. Sonnet 5에 이은 '가격 곡선 붕괴 2단계' + 능력-위험-규제 등급 체계 칼럼 — [[2026-07-27-claude-opus-5]]
 
 ## 타임라인
 
@@ -74,6 +75,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-07-03 | Claude Science 출시 — 과학용 워크벤치 (작업대 vs 시험지 칼럼)       | [[2026-07-03-ai-science-workbench-vs-benchmark]] |
 | 2026-07-14 | UST 파트너십 — iDEC 반도체 검증에 Claude 내장 (기본값화 칼럼)       | [[2026-07-14-enterprise-ai-default-not-choice]] |
 | 2026-07-16 | 버냉키 LTBT 합류 + 신뢰 신호 4건 — 기관의 옷 칼럼 | [[2026-07-16-anthropic-institutional-trust-signals]] |
+| 2026-07-27 | Claude Opus 5 — 프론티어 근접 성능 반값, 1M 컨텍스트 표준 (칼럼)    | [[2026-07-27-claude-opus-5]] |
 
 ## 관련 엔티티
 

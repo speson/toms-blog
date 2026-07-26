@@ -1,0 +1,48 @@
+---
+title: "채점표를 나눠준 회사가 이제 답안 대필까지 — Presence·헬스·국가과학, OpenAI의 수직 확장 주간"
+description: "OpenAI가 한 주에 컨택센터 플랫폼(Presence), 의료기록 연동(Health in ChatGPT), 국가 과학 프로그램(Genesis Mission 지원)을 쏟아냈어요. 공통점은 모델 판매가 아니라 업종 안으로 직접 들어간다는 것 — 그것도 자사 엔지니어가 배포를 이끄는 컨설팅 방식으로요. 지난주 채점표 칼럼의 후속이자, SI 채널 전쟁의 OpenAI식 답변입니다."
+date: "2026-07-27"
+tags: ["OpenAI", "엔터프라이즈"]
+category: "ai-news"
+subcategory: "column"
+source: "openai"
+sourceUrl: "https://openai.com/index/introducing-openai-presence"
+tldrVerdict: "OpenAI의 확장 문법이 바뀌었어요. 모델을 파는 게 아니라 업종(컨택센터·헬스케어·국가과학) 안에 자사 인력과 함께 들어갑니다. Anthropic이 SI를 채널로 쓴다면 OpenAI는 스스로 SI가 되는 중이에요. 국내 팀에겐 경쟁 신호이자 템플릿 — 특히 주간 3억 건이라는 건강 질문 수요는 한국 서비스가 방치 중인 시장입니다."
+draft: false
+---
+
+지난주 [OpenAI CFO가 AI ROI 채점표를 나눠줬다](/posts/2026-07-21-enterprise-ai-scorecard)고 썼는데, 이번 주엔 그 회사가 답안 대필 서비스를 열었어요. 7월 22일 발표된 <strong>OpenAI Presence</strong> — 고객지원·아웃바운드 영업·사내 워크플로우용 음성/챗 에이전트를 기업에 배포해 주는 플랫폼인데, 핵심은 배포 방식이에요. 셀프서브가 아니라 <strong>OpenAI의 Forward Deployed Engineer와 지정 SI가 직접 들어가서 첫 워크플로우를 함께 구축</strong>해요. 그리고 같은 주에 의료기록 연동(Health in ChatGPT 전면 롤아웃)과 미 에너지부 국가과학 프로그램 지원까지 나왔어요. 사흘간의 발표 세 건을 겹치면 하나의 문장이 읽혀요. <strong>OpenAI는 이제 모델을 파는 게 아니라 업종 안으로 들어가요.</strong>
+
+## Presence: 자사 지원 라인이 데모다
+
+Presence의 영업 자료는 OpenAI 자신이에요. 자사 영어 전화 지원 라인을 Presence로 돌리는데, <strong>인바운드 문의의 75%를 사람 개입 없이 해결</strong>하고, Codex 기반 개선 루프(운영 로그를 분석해 개선안을 제안하면 팀이 검토·승인)가 <strong>열흘 만에 인간 이관율을 15%p 낮췄다</strong>고 해요. 출시 고객은 BBVA(멕시코 뱅킹 음성 지원), SoftBank(일본어 고객 대화 테스트), 호주 보험사 IAG(재해 시기 고객 지원)이고요.
+
+눈에 띄는 건 이 수치들의 <strong>형식</strong>이에요. 해결률, 이관율 감소 — 정확히 지난주 채점표의 문항(유용한 작업, 신뢰성)에 대응하는 지표예요. 측정 프레임을 먼저 배포하고, 그 프레임으로 채점했을 때 좋은 점수가 나오는 제품을 뒤이어 내놓는 순서 — 우연이라기엔 너무 잘 맞물려요.
+
+그리고 이 방식은 어디서 본 구도예요. [지난달 Anthropic이 TCS·DXC를 채널로 끌어들일 때](/posts/2026-06-15-anthropic-si-channel-war) 저는 다음 전장이 SI 채널이라고 썼는데, OpenAI의 답은 방향이 달라요. <strong>Anthropic은 SI를 채널로 쓰고, OpenAI는 스스로 SI가 되려 해요.</strong> FDE가 현장에 들어가고, 가격은 "추후 공개"(The Register의 표현으론 "boots-on-the-ground 가격")인 컨설팅형 사업이니까요.
+
+## Health: 3억 명의 질문 위에 정식 제품을 얹다
+
+7월 23일부터 <strong>Health in ChatGPT가 미국 전역 성인 사용자에게 롤아웃</strong>됐어요. Apple Health와 지원 의료기관 기록(Epic·Oracle Health 계열, One Medical, Function Health 등)을 연동하면 약물·검사 결과·진료 이력을 맥락으로 대화할 수 있고, Free부터 Pro까지 전 플랜 대상이에요. OpenAI가 공개한 배경 수치가 이 제품의 논리를 설명해요. <strong>주간 3억 명 이상이 ChatGPT에 건강 질문을 하고</strong>(1월 2.3억에서 증가), 1월 파일럿 때 건강 대화의 70% 이상이 전용 허브 밖에서 일어났대요. 수요는 이미 제품 밖에 존재했고, 이번 발표는 그걸 정식 표면으로 끌어올린 거예요. 학습 제외·광고 타기팅 제외·연결 해제 시 30일 내 삭제 같은 프라이버시 약속과, "진단·치료용이 아니다"라는 면책도 같이요.
+
+## 국가과학: 작은 수표, 큰 서사
+
+세 번째 발표는 미 에너지부 <strong>Genesis Mission</strong>(17개 국립연구소, "10년 내 미국 연구 생산성 2배" 목표) 지원이에요. 연구자 약 2,000명에게 $4M 상당 Codex 접근, 두 개 과학 캠페인(고온 초전도체, 거시분자 지도)에 $3M API 지원, $2.5M에 $10M 상당 크레딧 딜, 그리고 선별된 생물학 프로젝트에 생명과학 특화 모델 GPT-Rosalind 접근까지. 재미있는 비교가 있는데, 같은 프로그램에 Microsoft는 $60M, NSF는 $400M을 커밋했어요. OpenAI의 현금성 커밋은 상대적으로 작지만 — <strong>모델 접근권이라는 자기 화폐</strong>로 국가 과학 인프라의 지분을 사는 구조예요. [역연방주의 칼럼](/posts/2026-07-21-openai-reverse-federalism)에서 본 정부 전략의 과학 버전이라고 봐도 돼요.
+
+## 해석: 수직 침투의 공통 문법
+
+세 발표의 공통점을 추리면 이래요. 첫째, <strong>진입점이 모델이 아니라 업무예요.</strong> 컨택센터의 통화, 환자의 검사 결과, 연구소의 시뮬레이션 — 각 업종의 핵심 워크플로우에 직접 붙어요. 둘째, <strong>수치가 채점표 문법으로 나와요.</strong> 해결률 75%, 이관 15%p 감소, 생산성 2배 목표. 셋째, <strong>배포에 사람이 따라가요.</strong> FDE, 의사 수백 명의 시나리오 검증, 국립연구소 연구자 온보딩. [5월 졸업 → 6월 재배치 → 7월 기본값화·채점](/posts/2026-07-14-enterprise-ai-default-not-choice)으로 이어온 엔터프라이즈 시리즈의 관점에서 보면, 이건 5막이에요 — <strong>벤더가 고객의 업종 안으로 이주하는 단계.</strong>
+
+## 이렇게 볼 수도 있어요
+
+유보 셋. 첫째, Presence의 75%·15%p는 <strong>자사 지원 라인에서 나온 벤더 수치</strong>예요. 자기 제품의 지원 문의는 자기가 제일 잘 아는 도메인이라, 일반화 가능성은 검증 전이에요. The Register가 인용한 Gartner 전망 — 2027년까지 고객서비스 AI 전환을 계획한 조직의 절반이 철회할 것 — 도 균형추로 둘 만해요. 둘째, Health는 <strong>타이밍이 공교로워요.</strong> 출시 전날 ChatGPT의 의료 조언이 위험했다는 소송이 제기됐어요. 3억 명의 수요와 소송 리스크는 같은 동전의 양면이고, "진단용 아님" 면책이 그 간극을 얼마나 메울지는 미지수예요. 셋째, 국가과학 커밋은 <strong>금액 대비 서사가 커요.</strong> $7M+크레딧은 MS·NSF 대비 소액인데 헤드라인 지분은 비슷하게 가져갔어요 — 잘 설계된 보도자료의 힘이기도 해요.
+
+## 한국 개발자 입장에서
+
+첫째, <strong>Presence는 국내 컨택센터 AI 시장에 직접적인 경쟁 신호예요.</strong> FDE+SI 배포 모델은 한국 대기업의 구매 방식과 잘 맞아서, 국내 CCaaS·상담 AI 업체들과의 수주 경쟁이 머지않았다고 봐요. 관련 제품을 만드는 팀이라면 "75% 해결률" 같은 채점표형 수치를 자사 기준으로 먼저 확보해 두는 게 방어가 됩니다. 둘째, <strong>Health는 당분간 미국 전용이지만 수요 신호는 국경이 없어요.</strong> 주간 3억 건의 건강 질문이라는 숫자는, 국내 의료법·개인정보 규제 안에서 안전하게 풀 수 있는 팀에게 열려 있는 시장의 크기이기도 해요. 셋째, 국가과학 딜은 <strong>"모델 접근권 = 전략 자산"</strong>이라는 공식을 보여줘요. 정부·공공 과제에서 글로벌 모델 벤더의 크레딧·접근권이 협상 테이블에 오르는 흐름은 한국 R&D 예산 구조에도 곧 등장할 의제예요.
+
+한 줄로 줄이면 — OpenAI는 이제 소프트웨어 회사가 아니라 <strong>업종마다 지사를 내는 회사</strong>처럼 움직여요. 채점표, 플랫폼, 인력까지 한 묶음으로요. 다음 질문은 어느 업종이 다음 차례냐는 것뿐이에요.
+
+---
+
+근거가 된 소식: [Introducing OpenAI Presence](https://openai.com/index/introducing-openai-presence) ([The Register 보도](https://www.theregister.com/ai-and-ml/2026/07/22/openai-tries-the-consulting-path-with-presence-charging-enterprises-boots-on-the-ground-prices-to-deploy-agents/5275867)), [Launching Health in ChatGPT](https://openai.com/index/health-in-chatgpt) ([TechCrunch 보도](https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/)), [Advancing the next era of national science](https://openai.com/index/advancing-the-next-era-of-national-science)

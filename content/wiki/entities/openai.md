@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-21"
-post_count: 43
+last_covered: "2026-07-27"
+post_count: 44
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -56,6 +56,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - 도이치텔레콤 AI 네이티브 전환 사례(546% 사용 증가·5만 MAU·통화 요약 수시간→수분, 벤더 보고) + GPT-5.6이 M365 Copilot 'preferred model'로(자동 라우팅, Bloomberg MAI 보도 이틀 뒤) — '기본값화' 칼럼 — [[2026-07-14-enterprise-ai-default-not-choice]]
 - CFO 사라 프라이어 'AI 시대의 채점표'(유용한 작업·성공 작업당 비용·신뢰성·컴퓨트 수익률) + Cars24 사례(월 100만 분, 리드 12% 회수) — 엔터프라이즈 4막 '채점' 칼럼 — [[2026-07-21-enterprise-ai-scorecard]]
 - 역연방주의 공식화(SB 53·RAISE·SB 315 주법 연합→사실상 국가 표준) + GPT-Red 자동 레드티밍(GPT-5.1 84% 격파, 인간 13%) + 청소년 보호 발표 — Anthropic 기관화와 대칭인 신뢰 전략 칼럼 — [[2026-07-21-openai-reverse-federalism]]
+- 수직 확장 주간(7/22~23) — Presence 컨택센터 플랫폼(자사 라인 75% 자동 해결·FDE 배포), Health in ChatGPT 미 전역 롤아웃(주간 3억 건강 질문), DOE Genesis Mission 지원($4M Codex+$3M API+GPT-Rosalind) — '업종 이주' 칼럼 — [[2026-07-27-openai-vertical-expansion]]
 
 ## 타임라인
 
@@ -99,6 +100,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-07-03 | 코어덤프 역학으로 18년 libunwind 버그 규명 (칼럼)              | [[2026-07-03-openai-core-dump-epidemiology]]        |
 | 2026-07-14 | 도이치텔레콤 사례 + GPT-5.6 M365 기본 모델화 (기본값화 칼럼)   | [[2026-07-14-enterprise-ai-default-not-choice]] |
 | 2026-07-21 | CFO 채점표 + Cars24 (채점 칼럼) / 역연방주의 + GPT-Red (규제 지도 칼럼) | [[2026-07-21-enterprise-ai-scorecard]] [[2026-07-21-openai-reverse-federalism]] |
+| 2026-07-27 | Presence·Health·국가과학 — 수직 확장 주간 (칼럼)               | [[2026-07-27-openai-vertical-expansion]] |
 
 ## 관련 엔티티
 
