@@ -1,5 +1,6 @@
 ---
 title: "Claude Opus 5 — 프론티어 성능을 반값에, 그리고 1M 컨텍스트가 '기본'이 됐다"
+thumbnail: "/thumbnails/claude-opus-5.png"
 description: "Anthropic이 Opus 5를 냈어요. 가격은 Opus 4.8 그대로($5/$25)인데 Fable 5에 근접한 성능, 1M 컨텍스트는 베타 딱지 없이 표준이에요. 저는 이 발표를 7/3 Sonnet 5 때 쓴 '가격 곡선 붕괴'의 2단계로 읽어요 — 이제 Anthropic 라인업 전체가 '한 단계 위 성능을 한 단계 아래 가격에'로 재편됐거든요."
 date: "2026-07-27"
 tags: ["Anthropic", "Claude"]
@@ -19,12 +20,18 @@ draft: false
 
 발표문과 공식 문서 기준으로 정리하면 이래요 (벤치마크는 전부 Anthropic 자체 측정이고, 상대 수치 위주로 공개됐어요):
 
-- <strong>코딩</strong>: CursorBench 3.2에서 Fable 5 최고점의 0.5% 이내 — 절반 비용으로. Frontier-Bench v0.1은 Opus 4.8의 2배 이상
-- <strong>에이전트 작업</strong>: OSWorld 2.0에서 Fable 5 최고 기록을 넘어섰는데 비용은 약 3분의 1. ARC-AGI 3는 차순위 모델의 3배
-- <strong>컨텍스트</strong>: <strong>1M 토큰이 표준</strong>(베타 헤더 없음, 장문 프리미엄 과금 없음), 최대 출력 128K
-- <strong>fast mode</strong>(리서치 프리뷰): 기본가의 2배($10/$50)로 약 2.5배 출력 속도
+- <strong>코딩</strong>: CursorBench 3.2에서 Fable 5 최고점의 0.5% 이내 — 절반
+  비용으로. Frontier-Bench v0.1은 Opus 4.8의 2배 이상
+- <strong>에이전트 작업</strong>: OSWorld 2.0에서 Fable 5 최고 기록을 넘어섰는데
+  비용은 약 3분의 1. ARC-AGI 3는 차순위 모델의 3배
+- <strong>컨텍스트</strong>: <strong>1M 토큰이 표준</strong>(베타 헤더 없음,
+  장문 프리미엄 과금 없음), 최대 출력 128K
+- <strong>fast mode</strong>(리서치 프리뷰): 기본가의 2배($10/$50)로 약 2.5배
+  출력 속도
 - <strong>지식 컷오프</strong>: 2026년 5월 — 현행 Claude 모델 중 가장 최신
-- <strong>배포</strong>: Claude Max 기본 모델, Pro에서 최강 모델, Claude Code에선 기본 Opus로 편입([v2.1.219](https://github.com/anthropics/claude-code/releases/tag/v2.1.219))
+- <strong>배포</strong>: Claude Max 기본 모델, Pro에서 최강 모델, Claude
+  Code에선 기본 Opus로
+  편입([v2.1.219](https://github.com/anthropics/claude-code/releases/tag/v2.1.219))
 
 여기서 재미있는 디테일 하나. fast mode 가격 $10/$50은 <strong>Fable 5의 표준 가격과 정확히 같아요.</strong> 같은 돈으로 "프론티어 지능"을 살지 "준프론티어 지능의 2.5배 속도"를 살지 고르게 된 거예요. 프론티어의 가격이 이제 지능이 아니라 속도와 교환 가능한 상품이 됐다는 뜻이기도 해요.
 
