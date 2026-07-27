@@ -106,6 +106,7 @@ tom-project/
 - Google AI Blog
 - Anthropic News
 - GitHub Releases (Claude Code, Cursor 등)
+- Hugging Face 신규 모델 (DeepSeek / Kimi·Moonshot / GLM·Z.ai — org별 새 모델 리포를 릴리스 신호로 수집)
 
 ---
 

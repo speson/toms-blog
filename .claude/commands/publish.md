@@ -92,7 +92,7 @@ date: "YYYY-MM-DD"
 tags: ["적절한태그1", "적절한태그2"] # 3글 이상 모일 구체적 태그만. 범용 "AI" 태그 금지
 category: "ai-news" # ai-news | by-tom
 subcategory: "column" # 칼럼/분석=column, 단순소식=news, 릴리스=releases
-source: "anthropic" # 트리거 출처(anthropic|openai|google|geeknews|github), 자체기획=original
+source: "anthropic" # 트리거 출처(anthropic|openai|google|xai|deepseek|kimi|glm|geeknews|github), 자체기획=original
 sourceUrl: "https://..." # 트리거 출처 URL (자체기획이면 빈 값)
 thumbnail: "/thumbnails/{slug}.png" # 생성 실패 시 생략
 draft: false
@@ -133,6 +133,9 @@ draft: false
 | github (claude-code) | Claude, 개발도구   |
 | github (opencode)    | 개발도구, 오픈소스 |
 | github (sdk)         | SDK, 개발          |
+| deepseek             | DeepSeek, 오픈소스 |
+| kimi                 | Kimi, 오픈소스     |
+| glm                  | GLM, 오픈소스      |
 
 주의: 범용 "AI" 태그는 사용하지 않는다 (거의 모든 글에 붙어 태그 기능을 상실).
 태그는 3개 이상의 글이 모일 수 있는 구체적인 것만 사용하고, 새 태그를 만들기 전에

@@ -9,7 +9,10 @@ export type RSSSource =
   | "openai"
   | "anthropic"
   | "google"
-  | "xai";
+  | "xai"
+  | "deepseek"
+  | "kimi"
+  | "glm";
 
 export interface RSSItem {
   id: string;
@@ -101,6 +104,57 @@ export async function fetchAIBlog(
   }
 }
 
+// Chinese open-model labs — no blog RSS, so new Hugging Face model repos
+// serve as the release signal (repo creation = model release).
+export const HF_MODEL_ORGS: Array<{
+  org: string;
+  source: RSSSource;
+}> = [
+  { org: "deepseek-ai", source: "deepseek" },
+  { org: "moonshotai", source: "kimi" },
+  { org: "zai-org", source: "glm" },
+];
+
+export async function fetchHuggingFaceModels(
+  org: string,
+  source: RSSSource,
+  limit = 5
+): Promise<RSSItem[]> {
+  try {
+    const res = await fetch(
+      `https://huggingface.co/api/models?author=${org}&sort=createdAt&direction=-1&limit=${limit}`,
+      { headers: { Accept: "application/json" } }
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const models = (await res.json()) as Array<{
+      id: string;
+      createdAt?: string;
+      pipeline_tag?: string;
+      likes?: number;
+      downloads?: number;
+    }>;
+
+    return models.map((m) => ({
+      id: `hf-${m.id}`,
+      title: `[HF] ${m.id}`,
+      link: `https://huggingface.co/${m.id}`,
+      content: [
+        m.pipeline_tag ? `종류: ${m.pipeline_tag}` : null,
+        typeof m.likes === "number" ? `likes ${m.likes}` : null,
+        typeof m.downloads === "number" ? `downloads ${m.downloads}` : null,
+      ]
+        .filter(Boolean)
+        .join(" · "),
+      date: m.createdAt || new Date().toISOString(),
+      source,
+    }));
+  } catch (error) {
+    console.error(`Failed to fetch HF models for ${org}:`, error);
+    return [];
+  }
+}
+
 // AI Coding Tool GitHub Repos
 export const AI_GITHUB_REPOS = [
   "sst/opencode",
@@ -127,10 +181,17 @@ export async function fetchAllAINews(limit = 5): Promise<RSSItem[]> {
     name: "anthropic" as const,
     items,
   }));
+  const hfPromises = HF_MODEL_ORGS.map(({ org, source }) =>
+    fetchHuggingFaceModels(org, source, limit).then((items) => ({
+      name: `${source} (HF ${org})`,
+      items,
+    }))
+  );
 
   const blogResults = await Promise.allSettled([
     ...blogPromises,
     anthropicPromise,
+    ...hfPromises,
   ]);
 
   const items: RSSItem[] = [];
@@ -196,7 +257,9 @@ export async function fetchAnthropicNews(limit = 10): Promise<RSSItem[]> {
       const category = $el.find("span").first().text().trim();
 
       if (title && href) {
-        const date = dateText ? new Date(dateText).toISOString() : new Date().toISOString();
+        const date = dateText
+          ? new Date(dateText).toISOString()
+          : new Date().toISOString();
         items.push({
           id: `anthropic-${href}`,
           title: title,
