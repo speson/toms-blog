@@ -4,6 +4,7 @@ import Image from "next/image";
 import { allPosts } from "contentlayer/generated";
 import { MDXContent } from "@/components/mdx-content";
 import {
+  AdUnit,
   ArticleJsonLd,
   AuthorBox,
   BreadcrumbJsonLd,
@@ -226,6 +227,8 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="prose prose-invert max-w-none">
               <MDXContent code={post.body.code} />
             </div>
+
+            <AdUnit slot="9202055798" className="mt-12" />
 
             <AuthorBox />
 
