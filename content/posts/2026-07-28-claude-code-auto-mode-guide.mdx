@@ -1,5 +1,6 @@
 ---
 title: "Claude Code Auto 모드 완전 가이드 — 켜는 법, 분류기 동작, 조직에서 막는 법까지"
+thumbnail: "/thumbnails/claude-code-auto-mode-guide.png"
 description: "Auto 모드는 권한 프롬프트 없이 작업하되 별도 분류기가 모든 액션을 사전 검토하는 모드예요. CLAUDE_CODE_ENABLE_AUTO_MODE 환경변수는 이제 no-op이고, 저장소 설정으로는 켤 수 없고, 3연속/누적 20회 차단 시 자동 해제됩니다. 공식 문서 기준으로 활성화 조건, 기본 차단 목록, 커스텀 규칙, 관리자 통제까지 전부 정리했어요."
 date: "2026-07-28"
 updatedAt: "2026-07-28"
@@ -30,9 +31,19 @@ Claude Code에서 Shift+Tab을 아무리 눌러도 auto 모드가 안 나온다�
 
 <strong>안 보이는 이유 체크리스트:</strong>
 
-- <strong>모델 요건 미충족</strong> — 제공자별로 달라요. Anthropic API·Claude Platform on AWS는 Opus 4.6+/Sonnet 4.6+/Fable 5, <strong>Bedrock·Google Agent Platform·Foundry는 Sonnet 5, Opus 4.7+, Fable 5만</strong> 지원해요. Sonnet 4.5, Opus 4.5, Haiku 계열은 어디서도 안 됩니다.
-- <strong>Team/Enterprise 플랜</strong> — Owner가 관리 콘솔(claude.ai/admin-settings/claude-code)에서 먼저 켜줘야 사용자에게 보여요.
-- <strong>저장소 설정에 넣은 경우</strong> — 프로젝트의 `.claude/settings.json`에 `defaultMode: "auto"`를 넣어도 <strong>v2.1.142부터 무시</strong>됩니다. 악성 리포가 스스로 권한을 승격하는 걸 막는 설계라, 반드시 사용자 설정(`~/.claude/settings.json`)이나 관리 설정에 넣어야 해요. VS Code 확장의 initialPermissionMode도 auto를 받지 않아요.
+- <strong>모델 요건 미충족</strong> — 제공자별로 달라요. Anthropic API·Claude
+  Platform on AWS는 Opus 4.6+/Sonnet 4.6+/Fable 5,
+  <strong>
+    Bedrock·Google Agent Platform·Foundry는 Sonnet 5, Opus 4.7+, Fable 5만
+  </strong>
+  지원해요. Sonnet 4.5, Opus 4.5, Haiku 계열은 어디서도 안 됩니다.
+- <strong>Team/Enterprise 플랜</strong> — Owner가 관리
+  콘솔(claude.ai/admin-settings/claude-code)에서 먼저 켜줘야 사용자에게 보여요.
+- <strong>저장소 설정에 넣은 경우</strong> — 프로젝트의
+  `.claude/settings.json`에 `defaultMode: "auto"`를 넣어도
+  <strong>v2.1.142부터 무시</strong>됩니다. 악성 리포가 스스로 권한을 승격하는
+  걸 막는 설계라, 반드시 사용자 설정(`~/.claude/settings.json`)이나 관리 설정에
+  넣어야 해요. VS Code 확장의 initialPermissionMode도 auto를 받지 않아요.
 - <strong>관리자가 막은 경우</strong> — 아래 참조.
 
 ## 무엇이 차단되고 무엇이 통과되나
@@ -59,8 +70,11 @@ claude auto-mode critique   # 내 커스텀 규칙에 대한 AI 리뷰
 
 auto 모드를 쓰면서도 특정 지점에선 꼭 확인받고 싶다면, 대화로 "푸시 전에 알려줘"라고 말하는 것보다 <strong>규칙으로 박는 게</strong> 확실해요 — 대화 경계는 컨텍스트 압축 때 유실될 수 있거든요. 두 가지 도구가 있습니다:
 
-- <strong>content-scoped ask 규칙</strong>: `permissions.ask`에 조건을 걸면 분류기보다 먼저 평가되고 auto 모드에서도 항상 프롬프트를 띄워요
-- <strong>PreToolUse 훅의 "ask"</strong>: 훅이 ask를 반환하면 auto 모드에서도 프롬프트가 뜹니다 — 분류기는 거부할 순 있어도 훅의 ask를 조용히 승인으로 바꿀 순 없어요
+- <strong>content-scoped ask 규칙</strong>: `permissions.ask`에 조건을 걸면
+  분류기보다 먼저 평가되고 auto 모드에서도 항상 프롬프트를 띄워요
+- <strong>PreToolUse 훅의 "ask"</strong>: 훅이 ask를 반환하면 auto 모드에서도
+  프롬프트가 뜹니다 — 분류기는 거부할 순 있어도 훅의 ask를 조용히 승인으로 바꿀
+  순 없어요
 
 서브에이전트도 같은 감독 아래 있어요. 스폰 시 작업 설명 검토, 실행 중 각 액션 검토(서브에이전트 frontmatter의 permissionMode는 무시됨), 결과 반환 시 전체 히스토리 검토까지 3중 체크가 돌아갑니다. [서브에이전트가 기본 백그라운드가 된 시대](/posts/2026-07-03-claude-code-subagents-background-default)에 감독이 어디에 붙는지를 보여주는 대목이에요.
 

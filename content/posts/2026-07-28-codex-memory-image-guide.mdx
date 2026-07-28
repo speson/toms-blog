@@ -1,5 +1,6 @@
 ---
 title: "OpenAI Codex 메모리·이미지 기능 완전 정리 — 켜는 법, 설정, 검열 정책까지"
+thumbnail: "/thumbnails/codex-memory-image-guide.png"
 description: "Codex의 메모리는 기본 꺼짐이고, 로컬 클라이언트와 ChatGPT 웹의 메모리는 서로 다른 저장소예요. 이미지는 입력뿐 아니라 생성(gpt-image-2)까지 되고요. 공식 문서 기준으로 메모리 3계층 구조, config.toml 설정, 이미지 생성 사용법과 검열(moderation) 동작까지 실무자용으로 정리했어요."
 date: "2026-07-28"
 updatedAt: "2026-07-28"
@@ -20,17 +21,30 @@ draft: false
 
 혼동을 막으려면 먼저 구조를 알아야 해요. Codex에는 성격이 다른 지속성 계층이 세 개 있습니다.
 
-<strong>1. 메모리(Memories) — 자동 생성, 로컬, 기본 꺼짐.</strong> 켜면 Codex가 과거 세션에서 선호, 코딩 스타일, 지적받은 실수, 프로젝트 관례, 반복 워크플로우를 추출해 `~/.codex/memories/` 아래 파일로 저장하고 다음 세션에 주입해요.
+<strong>1. 메모리(Memories) — 자동 생성, 로컬, 기본 꺼짐.</strong> 켜면 Codex가
+과거 세션에서 선호, 코딩 스타일, 지적받은 실수, 프로젝트 관례, 반복 워크플로우를
+추출해 `~/.codex/memories/` 아래 파일로 저장하고 다음 세션에 주입해요.
 
-<strong>2. AGENTS.md — 수동 작성, 명시적 규칙.</strong> 전역(`~/.codex/AGENTS.md`)과 프로젝트별(리포 루트부터 현재 디렉토리까지) 파일이 위에서 아래로 이어 붙고, 가까운 파일이 우선해요. 공식 문서의 원칙이 명확합니다 — <strong>"팀 규칙은 AGENTS.md에, 메모리는 보조 회상 계층으로"</strong>. 합산 용량 기본 한도는 32KiB이고 `project_doc_max_bytes`로 늘릴 수 있어요.
+<strong>2. AGENTS.md — 수동 작성, 명시적 규칙.</strong>
+전역(`~/.codex/AGENTS.md`)과 프로젝트별(리포 루트부터 현재 디렉토리까지) 파일이
+위에서 아래로 이어 붙고, 가까운 파일이 우선해요. 공식 문서의 원칙이 명확합니다 —
+<strong>"팀 규칙은 AGENTS.md에, 메모리는 보조 회상 계층으로"</strong>. 합산 용량
+기본 한도는 32KiB이고 `project_doc_max_bytes`로 늘릴 수 있어요.
 
-<strong>3. 세션 지속 — codex resume.</strong> 현재 리포의 최근 대화를 다시 열거나 과거 세션을 검색해요. 7월 CLI v0.145.0부터는 스레드 검색·이름 저장이 붙었고, <strong>/import로 Cursor·Claude Code의 설정·MCP 서버·세션·프로젝트 메모리까지 이주</strong>할 수 있게 됐어요.
+<strong>3. 세션 지속 — codex resume.</strong> 현재 리포의 최근 대화를 다시
+열거나 과거 세션을 검색해요. 7월 CLI v0.145.0부터는 스레드 검색·이름 저장이
+붙었고,
+<strong>
+  /import로 Cursor·Claude Code의 설정·MCP 서버·세션·프로젝트 메모리까지 이주
+</strong>
+할 수 있게 됐어요.
 
 ## 메모리 켜는 법
 
 두 가지 경로가 있어요.
 
-- <strong>GUI</strong>: ChatGPT 데스크톱 → Settings → Personalization → "Enable memories"
+- <strong>GUI</strong>: ChatGPT 데스크톱 → Settings → Personalization → "Enable
+  memories"
 - <strong>설정 파일</strong>: `~/.codex/config.toml`에 아래 두 줄
 
 ```toml
@@ -42,16 +56,24 @@ memories = true
 
 더 세밀하게 조이고 싶으면 config.toml의 `memories.*` 키를 쓰면 돼요. 실무에서 유용한 것만 추리면:
 
-| 키 | 기본값 | 용도 |
-| --- | --- | --- |
-| `memories.use_memories` | true | false면 기존 메모리를 세션에 주입하지 않음 |
-| `memories.generate_memories` | true | false면 새 메모리를 만들지 않음 |
-| `memories.disable_on_external_context` | false | true면 MCP·웹 검색을 쓴 대화를 메모리 생성에서 제외 |
-| `memories.max_unused_days` | 30 | 안 쓰인 메모리의 보존 기간 |
+| 키                                     | 기본값 | 용도                                                |
+| -------------------------------------- | ------ | --------------------------------------------------- |
+| `memories.use_memories`                | true   | false면 기존 메모리를 세션에 주입하지 않음          |
+| `memories.generate_memories`           | true   | false면 새 메모리를 만들지 않음                     |
+| `memories.disable_on_external_context` | false  | true면 MCP·웹 검색을 쓴 대화를 메모리 생성에서 제외 |
+| `memories.max_unused_days`             | 30     | 안 쓰인 메모리의 보존 기간                          |
 
-<strong>삭제는 주의가 필요해요.</strong> 공식 문서 어디에도 메모리 초기화 명령이 없습니다. 메모리가 `~/.codex/memories/`의 일반 파일이라 디렉토리를 지우는 게 통용되는 방법이지만, 이건 <strong>문서화되지 않은 방식</strong>이니 백업 후에 하세요.
+<strong>삭제는 주의가 필요해요.</strong> 공식 문서 어디에도 메모리 초기화 명령이
+없습니다. 메모리가 `~/.codex/memories/`의 일반 파일이라 디렉토리를 지우는 게
+통용되는 방법이지만, 이건 <strong>문서화되지 않은 방식</strong>이니 백업 후에
+하세요.
 
-<strong>프라이버시</strong>: 공식 문서는 생성된 메모리에서 시크릿을 자동 마스킹한다고 명시하지만, Codex 홈 디렉토리를 공유하기 전엔 메모리 파일을 직접 검토하라고 권해요. 학습 사용 여부에 대한 명시적 문구는 문서에서 확인하지 못했습니다. 참고로 요금제별 롤아웃은 4월 발표 당시 Enterprise·Edu 우선이었는데, 7월 현재 전 플랜 완료 여부는 공식 확인이 없어요 — 안 보이면 플랜 문제일 수 있습니다.
+<strong>프라이버시</strong>: 공식 문서는 생성된 메모리에서 시크릿을 자동
+마스킹한다고 명시하지만, Codex 홈 디렉토리를 공유하기 전엔 메모리 파일을 직접
+검토하라고 권해요. 학습 사용 여부에 대한 명시적 문구는 문서에서 확인하지
+못했습니다. 참고로 요금제별 롤아웃은 4월 발표 당시 Enterprise·Edu 우선이었는데,
+7월 현재 전 플랜 완료 여부는 공식 확인이 없어요 — 안 보이면 플랜 문제일 수
+있습니다.
 
 ## 이미지 입력 — 모든 표면에서 됩니다
 
@@ -76,18 +98,31 @@ codex "다크 모드 대시보드 헤더 배너 만들어줘 $imagegen"
 
 실무에서 중요한 세 가지:
 
-1. <strong>비용</strong>: 생성 턴은 일반 텍스트 턴보다 사용량을 <strong>약 3~5배 빠르게</strong> 소모해요(공식 문서 기준 플랜 한도에 합산). 대량 생성은 `OPENAI_API_KEY`를 설정하면 API 종량제로 분리 과금됩니다.
-2. <strong>끄기</strong>: 팀 환경에서 생성을 막으려면 config.toml에서 imagegen 스킬을 비활성화할 수 있어요.
-3. <strong>제약</strong>: 투명 배경은 미지원이고(서드파티 문서 기준), 해상도는 2K가 안정권이에요.
+1. <strong>비용</strong>: 생성 턴은 일반 텍스트 턴보다 사용량을
+   <strong>약 3~5배 빠르게</strong> 소모해요(공식 문서 기준 플랜 한도에 합산).
+   대량 생성은 `OPENAI_API_KEY`를 설정하면 API 종량제로 분리 과금됩니다.
+2. <strong>끄기</strong>: 팀 환경에서 생성을 막으려면 config.toml에서 imagegen
+   스킬을 비활성화할 수 있어요.
+3. <strong>제약</strong>: 투명 배경은 미지원이고(서드파티 문서 기준), 해상도는
+   2K가 안정권이에요.
 
 ## "코덱스 이미지 검열"에 대하여 — 차단의 구조
 
 이 검색어로 오신 분들이 실제로 겪는 상황을 구조적으로 설명하면 이래요.
 
-- <strong>사전 분류기 차단</strong>: 모델이 돌기 전에 프론트엔드 안전 분류기가 요청을 거절하면 `moderation_blocked` 에러가 나요. 상표·저작권 캐릭터명, 특정 신체·의상 표현이 문서화된 트리거이고, <strong>같은 프롬프트를 재시도해도 절대 풀리지 않습니다.</strong> 표현을 바꿔야 해요.
-- <strong>정책 적용 범위</strong>: 실존 인물 묘사, 브랜드 모방, 이미지 내 텍스트는 공식 문서가 명시적으로 주의를 주는 영역이에요.
-- <strong>프롬프트 재작성</strong>: 커뮤니티 보고에 따르면 내장 imagegen 스킬이 안전 한정어를 프롬프트에 주입해 의도와 다른 결과가 나오는 경우가 있다고 해요(공식 확인은 아님).
-- <strong>API 우회 아님 주의</strong>: 이미지 API엔 `moderation` 파라미터(auto/low)가 있지만 low도 정책 위반을 허용하는 게 아니라 필터 민감도를 낮추는 것뿐이에요.
+- <strong>사전 분류기 차단</strong>: 모델이 돌기 전에 프론트엔드 안전 분류기가
+  요청을 거절하면 `moderation_blocked` 에러가 나요. 상표·저작권 캐릭터명, 특정
+  신체·의상 표현이 문서화된 트리거이고,
+  <strong>같은 프롬프트를 재시도해도 절대 풀리지 않습니다.</strong> 표현을
+  바꿔야 해요.
+- <strong>정책 적용 범위</strong>: 실존 인물 묘사, 브랜드 모방, 이미지 내
+  텍스트는 공식 문서가 명시적으로 주의를 주는 영역이에요.
+- <strong>프롬프트 재작성</strong>: 커뮤니티 보고에 따르면 내장 imagegen 스킬이
+  안전 한정어를 프롬프트에 주입해 의도와 다른 결과가 나오는 경우가 있다고
+  해요(공식 확인은 아님).
+- <strong>API 우회 아님 주의</strong>: 이미지 API엔 `moderation`
+  파라미터(auto/low)가 있지만 low도 정책 위반을 허용하는 게 아니라 필터 민감도를
+  낮추는 것뿐이에요.
 
 ## 이렇게 볼 수도 있어요
 
