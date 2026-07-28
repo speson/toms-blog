@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-07-28] publish | 검색 수요 기반 가이드 2편
+
+- 신규 포스트: [[2026-07-28-codex-memory-image-guide]], [[2026-07-28-claude-code-auto-mode-guide]]
+- 근거: GSC 검색어 데이터 (코덱스 메모리 10회, codex 이미지 계열 7회, claude_code_enable_auto_mode 등 설정 질의)
+- 업데이트된 위키: entities/codex·claude-code, topics/ai-coding-tools
+
+---
+
 ## [2026-07-27] publish | thesis-first 칼럼 3편 + 모델 가이드 갱신
 
 - 신규 포스트: [[2026-07-27-claude-opus-5]], [[2026-07-27-open-weights-coalition]], [[2026-07-27-openai-vertical-expansion]]

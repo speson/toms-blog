@@ -3,8 +3,8 @@ name: OpenAI Codex
 type: entity
 aliases: [Codex, Codex CLI, Codex Security]
 first_covered: "2026-01-25"
-last_covered: "2026-05-22"
-post_count: 13
+last_covered: "2026-07-28"
+post_count: 14
 related_entities: [openai, chatgpt, gpt-5, claude-code]
 tags: [AI, OpenAI, Codex, 코딩, 에이전트, 보안]
 ---
@@ -47,6 +47,7 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 | 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십     | [[2026-05-19-openai-dell-codex-enterprise]]     |
 | 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시 | [[2026-05-22-virgin-atlantic-codex]]            |
 | 2026-07-21 | 서브에이전트 2,393개·로그 731.5GiB 폭주 이슈(#34061, 무응답 Open) | [[2026-07-21-agent-runaway-receipts]] |
+| 2026-07-28 | 메모리(3계층·config.toml)·이미지(입력/생성/검열) 실무 가이드 | [[2026-07-28-codex-memory-image-guide]] |
 
 ## 관련 엔티티
 

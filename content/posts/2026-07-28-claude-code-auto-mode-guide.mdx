@@ -1,0 +1,87 @@
+---
+title: "Claude Code Auto 모드 완전 가이드 — 켜는 법, 분류기 동작, 조직에서 막는 법까지"
+description: "Auto 모드는 권한 프롬프트 없이 작업하되 별도 분류기가 모든 액션을 사전 검토하는 모드예요. CLAUDE_CODE_ENABLE_AUTO_MODE 환경변수는 이제 no-op이고, 저장소 설정으로는 켤 수 없고, 3연속/누적 20회 차단 시 자동 해제됩니다. 공식 문서 기준으로 활성화 조건, 기본 차단 목록, 커스텀 규칙, 관리자 통제까지 전부 정리했어요."
+date: "2026-07-28"
+updatedAt: "2026-07-28"
+tags: ["Claude Code", "개발도구", "가이드"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "Auto 모드의 본질은 '프롬프트 제거'가 아니라 '사람 승인을 분류기 검토로 대체'예요. Shift+Tab에 auto가 안 보이면 모델 요건(제공자별 상이) 미충족이고, CLAUDE_CODE_ENABLE_AUTO_MODE는 이제 아무 효과가 없어요. 조직 통제는 관리 설정의 disableAutoMode 하나로 끝납니다. 켜기 전에 기본 차단 목록과 3/20 폴백 규칙만 알고 시작하세요."
+draft: false
+---
+
+Claude Code에서 Shift+Tab을 아무리 눌러도 auto 모드가 안 나온다면, 설정을 잘못한 게 아니라 <strong>계정이 요건을 충족하지 못한 것</strong>일 가능성이 높아요. 그리고 검색해서 찾아낸 `CLAUDE_CODE_ENABLE_AUTO_MODE=1` — 그거 넣어도 이제 <strong>아무 일도 일어나지 않습니다.</strong> v2.1.158~206 시절에만 필요했던 옵트인이고, v2.1.207부터 제거돼 no-op이 됐거든요. 이 가이드는 2026년 7월 28일 기준 [공식 문서](https://code.claude.com/docs/en/permission-modes)를 검증해서, Auto 모드에 대해 검색하게 되는 질문들을 전부 답해요.
+
+## Auto 모드가 실제로 하는 일
+
+여섯 개 권한 모드(default·acceptEdits·plan·auto·dontAsk·bypassPermissions) 중 하나로, 문서의 정의는 "모든 것을 실행하되, 백그라운드 안전 검사와 함께"예요. 핵심 구조는 이거예요. <strong>사람의 승인 프롬프트를 없애는 대신, 별도의 분류기 모델이 모든 액션을 실행 전에 검토합니다.</strong> bypassPermissions처럼 검사 자체를 끄는 게 아니라, 검사 주체를 사람에서 모델로 바꾸는 거죠.
+
+분류기의 판단 순서는 4단계예요: ① 명시적 allow/ask/deny 규칙이 먼저 적용되고(단, 보호 경로 쓰기는 allow가 있어도 분류기로 감), ② 읽기 전용·작업 디렉토리 편집은 자동 승인, ③ 나머지는 분류기 검토, ④ 차단 시 알림과 함께 진행. 그리고 auto 모드에 들어가는 순간 <strong>`Bash(*)` 같은 광범위 allow 규칙은 자동으로 무시</strong>돼요 — 임의 코드 실행을 통째로 허용하는 규칙과 분류기 감독은 양립할 수 없으니까요.
+
+## 켜는 법 — 그리고 안 켜지는 이유
+
+<strong>켜는 경로 세 가지:</strong>
+
+1. 세션 중 <strong>Shift+Tab</strong> 순환 (auto는 맨 마지막 슬롯)
+2. 시작 시 `claude --permission-mode auto`
+3. 기본값으로: `~/.claude/settings.json`에 `permissions.defaultMode: "auto"`
+
+<strong>안 보이는 이유 체크리스트:</strong>
+
+- <strong>모델 요건 미충족</strong> — 제공자별로 달라요. Anthropic API·Claude Platform on AWS는 Opus 4.6+/Sonnet 4.6+/Fable 5, <strong>Bedrock·Google Agent Platform·Foundry는 Sonnet 5, Opus 4.7+, Fable 5만</strong> 지원해요. Sonnet 4.5, Opus 4.5, Haiku 계열은 어디서도 안 됩니다.
+- <strong>Team/Enterprise 플랜</strong> — Owner가 관리 콘솔(claude.ai/admin-settings/claude-code)에서 먼저 켜줘야 사용자에게 보여요.
+- <strong>저장소 설정에 넣은 경우</strong> — 프로젝트의 `.claude/settings.json`에 `defaultMode: "auto"`를 넣어도 <strong>v2.1.142부터 무시</strong>됩니다. 악성 리포가 스스로 권한을 승격하는 걸 막는 설계라, 반드시 사용자 설정(`~/.claude/settings.json`)이나 관리 설정에 넣어야 해요. VS Code 확장의 initialPermissionMode도 auto를 받지 않아요.
+- <strong>관리자가 막은 경우</strong> — 아래 참조.
+
+## 무엇이 차단되고 무엇이 통과되나
+
+기본 차단(핵심만): `curl | bash`류 다운로드-실행, 민감 데이터 외부 전송, 프로덕션 배포·마이그레이션, 클라우드 스토리지 대량 삭제, IAM/리포 권한 부여, 강제 푸시 등 히스토리 파괴, `--dangerously-skip-permissions`로 시작하는 자율 루프. 기본 통과: 로컬 파일 작업, 락파일 기반 의존성 설치, 읽기 전용 HTTP, 작업 브랜치 푸시.
+
+전체 목록은 추측할 필요 없이 CLI로 확인할 수 있어요:
+
+```bash
+claude auto-mode defaults   # 내장 규칙 전체를 JSON으로
+claude auto-mode config     # 현재 적용 중인 유효 설정
+claude auto-mode critique   # 내 커스텀 규칙에 대한 AI 리뷰
+```
+
+커스텀 규칙은 `autoMode` 블록(allow / soft_deny / hard_deny, 산문형 규칙)으로 쓰는데, 이 블록 역시 <strong>사용자·관리 설정에서만</strong> 읽혀요. 우선순위는 hard_deny > soft_deny > allow > 명시적 사용자 의도 순이고, "리포 정리해줘" 같은 일반 요청은 명시적 의도로 인정되지 않아요 — "force push 해줘"라고 정확히 말해야 소프트 차단을 넘을 수 있습니다.
+
+## 3/20 폴백 — 자동 해제 규칙
+
+분류기가 <strong>3회 연속 또는 세션 누적 20회</strong> 차단하면 auto 모드가 스스로 멈추고 다시 사람에게 묻기 시작해요(프롬프트에서 승인하면 auto 재개). 이 임계값은 설정으로 바꿀 수 없고, 비대화형(`-p`) 모드에선 반복 차단 시 세션이 중단됩니다. [폭주 방지 장치들을 다룬 글](/posts/2026-07-14-agents-learn-to-stop)에서 짚었던 그 폴백이에요 — 자율 실행에는 반드시 자동 복귀 조건이 붙는다는 설계 원칙의 실물입니다.
+
+부수 비용도 알아두세요. <strong>분류기는 기본적으로 Sonnet 5로 돌고(내 /model 선택과 무관), 분류기 호출도 토큰 사용량에 합산</strong>돼요. 읽기·작업 디렉토리 편집은 분류기를 안 거치니, 실제 추가 비용은 위험 액션의 빈도에 비례합니다.
+
+## 사람 개입 지점을 남기는 법
+
+auto 모드를 쓰면서도 특정 지점에선 꼭 확인받고 싶다면, 대화로 "푸시 전에 알려줘"라고 말하는 것보다 <strong>규칙으로 박는 게</strong> 확실해요 — 대화 경계는 컨텍스트 압축 때 유실될 수 있거든요. 두 가지 도구가 있습니다:
+
+- <strong>content-scoped ask 규칙</strong>: `permissions.ask`에 조건을 걸면 분류기보다 먼저 평가되고 auto 모드에서도 항상 프롬프트를 띄워요
+- <strong>PreToolUse 훅의 "ask"</strong>: 훅이 ask를 반환하면 auto 모드에서도 프롬프트가 뜹니다 — 분류기는 거부할 순 있어도 훅의 ask를 조용히 승인으로 바꿀 순 없어요
+
+서브에이전트도 같은 감독 아래 있어요. 스폰 시 작업 설명 검토, 실행 중 각 액션 검토(서브에이전트 frontmatter의 permissionMode는 무시됨), 결과 반환 시 전체 히스토리 검토까지 3중 체크가 돌아갑니다. [서브에이전트가 기본 백그라운드가 된 시대](/posts/2026-07-03-claude-code-subagents-background-default)에 감독이 어디에 붙는지를 보여주는 대목이에요.
+
+## 조직에서 막는 법 (관리자용)
+
+관리 설정 파일에 한 줄이면 됩니다:
+
+```json
+{ "permissions": { "disableAutoMode": "disable" } }
+```
+
+위치는 macOS `/Library/Application Support/ClaudeCode/managed-settings.json`, Linux `/etc/claude-code/managed-settings.json`, Windows `C:\Program Files\ClaudeCode\managed-settings.json`. 이러면 Shift+Tab 순환에서 auto가 빠지고 `--permission-mode auto` 시작도 거부돼요. 관리 설정은 어떤 레벨로도 오버라이드할 수 없습니다.
+
+## 이렇게 볼 수도 있어요
+
+균형을 위해 셋. 첫째, 분류기의 차단 성능은 Anthropic의 자체 설명이고 독립 검증은 없어요 — "분류기가 있으니 안전하다"가 아니라 "사람 검토보다 나은가"를 자기 워크로드로 판단해야 해요. 둘째, 최근 문서 기준으로 차단 사유가 대부분 "Blocked by classifier"라는 고정 문구로만 표시돼서, 왜 막혔는지 파악하는 데 시간이 걸릴 수 있어요(/permissions의 Recently denied에서 r로 수동 재시도 가능). 셋째, auto 모드는 계속 진화 중이에요 — v2.1.218부터는 플랜 모드 중에도 분류기가 셸 명령을 검토하는 `useAutoModeDuringPlan`이 기본으로 켜졌어요. 이 가이드도 큰 변화가 오면 갱신하겠습니다.
+
+## 한국 개발자 입장에서
+
+도입 판단을 셋으로 정리할게요. 첫째, <strong>개인 개발자라면</strong> 긴 자율 작업(리팩토링, 마이그레이션)에서 프롬프트 피로를 크게 줄여주니 켜볼 가치가 충분해요 — 단, 시작 전에 `claude auto-mode defaults`로 차단 목록을 한 번 읽고, 꼭 확인받고 싶은 지점(배포, 푸시)엔 ask 규칙을 박아두세요. 둘째, <strong>Bedrock·Vertex로 쓰는 조직이라면</strong> v2.1.207부터 옵트인 없이 기본 제공되니, 도입 품의에 "허용할 것인가"가 아니라 "막을 것인가"를 물어야 하는 상황이에요 — 막는 방법은 위의 관리 설정 한 줄입니다. 셋째, 분류기 토큰 비용이 걱정된다면 [에이전트 자원 상한 이야기](/posts/2026-07-21-agent-runaway-receipts)에서 다룬 원칙 그대로 — 사용량 모니터링을 먼저 붙이고 켜는 순서를 권해요.
+
+---
+
+참고 문서: [Permission modes](https://code.claude.com/docs/en/permission-modes), [Auto mode configuration](https://code.claude.com/docs/en/auto-mode-config), [Permissions](https://code.claude.com/docs/en/permissions), [Claude Code 릴리스 노트](https://github.com/anthropics/claude-code/releases)
