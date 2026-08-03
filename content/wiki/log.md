@@ -9,6 +9,15 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-08-03] publish | 칼럼 2편 + 검색 수요 가이드 1편
+
+- 신규 포스트: [[2026-08-03-anthropic-open-weights-answer]], [[2026-08-03-si-channel-war-act2]], [[2026-08-03-codex-enterprise-guide]]
+- 근거: GSC 검색어(코덱스/codex 엔터프라이즈), 오픈 웨이트 시리즈 후속(아모데이 입장문), SI 채널 시리즈 후속(Cognizant)
+- 신규 소스 첫 활용: DeepSeek-V4-Flash-0731 (HF deepseek 소스가 잡은 첫 대형 릴리스)
+- 업데이트된 위키: entities/anthropic·openai·codex, topics/open-source-ai·ai-coding-tools
+
+---
+
 ## [2026-07-28] publish | 검색 수요 기반 가이드 2편
 
 - 신규 포스트: [[2026-07-28-codex-memory-image-guide]], [[2026-07-28-claude-code-auto-mode-guide]]
