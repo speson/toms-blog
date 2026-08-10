@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-08-03"
-post_count: 45
+last_covered: "2026-08-10"
+post_count: 46
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -102,6 +102,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-07-21 | CFO 채점표 + Cars24 (채점 칼럼) / 역연방주의 + GPT-Red (규제 지도 칼럼) | [[2026-07-21-enterprise-ai-scorecard]] [[2026-07-21-openai-reverse-federalism]] |
 | 2026-07-27 | Presence·Health·국가과학 — 수직 확장 주간 (칼럼)               | [[2026-07-27-openai-vertical-expansion]] |
 | 2026-08-03 | Univé 사례(97% 활성화·주 40프롬프트) — 유통 전쟁 2막 칼럼        | [[2026-08-03-si-channel-war-act2]] |
+| 2026-08-10 | 애플 영업비밀 소송에 공개 블로그로 응수 — 하드웨어 경쟁 신호 (칼럼) | [[2026-08-10-apple-openai-lawsuit]] |
 
 ## 관련 엔티티
 

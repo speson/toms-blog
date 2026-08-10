@@ -1,7 +1,7 @@
 ---
 name: 오픈소스 AI
 type: topic
-post_count: 23
+post_count: 24
 key_entities:
   [
     "OpenCode",
@@ -61,6 +61,7 @@ tags: ["오픈소스", "AI", "개발도구"]
 | 2026-04-14 | [[2026-04-14-meta-new-ai-model]]                     | Meta의 새 AI 모델 패밀리 - 부분 오픈소스 전략                |
 | 2026-04-14 | [[2026-04-14-opencode-v140-143]]                     | OpenCode v1.4.0~1.4.3 메이저 업데이트                        |
 | 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]] | Oh My OpenCode v4.4.0 — /security-research 5인 보안팀 스킬   |
+| 2026-08-10 | [[2026-08-10-4b-model-search-claim]]                 | 4B 모델이 검색에서 GPT-5.6 이겼다는 주장 검증 (Q&A) |
 
 ## 관련 토픽
 

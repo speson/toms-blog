@@ -9,6 +9,14 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-08-10] publish | 형식 다양화 실험 2편 (스타일 v2 첫 적용)
+
+- 신규 포스트: [[2026-08-10-apple-openai-lawsuit]] (서사형 칼럼), [[2026-08-10-4b-model-search-claim]] (Q&A 회의형)
+- 스타일 v2 적용: 고정 헤딩(이렇게 볼 수도 있어요/한국 개발자 입장에서) 미사용, "한 줄로 줄이면" 마무리 없음, "정확히 셋" 없음, 재활용 은유 없음 — 두 글의 골격이 서로 다름
+- 업데이트된 위키: entities/openai, topics/open-source-ai
+
+---
+
 ## [2026-08-03] publish | 칼럼 2편 + 검색 수요 가이드 1편
 
 - 신규 포스트: [[2026-08-03-anthropic-open-weights-answer]], [[2026-08-03-si-channel-war-act2]], [[2026-08-03-codex-enterprise-guide]]

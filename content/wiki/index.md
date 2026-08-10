@@ -1,7 +1,7 @@
 ---
 name: Wiki Index
 description: 전체 위키 페이지 카탈로그
-updated: "2026-08-03"
+updated: "2026-08-10"
 ---
 
 # Wiki Index
@@ -12,7 +12,7 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 
 | 페이지                                       | 설명                               | 포스트 수 |
 | -------------------------------------------- | ---------------------------------- | --------- |
-| [openai](entities/openai.md)                 | OpenAI - GPT, ChatGPT, Codex 등    | 45        |
+| [openai](entities/openai.md)                 | OpenAI - GPT, ChatGPT, Codex 등    | 46        |
 | [anthropic](entities/anthropic.md)           | Anthropic - Claude, Claude Code 등 | 38        |
 | [google](entities/google.md)                 | Google AI - Gemini, Android 등     | 18        |
 | [claude-code](entities/claude-code.md)       | Claude Code - AI 코딩 에이전트     | 33        |
@@ -28,7 +28,7 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 | 페이지                                       | 설명                            | 포스트 수 |
 | -------------------------------------------- | ------------------------------- | --------- |
 | [ai-coding-tools](topics/ai-coding-tools.md) | AI 코딩 도구 생태계 비교/분석   | 69        |
-| [open-source-ai](topics/open-source-ai.md)   | 오픈소스 AI 프로젝트 동향       | 23        |
+| [open-source-ai](topics/open-source-ai.md)   | 오픈소스 AI 프로젝트 동향       | 24        |
 | [ai-agents](topics/ai-agents.md)             | AI 에이전트 기술/트렌드         | 19        |
 | [ai-security](topics/ai-security.md)         | AI 보안, 프롬프트 인젝션 등     | 17        |
 | [mcp](topics/mcp.md)                         | Model Context Protocol          | 15        |
