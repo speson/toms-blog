@@ -3,8 +3,8 @@ name: OpenAI
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-08-10"
-post_count: 46
+last_covered: "2026-08-20"
+post_count: 47
 related_entities: [chatgpt, codex, gpt-5, anthropic, google]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
@@ -103,6 +103,7 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-07-27 | Presence·Health·국가과학 — 수직 확장 주간 (칼럼)               | [[2026-07-27-openai-vertical-expansion]] |
 | 2026-08-03 | Univé 사례(97% 활성화·주 40프롬프트) — 유통 전쟁 2막 칼럼        | [[2026-08-03-si-channel-war-act2]] |
 | 2026-08-10 | 애플 영업비밀 소송에 공개 블로그로 응수 — 하드웨어 경쟁 신호 (칼럼) | [[2026-08-10-apple-openai-lawsuit]] |
+| 2026-08-20 | 유럽 광고 확대 + Zero Data Retention — 고객 등급별 프라이버시 (칼럼) | [[2026-08-20-chatgpt-ads-vs-privacy]] |
 
 ## 관련 엔티티
 

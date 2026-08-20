@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-08-03"
-post_count: 38
+last_covered: "2026-08-20"
+post_count: 39
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -78,6 +78,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-07-27 | Claude Opus 5 — 프론티어 근접 성능 반값, 1M 컨텍스트 표준 (칼럼)    | [[2026-07-27-claude-opus-5]] |
 | 2026-08-03 | 오픈 웨이트 입장문(아모데이 단독) — 금지 아닌 의무 테스트 요구 (칼럼)  | [[2026-08-03-anthropic-open-weights-answer]] |
 | 2026-08-03 | Cognizant 확대 — 3만 명 훈련 완료, Global Premier Partner (칼럼)     | [[2026-08-03-si-channel-war-act2]] |
+| 2026-08-20 | Claude 텍스트 워터마크 — AI 감별 가능성 회의형 검증 (칼럼)       | [[2026-08-20-claude-watermark-works]] |
 
 ## 관련 엔티티
 
