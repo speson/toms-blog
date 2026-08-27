@@ -3,8 +3,8 @@ name: Anthropic
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-08-20"
-post_count: 39
+last_covered: "2026-08-27"
+post_count: 40
 related_entities: [claude-code, openai, google]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
@@ -28,8 +28,9 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - Claude Design 리서치 프리뷰 공개 — [[2026-04-20-claude-design]]
 - Anthropic SDK에 Managed Agents 기능 등장 — [[2026-05-11-anthropic-sdk-managed-agents]]
 - Claude 사용량 한도 2배 인상 + SpaceX 파트너십 발표 — [[2026-05-11-claude-usage-limits-spacex]]
-- Anthropic SDK에 셀프 호스팅 샌드박스 추가, 에이전트 실행 환경 자체 구축 지원 — [[2026-05-19-anthropic-sdk-self-hosted-sandbox]]
+- Anthropic SDK에 셀프 호스팅 샌드박스 추가, 에이전트 실행 환경 자체 구축 지원 — [[2026-05-19-anthropic-sdk-self-hosted-sandboxes]]
 - Stainless 인수, SDK 자동 생성·MCP 커넥터 생성 역량 내재화 — [[2026-05-19-anthropic-acquires-stainless]]
+- Files·Skills API GA 전환, 컴퓨터 사용 툴셋 정식 출시 + 브라우저 툴셋 신규, Python SDK 1.0.0 — [[2026-08-27-anthropic-sdk-1-0-quiet-breaks]]
 - Claude Opus 4.8 출시 — Opus 4.7 대비 코드 결함 4배 감소, Fast 모드 3배 저렴, 정렬 평가 최고치 — [[2026-06-01-claude-opus-4-8]]
 - Series H로 $65B 조달, 기업가치 $965B·런레이트 매출 $47B 돌파 — [[2026-06-01-anthropic-series-h-65b]]
 - 서울 오피스 개설 앞두고 최기영 한국 대표 선임, 인구 대비 Claude 사용률 3.5배 — [[2026-06-01-anthropic-korea-kiyoung-choi]]
@@ -60,7 +61,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-04-20 | Claude Design 리서치 프리뷰 공개                                    | [[2026-04-20-claude-design]]                     |
 | 2026-05-11 | SDK Managed Agents 기능 공개                                        | [[2026-05-11-anthropic-sdk-managed-agents]]      |
 | 2026-05-11 | Claude 사용량 한도 2배 인상 + SpaceX 파트너십                       | [[2026-05-11-claude-usage-limits-spacex]]        |
-| 2026-05-19 | SDK 셀프 호스팅 샌드박스 추가                                       | [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] |
+| 2026-05-19 | SDK 셀프 호스팅 샌드박스 추가                                       | [[2026-05-19-anthropic-sdk-self-hosted-sandboxes]] |
 | 2026-05-19 | Stainless 인수                                                      | [[2026-05-19-anthropic-acquires-stainless]]      |
 | 2026-06-01 | Claude Opus 4.8 출시                                                | [[2026-06-01-claude-opus-4-8]]                   |
 | 2026-06-01 | Series H $65B 조달 ($965B 밸류, $47B 런레이트)                      | [[2026-06-01-anthropic-series-h-65b]]            |
@@ -79,6 +80,7 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 | 2026-08-03 | 오픈 웨이트 입장문(아모데이 단독) — 금지 아닌 의무 테스트 요구 (칼럼)  | [[2026-08-03-anthropic-open-weights-answer]] |
 | 2026-08-03 | Cognizant 확대 — 3만 명 훈련 완료, Global Premier Partner (칼럼)     | [[2026-08-03-si-channel-war-act2]] |
 | 2026-08-20 | Claude 텍스트 워터마크 — AI 감별 가능성 회의형 검증 (칼럼)       | [[2026-08-20-claude-watermark-works]] |
+| 2026-08-27 | SDK 아크 4단계: Files·Skills GA + 툴셋 2종 + Python SDK 1.0.0 (시간순) | [[2026-08-27-anthropic-sdk-1-0-quiet-breaks]] |
 
 ## 관련 엔티티
 

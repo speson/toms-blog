@@ -9,6 +9,18 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-08-27] publish | Anthropic SDK 아크 (시간순 추적 구조)
+
+- 신규 포스트: [[2026-08-27-anthropic-sdk-1-0-quiet-breaks]] (시간순 추적 구조)
+- 스타일 v3 §3-3 적용: 배치 제약 "재프레이밍 0회" — "A가 아니라 B"를 논지 골격·H2 어디에도 쓰지 않음. §3-3 (가)가 새로 금지한 열거형 한국 마무리를 깨고 한국 관점을 본문 중간(1.0.0 절)에 한 문단으로 배치. 마지막 문단은 이음매 논지로 마감
+- 직전 2편(비교/대조, 단일 질문 파기)과 다른 구조 확인
+- 내부링크 4개 복구 (최근 3편 연속 0개였음)
+- 썸네일 미생성: GEMINI_API_KEY 정지 상태 — frontmatter thumbnail 생략(OG 폴백)
+- 업데이트된 위키: entities/anthropic, topics/ai-agents
+- 링크 수정: [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] → -sandboxes (3개 파일)
+
+---
+
 ## [2026-08-20] publish | v3 첫 적용 2편 (사고 구조 다양화)
 
 - 신규 포스트: [[2026-08-20-chatgpt-ads-vs-privacy]] (비교/대조 구조), [[2026-08-20-claude-watermark-works]] (단일 질문 연쇄 격파 구조)
@@ -162,7 +174,7 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ## [2026-05-19] ingest | 5개 포스트 발행
 
-- [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] — Anthropic SDK에 셀프 호스팅 샌드박스 추가
+- [[2026-05-19-anthropic-sdk-self-hosted-sandboxes]] — Anthropic SDK에 셀프 호스팅 샌드박스 추가
 - [[2026-05-19-claude-code-v21142-144]] — Claude Code v2.1.142~144: 에이전트 플래그와 백그라운드 세션
 - [[2026-05-19-anthropic-acquires-stainless]] — Anthropic이 Stainless를 인수한 이유
 - [[2026-05-19-openai-dell-codex-enterprise]] — OpenAI + Dell: Codex가 기업 온프레미스로 간다

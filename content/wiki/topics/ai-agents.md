@@ -23,6 +23,7 @@ tags: ["에이전트", "AI"]
 - OpenAI Agents SDK는 오케스트레이션 레이어(하네스)와 코드 실행 환경(샌드박스)을 분리하는 방향으로 진화. 재시도, 인증, 상태 관리를 SDK가 내부적으로 처리
 - AEO(Agentic Engine Optimization)는 AI 코딩 에이전트가 문서를 읽는 방식에 맞춰 최적화하는 새로운 개념으로 SEO의 에이전트 시대 후속 전략
 - Gemini 3.5 Flash가 "frontier intelligence with action"을 표방하며 Terminal-Bench 76.2%·MCP Atlas 83.6% 점수로 에이전트 실행력에 무게중심을 옮김. 시장이 "더 똑똑한 모델"에서 "일을 끝내는 모델"로 평가 기준을 옮기는 흐름과 일치
+- Anthropic의 에이전트 실행 표면이 5월 Managed Agents → 셀프 호스팅 샌드박스를 거쳐 8월에 고정됨: Files·Skills API가 GA로 내려오고 컴퓨터 사용이 툴셋(17개 멤버)으로, 브라우저 툴셋(31개 멤버, 27개 기본)이 신규로 붙은 다음 날 Python SDK가 1.0.0을 달았음. 실제 이전 비용은 명시된 파괴적 변경보다 무음으로 동작이 바뀌는 지점들(httpx 패치 기반 계측·모킹 무력화, Files의 옛 베타 헤더가 응답 포맷을 고정, 셀프 호스팅 read_only의 도구 레벨 강제)에서 발생
 - 도메인 특화 팀 모드 스킬 등장: Oh My OpenCode /security-research가 5인 보안 전문가 에이전트를 한 명령으로 띄움. 멀티 에이전트가 "팀을 띄울 수 있다"에서 "역할 분담과 산업 표준 채택까지 결합된 도메인 솔루션"으로 진보
 - 엔터프라이즈 케이스 본격화: Virgin Atlantic이 휴가 시즌 절대 마감일에 Codex를 일정 전제로 두고 모바일 앱을 출시, P1 0건 달성. 에이전트가 도구가 아니라 팀원으로 다뤄지는 패턴
 - Claude Code v2.1.198이 서브에이전트를 '기본 백그라운드'로 전환(옵션→기본값). 완료 알림(Notification 훅 agent_needs_input/agent_completed), worktree 자동 커밋·푸시·드래프트 PR, 서브에이전트의 메인 모델·확장사고 상속이 겹치며, 에이전트를 '기다리는 동기 대화'가 아니라 '보내 놓고 알림으로 회수하는 비동기 동료'로 다루는 방식이 기본값이 됨. 6/15 '무인 실행' 트렌드가 제품 기본 동작으로 굳어진 지점
@@ -44,7 +45,7 @@ tags: ["에이전트", "AI"]
 | 2026-05-11 | [[2026-05-11-openai-codex-security-operations]]         | Codex 보안 운영 전략 — 에이전트 보안 관리                               |
 | 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]                      | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                       |
 | 2026-05-11 | [[2026-05-11-anthropic-sdk-managed-agents]]             | Anthropic SDK Managed Agents — SDK 레벨 에이전트 관리                   |
-| 2026-05-19 | [[2026-05-19-anthropic-sdk-self-hosted-sandbox]]        | Anthropic SDK 셀프 호스팅 샌드박스 — 에이전트 실행 환경 자체 구축       |
+| 2026-05-19 | [[2026-05-19-anthropic-sdk-self-hosted-sandboxes]]        | Anthropic SDK 셀프 호스팅 샌드박스 — 에이전트 실행 환경 자체 구축       |
 | 2026-05-19 | [[2026-05-19-anthropic-acquires-stainless]]             | Stainless 인수 — SDK 자동 생성·MCP 커넥터 생성 내재화                   |
 | 2026-05-20 | [[2026-05-20-gemini-3-5-frontier]]                      | Gemini 3.5 — 에이전트 작업에 초점을 맞춘 frontier 모델                  |
 | 2026-05-22 | [[2026-05-22-virgin-atlantic-codex]]                    | Virgin Atlantic Codex 케이스 — 에이전트를 일정 전제로 두는 패턴         |
@@ -52,6 +53,7 @@ tags: ["에이전트", "AI"]
 | 2026-07-03 | [[2026-07-03-claude-code-subagents-background-default]] | 서브에이전트 기본 백그라운드화 — 에이전트를 비동기 동료로 다루는 기본값 |
 | 2026-07-14 | [[2026-07-14-agents-learn-to-stop]] | 자율 기본값화 이후 경쟁축은 '멈추는 능력' — 3사 정지 장치 비교 |
 | 2026-07-21 | [[2026-07-21-agent-runaway-receipts]] | 폭주 물증(731.5GiB)과 3사의 자원 상한 — 깊이·횟수·대기의 budget화 |
+| 2026-08-27 | [[2026-08-27-anthropic-sdk-1-0-quiet-breaks]] | Anthropic SDK 아크 완결 — GA 전환·클라이언트 툴셋 2종·1.0.0과 무음 파손 |
 
 ## 관련 토픽
 
