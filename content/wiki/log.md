@@ -9,6 +9,15 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-08-31] wiki | 신규 엔티티 3개 생성 (cursor, spacex, model-hardware-standard)
+
+- [[cursor]]: 발행 글 11편에서 언급된 내용만으로 구성(가격 가이드·모델 출시 인용·도구 통합·8/31 공급 종료 칼럼). 초안(draft) 글의 언급은 제외
+- [[spacex]]: 컴퓨팅 파트너(5/11)와 Cursor 인수자(8/31) 두 역할, 5월 글의 '임대인' 독해와 8월 글의 조건 변화를 함께 기록
+- [[model-hardware-standard]]: 8/31 비교 글의 MHS 구조·파트너 사례·한계. 수치는 파트너 보고값임을 명시
+- 교차참조: entities/openai(+cursor, spacex), entities/anthropic(+spacex, model-hardware-standard, cursor), topics/ai-coding-tools(+cursor), topics/ai-for-science(+model-hardware-standard), index
+
+---
+
 ## [2026-08-31] publish | 8/31 배치 3편 (인터뷰·재구성 / 반박·검증 Q&A / 비교 프레임)
 
 - 신규 포스트: [[2026-08-31-openai-cursor-trust-clause]] (인터뷰·재구성, 실험 제약 "1인칭 없이"), [[2026-08-31-claude-code-v21248-251-restrictions-first]] (반박·검증형 Q&A, "결론을 맨 앞에"), [[2026-08-31-anthropic-scientists-opened-and-locked]] (비교/평가 프레임, "재프레이밍 0회")

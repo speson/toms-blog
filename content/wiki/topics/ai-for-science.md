@@ -57,3 +57,4 @@ AI가 시험 문제 풀이나 요약 같은 데모를 넘어, 실제 과학·의
 - [[openai]]
 - [[google]]
 - [[anthropic]]
+- [[model-hardware-standard]]

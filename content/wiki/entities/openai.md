@@ -5,7 +5,7 @@ aliases: []
 first_covered: "2026-01-23"
 last_covered: "2026-08-31"
 post_count: 48
-related_entities: [chatgpt, codex, gpt-5, anthropic, google]
+related_entities: [chatgpt, codex, gpt-5, anthropic, google, cursor, spacex]
 tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 ---
 
@@ -113,3 +113,5 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - [[gpt-5]]
 - [[anthropic]]
 - [[google]]
+- [[cursor]]
+- [[spacex]]

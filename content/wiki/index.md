@@ -22,6 +22,9 @@ Tom's Blog 지식 베이스. 뉴스를 발행할 때마다 관련 엔티티/토�
 | [chatgpt](entities/chatgpt.md)               | ChatGPT - OpenAI 대화형 AI         | 4         |
 | [gpt-5](entities/gpt-5.md)                   | GPT-5 - OpenAI 차세대 모델         | 4         |
 | [oh-my-opencode](entities/oh-my-opencode.md) | Oh My OpenCode - OpenCode 플러그인 | 15        |
+| [cursor](entities/cursor.md)                 | Cursor - AI 코딩 IDE (Anysphere, SpaceX 인수) | 11 |
+| [spacex](entities/spacex.md)                 | SpaceX - Anthropic 컴퓨팅 파트너, Cursor 인수 | 4 |
+| [model-hardware-standard](entities/model-hardware-standard.md) | MHS - Anthropic 실험 장비 에이전트 표준 | 1 |
 
 ## Topics (주제/트렌드)
 

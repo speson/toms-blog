@@ -5,7 +5,7 @@ aliases: []
 first_covered: "2026-01-23"
 last_covered: "2026-08-31"
 post_count: 41
-related_entities: [claude-code, openai, google]
+related_entities: [claude-code, openai, google, spacex, model-hardware-standard, cursor]
 tags: [AI, Anthropic, Claude, 모델릴리스, 펀딩]
 ---
 
@@ -88,3 +88,6 @@ Claude 모델 시리즈와 Claude Code를 개발하는 AI 안전 연구·제품 
 - [[claude-code]]
 - [[openai]]
 - [[google]]
+- [[spacex]]
+- [[model-hardware-standard]]
+- [[cursor]]
