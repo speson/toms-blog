@@ -1,7 +1,10 @@
 import Parser from "rss-parser";
 import * as cheerio from "cheerio";
 
-const parser = new Parser();
+/** 모든 네트워크 요청의 상한. 응답이 없으면 실패 처리하고 다음 소스로 넘어간다. */
+export const FETCH_TIMEOUT_MS = 20_000;
+
+const parser = new Parser({ timeout: FETCH_TIMEOUT_MS });
 
 export type RSSSource =
   | "geeknews"
@@ -123,7 +126,10 @@ export async function fetchHuggingFaceModels(
   try {
     const res = await fetch(
       `https://huggingface.co/api/models?author=${org}&sort=createdAt&direction=-1&limit=${limit}`,
-      { headers: { Accept: "application/json" } }
+      {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      }
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
@@ -237,6 +243,7 @@ export async function fetchAnthropicNews(limit = 10): Promise<RSSItem[]> {
         "User-Agent":
           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
       },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
 
     if (!response.ok) {

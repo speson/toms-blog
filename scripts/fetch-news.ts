@@ -49,9 +49,15 @@ function saveNewsFile(items: RSSItem[], dupCount: number): string {
     "",
     `> 수집 ${items.length + dupCount}개, 중복 제거 ${dupCount}개, 최종 ${items.length}개`,
     "",
-    "## 선택된 항목",
+    "## 글 후보 (각도 제안)",
     "",
-    "아래 항목 중 발행할 뉴스를 선택하세요. `[ ]`를 `[x]`로 변경하면 됩니다.",
+    "_(비어 있음 — `/fetch-news` 커맨드가 아래 원자료를 묶어 채웁니다. 선택 단위는 뉴스가 아니라 글: `.claude/content-model.md`)_",
+    "",
+    "---",
+    "",
+    "## 수집 항목 (원자료)",
+    "",
+    "원자료 목록이에요. 위 글 후보를 고르면 구성 항목이 자동으로 `[x]` 처리됩니다. 후보에 없는 항목으로 쓰고 싶으면 직접 `[x]` 표시하세요.",
     "",
     "---",
     "",
@@ -187,8 +193,24 @@ async function main() {
     console.log("   --no-dedup        중복 제거 비활성화");
     console.log("   --notify          Telegram으로 결과 전송");
     console.log("   --save            .claude/news/ 에 파일 저장\n");
-    console.log('💡 번역할 항목을 선택하세요: "1, 3, 5번 선택"\n');
+    console.log(
+      "💡 다음: /fetch-news 커맨드가 위 원자료를 글 후보(각도)로 묶어 제안합니다. 항목 1건을 번역·요약하는 글은 만들지 않아요.\n"
+    );
   }
 }
 
-main();
+/**
+ * stdout를 비운 뒤 종료한다. Node 19+의 keep-alive http 에이전트가 유휴 소켓을
+ * 풀에 남겨 이벤트 루프를 붙잡기 때문에, 작업이 끝나면 명시적으로 종료해야 한다.
+ * (2026-08-31: openai.com 소켓 하나가 남아 프로세스가 55일간 살아 있던 사례)
+ */
+function exitAfterFlush(code: number): void {
+  process.stdout.write("", () => process.exit(code));
+}
+
+main()
+  .then(() => exitAfterFlush(0))
+  .catch((error) => {
+    console.error("❌ 실행 중 오류:", error);
+    exitAfterFlush(1);
+  });

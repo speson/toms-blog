@@ -1,6 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
 
+/** Telegram Bot API 호출 상한 (ms) */
+const FETCH_TIMEOUT_MS = 20_000;
+
 function loadEnvFile() {
   const envPath = path.resolve(process.cwd(), ".env.local");
   if (!fs.existsSync(envPath)) return;
@@ -72,6 +75,7 @@ export async function sendTelegramMessage(text: string): Promise<boolean> {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
       body: JSON.stringify({
         chat_id: CHAT_ID,
         text,
