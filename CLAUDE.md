@@ -3,7 +3,9 @@
 ## Overview
 
 AI 관련 뉴스와 개발 트렌드를 다루는 기술 블로그.
-Geeknews 등에서 뉴스를 수집하고, 번역/요약하여 발행하는 Semi-Manual 워크플로우.
+GeekNews·공식 블로그·GitHub 릴리스·Hugging Face에서 뉴스를 모으고, 서로 연결되는 소식
+여러 건을 Tom의 관점으로 엮은 글(칼럼·종합 다이제스트·비교 프레임)을 발행하는 Semi-Manual
+워크플로우. 뉴스 1건을 번역·요약하는 글은 만들지 않는다 (`.claude/content-model.md`).
 
 | 항목       | 값                |
 | ---------- | ----------------- |
@@ -143,12 +145,19 @@ content/wiki/
 ## Workflow (Semi-Manual)
 
 ```
-1. /fetch-news              # RSS 뉴스 수집 + 리스트 표시
-2. "1, 3, 5번 선택"          # 뉴스 선택
-3. /publish                 # 선택된 뉴스로 포스트 발행 + 위키 자동 업데이트
+1. /fetch-news              # 뉴스 수집 → 글 후보(각도) 묶음 제안 (A, B, C…)
+2. "A, C 선택"              # 글 후보 선택 — 뉴스 번호가 아니라 글 단위
+3. /publish                 # 후보의 각도로 발행 계획 확인 → 포스트 발행 + 위키 자동 업데이트
 4. /commit --push           # 커밋 및 배포
 5. /wiki-lint               # 주기적 위키 상태 점검 (선택)
 ```
+
+### 콘텐츠 원칙 (항상 적용, 별도 요청 불필요)
+
+- 글의 단위는 기사가 아니라 <strong>각도</strong>다. `/fetch-news`는 수집 항목을 1:1로 나열하고 끝내지 않고,
+  연결되는 소식을 묶어 글 후보(한 줄 주장/질문 + 재료 + 허브 링크)를 제안한다.
+- 티어: 대형 단독 사건만 단독 글 / 연결되는 2~4건은 하나의 칼럼·다이제스트 / 사소한 패치·베타는 보류.
+- 상세 규칙은 `.claude/content-model.md`, 절차는 `.claude/commands/fetch-news.md`·`publish.md`.
 
 ---
 
@@ -159,8 +168,8 @@ content/wiki/
 | `pnpm dev`        | 개발 서버 실행                            |
 | `pnpm build`      | 프로덕션 빌드                             |
 | `pnpm fetch-news` | RSS 뉴스 수집 (CLI)                       |
-| `/fetch-news`     | 뉴스 수집 + 선택 UI                       |
-| `/publish`        | 선택된 뉴스로 포스트 발행 + 위키 업데이트 |
+| `/fetch-news`     | 뉴스 수집 + 글 후보(각도) 묶음 제안       |
+| `/publish`        | 선택한 글 후보로 포스트 발행 + 위키 업데이트 |
 | `/wiki-lint`      | 위키 상태 점검 및 개선 제안               |
 | `/commit`         | Conventional Commits 형식으로 커밋        |
 | `/commit --push`  | 커밋 후 자동 push                         |
