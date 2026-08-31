@@ -1,0 +1,49 @@
+
+> toms-blog@0.1.0 build /Users/sonhyowon/Workspace/tom-project
+> contentlayer2 build && next build
+
+Generated 60 documents in .contentlayer
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/sonhyowon/Workspace/yarn.lock as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/sonhyowon/Workspace/tom-project/pnpm-lock.yaml
+
+▲ Next.js 16.1.4 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.9s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+⚠ Using edge runtime on a page currently disables static generation for that page
+  Generating static pages using 7 workers (0/71) ...
+  Generating static pages using 7 workers (17/71) 
+  Generating static pages using 7 workers (35/71) 
+  Generating static pages using 7 workers (53/71) 
+✓ Generating static pages using 7 workers (71/71) in 554.8ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /api/og
+├ ○ /contact
+├ ƒ /feed.xml
+├ ○ /icon.svg
+├ ● /posts/[slug]
+│ ├ /posts/2026-01-23-ai-codemod-refactoring
+│ ├ /posts/2026-01-23-ai-destroys-institutions
+│ ├ /posts/2026-01-23-claude-code-v2116
+│ └ [+57 more paths]
+├ ○ /privacy
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

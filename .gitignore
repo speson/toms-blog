@@ -44,3 +44,8 @@ coverage/
 # Misc
 *.log
 .reforge/
+
+# git worktree checked out inside the main tree (branch: feedback)
+feedback/
+# stray nohup output
+nohup.out
