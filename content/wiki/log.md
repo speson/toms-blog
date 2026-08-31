@@ -9,6 +9,19 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 
 ---
 
+## [2026-08-31] publish | 8/31 배치 3편 (인터뷰·재구성 / 반박·검증 Q&A / 비교 프레임)
+
+- 신규 포스트: [[2026-08-31-openai-cursor-trust-clause]] (인터뷰·재구성, 실험 제약 "1인칭 없이"), [[2026-08-31-claude-code-v21248-251-restrictions-first]] (반박·검증형 Q&A, "결론을 맨 앞에"), [[2026-08-31-anthropic-scientists-opened-and-locked]] (비교/평가 프레임, "재프레이밍 0회")
+- /fetch-news가 처음으로 글 후보(각도) 묶음을 제안한 배치 — 후보 A·B(C 흡수)·E 채택. D(GLM-5.3 vs DeepSeek V4 Pro 비교 프레임)는 /write로 이월
+- 직전 2편(시간순 추적, 비교 프레임)과 겹치지 않게 세 편 모두 다른 구조. 한국 관점은 본문 중간에 배치, 고정 헤딩 없음
+- 실측 1건: Claude Code 2.1.251 `--restricted` 도구 목록 비교(26→22, Bash·WebFetch·Monitor·Workflow·CronCreate·RemoteTrigger 제거, bypassPermissions 조합 거부) — 3-3 "월 1편 오리지널" 요건
+- OpenAI 원문 접근 차단 지속 — Reuters·CNBC·The Decoder 인용 교차 확인, 푸터에 명시
+- 썸네일 미생성: GEMINI_API_KEY 프로젝트 정지(CONSUMER_SUSPENDED) — 3편 모두 thumbnail 생략(OG 폴백). 8/27 글도 같은 사유로 여전히 없음
+- 업데이트된 위키: entities/openai(48), entities/anthropic(41), entities/claude-code(34, 개요 v2.1.251로 갱신), topics/ai-for-science(7, key_entities에 Model Hardware Standard), topics/ai-coding-tools(71), topics/ai-security(19), index
+- 감지된 신규 엔티티 후보(미생성, 확인 필요): Cursor, SpaceX, Model Hardware Standard
+
+---
+
 ## [2026-08-27] publish | Anthropic SDK 아크 (시간순 추적 구조)
 
 - 신규 포스트: [[2026-08-27-anthropic-sdk-1-0-quiet-breaks]] (시간순 추적 구조)

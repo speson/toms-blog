@@ -1,7 +1,7 @@
 ---
 name: AI for Science
 type: topic
-post_count: 6
+post_count: 7
 key_entities:
   [
     "OpenAI o3 Deep Research",
@@ -11,6 +11,7 @@ key_entities:
     "Molecule.one",
     "Claude Science",
     "GeneBench-Pro",
+    "Model Hardware Standard"
   ]
 tags: ["AI for Science", "의료", "신약", "연구", "수학"]
 ---
@@ -32,6 +33,8 @@ AI가 시험 문제 풀이나 요약 같은 데모를 넘어, 실제 과학·의
 - 한계와 경계: 논문 게재와 규제 승인·임상 도입 사이에는 여전히 큰 간극이 있고, 대부분 결과는 당사자·협업사가 직접 발표한 것이라 선택 공개 가능성을 감안해 읽어야 한다
 - 2026년 6~7월, '도구'와 '측정'이 동시에 등장. Anthropic Claude Science(과학용 워크벤치: 인용·계산 검증 리뷰어 에이전트, 감사 가능 산출물, 로컬 실행, 60+ 생명과학 스킬, UniProt·PDB·Ensembl 연결)는 'AI 가설 생성 + 사람 검증' 분업을 제품으로 굳혔다. 같은 시기 OpenAI GeneBench-Pro(유전체학·정량생물학 129문제, 결정론적 채점)는 최고 모델 GPT-5.6 Sol Pro도 31.5%·Claude Opus 4.8 16.0%로, 그 검증자가 왜 필요한지를 숫자로 확인. 벤치마크가 재는 건 지식이 아니라 'research taste'(어떤 질문을 데이터가 뒷받침하는지에 대한 판단)라는 점이 핵심
 
+- 2026년 8월, 접근 확대와 생물학 제한의 비대칭. Anthropic이 과학자용 무료 좌석 1만 개(PI 인증, 프리미엄 월 $15), AI for Science 크레딧 상한 $30k→$50k와 비생물 분야 확대, 실험 장비 표준 MHS(표준 드라이버·read/write 프리미티브·MCP/CLI/코드 경로, HHMI Janelia 공동 개발, 신청제 프리뷰, 두산로보틱스 포함 생태계)를 같은 날 발표. 그러나 생물·화학 연구자는 Opus급 한정이고 Fable은 전문 생물학·신약 질의를 Opus 5로 폴백(8/7 분류기 개선으로 폴백 약 85% 감소). Mythos급은 미 정부 협력 접근 프로그램으로만. 6/10 글의 '조용한 라우팅' 문제가 1만 석 규모로 커짐.
+
 ## 관련 포스트
 
 | 날짜       | 제목                                                | 관점                                                                                                        |
@@ -42,6 +45,7 @@ AI가 시험 문제 풀이나 요약 같은 데모를 넘어, 실제 과학·의
 | 2026-05-20 | [[2026-05-20-openai-disproves-geometry-conjecture]] | OpenAI 모델, 80년 묵은 수학 추측 반증 — AI가 발견자가 된 사건                                               |
 | 2026-06-22 | [[2026-06-22-ai-from-benchmark-to-clinic]]          | 의료·과학 성과 3건의 공통 패턴 — 'AI 가설 생성 + 사람 검증' (칼럼)                                          |
 | 2026-07-03 | [[2026-07-03-ai-science-workbench-vs-benchmark]]    | 같은 주 '작업대(Claude Science) vs 시험지(GeneBench-Pro)' — 최고 모델 31.5%, 도구와 측정이 동시 등장 (칼럼) |
+| 2026-08-31 | [[2026-08-31-anthropic-scientists-opened-and-locked]] | 8/27 과학자 지원 확대(1만 석·$50k)와 MHS 프리뷰를 연구자 유형 4종으로 나눠 비교 — 생물·화학은 Opus급 한정, Mythos급은 미 정부 협력 프로그램 (비교 프레임) |
 
 ## 관련 토픽
 

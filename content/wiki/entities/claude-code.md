@@ -3,8 +3,8 @@ name: Claude Code
 type: entity
 aliases: []
 first_covered: "2026-01-23"
-last_covered: "2026-07-28"
-post_count: 33
+last_covered: "2026-08-31"
+post_count: 34
 related_entities: [anthropic, opencode, oh-my-opencode, codex]
 tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 ---
@@ -13,7 +13,7 @@ tags: [AI, Claude Code, 개발도구, Anthropic, 릴리스]
 
 ## 개요
 
-Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴리스 노트가 작성된 도구로, v2.1.16(2026-01-23)부터 v2.1.110(2026-04-16)까지 꾸준히 추적·분석되고 있다. 한 달 추적기, HTTP Hooks, Skills 가이드 등 심층 분석 포스트도 다수 발행됐다.
+Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴리스 노트가 작성된 도구로, v2.1.16(2026-01-23)부터 v2.1.251(2026-08-28)까지 꾸준히 추적·분석되고 있다. 한 달 추적기, HTTP Hooks, Skills 가이드 등 심층 분석 포스트도 다수 발행됐다.
 
 ## 주요 다룬 내용
 
@@ -82,6 +82,7 @@ Anthropic이 개발한 AI 코딩 에이전트. 블로그에서 가장 많은 릴
 | 2026-07-21 | v2.1.210~215: 스폰 캡·자발 스킬 실행 중단 (폭주 청구서 칼럼)            | [[2026-07-21-agent-runaway-receipts]] |
 | 2026-07-27 | v2.1.219: Opus 5 기본 편입(1M ctx), /fast Opus5·4.8, strictAllowlist    | [[2026-07-27-claude-opus-5]] |
 | 2026-07-28 | Auto 모드 완전 가이드 — 분류기·3/20 폴백·disableAutoMode      | [[2026-07-28-claude-code-auto-mode-guide]] |
+| 2026-08-31 | v2.1.248~251: --restricted 플래그, PreModelSwitch/PostModelSwitch 훅, /usage 지출 한도 바, 캐시 라인 — 121항목 분류·제한 모드 실측 (Q&A) | [[2026-08-31-claude-code-v21248-251-restrictions-first]] |
 
 ## 관련 엔티티
 

@@ -1,0 +1,66 @@
+---
+title: "OpenAI가 Cursor 공급을 끊었다, 이유는 SpaceX — 모델 API에 '신뢰 조항'이 붙는 순간"
+description: "8월 28일 OpenAI가 SpaceX에 인수된 Cursor에 모델 공급을 11월 12일까지만 하겠다고 공지했어요. Cursor가 잘못한 게 아니라 '머스크 회사들의 계약 위반 경험' 때문이라는 게 OpenAI의 설명이고요. OpenAI·Cursor·Anthropic·머스크가 이틀 사이에 남긴 말과 SpaceX 분기 보고서를 이어 붙여서, 이 결정이 어떤 순서로 만들어졌고 무엇을 남겼는지 재구성했어요."
+date: "2026-08-31"
+tags: ["OpenAI", "개발도구", "업계", "인수"]
+category: "ai-news"
+subcategory: "column"
+source: "openai"
+sourceUrl: "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex"
+tldrVerdict: "OpenAI의 결정은 Cursor의 행위에 대한 판단이 아니라 인수자에 대한 신뢰 판단이고, 계약의 지배권 변경 조항으로 집행됐어요. Cursor 트래픽의 5%라는 직접 피해보다 큰 건 선례예요. 모델 API가 중립 인프라라는 건 계약 조건이 아니라 가정이었고, Anthropic도 이미 세 번 비슷한 일을 했어요. Cursor에서 OpenAI 모델을 쓰는 팀은 11월 12일 전에 옮겨야 하고, 개인 API 키를 넣어도 Tab·Auto·클라우드 에이전트는 살릴 수 없습니다."
+draft: false
+---
+
+8월 28일 금요일 저녁(미국 시간), OpenAI가 짧은 공지 하나를 올렸어요. 제목은 「SpaceX의 Cursor 인수에 따른 우리의 결정」. 내용은 Cursor에 OpenAI 모델을 공급해 온 계약을 정리하고 11월 12일에 접속을 끊겠다는 것. 몇 시간 뒤 Cursor 대표 마이클 트루엘(Michael Truell)이 X에 답했고, 같은 밤 Anthropic 공동창업자 톰 브라운(Tom Brown)이 한 줄을 올렸고, 토요일에는 일론 머스크가 끼어들었어요. 이틀 사이에 나온 말들을 SpaceX의 분기 보고서와 나란히 놓고 다시 배열하면, 이 결정이 어떤 순서로 만들어졌는지가 꽤 선명하게 보여요.
+
+트루엘의 답글에 이 사건 전체를 요약하는 문장이 하나 있어요. <strong>"우리는 그들의 플랫폼이 우리 사업에 중립적인 인프라라고 신뢰해 왔다."</strong> 그 신뢰가 왜, 어떤 절차로 끝났는지를 당사자들의 말로 따라가 볼게요.
+
+## OpenAI의 문장: "확신할 수 없다"
+
+참고: OpenAI 원문 페이지는 이 블로그에서 직접 접근이 막혀 있어요. 아래 인용은 [Reuters](https://srnnews.com/openai-to-end-partnership-with-spacexs-cursor/)와 [CNBC](https://www.cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html)가 그대로 옮긴 문장을 기준으로 했어요.
+
+공지의 핵심 문장은 이거예요. <strong>"우리가 이 선택을 하는 이유는, 일론 머스크의 회사들이 계약을 위반해 온 경험에 비추어 SpaceX가 우리 기술을 약관 안에서 사용할 것이라고 확신할 수 없기 때문이다."</strong> 주어가 Cursor가 아니에요. SpaceX이고, 더 정확히는 머스크의 회사들이에요. OpenAI가 근거로 든 경험은 두 가지로 보도됐어요. 머스크가 트위터(X)를 인수한 뒤 X가 OpenAI와의 계약을 위반했다는 것, 그리고 지난 4월 30일 머스크가 법정에서 xAI가 OpenAI 모델을 "부분적으로" 증류(distillation)해 학습했다고 인정한 것([TechCrunch](https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/)). 여기에 하나가 더 붙어요. 다음 모델 Astra에 대해 "약관에 따라 쓰이는지 확인하는 새로운 수준의 책임"이 필요하다는 것. OpenAI는 8월 7일에 Astra가 사이버 능력에서 '치명적(critical)' 기준에 도달할 수 있어 개발 속도를 늦췄다고 밝힌 적이 있어요.
+
+절차도 공지에 적혀 있어요. 대형 파트너와는 약관 준수를 보장하기 위해 보통 맞춤 계약을 쓰는데, 그 계약에는 <strong>지배권 변경(change of control)</strong> 시 공급자가 계약을 정리할 수 있는 제한된 창이 있었고, 11월 12일은 그 계약이 허용하는 최대 통지 기간을 다 쓴 날짜예요. 기존 모델은 그날까지 그대로 동작하고, Astra를 포함한 미래 모델은 Cursor에 제공되지 않아요. OpenAI는 "거의 4년을 함께 일했고 팀을 깊이 존중한다"고 썼고, 이 결정을 "몹시 힘든(incredibly tough)" 선택이라고 불렀어요.
+
+두 가지를 분리해서 읽어야 해요. 공지 어디에도 Cursor가 뭘 잘못했다는 말은 없어요. 그리고 머스크와의 소송도 언급되지 않았어요. 머스크가 OpenAI를 상대로 낸 소송은 5월 18일에 시효 문제로 기각됐는데([NPR](https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed)), OpenAI가 든 이유는 전부 계약과 약관 얘기예요. 계약서에 이미 있던 조항이 발동됐고, 발동 사유는 상대방에 대한 판단이었어요.
+
+## SpaceX의 문장: 분기 보고서의 한 줄
+
+OpenAI가 판단한 '상대방'이 어떻게 바뀌었는지는 SpaceX 쪽 기록이 말해줘요. 2월 초 SpaceX는 xAI를 합병했어요. 합산 기업가치 1조 2,500억 달러, SpaceX 1조 달러에 xAI 2,500억 달러였고요([CNBC](https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html)). 5월 6일에 머스크는 xAI를 별도 회사로 두지 않고 'SpaceXAI'로 흡수하겠다고 말했어요. 4월 21일에는 SpaceX가 Cursor를 600억 달러에 인수하거나, 인수하지 않으면 100억 달러를 협업 명목으로 지급하는 옵션 계약을 공개했어요. 6월 12일 SpaceX가 나스닥에 상장했고, 나흘 뒤인 6월 16일에 600억 달러 전액 주식 인수 계약이 정식으로 발표됐어요([CNBC](https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html)).
+
+SpaceX의 [2분기 10-Q](https://www.sec.gov/Archives/edgar/data/0001181412/000162828026052535/spcx-20260630.htm)에는 이 거래가 "Cursor의 암묵적 지분 가치 600억 달러"를 기준으로, 옵션은 "2026년 6월에" 행사됐다고 적혀 있어요. 상장 서류 기준으로 거래가 무산될 경우 위약금은 현금 15억 달러에 85억 달러어치 컴퓨팅 자원이었고요. 거래는 8월 14일에 종결됐어요. Cursor는 그날 블로그에 [「Cursor는 이제 SpaceX의 일부」](https://cursor.com/blog/joining-spacex)라는 글을 올렸는데, 그 안에 "세계 최대 GPU 함대에 접근하게 된다"는 문장과 함께 "우리가 수요일에 출시한 Grok 4.6"이라는 표현이 있어요. Cursor가 Grok을 '우리'라고 부르는 회사가 된 거예요.
+
+OpenAI 입장에서 정리하면 이래요. 2024년과 2025년 초에 두 번 인수를 시도했고([TechCrunch](https://techcrunch.com/2025/04/17/openai-pursued-cursor-maker-before-entering-into-talks-to-buy-windsurf-for-3b/)), OpenAI 스타트업 펀드가 투자했고, 2025년 8월 GPT-5 출시 때 대표 사례로 내세운 회사가, 경쟁 모델을 가진 머스크 회사의 자회사가 됐어요. 종결 2주 뒤에 공지가 나왔고요.
+
+## Cursor의 문장: "약 5%"
+
+트루엘의 답글 전문은 이래요. "OpenAI가 3개월 뒤 Cursor 사용자의 OpenAI 모델 접근을 막겠다는 글을 낸 것을 유감스럽게 생각한다. OpenAI 모델은 Cursor 사용자 트래픽의 약 5%를 담당하며, 우리는 이 문제를 풀기 위해 OpenAI 팀과 대화하고 있다. Cursor는 OpenAI의 가장 초기 사용자 중 하나였고, 수년간 그들의 팀과 긴밀히 일했으며, 그들의 플랫폼이 우리 사업에 중립적인 인프라라고 신뢰해 왔다."
+
+세 가지 정보가 들어 있어요. 직접 피해는 트래픽의 5%로 제한적이라는 것, 아직 협상 중이라는 것, 그리고 <strong>중립 인프라</strong>라는 단어. 트루엘은 지금 SpaceX 임원이기도 해요(Reuters). Cursor에 남는 모델은 자체 모델 Composer, Claude, Gemini, 그리고 Grok이에요. 8월 31일 기준으로 Cursor 공식 블로그에는 이 건에 대한 별도 글이 없어요.
+
+실제로 쓰는 사람에게 중요한 건 OpenAI 헬프센터가 정리한 범위예요. 이 페이지도 직접 접근이 막혀 보도 요약을 기준으로 옮기면, 개인 OpenAI API 키를 Cursor에 넣는 방식은 로컬 Chat과 Agent 패널에서만 동작하고, <strong>Tab 자동완성·Auto 모델 선택·클라우드 에이전트·Automations·CLI와 SDK 경로에는 적용되지 않아요.</strong> OpenAI가 제안한 대안은 Codex IDE 확장, 또는 Azure·Bedrock 게이트웨이를 거치는 방법이고요. 국내 팀 중 Cursor에서 GPT 계열을 기본 모델로 잡아 둔 곳이라면, 11월 12일 전에 Claude·Gemini·Composer 가운데 하나로 바꾸는 테스트를 지금 시작하는 게 맞아요. 개인 키로 버틸 수 있는 범위가 채팅과 에이전트 패널 정도라는 점은 미리 알아 두는 게 좋고요. Engadget은 Cursor가 11월 12일보다 이른 날짜를 택할 수도 있다고 전했어요.
+
+## Anthropic의 문장: "Sonnet 3.5 이후"
+
+같은 밤 톰 브라운은 이렇게 썼어요. "Cursor는 Sonnet 3.5 이후로 Anthropic의 신뢰받는 파트너였다. 우리는 Cursor 안의 Claude 모델을 지원하기 위해 컴퓨팅을 계속 늘릴 것이고, SpaceX에서 그들이 만들어 갈 것을 기대한다."
+
+이 문장은 Anthropic 자신의 기록 위에서 읽어야 해요. 2025년 6월 Anthropic은 OpenAI가 Windsurf 인수를 협상하던 시점에 Windsurf의 Claude 접근을 끊었어요. 당시 공동창업자 재러드 캐플런(Jared Kaplan)의 말은 "OpenAI에 Claude를 팔고 있는 건 이상한 일"이었고요([TechCrunch](https://techcrunch.com/2025/06/05/anthropic-co-founder-on-cutting-access-to-windsurf-it-would-be-odd-for-us-to-sell-claude-to-openai)). 2025년 8월에는 OpenAI의 Claude API 접근을 약관 위반을 이유로 회수했어요. 2026년 1월에는 xAI 직원들이 Cursor를 통해 Claude를 쓰던 경로를 막았다는 보도가 나왔어요([Sherwood](https://sherwood.news/tech/report-anthropic-cuts-off-xais-access-to-its-models-for-coding/)). 즉 <strong>공급자가 상대를 보고 공급을 끊는 일을 Anthropic은 이미 세 번 했고</strong>, OpenAI는 이번에 한 번 했는데 그 이유를 공개 문서로 썼다는 차이가 있어요. The Decoder가 "Anthropic이 충성스러운 파트너 카드를 꺼내는 데에는 아이러니가 있다"고 쓴 건 그 얘기예요. Replit의 암자드 마사드(Amjad Masad)는 브라운의 글에 Windsurf를 언급하며 답했고, Docker의 맷 벨로소(Mat Velloso)는 "조용히 있기 좋은 기회였는데"라고 썼어요(CNBC).
+
+그리고 5월의 거래가 있어요. Anthropic은 SpaceX의 Colossus 1 데이터센터 전체를 쓰는 계약을 맺었어요. 300메가와트 이상, GPU 22만 개 이상. [그때 이 블로그는](/posts/2026-05-11-claude-usage-limits-spacex) SpaceX를 유휴 컴퓨팅을 수익화하는 임대인으로 읽었어요. 그 독해는 5월 시점에는 맞았고, 지금은 조건이 바뀌었어요. 임대인이 Anthropic의 가장 큰 유통 채널 중 하나를 사서 자기 모델과 한 지붕 아래 두었으니까요. Ramp 결제 데이터 기준으로 Cursor의 AI 코딩 도구 점유율은 2025년 6월 41%에서 2026년 5월 26%로 내려왔고, CNBC는 "그 카테고리의 절반을 이제 Anthropic이 갖고 있다"고 전했어요. Cursor의 연환산 매출은 40억 달러(Forbes, 6월)예요. 브라운의 한 줄은 이 고객을 놓지 않겠다는 말이고, 5%의 OpenAI 트래픽이 어디로 갈지는 Composer·Claude·Grok 사이에서 정해질 거예요.
+
+## 머스크의 문장
+
+토요일에 머스크는 X에 "전혀 상관없다(I couldn't care less)"고 썼고, 샘 올트먼과 그레그 브록먼을 "전적으로 신뢰할 수 없는" 사람들이라고 부르며 OpenAI가 "오픈소스 비영리 단체를 훔쳤다"는 주장을 반복했어요(CNBC, Reuters). 올트먼 개인의 답글은 확인되지 않았고, Google의 입장 표명도 없었어요.
+
+## 11월 12일 이후에 남는 것
+
+Cursor에 남는 직접 손실은 트래픽 5%와 Astra예요. 크지 않아요. 남는 게 더 큰 쪽은 계약서예요. 모델 공급 계약에 <strong>"상대가 약관을 지킬 것이라는 확신"</strong>이 조건으로 명시됐고, 그 확신은 코드도 벤치마크도 아닌 인수자의 과거 행동으로 판정됐어요. OpenAI는 이걸 공개 문서로 남겼고, Anthropic은 세 번을 조용히 했어요. 둘 다 고객을 고를 권리를 행사한 건 같아요. 트루엘이 말한 중립 인프라는 신뢰였고, 계약 조항은 그 반대 방향으로 쓰여 있었어요.
+
+코딩 도구를 고르는 쪽에는 새 항목이 하나 늘었어요. [올해 초 가격 비교 글](/posts/2026-02-19-ai-coding-tools-pricing-2026)에서 Windsurf라는 브랜드가 인수로 사라진 걸 기록했는데, 그때 없어진 건 이름이었어요. 이번에 없어지는 건 모델 공급선이고, 그 원인은 도구를 만든 회사가 아니라 도구를 산 회사예요. 도구의 소유 구조와 그 도구가 어느 모델 회사와 어떤 계약을 맺고 있는지는 사용자에게 보이지 않는데, 지배권 변경 조항은 바로 그 보이지 않는 곳에 있어요.
+
+남은 변수는 트루엘이 말한 협상이에요. 11월 12일 전에 조건이 바뀔 수도 있고, Cursor가 먼저 날짜를 앞당길 수도 있어요. 어느 쪽이든 OpenAI 공지에 적힌 '확신'이라는 단어는 이미 문서에 남았어요.
+
+---
+
+근거가 된 소식: [Our decision on Cursor following its acquisition by SpaceX (OpenAI, 8/28)](https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex) — 원문은 접근이 차단되어 [Reuters](https://srnnews.com/openai-to-end-partnership-with-spacexs-cursor/)·[CNBC](https://www.cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html)·[The Decoder](https://the-decoder.com/openai-cuts-off-cursor-after-spacex-acquisition-citing-musks-history-of-breaking-contracts/)의 인용을 교차 확인했어요. [트루엘의 답글 (X)](https://x.com/mntruell/status/2093532254006063557), [Cursor is now a part of SpaceX (Cursor, 8/14)](https://cursor.com/blog/joining-spacex), [SpaceX 2분기 10-Q](https://www.sec.gov/Archives/edgar/data/0001181412/000162828026052535/spcx-20260630.htm), [SpaceX to acquire Cursor for $60 billion (CNBC, 6/16)](https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html), [Higher limits and SpaceX compute (Anthropic, 5/6)](https://www.anthropic.com/news/higher-limits-spacex). OpenAI 헬프센터의 BYO 키 적용 범위는 원문 접근이 막혀 보도 요약 기준이에요.

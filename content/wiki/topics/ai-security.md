@@ -1,7 +1,7 @@
 ---
 name: AI 보안
 type: topic
-post_count: 18
+post_count: 19
 key_entities:
   [
     "Promptfoo",
@@ -34,6 +34,8 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 - AI가 공격의 '천장'이 아니라 '바닥'을 바꾼다: Anthropic의 832개 악성 계정 1년 분석(MITRE ATT&CK 매핑) — 67.3%가 멀웨어 개발에 AI 사용, medium+ 위험 비율 33%→56%(1.7배), 공격이 초기침투에서 post-compromise로 이동. 핵심 빈틈은 ATT&CK에 칸이 없는 'agentic orchestration'(모델이 공격 단계를 자율 연결). 스킬 기반 위험 평가 프레임의 한계
 - 자율 안전의 한계 — 미 정부가 6/12 Fable 5·Mythos 5 전 고객 접근 중단 지시. 거부→라우팅·frontier_llm refusal 카테고리 등 안전 레이어가 SDK까지 내려와 있었지만 배포 권한 결정에선 변수가 아니었음. 첫 Anthropic Public Record: 71% 정부 규제 지지·15%만 AI 기업 신뢰. 잘 설계된 자율 안전은 필요조건이되 충분조건은 아님
 
+- 생물학 안전장치의 미세 조정 — 8/7 분류기 규칙 문서(constitution) 재작성·재학습으로 생물학 관련 폴백 약 85% 감소(전체 폴백: Claude.ai 67%, Cowork 55%, Claude Code 17%, Platform 7%). 바이러스학·독성학·분자 설계는 Opus 5 폴백 유지, '안전 여유'를 의도적으로 남김. 8/27 과학자 1만 석 확대와 결합하면 생물학자에게는 반만 열린 문. 생물학 분류기의 판정 기준은 사내에 두고, 웰빙 평가($5M)와 MHS 안전 평가는 외부와 함께 만드는 대비.
+
 ## 관련 포스트
 
 | 날짜       | 제목                                                 | 관점                                                                 |
@@ -53,6 +55,7 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-06-10 | [[2026-06-10-claude-fable-5-mythos-5]]               | Fable 5 — 위험 능력의 '거부' 대신 '격리 배포' 설계 (칼럼)            |
 | 2026-06-10 | [[2026-06-10-ai-cyber-threats-mitre]]                | AI 사이버 위협 832건 MITRE 매핑 — agentic orchestration 빈틈 (칼럼)  |
 | 2026-06-15 | [[2026-06-15-fable-5-government-suspension]]         | 정부가 Fable 5 접근 중단 — 자율 안전 설계의 한계 (칼럼)              |
+| 2026-08-31 | [[2026-08-31-anthropic-scientists-opened-and-locked]] | Fable 5 생물학 안전장치 8/7 개선(폴백 약 85% 감소)에도 바이러스학·독성학·분자 설계는 Opus 5 폴백 유지 — 과학자 접근 확대와의 비대칭 (비교 프레임) |
 
 ## 관련 토픽
 

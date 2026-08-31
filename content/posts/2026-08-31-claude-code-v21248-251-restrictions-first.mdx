@@ -1,0 +1,73 @@
+---
+title: "Claude Code 2.1.248→251: 릴리스 노트의 첫 줄이 '제한 모드'다 — 통제 기능이 앞에 온다는 말은 사실인가"
+description: "8월 27일과 28일에 나온 Claude Code 2.1.248과 2.1.251의 첫 항목은 각각 --restricted 플래그와 모델 전환을 막는 훅이에요. '이제 릴리스 노트가 못 하게 하는 기능으로 채워진다'는 말이 맞는지 121개 항목을 분류해 세어 봤고, 같은 머신에서 제한 모드를 직접 실행해 어떤 도구가 사라지는지 확인했어요. SDK 1.1.0·1.2.0도 한 문답으로 다뤄요."
+date: "2026-08-31"
+tags: ["Claude Code", "개발도구", "릴리스", "SDK"]
+category: "ai-news"
+subcategory: "releases"
+source: "github"
+sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.251"
+tldrVerdict: "절반은 맞아요. 두 릴리스의 첫 줄은 둘 다 통제 장치고, 명시적 제한 항목 8개에 권한 우회 구멍을 막은 수정 11개를 더하면 새 능력 6개의 세 배예요. 다만 121개 항목의 84%는 평범한 수정이라 '통제로 채워졌다'는 과장이에요. --restricted는 권한 모드가 아니라 그 위에 얹는 플래그이고, 실측에서 Bash·WebFetch·Monitor·Workflow·CronCreate·RemoteTrigger가 빠지고 WebSearch는 남았어요. 지출 한도 바는 게이트웨이 뒤의 조직 사용자 전용이에요."
+draft: false
+---
+
+결론을 먼저 적을게요. 「Claude Code 릴리스 노트가 이제 '할 수 있는 것'보다 '못 하게 하는 것'으로 채워진다」는 주장은 <strong>절반만 맞아요.</strong> 8월 27일 [2.1.248](https://github.com/anthropics/claude-code/releases/tag/v2.1.248)의 첫 항목은 `--restricted` 플래그이고, 8월 28일 [2.1.251](https://github.com/anthropics/claude-code/releases/tag/v2.1.251)의 첫 항목은 모델 전환을 막거나 확인받는 훅이에요. 무언가를 명시적으로 제한하거나 게이트하는 항목은 두 릴리스에서 8개, 권한 우회 구멍을 막은 수정은 11개, 사용자가 새로 할 수 있게 된 일은 6개예요. 여기까지는 주장이 맞아요. 그런데 전체 항목은 121개이고 그중 102개는 버그 수정과 개선이에요. '채워졌다'는 과장이고, '맨 앞에 온다'는 사실이에요. 아래는 그 결론까지 가는 문답이에요.
+
+참고: 2.1.249는 존재하지 않는 버전이에요. GitHub 릴리스와 CHANGELOG 어디에도 없고, 2.1.250은 "버그 수정 및 안정성 개선" 한 줄이에요. 그래서 실제로 읽을 건 248과 251 두 개예요.
+
+## 질문 1: 통제 항목이 정말 더 많은가
+
+항목을 넷으로 나눴어요. 무언가를 막거나 승인받게 하는 것(통제), 사용량·비용·캐시를 보여 주는 것(가시성), 새로 할 수 있게 된 것(능력), 나머지 수정과 개선.
+
+| 버전 | 항목 수 | 통제 | 가시성 | 능력 | 수정·개선 |
+| --- | --- | --- | --- | --- | --- |
+| 2.1.248 (8/27) | 49 | 2 | 3 | 3 | 41 |
+| 2.1.250 (8/28) | 1 | 0 | 0 | 0 | 1 |
+| 2.1.251 (8/28) | 71 | 6 | 2 | 3 | 60 |
+| 합계 | 121 | 8 | 5 | 6 | 102 |
+
+통제 8개는 이래요. 248에서 `--restricted`, 그리고 리눅스 사용자 네임스페이스에서 루트 동등 신뢰를 시스템 디렉터리로 한정한 것. 251에서 `PreModelSwitch`/`PostModelSwitch` 훅, Claude in Chrome의 브라우저 동작을 항상 Claude Code 권한 검사로 통과시키기, 샌드박스 안의 Bash가 출력 파일을 바꿔치기할 수 없게 하기, 샌드박스 격리를 약화하거나 TLS를 종단하거나 자격증명을 주입하는 서버 관리 설정에 승인 요구, `ANTHROPIC_CUSTOM_HEADERS`로 인증·라우팅 헤더를 넣을 때 승인 요구, 프로젝트 설정의 `env`가 `CLAUDE_CONFIG_DIR`·`TMPDIR` 계열을 건드릴 수 없게 하기.
+
+수정·개선 102개 중에서도 성격이 다른 것들이 있어요. 251의 Fixed 목록에는 권한 검사 뒤에 심링크를 바꿔치기해 작업 디렉터리 밖을 읽고 쓸 수 있던 문제, 마켓플레이스 플러그인 명령이 플러그인 디렉터리 밖을 가리킬 수 있던 문제, 프로젝트 설정이 상세 베타 트레이싱이나 원시 API 로깅을 켜고 관리 설정이 고정한 OTLP 수집기를 우회할 수 있던 문제, Grep과 Glob이 심링크된 경로에서 `Read(...)` 거부 규칙을 안 적용하던 문제, `OPTIND=1/0` 같은 산술 대입을 Bash 권한 검사가 자동 승인하던 문제가 있어요. 248에도 `CI` 환경변수가 설정되면 `claude agents`가 워크스페이스 신뢰 프롬프트를 건너뛰던 문제, `/ultrareview`가 `prod.env`나 `*.tfvars`, 자격증명 파일의 임시 사본을 클라우드에 올리던 문제가 있어요. 이런 보안 성격의 수정을 세면 열한 개예요. 통제 8개와 합치면 19개, 능력 6개와 비교하면 세 배가 조금 넘어요.
+
+그리고 능력 6개의 내용을 보면 그림이 하나 더 나와요. 여섯 중 셋은 Bedrock·Vertex·Foundry 사용자에게 기존 기능을 개방한 거예요. 세션 간 메시징(`SendMessage`/`ListAgents`), `/loop`의 자율 모드, `/radio`. 개인 사용자 입장에서 순수하게 새로운 능력은 포그라운드 서브에이전트의 도구 호출을 Remote Control로 실시간 스트리밍하는 것, `/effort`가 모델별로 기본값을 기억하는 것, 셀프호스티드 러너의 `--client-label` 정도예요.
+
+## 질문 2: `--restricted`는 일곱 번째 권한 모드인가
+
+아니에요. [7월 가이드](/posts/2026-07-28-claude-code-auto-mode-guide)에서 정리한 권한 모드는 여섯 개(default·acceptEdits·plan·auto·dontAsk·bypassPermissions)인데, `--restricted`는 [CLI 레퍼런스](https://code.claude.com/docs/en/cli-reference)에서 플래그로만 문서화돼 있어요. 권한 모드 표에 없고, 훅이 받는 `permission_mode` 값에도 `restricted`는 없어요. 문서가 정의하는 동작은 이래요. "명령이나 코드를 실행하는 내장 도구와 WebFetch를 제거한다. `--tools`에 개별적으로 이름을 적으면 예외인데, `default` 프리셋으로는 안 된다." 그리고 "내장 파일 도구를 작업 디렉터리 안으로 가두고, 관리 설정과 `--settings`만 읽고, `bypassPermissions`를 거부하고, 클라우드 세션 생성을 거부한다." 용도는 한 문장으로 적혀 있어요. "평가 하네스가 공유 머신에서 `claude`를 구동하면서 Claude Code가 명령을 실행하거나 그 머신의 사용자·프로젝트 설정을 읽어서는 안 될 때." `CLAUDE_CODE_RESTRICTED=1` 환경변수도 같은 효과인데, 설정 파일의 `env` 블록에 넣으면 무시돼요. 설정 파일로 제한을 풀거나 걸 수 없게 한 거예요.
+
+즉 권한 모드와 직교해요. `plan` 모드이면서 제한 세션일 수 있고, 그 조합에서 `bypassPermissions`만 선택지에서 빠져요. 관리 설정의 `disableAutoMode`가 관리자 쪽에서 모드를 묶는 장치라면, `--restricted`는 실행하는 쪽에서 도구와 설정 파일을 묶는 장치예요.
+
+문서에 없는 게 하나 있어요. 정확히 어떤 도구가 빠지는지의 목록이에요. 모든 페이지가 "명령이나 코드를 실행하는 내장 도구와 WebFetch"라고만 써요. 그래서 이 글을 준비하면서 같은 맥북에서 2.1.251을 두 번 띄워 비교했어요. 한 번은 `claude -p`, 한 번은 `claude --restricted -p`로, 프롬프트는 "지금 세션에서 쓸 수 있는 도구 이름만 한 줄에 하나씩". 일반 세션이 답한 목록은 26개, 제한 세션은 22개였고, 제한 세션에서 빠진 건 <strong>Bash, WebFetch, Monitor, Workflow, CronCreate, RemoteTrigger</strong> 여섯 개였어요. 명령을 실행하거나(Bash, Monitor), 스크립트로 에이전트를 돌리거나(Workflow), 명령을 예약하거나(CronCreate), 원격 트리거를 걸거나(RemoteTrigger), 웹 페이지를 가져오는(WebFetch) 도구예요. WebSearch는 남았고, Edit와 Write도 남았어요. 문서대로 파일 도구는 작업 디렉터리 안으로 갇힐 뿐 사라지지는 않아요.
+
+이 방법의 한계도 적어 둘게요. 모델에게 자기 도구 목록을 물은 자기 보고라서, 제한 세션 쪽 목록에만 Glob과 Grep이 나타나는 식의 차이가 있었어요. 지연 로딩되는 도구가 세션마다 다르게 노출되는 것으로 보여요. 그래서 위 여섯 개는 "이 머신, 이 버전, 이 프롬프트에서 빠진 것"이고, 공식 목록은 아니에요. 한 가지는 문서와 글자 그대로 일치했어요. `claude --restricted --permission-mode bypassPermissions`는 시작하지 못하고 `Error: bypassPermissions not supported in restricted mode`를 돌려줬어요.
+
+## 질문 3: 모델 전환 훅은 누구를 위한 것인가
+
+[훅 문서](https://code.claude.com/docs/en/hooks)의 설명은 이래요. `PreModelSwitch`는 "사용자나 클라이언트가 요청한 모델 전환을 Claude Code가 적용하기 전에 실행된다. 전환을 막거나, 확인을 요구하거나, 전환 비용을 미리 보여 주는 데 쓴다." 발동 조건은 `/model`, 모델 선택기, `/config`의 모델 변경, 패스트 모드 토글, SDK와 Remote Control의 `set_model`이고, 자동 폴백과 재개 시 복원은 `PostModelSwitch`에만 닿아요. 막는 방법은 종료 코드 2 또는 `decision: "block"`, 확인은 `"ask"`인데 "대화형 세션의 `/model`만 ask 프롬프트를 띄울 수 있고, 다른 모든 표면에서는 ask를 거부로 처리"해요. 응답이 30초 안에 안 오면 전환이 막혀요. `PostModelSwitch`는 "모델이 이미 바뀌었기 때문에 막을 수 없고", 다음 요청에 모델별 지침을 얹는 용도예요.
+
+누구를 위한 것인지는 페이로드가 말해요. 훅이 받는 필드에 `from_model`, `to_model`과 함께 `context_tokens`, `prompt_cache_warm`, `cache_ttl`, `estimated_cache_write_usd`, `pricing`이 들어 있어요. 문서의 예시 훅은 "지금 전환하면 약 18만 토큰을 새 모델에 다시 보냅니다. 계속할까요?"라고 묻는 `ask`예요. 같은 릴리스에서 `SessionStart`의 재개 훅도 세션이 얼마나 오래 쉬었는지와 캐시를 다시 쌓는 비용 추정치를 받게 됐어요. 게이트의 형식을 하고 있지만 내용은 비용 계측이에요. 조직이 승인된 모델만 쓰게 강제하는 용도와, 개인이 컨텍스트 20만 토큰짜리 세션에서 무심코 모델을 바꿔 캐시를 날리는 걸 막는 용도가 같은 훅으로 처리돼요. 7월 가이드에서 정리한 원칙과 같아요. 분류기는 거부할 수 있어도 훅의 ask를 조용히 승인으로 바꿀 수 없다는 것. 훅이 권한 체계에서 가장 센 층이고, 이번엔 그 층이 모델 선택까지 덮었어요.
+
+## 질문 4: 지출 한도 바와 캐시 라인은 개인 개발자에게 의미가 있나
+
+둘을 갈라서 봐야 해요. `/usage`의 지출 한도 바는 개인에게 해당이 없어요. [문서](https://code.claude.com/docs/en/claude-apps-gateway-spend-limits)가 명시한 조건은 Claude apps gateway 뒤에서 관리자가 지출 한도를 설정한 개발자, 클라이언트 2.1.251 이상, 게이트웨이 서버 2.1.225 이상이에요. Claude apps gateway는 6월에 나온 셀프호스티드 서비스로, 개발자가 API 키 대신 회사 IdP로 로그인하고 게이트웨이가 Bedrock·Claude Platform on AWS·Google Cloud·Foundry로 요청을 넘겨요. 관리자가 일·주·월 단위로 한도를 걸면 75%와 95%에서 경고가 가고 넘으면 429가 돌아오는데, 이번 릴리스는 그 상태를 `/usage`에 퍼센트 바로 보여 주고 상태 표시줄 스크립트에 `rate_limits.spend_limit.used_percentage`를 노출한 거예요. 달러가 아니라 퍼센트만 보여요. Bedrock이나 Vertex를 거쳐 Claude를 쓰는 국내 팀이라면 이게 관리자 콘솔 없이도 자기 한도를 보는 첫 화면이 될 거고, 개인 Pro·Max 사용자에게는 [5월의 카테고리별 `/usage`](/posts/2026-05-23-claude-code-v21149)가 여전히 마지막 변화예요.
+
+프롬프트 캐시 라인은 모두에게 해당돼요. 요청 수, 입력 토큰 중 캐시에서 온 비율, 미스 횟수와 마지막 미스 시각, 다시 캐시된 토큰 수, 지금 캐시가 따뜻한지(TTL과 마지막 활동 시각)를 한 줄로 보여 주고, 상태 표시줄에도 `prompt_cache` 객체로 나와요. 미스의 정의도 문서에 있어요. "캐시에서 읽을 수 있었던 것의 5% 넘게, 그리고 2,000토큰 이상을 다시 처리한 요청." 메인 대화만 세고 서브에이전트는 안 세요. 여기서 하나가 어긋나요. 릴리스 노트는 이 라인이 `/cost`에 추가됐다고 쓰고, [비용 문서](https://code.claude.com/docs/en/costs)는 `/usage`의 세션 블록에 있다고 써요. 둘 중 하나는 아직 안 맞아요. 어느 쪽인지는 각자 세션에서 확인하는 게 빨라요.
+
+같은 릴리스가 `claude --help`에 `attach`, `logs`, `stop`, `respawn`, `rm`을 추가했다는 항목도 오해하기 쉬워요. 명령 자체는 새 게 아니에요. [7월에 서브에이전트 기본 백그라운드화를 다룰 때](/posts/2026-07-03-claude-code-subagents-background-default) 이미 있던 `claude attach`가 문서의 2.1.210 항목에 나오고, 이번엔 도움말에 노출되고 `--resume` 안내문이 정확한 `claude attach <id>` 명령을 찍어 주게 된 거예요.
+
+## 질문 5: SDK 1.2.0이 또 조용히 어긋난 것을 만들었나
+
+[지난주 SDK 1.0.0 글](/posts/2026-08-27-anthropic-sdk-1-0-quiet-breaks)의 후속이에요. 1.0.0 뒤 이틀 간격으로 [1.1.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.1.0)(8/26)과 [1.2.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.2.0)(8/27)이 나왔고, TypeScript는 같은 날 0.121.0과 0.122.0으로 같은 내용을 담았어요. 1.1.0의 기능은 `updates` 사고 표시 모드(베타), Organization API 엔드포인트, 누락된 `anthropic-beta` 값 추가이고, 1.2.0의 기능은 한 줄이에요. "베타 files/skills 네임스페이스가 GA 형태를 쓰고, 날짜가 박힌 베타 헤더 핀을 제거한다." 지난주 글에서 Files와 Skills가 GA로 내려오며 `files-api-2025-04-14`, `skills-2025-10-02` 헤더가 필요 없어졌다고 썼는데, 1.2.0은 SDK 안쪽의 베타 경로에서도 그 핀을 뗀 거예요.
+
+조용히 어긋나는 후보는 Bug Fixes 아래에 있어요. "webhooks: `unwrap()`에 헤더를 반드시 넘기도록 요구." 선택이던 인자가 필수가 되는 변경이 버그 수정으로 분류돼 있어서, 헤더 없이 `unwrap()`을 부르던 코드는 1.2.0에서 그냥 멈춰요. 그 외에 Bedrock에서 바이너리 파일 업로드가 되도록 원시 요청 바이트를 서명하는 수정, 세션 이벤트 누적기가 모르는 이벤트 타입을 만나도 깨지지 않게 하는 수정, 에이전트 툴셋의 파일 읽기가 크기 상한을 넘는 파일에서도 `view_range`를 돌려주는 수정이 있어요. TypeScript 쪽은 최소 지원 버전을 5.0으로 문서화했어요. 1.0.0의 Python 3.10 요건처럼 "안 올리면 안 깨진다"는 종류라서, 지난주에 쓴 대로 3.9 이미지에 묶인 팀은 여전히 아무 일도 안 겪어요.
+
+## 정확히 옮기면
+
+"릴리스 노트가 통제 기능으로 채워진다"를 121개 항목 기준으로 정확히 옮기면 이래요. <strong>2.1.248과 2.1.251은 개인이 새로 할 수 있게 된 일이 6개, 조직이 개인의 세션을 묶는 장치가 8개, 그 장치를 우회할 수 있던 구멍을 막은 수정이 11개인 릴리스이고, 두 릴리스 모두 첫 줄에 묶는 장치를 뒀어요.</strong> 나머지 90여 개는 어느 버전에나 있는 수정이에요.
+
+그리고 6개의 새 능력 중 셋이 Bedrock·Vertex·Foundry 사용자를 위한 기능 개방이라는 점까지 넣으면, 이 두 릴리스에서 개인 사용자만을 겨냥한 항목은 손에 꼽아요. 모델 전환 훅의 페이로드가 비용이고, 지출 한도 바가 게이트웨이 전용이고, `--restricted`의 용도가 공유 머신의 평가 하네스라는 건 전부 같은 방향을 가리켜요. 이 도구가 지금 누구의 요청을 먼저 처리하고 있는지는 첫 줄이 말해 주고, 그 첫 줄을 쓰는 사람은 개인 개발자가 아니에요.
+
+---
+
+원문: [Claude Code v2.1.248](https://github.com/anthropics/claude-code/releases/tag/v2.1.248), [v2.1.250](https://github.com/anthropics/claude-code/releases/tag/v2.1.250), [v2.1.251](https://github.com/anthropics/claude-code/releases/tag/v2.1.251) 릴리스 노트, [CLI 레퍼런스](https://code.claude.com/docs/en/cli-reference), [훅 문서](https://code.claude.com/docs/en/hooks), [Claude apps gateway 지출 한도](https://code.claude.com/docs/en/claude-apps-gateway-spend-limits), [비용 문서](https://code.claude.com/docs/en/costs), [anthropic-sdk-python v1.1.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.1.0)·[v1.2.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.2.0), [anthropic-sdk-typescript sdk-v0.122.0](https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.122.0). 제한 모드 실측은 2026년 8월 31일, macOS의 Claude Code 2.1.251에서 `claude -p`와 `claude --restricted -p`를 각 1회 실행한 결과예요.

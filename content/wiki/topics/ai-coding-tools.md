@@ -1,7 +1,7 @@
 ---
 name: AI 코딩 도구
 type: topic
-post_count: 69
+post_count: 71
 key_entities:
   [
     "Claude Code",
@@ -40,6 +40,8 @@ tags: ["개발도구", "AI", "코딩"]
 - 평가축 이동(속도→효율): AI 코딩 경쟁이 "얼마나 빨리 만드나"에서 "얼마나 안 낭비하나(토큰·유지보수)"로 이동. claude-ns-hub의 "토큰 2%만 코드 생산에 쓰임" 측정, '바이브코딩=ADHD 증폭기'의 유지보수 부채, O'Reilly Codecon의 '손→안목' 장인정신 논의가 같은 방향을 가리킴
 - 엔터프라이즈 도입 변곡점: 2026년 5월 Cisco(빌드 20%↓·결함 처리량 10-15배)·MUFG(3.5만 명)·KPMG(27.6만 명)·Endava·세무 에이전트(정확도 25%→97%) 발표가 동시 등장. AI 코딩이 '파일럿 실험'에서 '틀리면 책임지는 핵심 업무'로 한 단계 넘어가는 신호
 - 무인 실행 시대로의 전환 — 같은 주(6/15 발행) oh-my-opencode(백그라운드 wake routing 신뢰성·Windows ARM/Codex 크로스환경), Claude Code(enforceAvailableModels 모델 허용목록 거버넌스 + 백그라운드 에이전트 respawn/daemon 수정), OpenCode(MCP 호환·세션 복구·이식성)가 동시에 같은 세 방향(무인 실행 신뢰성·크로스환경 생존·한도 거버넌스)을 손봄. 경쟁축이 생성 품질에서 운영 신뢰성으로 이동
+
+- 2026년 8월 말, 도구 선택에 '모델 공급 리스크' 항목이 추가됨. OpenAI가 SpaceX의 Cursor 인수(6/16 계약·8/14 종결, $60B 전액 주식)를 지배권 변경으로 보고 공급 계약을 11/12 종료 — 사유는 Cursor의 행위가 아닌 '머스크 회사들의 계약 위반 경험'. OpenAI 모델은 Cursor 트래픽의 약 5%. Anthropic도 Windsurf(2025-06)·OpenAI(2025-08)·xAI(2026-01) 접근을 끊은 전례가 있어 양대 공급사가 모두 고객을 고른 셈. 같은 주 Claude Code 2.1.248~251은 `--restricted`(명령 실행 도구·WebFetch 제거, 설정 파일 무시, bypassPermissions 거부)와 PreModelSwitch 훅으로 조직 통제 표면을 넓힘 — 121개 항목 중 통제 8·보안 수정 11 vs 새 능력 6.
 
 ## 관련 포스트
 
@@ -109,6 +111,8 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-06-02 | [[2026-06-02-enterprise-ai-graduation]]              | 5월, AI 코딩이 '파일럿'을 졸업했다 — 엔터프라이즈 도입 변곡점 (다이제스트)    |
 | 2026-06-10 | [[2026-06-10-codex-enterprise-continued]]            | 엔터프라이즈 졸업 그 다음 — Notion·Nextdoor·LSEG, 생산성 재배치 (다이제스트)  |
 | 2026-06-15 | [[2026-06-15-coding-agents-background-autonomy]]     | 코딩 에이전트가 잠든 사이 일한다 — 무인 실행·크로스환경·거버넌스 (다이제스트) |
+| 2026-08-31 | [[2026-08-31-openai-cursor-trust-clause]] | OpenAI가 SpaceX 인수 후 Cursor 공급 종료(11/12) — 모델 공급의 '신뢰 조항'과 지배권 변경 리스크, BYO 키의 한계 (인터뷰·재구성) |
+| 2026-08-31 | [[2026-08-31-claude-code-v21248-251-restrictions-first]] | Claude Code 2.1.248~251 — --restricted·모델 전환 훅·지출 한도 바, 통제 8/가시성 5/능력 6/수정 102 분류와 제한 모드 실측 (Q&A) |
 
 ## 관련 토픽
 
