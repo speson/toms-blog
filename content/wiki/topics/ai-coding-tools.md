@@ -96,10 +96,10 @@ tags: ["개발도구", "AI", "코딩"]
 | 2026-04-27 | [[2026-04-27-claude-code-v21118-120]]                | Claude Code v2.1.118~120 — vim visual mode, /config persist, custom themes    |
 | 2026-05-06 | [[2026-05-06-claude-code-k-shaped-productivity]]     | K자형 생산성의 함정 — AI 도구 도입 후 개발자 생산성 양극화 분석               |
 | 2026-05-06 | [[2026-05-06-claude-code-v21128-131]]                | Claude Code v2.1.128~131 — 최신 릴리스 누적 개선 사항                         |
-| 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]                   | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                             |
+| 2026-05-11 | [[2026-05-11-oh-my-opencode-v4-team-mode]]                   | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                             |
 | 2026-05-11 | [[2026-05-11-claude-usage-limits-spacex]]            | Claude 사용량 한도 2배 인상 + SpaceX 파트너십 — 인프라 확장                   |
 | 2026-05-19 | [[2026-05-19-claude-code-v21142-144]]                | Claude Code v2.1.142~144 — 에이전트 플래그, 백그라운드 세션                   |
-| 2026-05-19 | [[2026-05-19-oh-my-opencode-v420]]                   | Oh My OpenCode v4.2.0 — 안정성 기초 개선                                      |
+| 2026-05-19 | [[2026-05-19-oh-my-opencode-v420-reliability]]                   | Oh My OpenCode v4.2.0 — 안정성 기초 개선                                      |
 | 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]          | OpenAI + Dell — Codex 기업 온프레미스 배포                                    |
 | 2026-05-22 | [[2026-05-22-virgin-atlantic-codex]]                 | Virgin Atlantic — Codex로 모바일 앱 재출시, P1 0건 달성 케이스                |
 | 2026-05-23 | [[2026-05-23-claude-code-v21149]]                    | Claude Code v2.1.149 — /usage 카테고리별 분석, /diff 키보드 내비게이션        |

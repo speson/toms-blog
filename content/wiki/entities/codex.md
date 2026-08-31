@@ -26,7 +26,7 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 - Codex Security 리서치 프리뷰, 코드 취약점 탐지·패치 제안 AI 에이전트 — [[2026-03-10-codex-security-preview]]
 - Astral(uv, ruff) 인수, Codex 성장 가속화 위한 Python 도구 통합 — [[2026-03-23-openai-acquires-astral]]
 - Codex 대규모 업데이트, 에이전트 기능 전방위 확장 — [[2026-04-20-codex-for-everything]]
-- Codex 보안 운영 전략 공개, 프로덕션 환경 보안 가이드 — [[2026-05-11-openai-codex-security-operations]]
+- Codex 보안 운영 전략 공개, 프로덕션 환경 보안 가이드 — [[2026-05-11-running-codex-safely]]
 - Dell 파트너십으로 Codex 기업 온프레미스 배포 지원, 엔터프라이즈 시장 본격 진출 — [[2026-05-19-openai-dell-codex-enterprise]]
 - Virgin Atlantic 케이스: Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건으로 휴가 시즌 마감 달성 — [[2026-05-22-virgin-atlantic-codex]]
 
@@ -43,7 +43,7 @@ OpenAI가 개발한 AI 코딩 에이전트·도구 제품군. Codex CLI, Codex m
 | 2026-03-10 | Codex Security 리서치 프리뷰 공개         | [[2026-03-10-codex-security-preview]]           |
 | 2026-03-23 | Astral 인수(Codex 성장 목적)              | [[2026-03-23-openai-acquires-astral]]           |
 | 2026-04-20 | Codex 대규모 업데이트                     | [[2026-04-20-codex-for-everything]]             |
-| 2026-05-11 | Codex 보안 운영 전략 공개                 | [[2026-05-11-openai-codex-security-operations]] |
+| 2026-05-11 | Codex 보안 운영 전략 공개                 | [[2026-05-11-running-codex-safely]] |
 | 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십     | [[2026-05-19-openai-dell-codex-enterprise]]     |
 | 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시 | [[2026-05-22-virgin-atlantic-codex]]            |
 | 2026-07-21 | 서브에이전트 2,393개·로그 731.5GiB 폭주 이슈(#34061, 무응답 Open) | [[2026-07-21-agent-runaway-receipts]] |

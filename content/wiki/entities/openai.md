@@ -39,8 +39,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 - Microsoft 파트너십 재편, 협력 구조 개편 발표 — [[2026-04-27-microsoft-openai-partnership]]
 - GPT-5.5 Instant 출시, 속도와 비용 최적화 경량 버전 — [[2026-05-06-gpt-5-5-instant]]
 - GPT-5 고블린 버그 공개, 특정 입력에서 일관성 무너지는 행동 분석 — [[2026-05-06-gpt-5-goblin-bug]]
-- Codex 보안 운영 전략 공개 — [[2026-05-11-openai-codex-security-operations]]
-- GPT-5.5-Cyber 공개, 보안 연구자를 위한 특화 모델 — [[2026-05-11-gpt-5-5-cyber]]
+- Codex 보안 운영 전략 공개 — [[2026-05-11-running-codex-safely]]
+- GPT-5.5-Cyber 공개, 보안 연구자를 위한 특화 모델 — [[2026-05-11-gpt55-cyber-trusted-access]]
 - Dell 파트너십으로 Codex 기업 온프레미스 배포 지원 — [[2026-05-19-openai-dell-codex-enterprise]]
 - OpenAI 모델이 80년 묵은 이산기하학 추측을 반증, AI가 수학적 발견의 주체로 등장한 첫 사례 — [[2026-05-20-openai-disproves-geometry-conjecture]]
 - Virgin Atlantic이 Codex로 모바일 앱 재출시, near-total 테스트 커버리지·P1 0건 달성 — [[2026-05-22-virgin-atlantic-codex]]
@@ -84,8 +84,8 @@ tags: [AI, OpenAI, 언어모델, 에이전트, 보안]
 | 2026-04-27 | Microsoft 파트너십 재편 발표                                   | [[2026-04-27-microsoft-openai-partnership]]         |
 | 2026-05-06 | GPT-5.5 Instant 출시                                           | [[2026-05-06-gpt-5-5-instant]]                      |
 | 2026-05-06 | GPT-5 고블린 버그 공개                                         | [[2026-05-06-gpt-5-goblin-bug]]                     |
-| 2026-05-11 | Codex 보안 운영 전략 공개                                      | [[2026-05-11-openai-codex-security-operations]]     |
-| 2026-05-11 | GPT-5.5-Cyber 공개                                             | [[2026-05-11-gpt-5-5-cyber]]                        |
+| 2026-05-11 | Codex 보안 운영 전략 공개                                      | [[2026-05-11-running-codex-safely]]     |
+| 2026-05-11 | GPT-5.5-Cyber 공개                                             | [[2026-05-11-gpt55-cyber-trusted-access]]                        |
 | 2026-05-19 | Dell + Codex 기업 온프레미스 파트너십                          | [[2026-05-19-openai-dell-codex-enterprise]]         |
 | 2026-05-20 | OpenAI 모델, 이산기하학 추측 반증                              | [[2026-05-20-openai-disproves-geometry-conjecture]] |
 | 2026-05-22 | Virgin Atlantic, Codex로 모바일 앱 재출시                      | [[2026-05-22-virgin-atlantic-codex]]                |

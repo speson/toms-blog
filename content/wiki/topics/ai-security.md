@@ -45,8 +45,8 @@ LLM을 겨냥한 신종 공격 벡터(프롬프트 인젝션, 에이전트 하�
 | 2026-04-01 | [[2026-04-01-chatgpt-cloudflare-react-state]]        | Cloudflare Turnstile의 55개 속성 수집 실태 — 프라이버시 vs 봇 방어   |
 | 2026-04-06 | [[2026-04-06-claude-code-v2190-92]]                  | Claude Code v2.1.92 엔터프라이즈 보안 강화 릴리스                    |
 | 2026-04-16 | [[2026-04-16-mythos-cybersecurity]]                  | Anthropic Mythos의 32단계 공격 시뮬레이션 — 사이버보안 패러다임 전환 |
-| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]]      | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
-| 2026-05-11 | [[2026-05-11-gpt-5-5-cyber]]                         | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
+| 2026-05-11 | [[2026-05-11-running-codex-safely]]      | Codex 보안 운영 전략 — 프로덕션 에이전트 보안 가이드                 |
+| 2026-05-11 | [[2026-05-11-gpt55-cyber-trusted-access]]                         | GPT-5.5-Cyber — 보안 연구자를 위한 특화 모델                         |
 | 2026-05-19 | [[2026-05-19-openai-dell-codex-enterprise]]          | OpenAI + Dell Codex 온프레미스 — 엔터프라이즈 보안 환경 배포         |
 | 2026-05-24 | [[2026-05-24-oh-my-opencode-v440-security-research]] | OMOC /security-research — 5인 적대적 보안팀 스킬                     |
 | 2026-06-02 | [[2026-06-02-frontier-ai-governance-signals]]        | 프론티어 거버넌스 동시 발표 = 규제 전야 표준 선점 (칼럼)             |

@@ -17,7 +17,7 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 - 내부링크 4개 복구 (최근 3편 연속 0개였음)
 - 썸네일 미생성: GEMINI_API_KEY 정지 상태 — frontmatter thumbnail 생략(OG 폴백)
 - 업데이트된 위키: entities/anthropic, topics/ai-agents
-- 링크 수정: [[2026-05-19-anthropic-sdk-self-hosted-sandbox]] → -sandboxes (3개 파일)
+- 링크 수정: `2026-05-19-anthropic-sdk-self-hosted-sandbox` → `-sandboxes` (3개 파일)
 
 ---
 
@@ -178,28 +178,28 @@ description: 위키 활동 이력 (인제스트, 업데이트, 린트)
 - [[2026-05-19-claude-code-v21142-144]] — Claude Code v2.1.142~144: 에이전트 플래그와 백그라운드 세션
 - [[2026-05-19-anthropic-acquires-stainless]] — Anthropic이 Stainless를 인수한 이유
 - [[2026-05-19-openai-dell-codex-enterprise]] — OpenAI + Dell: Codex가 기업 온프레미스로 간다
-- [[2026-05-19-oh-my-opencode-v420]] — Oh My OpenCode v4.2.0: 안정성의 기초를 다지다
+- [[2026-05-19-oh-my-opencode-v420-reliability]] — Oh My OpenCode v4.2.0: 안정성의 기초를 다지다
 - 업데이트된 위키: entities/anthropic, entities/claude-code, entities/openai, entities/codex, entities/oh-my-opencode, topics/ai-agents, topics/ai-coding-tools, topics/ai-security, topics/mcp
 
 ---
 
 ## [2026-05-11] ingest | OpenAI Codex 보안 운영 전략
 
-- [[2026-05-11-openai-codex-security-operations]] — OpenAI Codex 보안 운영 전략
+- [[2026-05-11-running-codex-safely]] — OpenAI Codex 보안 운영 전략
 - 업데이트된 위키: entities/openai, entities/codex, topics/ai-agents, topics/ai-security
 
 ---
 
 ## [2026-05-11] ingest | GPT-5.5-Cyber 공개
 
-- [[2026-05-11-gpt-5-5-cyber]] — GPT-5.5-Cyber 공개: 보안 연구자를 위한 특화 모델
+- [[2026-05-11-gpt55-cyber-trusted-access]] — GPT-5.5-Cyber 공개: 보안 연구자를 위한 특화 모델
 - 업데이트된 위키: entities/openai, topics/ai-security
 
 ---
 
 ## [2026-05-11] ingest | Oh My OpenCode v4.0.0
 
-- [[2026-05-11-oh-my-opencode-v400]] — Oh My OpenCode v4.0.0: 팀 모드로 멀티에이전트 협업
+- [[2026-05-11-oh-my-opencode-v4-team-mode]] — Oh My OpenCode v4.0.0: 팀 모드로 멀티에이전트 협업
 - 업데이트된 위키: entities/oh-my-opencode, topics/ai-agents, topics/ai-coding-tools
 
 ---

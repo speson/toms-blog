@@ -42,8 +42,8 @@ tags: ["에이전트", "AI"]
 | 2026-03-23 | [[2026-03-23-ai-agent-protocols-guide]]                 | AI 에이전트 프로토콜 6가지 완벽 가이드                                  |
 | 2026-04-16 | [[2026-04-16-agentic-engine-optimization]]              | AEO - AI 에이전트 시대의 새로운 최적화 전략                             |
 | 2026-04-16 | [[2026-04-16-openai-agents-sdk-evolution]]              | OpenAI Agents SDK 진화 - 네이티브 샌드박스, 모델 네이티브 하네스        |
-| 2026-05-11 | [[2026-05-11-openai-codex-security-operations]]         | Codex 보안 운영 전략 — 에이전트 보안 관리                               |
-| 2026-05-11 | [[2026-05-11-oh-my-opencode-v400]]                      | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                       |
+| 2026-05-11 | [[2026-05-11-running-codex-safely]]         | Codex 보안 운영 전략 — 에이전트 보안 관리                               |
+| 2026-05-11 | [[2026-05-11-oh-my-opencode-v4-team-mode]]                      | Oh My OpenCode v4.0.0 — 팀 모드 멀티에이전트 협업                       |
 | 2026-05-11 | [[2026-05-11-anthropic-sdk-managed-agents]]             | Anthropic SDK Managed Agents — SDK 레벨 에이전트 관리                   |
 | 2026-05-19 | [[2026-05-19-anthropic-sdk-self-hosted-sandboxes]]        | Anthropic SDK 셀프 호스팅 샌드박스 — 에이전트 실행 환경 자체 구축       |
 | 2026-05-19 | [[2026-05-19-anthropic-acquires-stainless]]             | Stainless 인수 — SDK 자동 생성·MCP 커넥터 생성 내재화                   |
