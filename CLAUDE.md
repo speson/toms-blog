@@ -103,11 +103,13 @@ tom-project/
 
 ### News Sources
 
-- GeekNews RSS
+- GeekNews RSS (Grok / Cursor / xAI 키워드 항목 우선 포함)
 - OpenAI Blog
 - Google AI Blog
 - Anthropic News
-- GitHub Releases (Claude Code, Cursor 등)
+- Cursor Changelog RSS (`cursor.com/changelog/rss.xml`)
+- xAI / Grok release notes (`releases.sh/xai.atom`)
+- GitHub Releases (Claude Code, xAI SDK·grok-prompts 등)
 - Hugging Face 신규 모델 (DeepSeek / Kimi·Moonshot / GLM·Z.ai — org별 새 모델 리포를 릴리스 신호로 수집)
 
 ---
