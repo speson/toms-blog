@@ -13,6 +13,7 @@ export type RSSSource =
   | "anthropic"
   | "google"
   | "xai"
+  | "cursor"
   | "deepseek"
   | "kimi"
   | "glm";
@@ -26,10 +27,45 @@ export interface RSSItem {
   source: RSSSource;
 }
 
+/** GeekNews / 제목·본문에서 Grok·Cursor·xAI 관련 신호를 잡기 위한 키워드 */
+export const GROK_CURSOR_KEYWORDS = [
+  "grok",
+  "xai",
+  "x.ai",
+  "x-ai",
+  "cursor",
+] as const;
+
+const GROK_CURSOR_RE = new RegExp(
+  `\\b(${GROK_CURSOR_KEYWORDS.map((k) => k.replace(".", "\\.")).join("|")})\\b`,
+  "i"
+);
+
+export function matchesGrokOrCursor(text: string): boolean {
+  return GROK_CURSOR_RE.test(text);
+}
+
+function itemMentionsGrokOrCursor(item: {
+  title?: string;
+  content?: string;
+  link?: string;
+}): boolean {
+  return matchesGrokOrCursor(
+    `${item.title || ""} ${item.content || ""} ${item.link || ""}`
+  );
+}
+
+/**
+ * GeekNews 피드에서 Grok/Cursor 관련 항목을 우선 포함해 반환한다.
+ * 최신순 기본 수집에 더해, 더 넓은 윈도우를 훑어 키워드 매칭 항목을 빠뜨리지 않는다.
+ */
 export async function fetchGeeknews(limit = 10): Promise<RSSItem[]> {
   const feed = await parser.parseURL("https://news.hada.io/rss/news");
+  const raw = feed.items || [];
+  const scanLimit = Math.max(limit * 5, 40);
+  const window = raw.slice(0, scanLimit);
 
-  return (feed.items || []).slice(0, limit).map((item) => ({
+  const mapped: RSSItem[] = window.map((item) => ({
     id: item.guid || item.link || "",
     title: item.title || "",
     link: item.link || "",
@@ -37,6 +73,28 @@ export async function fetchGeeknews(limit = 10): Promise<RSSItem[]> {
     date: item.isoDate || item.pubDate || new Date().toISOString(),
     source: "geeknews" as const,
   }));
+
+  const highlighted = mapped.filter(itemMentionsGrokOrCursor);
+  const rest = mapped.filter((item) => !itemMentionsGrokOrCursor(item));
+
+  // 키워드 히트를 앞에 두고, 나머지는 최신순으로 limit까지 채운다.
+  const merged: RSSItem[] = [];
+  const seen = new Set<string>();
+  for (const item of [...highlighted, ...rest]) {
+    const key = item.id || item.link;
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    merged.push(item);
+    if (merged.length >= limit) break;
+  }
+
+  if (highlighted.length > 0) {
+    console.log(
+      `   ✓ GeekNews Grok/Cursor 관련 ${highlighted.length}개 우선 포함`
+    );
+  }
+
+  return merged;
 }
 
 export async function fetchGitHubReleases(
@@ -72,7 +130,7 @@ export function formatRSSItem(item: RSSItem, index: number): string {
 └─────────────────────────────────────────────────────────────────`;
 }
 
-// AI Service Blog RSS Feeds
+// AI Service Blog / changelog RSS Feeds
 const AI_BLOG_FEEDS: Record<string, { url: string; source: RSSSource }> = {
   openai: {
     url: "https://openai.com/blog/rss.xml",
@@ -81,6 +139,16 @@ const AI_BLOG_FEEDS: Record<string, { url: string; source: RSSSource }> = {
   google: {
     url: "https://blog.google/technology/ai/rss/",
     source: "google",
+  },
+  // Cursor official changelog (blog atom.xml is often stale)
+  cursor: {
+    url: "https://cursor.com/changelog/rss.xml",
+    source: "cursor",
+  },
+  // xAI / Grok release notes aggregate (official HTML has no stable RSS)
+  xai: {
+    url: "https://releases.sh/xai.atom",
+    source: "xai",
   },
 };
 
@@ -174,7 +242,7 @@ export const AI_GITHUB_REPOS = [
 ] as const;
 
 export async function fetchAllAINews(limit = 5): Promise<RSSItem[]> {
-  console.log("🤖 AI 블로그 + Anthropic 수집 중...");
+  console.log("🤖 AI 블로그 + Anthropic + Cursor/Grok 수집 중...");
 
   // 블로그 RSS + Anthropic 스크래핑 병렬 실행
   const blogKeys = Object.keys(AI_BLOG_FEEDS) as Array<
