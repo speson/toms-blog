@@ -1,0 +1,81 @@
+---
+title: "같은 가중치, 다른 문 — Fable 5.1이 팔아먹은 건 모델이 아니라 출입·보관·청구"
+thumbnail: "/thumbnails/2026-09-08-fable-5-1-same-weights-different-doors.png"
+description: "9월 1일 Anthropic은 Fable 5.1과 Mythos 5.1이 같은 모델이라고 못 박았어요. 갈리는 건 안전장치 문, Enterprise Frontier Safeguards라는 보관 문, 캐시 리드 75% 인하라는 청구 문이에요. 벤치마크보다 '어떤 문을 사느냐'가 제품이 된 장면을 읽어요."
+date: "2026-09-08"
+tags: ["Anthropic", "Claude", "Fable", "엔터프라이즈", "AI안전"]
+category: "ai-news"
+subcategory: "column"
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+tldrVerdict: "Fable 5.1과 Mythos 5.1은 같은 가중치예요. 제품 경계는 능력 문이 아니라 출입·보관·청구 세 문이에요. 일반 공개는 Fable, 사이버·생명과학은 Mythos의 CVP/LSVP, 규제 산업은 EFS로 로그를 고객 클라우드에 두고 탐지만 Anthropic이 돌리고, 에이전트 청구는 캐시 리드 75% 인하로 전형 25%·고에이전트 최대 약 45%가 싸져요. 모델 이름만 고르면 계약 문서를 놓칩니다."
+draft: false
+---
+
+9월 1일 Anthropic이 [Claude Fable 5.1과 Claude Mythos 5.1](https://www.anthropic.com/claude-fable-and-mythos-5-1)을 내놓으면서 첫 문단에서 거의 자백했어요. <strong>"같은 모델이지만 안전장치 수준이 다르다."</strong> Fable은 일반 공개, Mythos는 trusted access. 같은 날 [Enterprise Frontier Safeguards(EFS)](https://www.anthropic.com/news/enterprise-frontier-safeguards)도 열렸어요. 고객 클라우드에 활동 데이터를 두고 Anthropic은 오용 탐지만 돌리는 구조예요. 캐시 리드는 $0.25/M으로 75% 싸졌고, 전형 약 25%·고에이전트 최대 약 45%까지 청구가 내려간다고 적었어요.
+
+제 척추는 한 줄이에요. <strong>5.1에서 제품화된 건 가중치가 아니라 문(door)</strong>이에요. 출입·보관·청구. 벤치마크는 증거고, 구매 단위는 문이에요.
+
+[점수를 올린 건 Astra가 아니라 하네스](/posts/2026-09-07-harness-not-astra)와 축이 달라요. 그쪽은 54.8%와 99.9%를 가른 <strong>실행 껍데기</strong>예요. 오늘은 옆에 붙은 <strong>계약·접근·보관 껍데기</strong>를 봐요. 점수를 만드는 장치와, 누가 어떤 조건으로 앉게 하는지는 다른 SKU예요.
+
+## 먼저 문 세 개
+
+| 문 | 무엇이 갈리나 | 누가 통과하나 | 5.1에서 새로 굳힌 것 |
+| --- | --- | --- | --- |
+| 출입 (capability) | 같은 가중치 + 다른 안전장치 | Fable=일반, Mythos=CVP·LSVP 검증 조직 | 취약점 <strong>발견</strong>은 Fable 허용, 익스플로잇·펜테스트는 Opus로 넘김. 사이버 오탐 개입 약 60% 감소 |
+| 보관 (custody) | 로그·리뷰 주체 | EFS 대상 엔터프라이즈 (금융·의료·법무 등) | 고객 클라우드·고객 키·고객 인력 리뷰. Anthropic 인간 리뷰 기본 없음. 준비 전엔 적격 고객에 ZDR |
+| 청구 (bill) | 캐시 리드 단가 | 토큰 과금 경로 전부 | 캐시 리드 75%↓ ($0.25/M). 입력 $10·출력 $50은 Fable 5와 동일 |
+
+표의 세 줄이 같은 발표문을 세 구매 결정으로 쪼갠 결과예요. "Fable 5.1을 쓴다"는 문장만으로는 세 칸 중 하나도 확정되지 않아요.
+
+## 출입 문: 같은 가중치, 다른 셸
+
+[6월 Fable 5 글](/posts/2026-06-10-claude-fable-5-mythos-5)에서 이미 "같은 underlying, 잠금장치로 제품 분리"를 척추로 잡았어요. 5.1은 그 문법을 폐기하지 않고 <strong>출입 규칙을 더 잘게 쪼개 상품화</strong>했어요.
+
+일반 문(Fable)은 유용성을 올리되 이중 용도 구간은 여전히 잠가요. 사이버에서는 방어적 취약점 발견을 허용하고, 익스플로잇 생성·펜테스트·바이너리 기반 스캔은 Opus로 넘긴다고 명시했어요. Claude Code 기준 사이버 안전장치 개입이 세션당 평균 약 60% 줄었다는 숫자도 같이 나왔어요. 생물학에서는 초등·의료 일상 질의 쪽 오탐을 크게 줄였다고 하지만, 연구·신약 질의는 여전히 Opus 경로예요. [8월 말 과학자 지원 글](/posts/2026-08-31-anthropic-scientists-opened-and-locked)에서 정리한 "좌석은 열고 모델은 잠근다"와 같은 축이에요.
+
+인가 문(Mythos)은 두 프로그램으로 쪼개졌어요. Cyber Verification Program(CVP)은 방어 보안 작업용으로 Mythos급을 열고, Life Sciences Verification Program(LSVP)은 미 정부와 함께 생명과학 R&D용 안전장치를 따로 설계해요. Claude Security 제품도 Mythos 5.1로 돌아간다고 적었어요. 가중치를 두 개 만든 게 아니라, <strong>같은 가중치에 붙는 출입증을 두 장으로 판</strong> 거예요. 국내 팀 입장에서 LSVP·CVP의 미국 외 일정은 아직 발표문에 거의 없어요. "Mythos를 살지"보다 "어느 검증 대기열에 설지"가 먼저인 상태예요.
+
+능력 쪽 1차 인용은 Jane Street예요. 내부 벤치에서 Fable 5·Opus 5보다 코딩 문제를 더 풀고, 거래 직관도 SOTA이며, 긴 다단계 작업에서도 읽기 쉬운 궤적을 유지한다는 취지예요. 축하할 장면이 맞아요. 다만 그 궤적에 앉는 좌석이 Fable인지 Mythos인지는 별도 계약이에요. Terminal-Bench 4.0에서 Fable 55.8%, Mythos 60.9%처럼 같은 계열 안에서도 안전장치 차이가 점수에 남는다는 각주가, 출입 문이 벤치마크 인용문까지 오염시킨다는 신호예요.
+
+## 보관 문: EFS가 기업용 본론
+
+Fable 5 때 30일 보존이 규제 산업의 발목을 잡았어요. Anthropic은 학습용이 아니라 세션·계정에 걸친 오용을 상관(correlate)하려면 순간 폐기가 부족하다고 설명했고, 고객은 그 논리를 이해하면서도 "또 하나의 trusted data vendor"를 계약서에 넣기 싫어했어요. EFS는 그 딜레마를 <strong>정책 선언이 아니라 아키텍처</strong>로 풀어요.
+
+고객이 Amazon S3·Azure Blob·GCS 같은 <strong>자기 클라우드 계정</strong>에 활동 데이터를 두고, 자기 키·접근 정책·감사 로그 아래에 둡니다. Anthropic 쪽 자동 탐지가 심각한 오용·자격 증명 유출 신호를 보면 플래그는 고객에게 가고, 인간 리뷰는 기본으로 고객 인력이 해요. Anthropic 직원 리뷰는 필수가 아니에요. AWS·Google Cloud·Microsoft Azure 경로에서도 동일 통제를 약속했고, Claude Code·Enterprise·Platform·Bedrock·Foundry까지 지원 목록에 넣었어요. 요금은 EFS 자체에 없고, 스토리지·입출력은 클라우드 청구예요. 가을부터 단계 출시하고, 준비 전엔 적격 고객이 Fable 5·5.1에 ZDR을 받는다고 했어요.
+
+Wells Fargo 쪽 문장이 제품 정의를 압축해요.
+
+> "Enterprise Frontier Safeguards gives us exactly what we asked for: our logs stay in a Wells-managed environment under Wells-managed keys. We keep custody of our data while Anthropic operates the detection."
+
+그 <strong>분할</strong>이 규제 의무와 프런티어 사용을 동시에 가능하게 한다는 취지예요. ARC·Stripe·Snowflake 등 이름이 붙는 이유도 여기 있어요. 이들이 산 건 "더 센 Fable"이 아니라 <strong>보관 주체가 바뀐 프런티어 접근권</strong>이에요.
+
+6월의 격리 설계가 연구·안전 문법이었다면, EFS는 그걸 <strong>조달·보안·컴플라이언스 체크리스트용 SKU</strong>로 만든 단계예요. [기관형 신뢰 신호](/posts/2026-07-16-anthropic-institutional-trust-signals) 때 불편했던 "자기 설계 장치" 한계는 남아요. 탐지 기준은 여전히 Anthropic 쪽이고, 달라진 건 원본 대화의 위치와 인간 열람권이에요.
+
+## 청구 문: 캐시 리드가 에이전트 경제학
+
+입력 $10/M·출력 $50/M은 Fable 5와 같아요. 바뀐 건 캐시 리드예요. 이미 처리해 둔 입력을 다시 읽는 구간의 단가를 75% 깎아 $0.25/M으로 내린 거죠. Anthropic은 8월 실제 사용량 기준으로 전형 워크로드 약 25%, 컨텍스트·툴이 무거운 고에이전트 부하 최대 약 45% 절감을 예시로 그렸어요. 가중치를 싸게 만든 게 아니라, <strong>에이전트가 같은 문맥을 반복해 읽는 습관</strong>에 가격표를 다시 붙인 거예요.
+
+이 문이 출입·보관과 맞물려요. 출입 문이 Mythos로 넓어질수록 툴 루프가 길어지고, 보관 문이 EFS로 열릴수록 엔터프라이즈가 긴 세션을 더 자주 돌릴 유인이 생겨요. 그때 청구를 막는 병목이 캐시 리드였다면, 75% 인하는 모델 홍보가 아니라 <strong>루프를 돌릴 자격 있는 고객의 가동률 제품</strong>이에요. [SDK 1.0에서 조용히 어긋나는 이음매](/posts/2026-08-27-anthropic-sdk-1-0-quiet-breaks)를 볼 때와 같은 감각이에요. 버전 숫자나 모델 이름이 약속하는 표면 아래, 헤더·클라이언트·이제 캐시 과금이 실제 영수증을 움직여요.
+
+부가로 새 API 계정부터는 thinking 트랜스크립트를 보존한 채 컨텍스트를 수동 편집하기 어렵게 막았어요. 디스틸레이션 경로를 좁히는 장치이고, 이것도 가중치가 아니라 <strong>출입 규칙</strong>이에요. EU AI Act 워터마크·탐지 API도 같은 층 — 규제 문이 모델 카드 옆에 붙은 셈이에요.
+
+## 국내 팀이 계약서에 고정할 칸
+
+모델 ID만 적힌 PoC 슬라이드는 부족해요. 평가·구매 시트에 아래를 같이 박아 두세요.
+
+1. <strong>출입</strong> — Fable인지 Mythos인지, CVP/LSVP 대기 여부, 사이버·바이오 질의 때 Opus 폴백을 로그에 남기는지.
+2. <strong>보관</strong> — ZDR 임시인지 EFS인지, 로그 버킷 계정·키·인간 리뷰 주체가 누구인지.
+3. <strong>청구</strong> — 캐시 히트율, 에이전트 세션당 캐시 리드 비중, effort 기본값(Code High / Cowork·claude.ai Medium).
+4. <strong>실행 껍데기</strong> — 하네스 글에서 말한 상태 보존·툴 범위. 문은 계약을 고르고, 껍데기는 점수를 고름.
+5. <strong>인용 라벨</strong> — Fable 점수와 Mythos 점수를 같은 줄에 두지 않기. 안전장치 개입 시 0점 처리 각주도 같이.
+
+영업 문장이 "Fable 5.1이 SOTA"만 반복하면 1·2·3번을 물어보면 돼요. 답이 없으면 그 팀은 가중치를 산 게 아니라, 아직 문을 고르지 않은 거예요.
+
+## 남는 문장
+
+Fable 5.1의 과학 데모나 AutomationBench 점프는 기록이 될 만해요. 제가 가져가는 문장은 그 다음이에요. 2026년 초가을 Anthropic이 일반 공개 모델 옆에 붙여 판 것은 더 큰 가중치 파일이 아니라, <strong>같은 가중치에 꽂히는 출입·보관·청구 문</strong>이에요. 벤치마크를 인용할 때는 하네스를 적고, 계약을 고를 때는 문을 적어야 해요. 두 글을 나란히 두면 겹치지 않아요. 한쪽은 점수를 제조하는 껍데기이고, 한쪽은 그 점수가 나오는 좌석의 출입증이니까요.
+
+---
+
+근거가 된 소식: [Introducing Claude Fable 5.1 and Claude Mythos 5.1 (Anthropic, ~9/1)](https://www.anthropic.com/claude-fable-and-mythos-5-1), [Developing Enterprise Frontier Safeguards with our customers (Anthropic, 9/1)](https://www.anthropic.com/news/enterprise-frontier-safeguards), [Claude Fable 5.1 & Mythos 5.1 System Card](https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf). 본문 권위는 Anthropic 원문·시스템 카드를 기준으로 했어요.
