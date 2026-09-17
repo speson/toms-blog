@@ -1,0 +1,62 @@
+---
+title: "분당 $0.05가 산 자리 — 음성 프론트와 추론 백엔드가 갈라진 주"
+thumbnail: "/thumbnails/2026-09-17-voice-frontend-backend-split.png"
+description: "9월 10일 OpenAI는 GPT-Live-1 음성 레이어를 분당 $0.05로 API에 올렸고, 깊은 추론은 Astra 같은 백엔드에 맡기라고 적었어요. 닷새 뒤 Google은 Gemini 3.8 Live와 Live Extended Thinking을 같은 날 나란히 냈어요. 한 주 안에 두 랩이 그린 제품 경계를 따라가요."
+date: "2026-09-17"
+tags: ["OpenAI", "Google", "음성AI", "에이전트"]
+category: "ai-news"
+subcategory: "column"
+source: "openai"
+sourceUrl: "https://openai.com/index/introducing-gpt-live-1-in-the-api/"
+tldrVerdict: "9월 10일 OpenAI GPT-Live-1은 풀듀플렉스 음성 프론트를 분당 $0.05(초 단위 과금)로 팔고, 추론·도구는 Astra 등 백엔드에 위임하는 구조를 API로 못 박았어요. Speak 평가에서 턴제 대비 중단이 약 80% 줄었고, Full Duplex Bench는 Realtime-2.1 대비 약 30포인트 올랐다고 적혀 있어요. 9월 15일 Google Gemini 3.8 Live / Live Extended Thinking은 대화 중 백그라운드 도구 실행과, 복잡한 작업을 말하는 동안 이어 가는 Extended Thinking SKU로 같은 분리를 제품 라인에 올렸어요. 팀이 견적에 넣을 단위는 ‘음성 모델 하나’보다 ‘분당 대화 레이어 + 작업당 백엔드’ 쌍이에요."
+draft: false
+---
+
+9월 10일 OpenAI가 [GPT-Live-1을 API에 올렸어요](https://openai.com/index/introducing-gpt-live-1-in-the-api/). 발표문에 가격이 한 줄로 박혀 있어요. 프론트엔드 음성 레이어 <strong>분당 $0.05</strong>, 초 단위 과금. 같은 문단은 곧바로 “백엔드 모델과 에이전트 하네스를 제품에 맞게 짝지르라”고 이어집니다. ChatGPT에 먼저 들어간 풀듀플렉스 대화를 개발자 쪽으로 연 날인데, 제가 먼저 본 건 벤치 숫자보다 그 청구 줄이었어요. 음성을 모델 이름의 일부로 팔던 자리에서, <strong>대화 레이어만 따로 파는</strong> 영수증이 나온 장면이니까요.
+
+닷새 뒤인 9월 15일, Google도 [Gemini 3.8 Live와 3.8 Live Extended Thinking](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/)을 같은 날 나란히 냈어요. 하나는 규모·비용 효율의 라이브 대화, 다른 하나는 복잡 작업을 말하면서 이어 가는 Extended Thinking. 대화가 끊기지 않은 채 백그라운드에서 도구를 돌린다는 문장이 두 회사 글에 거의 동시에 등장해요. 이번 주는 모델 카드 경쟁보다, <strong>음성 프론트와 추론 백엔드가 제품 경계로 갈라지는</strong> 주간으로 읽는 편이 더 선명해요.
+
+## 9월 10일, OpenAI가 먼저 영수증을 가른 날
+
+OpenAI 글의 핵심 도식은 단순해요. 예전 음성 에이전트는 STT–LLM–TTS를 팀이 이어 붙였고, 중단·침묵·방향 전환마다 핸드오프 지연이 쌓였어요. GPT-Live-1은 듣고 말하기를 한 모델이 같이 처리하고, 깊은 추론과 도구 호출은 백엔드 텍스트 모델(예: GPT-6 Astra)이나 서드파티로 넘긴다고 적어요. 톤·속도·말투는 시스템 프롬프트로 잡고, 전화(telephony)까지 같은 풀듀플렉스 경로로 연다고 합니다.
+
+고객 인용도 같은 축을 가리켜요. Speak는 초기 평가에서 학습자가 답하기 전에 생각할 시간을 더 갖게 해, 턴제 대비 중단이 거의 <strong>80%</strong> 줄었다고 했어요. OpenAI 쪽 숫자로는 Full Duplex Bench가 GPT-Realtime-2.1 대비 약 <strong>30포인트</strong> 올랐고, Astra medium과 짝지으면 Tau3 음성 에이전트 과제에서 1위를 기록했다고 적혀 있어요. 커뮤니티 공지에는 Conversational Dynamics 97.3%, Full Duplex Bench v1.5 interactivity 80.1%, 응답 지연 0.798초(Realtime-2.1은 1.41초) 같은 표가 더 붙어 있어요. 벤치 이름은 제각각이지만, 측정 대상이 “무엇을 알았나”보다 <strong>대화가 끊기지 않고 이어지나</strong>에 가깝다는 점은 공통이에요.
+
+아키텍처 인용 한 줄이 더 날카로워요. Abridge의 Tony Stoyanov CTO는 캐스케이드 빌드와 비교해 GPT-Live-1이 코드베이스를 <strong>80% 단순화</strong>하고 <strong>2만 3천 줄</strong>을 없앴다고 말해요. 그 문장은 모델 점수 자랑이 아니라, 팀이 유지하던 음성 파이프라인 부채를 공급자 레이어로 넘겼다는 영수증에 가깝습니다. 백엔드 선택권은 열려 있어요. 예약·주문 같은 대량 작업에는 가벼운 모델, 복잡한 고객 이슈에는 Astra처럼 깊은 모델을 붙이라는 식으로요. [위임 문서](https://developers.openai.com/api/docs/guides/live-delegation)는 Responses 위임으로 백엔드 `model`·도구·`reasoning.effort`를 고르게 하고, 앱이 권한과 작업 상태를 쥐며, <strong>말을 끊어도 백엔드 작업이 자동 취소되지 않는다</strong>고 못 박아요. 프론트가 취소 버튼이 아니라는 선언이에요.
+
+가격표도 그 경계를 따라가요. 음성 세션 $0.05/분은 프론트만의 요금이고, 백엔드 토큰·도구는 따로 청구돼요. [9월 14일 SWE-2 글](/posts/2026-09-14-swe-2-pareto-task-cost)에서 Cognition·Agents API가 “작업당 비용”을 전면에 올린 것과 방향이 닮아 있어요. 다만 단위가 달라요. 그쪽은 끝난 코딩 과제 하나당 달러·턴이고, 오늘은 <strong>살아 있는 대화 1분</strong>과 <strong>뒤에서 도는 추론 호출</strong>을 영수증에서 분리한 쪽이에요.
+
+## 9월 15일, Google이 같은 선을 SKU 두 개로 올린 날
+
+Google 발표는 OpenAI처럼 “분당 단가”를 헤드라인에 두지 않아요. 대신 모델을 둘로 나눠 같은 날 올렸어요. Gemini 3.8 Live는 규모와 비용 효율, 유동 대화·시각 그라운딩. 3.8 Live Extended Thinking은 고복잡도 작업용으로, 말하면서 다단계 추론을 이어 간다고 적혀 있어요. “Let me check that…” 같은 짧은 음성 신호로 요청을 받은 뒤, 백그라운드 작업 진행을 라이브로 서술한다는 장면이 데모의 중심이에요. 도구·API 호출을 대화와 동시에 돌리고, 97개 언어 중도 전환, 근실시간 시각 입력을 붙인다고도 합니다.
+
+벤치 인용도 대화 품질과 에이전트 완수를 같이 올려요. Extended Thinking은 Artificial Analysis Speech-to-Speech Quality Index에서 전체 1위 <strong>82.6</strong>, τ-Voice <strong>68.6%</strong>, Sierra τ-Voice-banking <strong>35.1%</strong>, Big Bench Audio <strong>97.7%</strong>를 적었어요. Live는 Speech Agent Arena 2위권 선호와 비용 효율을 강조합니다. EVA-Bench에서는 정확도와 대화 품질의 Pareto를 밀었다고 해요. 숫자 하나하나를 독립 검증하진 않았어요. 다만 Google이 고른 축이 OpenAI와 같은 평면 — <strong>말하면서 일을 끝내는가</strong> — 에 있다는 신호로는 충분해요.
+
+개발자 경로도 Live API로 모아요. Agora, LiveKit, Pipecat, Vercel, LangChain 같은 실시간 미디어·에이전트 스택이 인프라를 맡고, 팀은 UX에 집중하라는 파트너 나열이에요. 엔터프라이즈는 Gemini Enterprise 프라이빗 프리뷰, 일반 사용자는 Search Live·Gemini Live·Workspace(Docs/Gmail/Keep Live)로 흩어져요. 오디오에는 SynthID 워터마크가 들어간다고 못 박은 점도, [3월 Gemini 3.1 Flash Live 글](/posts/2026-03-30-gemini-31-flash-live) 때와 같은 안전 레이어예요. 3월 글이 “음성 AI가 쓸 만해졌나”를 벤치로 물었다면, 오늘은 그 다음 질문이에요. <strong>쓸 만한 음성을 누가 프론트로 고정하고, 깊은 일은 어디에 맡길까.</strong>
+
+## 한 주가 남긴 비교표
+
+두 발표를 기능 목록으로 나란히 두면 비슷해 보여요. 풀듀플렉스, 중단 처리, 백그라운드 도구, 긴 세션. 제품 경계로만 다시 쓰면 차이가 선명해집니다.
+
+| 축 | OpenAI GPT-Live-1 (9/10) | Google Gemini 3.8 Live 계열 (9/15) |
+| --- | --- | --- |
+| 대화 레이어 | Live-1 단일 음성 프론트, API 분당 $0.05 | Live / Live Extended Thinking 두 SKU |
+| 깊은 작업 | Astra 등 백엔드·하네스에 명시적 위임 | Extended Thinking + 백그라운드 도구·진행 서술 |
+| 팀이 고르는 것 | 프론트 고정 후 백엔드 모델·도구·effort | 대화형 vs 복잡 작업형 Live 모델 + Live API 스택 |
+| 취소/상태 | 말 중단 ≠ 백엔드 자동 취소 (문서) | 대화 유지하며 비동기 함수 호출 (데모·서술) |
+
+표의 메시지는 “누가 음성 벤치 1등인가”가 아니에요. 둘 다 <strong>대화 품질 레이어</strong>와 <strong>작업 완수 레이어</strong>를 한 덩어리로 팔지 않으려는 쪽에 서 있어요. OpenAI는 가격과 위임 API로 금을 그었고, Google은 SKU 이름과 데모 서사로 금을 그었어요. [하네스가 점수를 만든다](/posts/2026-09-07-harness-not-astra)는 글이 평가 껍데기를 말했다면, 오늘은 런타임 껍데기가 음성 쪽으로 옮겨 온 장면이에요. [Fable 5.1의 출입·청구 문](/posts/2026-09-08-fable-5-1-same-weights-different-doors)과도 겹쳐요. 같은 능력이라도 어떤 문으로 앉히고 어떻게 청구하느냐가 제품이 됩니다.
+
+반론도 짧게요. 음성 품질이 아직 한 모델에 묶여 있으면, 프론트·백엔드 분리 선언은 마케팅 슬라이드에 가깝다고 볼 수 있어요. Realtime 계열을 이미 잘 붙인 팀은 “분당 $0.05”만으로는 이주를 안 할 거예요. Google 쪽 Extended Thinking 벤치도 회사 인용이 많아, Speech-to-Speech 1위 숫자만으로 구매를 확정하면 안 됩니다. 그래도 두 랩이 닷새 간격으로 같은 경계를 문서·SKU에 올린 사실 자체는, 시장이 읽는 단위가 바뀌고 있다는 신호로 남아요.
+
+## 견적서에 줄을 두 개로 나눌 때
+
+상담·예약·사내 헬프데스크처럼 목소리가 제품 표면인 팀에게 실무 순서는 단순해졌어요. 먼저 대화 레이어를 고르고, 그다음 그 레이어가 위임할 백엔드·도구·승인 경로를 고르는 거예요. Live-1을 쓴다면 분당 음성 비용과 Astra(또는 더 싼 백엔드) 토큰을 한 줄에 합치지 말고 나눠 적어요. 통화가 길어질수록 프론트 분이 쌓이고, 도구 호출이 늘어날수록 백엔드 영수증이 따로 커져요. Google Live API를 쓴다면 Live와 Extended Thinking 중 어느 SKU가 통화의 기본값인지, 복잡 구간만 Extended로 올리는지부터 정해야 해요. [에이전트 위키](/wiki/topics/ai-agents)에 쌓아 온 “루프를 누가 돌리나” 질문이, 음성에서는 “누가 말하고, 누가 일하는가”로 번역됩니다.
+
+코딩 에이전트만 다루는 팀에게도 같은 주가 완전히 남의 일은 아니에요. OpenAI가 Live-1을 Codex·ChatGPT Work와 짝지을 수 있다고 적은 순간, 음성은 별도 제품이 아니라 <strong>에이전트 표면의 한 채널</strong>이 돼요. 다만 채널이 늘수록 모니터·권한·취소를 어디에 둘지가 다시 중요해져요. 말을 끊어도 백엔드가 계속 돈다면, 중단 UX와 작업 중단 API를 같은 버튼으로 착각하면 안 됩니다. 그건 [9월 10일 CoT 모니터 글](/posts/2026-09-10-cot-that-fools-the-monitor)이 다룬 “같은 채널만 보면 편향이 복제된다”와는 다른 층이지만, 운영 실수 형태는 닮아 있어요.
+
+3월에 Gemini 3.1 Flash Live를 벤치 중심으로 읽었다면, 9월 중순은 그 다음 장이에요. 풀듀플렉스가 “더 자연스러운 모델”로만 팔리지 않고, <strong>분당으로 팔리는 프론트</strong>와 <strong>위임되는 백엔드</strong>로 쪼개지기 시작했다는 장. 헤드라인 모델명보다 견적서의 줄 수를 먼저 세는 쪽이, 이번 주 발표를 과하게 읽지 않으면서도 덜 놓치는 읽기예요.
+
+---
+
+근거가 된 소식: [Build more natural voice experiences with GPT-Live-1 in the API (OpenAI, 9/10)](https://openai.com/index/introducing-gpt-live-1-in-the-api/), [Delegation and tools in GPT-Live (OpenAI docs)](https://developers.openai.com/api/docs/guides/live-delegation), [Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking (Google, 9/15)](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/). 부수: [OpenAI Developer Community 공지](https://community.openai.com/t/introducing-gpt-live-1-in-the-api/1396471). 벤치·고객 인용 수치는 각 원문 기준이며 독립 재현은 하지 않았어요.
