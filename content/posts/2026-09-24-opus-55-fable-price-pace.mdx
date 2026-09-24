@@ -1,0 +1,52 @@
+---
+title: "9월 22일 Opus 5.5, Fable급을 40% 싸게 내린 pace"
+thumbnail: "/thumbnails/2026-09-24-opus-55-fable-price-pace.png"
+description: "9월 22일 Anthropic은 pace the frontier 이후 첫 모델로 Claude Opus 5.5를 냈어요. 회사 발표 기준 대부분 작업에서 Fable 5.1급, 전형 워크로드 비용은 Opus 5 대비 약 40% 낮아요. 같은 날 OpenAI GPT-6 Sol·Luna도 5.6 대비 반값으로 나왔어요. pace가 제품 캘린더에서 어떻게 읽히는지 파요."
+date: "2026-09-24"
+tags: ["Anthropic", "OpenAI", "Claude", "가격", "AI안전"]
+category: "ai-news"
+subcategory: "column"
+source: "anthropic"
+sourceUrl: "https://www.anthropic.com/claude-opus-5-5"
+tldrVerdict: "9월 22일 Anthropic은 Claude Opus 5.5를 Claude 5.5 패밀리 첫 모델이자 ‘pace the frontier’ 이후 첫 출시로 공개했어요. 회사 테스트 기준 대부분 작업에서 Fable 5.1 수준이고, 기본 설정 전형 워크로드 비용은 Opus 5보다 약 40% 낮으며 출력은 30% 이상 빠르다고 적어요. API는 입력/출력 $4/$20 per MTok(Opus 5는 $5/$25), 캐시 리드 $0.20(기존 $0.50, 60%↓). 사이버는 Opus 4.8로, 생물학은 Opus 5·LSVP 경로로 넘기는 Fable 5.1급 안전장치를 붙였고, 자동 행동 감사에서 역대 최고·경계 우회 시도는 Opus 5·Mythos 5.1 대비 약 85% 적다고 해요. 약 90분 뒤 OpenAI는 GPT-6 Sol·Luna를 5.6 대비 반값 API로 냈고, Sol은 내부 사실성에서 선대 대비 실수가 약 절반·Astra급 신뢰성을 훨씬 낮은 비용으로 달성했다고 주장해요. pace는 출시 정지가 아니라, 지난달 프런티어 능력을 이번 주 중가·저가 SKU로 내리는 캘린더로 읽혀요."
+draft: false
+---
+
+9월 22일 Anthropic이 [Claude Opus 5.5](https://www.anthropic.com/claude-opus-5-5)를 공개했어요. Claude 5.5 패밀리의 첫 모델이고, Dario Amodei가 [We Must Pace the Frontier](https://darioamodei.com/post/we-must-pace-the-frontier)를 쓴 뒤 나온 첫 제품 출시예요. 발표문 첫 단락의 숫자는 능력 천장보다 가격표에 가깝습니다. 회사 테스트 기준 대부분 작업에서 <strong>Claude Fable 5.1 수준</strong>이고, 기본 설정 전형 워크로드 비용은 Opus 5보다 <strong>약 40% 낮다</strong>고 적어요.
+
+같은 날 TechCrunch 기준 약 90분 뒤 OpenAI도 [GPT-6 Sol과 Luna](https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/)를 냈어요. 5.6 대비 API를 절반으로 낮췄고, Sol은 내부 사실성에서 선대 대비 실수가 약 절반·<strong>Astra급 신뢰성을 훨씬 낮은 비용으로</strong> 달성했다고 주장합니다. [9월 21일 pace·반독점 글](/posts/2026-09-21-pace-frontier-meets-antitrust)이 에세이·소송 타임라인을 다뤘다면, 오늘은 다음 질문만 파요. <strong>pace 직후 첫 출시가 왜 ‘더 센 Fable’이 아니라 ‘Fable급을 싼 Opus’인가.</strong>
+
+## 9월 22일이 찍은 가격표
+
+Anthropic이 공개한 Opus 5.5 단가는 Opus 5와 나란히 두면 선명해요.
+
+| 구분 (per 1M tokens) | Opus 5.5 | Opus 5 |
+| --- | --- | --- |
+| 입력 / 출력 | $4 / $20 | $5 / $25 |
+| 캐시 리드 | $0.20 | $0.50 |
+| 회사 주장 전형 비용 | Opus 5 대비 약 40%↓ | - |
+| 출력 속도 | Opus 5 대비 30% 이상↑ | - |
+
+캐시 리드는 에이전트·코딩 비용의 상당 부분을 차지한다고 발표문에 명시돼 있고, 그 줄만 60% 내렸어요. Fast mode는 입력 $8·출력 $40으로 최대 약 2.5배 속도를 판다고 적혀 있어요. 플랫폼 쪽 변화도 같이 왔어요. thinking을 끌 수 없고, effort 기본값은 medium(Opus 5는 high)입니다. Sonnet 5.5·Haiku 5.5는 수주 내 예고예요.
+
+성능 표에서는 Terminal-Bench·FrontierCode·CursorBench 등에서 Opus 5.5가 Fable 5.1·Opus 5를 앞서는 칸이 많아요. 그런데 Anthropic은 바로 옆에서 브레이크를 걸어요. 이 수준에서는 벤치 마진이 실사용 차이를 덜 신뢰하게 만들고, <strong>자체 사용 기준으로 Opus 5.5와 Fable 5.1의 간격은 점수표보다 좁다</strong>고 적습니다. [LLM 모델 위키](/wiki/topics/llm-models)의 이름표만으로는 부족하고, 가격·effort·폴백 경로를 같이 봐야 해요.
+
+## 질문이 가리키는 제품 캘린더
+
+pace 에세이는 능력 진전을 늦추자고 했어요. 첫 카드가 새 천장 모델이었다면 “말은 pace, 손은 상향”으로 읽히기 쉬웠을 거예요. 나온 것은 Fable 5.1이 열어 둔 능력·안전장치 급을 Opus 중가 구간으로 내린 형태에 가깝습니다. 지난달 프런티어에 가깝던 능력을, 이번 주 더 자주 고를 수 있는 SKU로 옮긴 달력이죠.
+
+안전 이야기도 그 선택과 맞물려요. Opus 5.5는 Mythos 5.1과 생물·사이버 능력이 비슷하다고 보고, <strong>Fable 5.1에 붙였던 급의 안전장치</strong>를 가져왔어요. 대부분 사이버 작업은 Opus 4.8로, 생물학은 LSVP 등 검증 경로로 넘기고, preserved thinking도 Fable 5.1과 같이 적용한다고 적어요. Frontier Design·METR 외부 평가, 자동 행동 감사 역대 최고, 경계 우회 시도 Opus 5·Mythos 5.1 대비 약 85%↓가 회사 주장이에요. 정렬 평가에서 모델이 평가 중임을 의심하는 신호가 남는다는 한계도 같은 글에 있습니다.
+
+[Fable 5.1 출입·보관·청구 글](/posts/2026-09-08-fable-5-1-same-weights-different-doors)이 계약 조건을 봤다면, 오늘은 그 다음 층이에요. Fable급 안전장치를 단 Opus가 더 싸게 열리며 천장 이름과 일상 기본 모델 간격이 가격표에서 좁혀집니다. [하네스 글](/posts/2026-09-07-harness-not-astra)은 실행 껍데기, [SWE-2 작업당 비용](/posts/2026-09-14-swe-2-pareto-task-cost)은 과제당 달러였어요. Opus 5.5는 그 사이에 <strong>Fable급을 Opus 단가로 돌릴 수 있는지</strong>를 제품 질문에 올린 출시예요.
+
+## 같은 날 압축된 스택, 옆자리의 Google
+
+OpenAI 쪽도 같은 날짜에 스택을 압축했어요. Sol은 복잡한 코딩·에이전트, Luna는 요약·추출 같은 대량 사무. 캐싱·추론 효율로 5.6 대비 API를 반값으로 내렸다고 하고, Vercel 비교표에 인용되는 표준 단가는 Sol $2/$10, Luna $0.10/$0.50 per MTok 부근이에요. TechCrunch가 전한 회사 문장은 Sol이 Astra급 사실성을 훨씬 낮은 비용으로 낸다는 쪽입니다. Anthropic이 Fable급을 싼 Opus로 내린 날, OpenAI는 Astra급 신뢰성 이야기를 싼 Sol에 붙인 날로도 읽혀요.
+
+Google Gemini 4는 척추는 아니에요. 플래그십 타이밍 이야기가 이어지는 동안 두 경쟁사는 스택 중간·하단 가격을 먼저 누르고 있었다는 옆 메모로만 남겨 둘게요.
+
+국내 팀 견적 줄은 단순해요. Opus 5.5를 기본으로 올릴 때 effort medium·thinking 상시·사이버/바이오 폴백 로그를 같은 칸에 적고, Fable 5.1과의 차이를 벤치 한 줄이 아니라 대표 워크로드 비용으로 재세요. Sol·Luna를 같이 보면 “Astra를 살지 / Sol로 내려도 되는지”를 과제별로 나누는 편이 9월 22일 결에 가깝습니다. pace를 출시 휴지기로 읽으면 이 날이 어긋나고, <strong>프런티어 능력을 중가 SKU로 내리는 캘린더</strong>로 읽으면 가격표와 안전장치 문장이 맞아요.
+
+---
+
+근거가 된 소식: [Introducing Claude Opus 5.5 (Anthropic, 9/22)](https://www.anthropic.com/claude-opus-5-5), [We Must Pace the Frontier (Dario Amodei)](https://darioamodei.com/post/we-must-pace-the-frontier), [OpenAI launches GPT-6 Sol and Luna (TechCrunch, 9/22)](https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/). Opus 5.5 성능·비용·안전장치 숫자는 Anthropic 발표문·시스템카드 인용이며, Sol·Luna 가격·사실성 주장은 OpenAI·TechCrunch 및 Vercel 비교표 인용이에요. 벤치 교차 비교는 각사 보고·노력도·안전장치 개입 조건이 달라 독립 재현 전까지 회사 주장으로만 다뤄요.
