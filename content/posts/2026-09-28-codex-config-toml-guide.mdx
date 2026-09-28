@@ -1,0 +1,167 @@
+---
+title: "Codex config.toml 위치와 핵심 설정 — 메모리 켜는 법 포함"
+thumbnail: "/thumbnails/codex-config-toml-guide.png"
+description: "코덱스(Codex) config.toml이 어디에 있는지, 어떤 파일이 어떤 설정을 덮어쓰는지, 메모리·모델·샌드박스처럼 자주 건드리는 키만 공식 문서 기준으로 정리했어요. IDE에서 여는 방법과 Windows 경로도 함께 담았어요."
+date: "2026-09-28"
+updatedAt: "2026-09-28"
+tags: ["Codex", "OpenAI", "가이드"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "개인 기본값은 ~/.codex/config.toml에, 팀 공유 값은 신뢰된 프로젝트의 .codex/config.toml에 두는 게 맞다고 봐요. 로컬 메모리는 [features] memories = true 한 줄로 켜요."
+draft: false
+---
+
+Codex 설정을 바꾸려면 어디에 무엇을 적어야 할까요? 답은 대부분 `~/.codex/config.toml`이에요. 저는 공식 레퍼런스 전체를 외울 필요는 없고, 위치·덮어쓰기 순서·자주 쓰는 키 세 가지만 알면 실무에서 충분하다고 봐요. 이 글에서는 그 세 가지를 2026년 9월 공식 문서 기준으로 정리해요.
+
+## Codex config.toml은 어디에 있나요?
+
+사용자(개인) 설정 파일은 아래 경로예요.
+
+| OS | 경로 |
+| --- | --- |
+| macOS / Linux | `~/.codex/config.toml` |
+| Windows | `%USERPROFILE%\.codex\config.toml` |
+
+`CODEX_HOME` 환경 변수를 바꾸면 홈이 `~/.codex` 대신 그 경로가 돼요. 같은 폴더에는 `auth.json`(파일 저장 인증을 쓸 때), `history.jsonl`(대화 기록), 로그·캐시도 함께 쌓여요.
+
+프로젝트마다 다른 값이 필요하면 리포 안에 `.codex/config.toml`을 두면 돼요. 다만 Codex는 <strong>프로젝트를 신뢰(trusted)했을 때만</strong> 이 파일을 읽어요. 신뢰하지 않은 프로젝트에서는 프로젝트 쪽 `.codex/` 설정·훅·규칙을 건너뛰고, 개인·시스템 설정만 남겨 둬요.
+
+IDE 확장에서 열려면 우측 상단 톱니바퀴 → Codex Settings → Open config.toml이에요. CLI와 IDE 확장은 같은 설정 계층을 공유해요.
+
+편집 편의용으로 VS Code / Cursor의 Even Better TOML 확장을 쓰면, 파일 맨 위에 아래 한 줄을 넣어 자동완성을 켤 수 있어요.
+
+```toml
+#:schema https://developers.openai.com/codex/config-schema.json
+```
+
+## 설정은 어떤 순서로 적용되나요?
+
+같은 키가 여러 파일에 있으면, 위쪽일수록 이깁니다 (2026년 9월 [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic) 기준).
+
+1. CLI 플래그와 `-c` / `--config` 한 번만 덮어쓰기
+2. 신뢰된 프로젝트의 `.codex/config.toml` (루트에서 현재 폴더로 내려가며 읽고, <strong>가까운 파일이 이김</strong>)
+3. `--profile 이름`으로 고른 `~/.codex/이름.config.toml`
+4. 개인 `~/.codex/config.toml`
+5. 로그인한 워크스페이스의 클라우드 관리 기본값 (있으면)
+6. 시스템 `/etc/codex/config.toml` (Unix, 있으면)
+7. 내장 기본값
+
+실무 팁은 단순해요. 모든 프로젝트에 공통인 값은 개인 `config.toml`에 두고, 한 리포만 다른 값은 프로젝트 `.codex/config.toml`에 두고, 오늘만 바꿀 값은 CLI `-c`로 넘기면 돼요.
+
+프로필은 Codex 0.134.0부터 방식이 바뀌었어요. 예전처럼 `config.toml` 안의 `[profiles.이름]` 테이블이 아니라, <strong>옆 파일</strong> `~/.codex/이름.config.toml`에 차이만 적고 `codex --profile 이름`으로 고릅니다.
+
+프로젝트 파일에는 넣어도 무시되는 키가 있어요. 대표적으로 `model_provider`, `model_providers`, `openai_base_url`, `chatgpt_base_url`, `notify`, `profile`, `profiles`, `otel`이에요. 인증·프로바이더·알림·텔레메트리는 개인 `~/.codex/config.toml`에 두세요.
+
+회사 PC라면 관리자가 `requirements.toml`로 더 강한 제한을 걸 수 있어요. 사용자가 `approval_policy = "never"`처럼 풀어도 막히는 경우가 그거예요. 관리 강제 쪽은 [Codex Business·Enterprise 가이드](/posts/2026-08-03-codex-enterprise-guide)에 더 자세히 적어 두었어요.
+
+## 실무에서 자주 바꾸는 설정은 뭔가요?
+
+공식 문서가 꼽는 “자주 바꾸는 옵션”과, 검색으로 많이 찾는 메모리·이미지 관련 키를 한곳에 모았어요.
+
+### 기본 모델과 추론 세기
+
+```toml
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
+```
+
+`model_reasoning_effort`에 쓸 수 있는 값은 모델·클라이언트마다 달라요. 문서 예시는 `low`, `medium`, `high`, `xhigh`, `max`, `ultra` 등을 언급해요.
+
+### 승인·샌드박스
+
+```toml
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+```
+
+`approval_policy = "untrusted"`는 이제 지원하지 않아요. `on-failure`도 폐기 예정이니 `on-request`(대화형) 또는 `never`(비대화형)를 쓰세요. 프로젝트 단위로 더 엄격하게 가려면 개인 설정의 `projects."<경로>".trust_level = "untrusted"`를 쓰면 돼요.
+
+### 로컬 메모리 켜기
+
+로컬 Memories는 <strong>기본값이 꺼짐</strong>이에요.
+
+```toml
+[features]
+memories = true
+```
+
+켜 둔 뒤에도 주입·생성만 따로 끌 수 있어요.
+
+```toml
+[memories]
+use_memories = true
+generate_memories = true
+disable_on_external_context = false
+```
+
+GUI로는 ChatGPT 데스크톱 → Settings → Personalization → Enable memories 경로도 있어요. 메모리 계층과 이미지 입력·생성 흐름은 [Codex 메모리·이미지 가이드](/posts/2026-07-28-codex-memory-image-guide)에 따로 정리해 두었어요.
+
+### 웹 검색 모드
+
+```toml
+web_search = "cached"  # 기본값. OpenAI가 유지하는 검색 인덱스
+# web_search = "live"  # 실시간 웹 (--search와 같음)
+# web_search = "disabled"
+```
+
+`--yolo`처럼 전체 접근 샌드박스를 쓰면 기본이 `live`로 바뀌어요.
+
+### 이미지 생성 스킬 끄기
+
+팀에서 이미지 생성을 막고 싶다면 스킬 단위로 끌 수 있어요.
+
+```toml
+[[skills.config]]
+path = "imagegen"
+enabled = false
+```
+
+생성 턴은 일반 텍스트 턴보다 포함 한도를 평균 3~5배 빠르게 소모한다고 공식 이미지 생성 문서에 적혀 있어요 (2026년 9월 기준).
+
+### 한 번에 쓰는 최소 예시
+
+개인 파일에 아래 정도만 있어도 시작하기 좋아요.
+
+```toml
+#:schema https://developers.openai.com/codex/config-schema.json
+
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[features]
+memories = true
+
+[history]
+persistence = "save-all"
+```
+
+대화 기록을 남기지 않으려면 `persistence = "none"`으로 바꾸면 돼요. 디스크를 많이 먹는 사례는 [에이전트 실행 영수증 글](/posts/2026-07-21-agent-runaway-receipts)에서도 다룬 적이 있어요.
+
+키 이름이 맞는지 헷갈리면 CLI에서 `/debug-config`로 어떤 계층이 어떤 값을 넣었는지 볼 수 있어요 (커뮤니티·서드파티 가이드에서 자주 안내하는 확인법이에요). 최종 권위는 항상 [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference)예요.
+
+## 자주 묻는 질문
+
+### Codex config.toml 위치가 Windows에서도 같나요?
+
+홈만 달라요. Windows는 `%USERPROFILE%\.codex\config.toml`이에요. 네이티브 Windows 샌드박스는 `[windows] sandbox = "elevated"`가 권장값이에요.
+
+### 프로젝트 `.codex/config.toml`이 안 먹혀요
+
+프로젝트가 신뢰(trusted) 상태인지 먼저 보세요. 신뢰하지 않으면 프로젝트 설정을 읽지 않아요. 또 `model_provider` 같은 무시 키를 프로젝트 파일에 넣었는지도 확인하세요.
+
+### 메모리는 config.toml로만 켜나요?
+
+아니요. 데스크톱 Settings → Personalization → Enable memories로도 켤 수 있어요. 파일로는 `[features] memories = true`예요.
+
+### 예전에 쓰던 `[profiles.이름]`은 어떻게 되나요?
+
+Codex 0.134.0부터는 `~/.codex/이름.config.toml` 파일로 옮기고 `--profile 이름`으로 고르세요. 옛 테이블과 최상위 `profile = "..."` 선택자는 더 이상 읽지 않아요.
+
+---
+
+참고 문서: [Config basics](https://learn.chatgpt.com/docs/config-file/config-basic), [Advanced Config](https://learn.chatgpt.com/docs/config-file/config-advanced), [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference), [Image generation](https://learn.chatgpt.com/codex/image-generation), [config schema](https://developers.openai.com/codex/config-schema.json)
