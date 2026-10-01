@@ -1,0 +1,102 @@
+---
+title: "ChatGPT 데이터 학습 끄는 법 — Codex·메모리·임시 채팅 설정"
+thumbnail: "/thumbnails/chatgpt-codex-data-training-off.png"
+description: "챗GPT(ChatGPT)와 코덱스(Codex)에서 Improve the model for everyone를 끄는 경로, 메모리·개인화와의 차이, Temporary Chat, 요금제별 기본값을 2026년 10월 공식 헬프 기준으로 정리했어요."
+date: "2026-10-01"
+updatedAt: "2026-10-01"
+tags: ["ChatGPT", "Codex", "OpenAI", "가이드", "프라이버시"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "개인 요금제에선 Improve the model for everyone를 꺼야 새 대화와 Codex 작업이 학습에 안 들어가요. 메모리·임시 채팅은 별개 스위치라 목적별로 나눠 두는 게 맞다고 봐요."
+draft: false
+---
+
+ChatGPT 개인 요금제에서는 대화가 모델 학습에 쓰일 수 있어요. 저는 채팅 기록(히스토리)과 학습(트레이닝)을 같은 스위치로 보면 설정이 꼬인다고 봐요. 이 글에서는 학습 끄기, 메모리·개인화, Temporary Chat, Codex까지 2026년 10월 공식 문서 기준으로 나눠 정리해요.
+
+## Improve the model for everyone는 어디서 끄나요?
+
+학습 옵트아웃의 공식 이름은 <strong>Improve the model for everyone</strong>예요. 경로만 기억하면 돼요.
+
+| 환경 | 경로 |
+| --- | --- |
+| 웹 (로그인) | 프로필 → Settings → Data controls → Improve the model for everyone 끄기 → Done |
+| iOS / Android | 사이드바 → 프로필 → Data controls → 같은 토글 끄기 |
+| 비로그인 | Settings에서 끄기 (그 브라우저에만 저장) |
+
+끄면 <strong>새 대화는 학습에 쓰이지 않아요.</strong> 이미 저장된 채팅은 히스토리에 그대로 남아요. 아카이브·프로젝트 채팅도 지우지 않아요. 기록 보존과 학습 여부는 별개예요.
+
+Privacy Portal에서 <strong>Do not train on my content</strong>를 골라도 같은 효과가 나요. OpenAI는 ChatGPT Data controls와 Portal 중 하나만 해도 충분하다고 적어요 ([Data controls](https://help.openai.com/en/articles/7730893-data-controls-faq), [How your data is used](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)).
+
+요금제 기본값은 이렇게 갈려요 (2026년 10월 헬프 기준).
+
+| 계정·워크스페이스 | 학습 기본값 |
+| --- | --- |
+| Free / Plus / Pro 개인 | 켜짐 → 끌 수 있음 |
+| Business / Enterprise / Edu / Healthcare | 기본적으로 학습에 안 씀 |
+| API Platform | 기본적으로 안 씀 (조직이 공유를 켤 수는 있음) |
+
+한 가지 예외를 꼭 알아 두세요. 학습을 끈 뒤에도 답변에 좋아요·싫어요 같은 <strong>피드백을 직접 누르면</strong>, 그 피드백이 묶인 대화 전체가 학습에 쓰일 수 있어요. 옵트아웃이 “피드백까지 영구 차단”은 아니에요.
+
+## 메모리·개인화는 학습 끄기와 다른가요?
+
+네. <strong>모델 학습</strong>과 <strong>개인화(메모리)</strong>는 서로 다른 설정이에요.
+
+- 학습: Settings → <strong>Data controls</strong> → Improve the model for everyone
+- 개인화: Settings → <strong>Personalization</strong> → Memory
+
+Memory가 켜져 있으면 ChatGPT가 과거 대화·저장된 기억·커스텀 지시 등을 참고해 답을 맞춰요. 끄는 건 다음 응답에 그 맥락을 덜 쓰는 일이에요. 학습 토글을 끈다고 Memory가 자동으로 꺼지지는 않아요. 반대로 Memory만 꺼도 학습 설정은 그대로예요 ([Memory in ChatGPT](https://help.openai.com/en/articles/8590148-memory-in-chatgpt)).
+
+플랜·지역에 따라 UI 이름이 조금 달라요. 자주 나오는 항목은 이래요.
+
+- Reference saved memories — 명시적으로 기억하라고 한 내용
+- Reference chat history — 과거 대화에서 끌어온 취향·맥락
+- Manage / Memory summary — 무엇이 기억되는지 보고 지우기
+
+saved memories를 끄면 chat history 참조도 같이 꺼지는 경우가 있어요. 채팅을 지워도 별도 saved memory는 남을 수 있어요. 완전히 없애려면 기억과 원본 대화 둘 다 확인해야 해요.
+
+로컬 Codex의 Memories(`[features] memories = true`)는 ChatGPT 웹 Memory와 <strong>저장소가 다릅니다</strong>. 켜는 법·계층은 [Codex 메모리·이미지 가이드](/posts/2026-07-28-codex-memory-image-guide)에 정리해 두었어요.
+
+## Temporary Chat과 Codex는 어떻게 맞춰 두나요?
+
+<strong>Temporary Chat</strong>은 “이번만 가볍게”용이에요. 새 채팅에서 Temporary를 고르고, 첫 메시지 전에 Personalized / Unpersonalized를 정해요.
+
+임시로 유지되는 동안에는 히스토리에 안 남고, 메모리를 만들거나 갱신하지 않으며, 모델 개선에도 안 쓰여요. 안전 목적으로 최대 30일 복사본이 남을 수 있어요. 나중에 Save하면 일반 채팅이 되고, 그때부터는 계정의 개인화·학습 설정을 따릅니다 ([Temporary chat](https://help.openai.com/en/articles/8914046-temporary-chat-in-chatgpt)).
+
+<strong>Codex</strong>는 ChatGPT 계정으로 로그인하면 Data controls가 이어져요. 개인 요금제에서 Improve the model for everyone를 끄면 <strong>새 Codex 작업도 학습에서 빠져요</strong> (Computer Use 스크린샷 포함). Business·Enterprise 쪽은 기본적으로 학습에 안 쓰는 쪽이에요 ([Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-icodex-in-chatgpt)).
+
+다만 Codex에는 별도 스위치가 하나 더 있어요. Codex settings의 <strong>Include environments</strong>예요. 환경(environment) 맥락을 학습에 넣을지 정하는 값이고, ChatGPT Data controls나 Privacy Portal을 바꿔도 이 값은 따라 바뀌지 않아요. 코드·시크릿이 들어 있는 클라우드 환경을 쓰면 여기도 같이 확인하는 게 좋아요.
+
+로컬 디스크에 대화 파일을 남길지 말지는 `~/.codex/config.toml`의 `[history] persistence`로 조절해요. 경로·키 이름은 [config.toml 가이드](/posts/2026-09-28-codex-config-toml-guide)를 보면 돼요. 학습 옵트아웃과는 또 다른 축이에요 — 하나는 OpenAI 서버 쪽 학습, 다른 하나는 내 PC에 파일이 쌓이는지예요.
+
+실무에서는 이렇게 나눠 두는 편이 맞다고 봐요.
+
+1. 평소: Data controls에서 학습 끄기 (개인 Free/Plus/Pro)
+2. 민감한 한 턴: Temporary Chat + Unpersonalized
+3. Codex 클라우드 환경: Include environments 확인
+4. 로컬 Codex: 필요하면 history persistence를 `none`으로
+
+광고·요금제별로 프라이버시 상품이 갈리는 큰 그림은 [광고 vs 프라이버시 칼럼](/posts/2026-08-20-chatgpt-ads-vs-privacy)에 적어 둔 적이 있어요. 오늘 글은 그중에서도 “지금 토글을 어디에 두나”에만 초점을 맞춰요.
+
+## 자주 묻는 질문
+
+### 학습을 끄면 이전 대화도 학습에서 빠지나요?
+
+헬프는 <strong>새 대화·작업</strong>부터라고 적어요. 과거 데이터 처리까지 자동 소급한다고 약속하지는 않아요. 지우고 싶으면 채팅 삭제·계정 삭제·Privacy Portal 요청을 따로 봐야 해요.
+
+### Plus만 해당하나요?
+
+아니요. Free·Plus·Pro 개인 워크스페이스가 기본 켜짐이고 끌 수 있어요. Business·Enterprise·Edu·Healthcare는 기본이 학습 미사용이에요.
+
+### Codex CLI만 쓰고 ChatGPT 웹을 안 열어도 되나요?
+
+학습 토글은 ChatGPT Data controls(또는 Privacy Portal)에 있어요. Codex만 쓰는 사람도 한 번은 웹·앱 설정이나 Portal을 열어 확인하는 게 맞아요. Include environments는 Codex settings 쪽이에요.
+
+### 메모리만 끄면 학습도 같이 꺼지나요?
+
+아니요. Memory와 Improve the model for everyone는 별개예요. 둘 다 끄고 싶으면 각각 꺼야 해요.
+
+---
+
+참고 문서: [Data controls in ChatGPT](https://help.openai.com/en/articles/7730893-data-controls-faq), [How your data is used to improve model performance](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance), [Memory in ChatGPT](https://help.openai.com/en/articles/8590148-memory-in-chatgpt), [Temporary chat in ChatGPT](https://help.openai.com/en/articles/8914046-temporary-chat-in-chatgpt), [Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-icodex-in-chatgpt), [정책 페이지(How your data is used)](https://openai.com/policies/how-your-data-is-used-to-improve-model-performance/)
