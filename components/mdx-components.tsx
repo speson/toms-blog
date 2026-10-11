@@ -2,9 +2,11 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import Image from "next/image";
 import { CodeBlock } from "./code-block";
+import { InArticleAd } from "./ad-unit";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    InArticleAd,
     h1: ({ children, id }) => (
       <h1
         id={id}

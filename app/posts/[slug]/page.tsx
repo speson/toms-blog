@@ -6,6 +6,7 @@ import { MDXContent } from "@/components/mdx-content";
 import {
   AdUnit,
   ArticleJsonLd,
+  SidebarAd,
   AuthorBox,
   BreadcrumbJsonLd,
   TableOfContents,
@@ -135,7 +136,7 @@ export default async function PostPage({ params }: PostPageProps) {
         ]}
       />
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
+        <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_300px]">
           <article>
             <div className="relative mb-8 aspect-[1200/630] w-full overflow-hidden rounded-xl">
               <Image
@@ -274,7 +275,12 @@ export default async function PostPage({ params }: PostPageProps) {
           </article>
 
           <aside className="hidden lg:block">
-            <TableOfContents />
+            {/* xl+: TOC and a 300px ad share one sticky stack in the right
+                gutter, so they never overlap each other or the article. */}
+            <div className="xl:sticky xl:top-24 xl:space-y-6 xl:[&>nav]:static xl:[&>nav]:max-h-[calc(100vh-27rem)]">
+              <TableOfContents />
+              <SidebarAd />
+            </div>
           </aside>
         </div>
       </div>
