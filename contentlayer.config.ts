@@ -2,6 +2,7 @@ import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { rehypeInArticleAds } from "./lib/rehype/in-article-ads";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -128,6 +129,8 @@ export default makeSource({
           keepBackground: true,
         },
       ],
+      // Must run last: decides placement using the final top-level nodes.
+      rehypeInArticleAds,
     ],
   },
 });

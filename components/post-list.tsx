@@ -1,4 +1,7 @@
+import { Fragment } from "react";
 import { PostCard } from "./post-card";
+import { InFeedAd } from "./ad-unit";
+import { IN_FEED_EVERY_N_POSTS } from "@/lib/ads";
 import type { Post } from "contentlayer/generated";
 
 interface PostListProps {
@@ -22,8 +25,13 @@ export function PostList({ posts }: PostListProps) {
 
   return (
     <div className="space-y-4">
-      {posts.map((post) => (
-        <PostCard key={post.slug} post={post} />
+      {posts.map((post, i) => (
+        <Fragment key={post.slug}>
+          <PostCard post={post} />
+          {(i + 1) % IN_FEED_EVERY_N_POSTS === 0 && i < posts.length - 1 && (
+            <InFeedAd />
+          )}
+        </Fragment>
       ))}
     </div>
   );

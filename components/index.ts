@@ -1,4 +1,4 @@
-export { AdUnit } from "./ad-unit";
+export { AdUnit, InArticleAd, InFeedAd, SidebarAd } from "./ad-unit";
 export { Header } from "./header";
 export { Footer } from "./footer";
 export { PostCard } from "./post-card";
