@@ -1,102 +1,103 @@
 ---
-title: "GPT-6 vs Claude Sonnet 5 vs Gemini 3.8 비교 — API 가격·용도별 추천 (2026년 9월)"
+title: "2026 AI 모델 비교: ChatGPT·Claude·Gemini 차이와 구독 가격, 무엇을 쓸까"
 thumbnail: "/thumbnails/ai-model-comparison-2026.png"
-description: "GPT-6(Astra·Sol·Luna), 클로드(Claude) Opus 5.5·Sonnet 5, 제미나이(Gemini) 3.8 Flash의 API 가격을 2026년 9월 공식 가격표로 다시 확인해 한 표로 비교했어요. 코딩, 대량 처리, 저예산 등 용도별로 어떤 AI 모델을 고르면 좋은지도 추천해요."
+description: "2026년 AI 모델 비교. 챗GPT(ChatGPT), 클로드(Claude), 제미나이(Gemini)의 차이와 무료·월 20달러·상위 요금제 구독 가격, 최신 모델(GPT-6, Claude Opus 5.5·Sonnet 5.5, Gemini 3.8 Flash), 용도별 추천을 2026년 10월 공식 가격표 기준으로 정리했어요."
 date: "2026-02-19T17:00:00"
-updatedAt: "2026-09-27"
+updatedAt: "2026-10-11"
 tags: ["GPT-5", "Claude", "Gemini", "모델비교", "분석"]
 source: "original"
 sourceUrl: ""
 category: "by-tom"
-tldrVerdict: "기본값은 중간 가격대 모델(Claude Sonnet 5, GPT-6 Sol)로 두고 어려운 작업만 상위 모델로 올리는 게 맞다고 봐요. 대량 처리는 Luna와 Gemini Flash 계열이 가장 싸요."
+tldrVerdict: "대부분은 월 20달러 요금제 하나면 충분하고, 고르는 기준은 쓰는 도구예요. 저는 문서·이미지는 ChatGPT, 코딩은 Claude, 구글 앱은 Gemini를 먼저 권해요."
 draft: false
 ---
 
-9월에 OpenAI가 GPT-6 제품군을 내고, Anthropic도 Claude Opus 5.5를 내면서 AI 모델 가격표가 또 바뀌었어요. 저는 이제 가장 똑똑한 모델을 찾기보다 기본으로 켜 둘 모델을 고르는 게 더 중요한 결정이라고 봐요. 이 글에서는 주요 모델의 API 가격을 공식 가격표로 비교하고, 용도별로 무엇을 고르면 되는지 정리해요.
+ChatGPT, Claude, Gemini 중 무엇을 써야 할지 고민하는 분이 많아요. 저는 세 서비스의 기본 성능 차이보다 내가 매일 쓰는 도구와 얼마나 잘 붙는지가 더 중요한 기준이라고 봐요. 이 글을 읽으면 세 서비스의 구독 가격, 지금 쓸 수 있는 최신 모델, 용도별로 무엇을 고르면 되는지 알 수 있어요.
 
-이 글은 2월에 처음 썼고, 2026년 9월 27일 기준으로 전면 갱신했어요. 7월 판에서는 Claude Sonnet 5의 $2/$10을 8월 31일까지의 프로모션이라고 썼어요. 그런데 Anthropic이 8월 10일 이 가격을 정가로 확정했어요.
+가격은 2026년 10월 11일 각 회사 공식 페이지에서 확인한 미국 달러 기준이에요. 한국 결제 화면은 세금과 환율 때문에 다를 수 있어요. 이 글은 2월에 처음 썼고, 9월 판의 API 가격 위주 설명을 일반 사용자용 비교로 바꿨어요.
 
-## 2026년 9월 AI 모델 API 가격은 얼마인가요?
+## ChatGPT, Claude, Gemini 구독 가격은 얼마인가요?
 
-아래 표는 각 사 공식 가격 페이지에서 확인한 표준 처리 가격이에요. 단위는 100만 토큰당 입력/출력 달러예요 (2026년 9월 27일 확인).
+세 서비스 모두 무료 요금제가 있고, 월 20달러 안팎에서 맞붙어요.
 
-| 모델 | 회사 | API 가격 (입력 / 출력) | 자리 |
+| 구간 | ChatGPT | Claude | Gemini (Google AI) |
 | --- | --- | --- | --- |
-| GPT-6 Astra | OpenAI | $10 / $50 | 최상위 |
-| GPT-6 Sol | OpenAI | $2 / $10 | 복잡한 코딩·에이전트 작업 |
-| GPT-6 Luna | OpenAI | $0.10 / $0.50 | 대량 처리 |
-| GPT-5.6 Sol | OpenAI | $4 / $20 (프로모션) | 이전 세대 상위 |
-| GPT-5.6 Terra | OpenAI | $2 / $12 | 이전 세대 중형 |
-| GPT-5.6 Luna | OpenAI | $0.20 / $1.20 | 이전 세대 경량 |
-| Claude Fable 5.1 | Anthropic | $10 / $50 | 최상위, 긴 추론 작업 |
-| Claude Opus 5.5 | Anthropic | $4 / $20 | 오래 걸리는 에이전트 코딩 |
-| Claude Sonnet 5 | Anthropic | $2 / $10 | 기본값 자리 |
-| Claude Haiku 4.5 | Anthropic | $1 / $5 | 경량 |
-| Gemini 3.1 Pro (Preview) | Google | $2 / $12 | Pro 라인 |
-| Gemini 3.8 Flash | Google | $0.75 / $3.75 (12월 31일까지) | 긴 코딩·에이전트 작업 |
-| Gemini 3.1 Flash-Lite | Google | $0.25 / $1.50 | 초저가 |
+| 무료 | Free | Free | 무료 |
+| 저가 | Go $8 | 없음 | AI Plus $4.99 |
+| 표준 | Plus $20 | Pro $20 (연간 결제 시 월 $17) | AI Pro $19.99 |
+| 상위 | Pro $100 / $200 / $500 | Max $100 (5배) / $200 (20배) | AI Ultra $99.99 / $199.99 |
 
-표를 읽을 때 조심할 점이 세 가지 있어요.
+몇 가지 조심할 점이 있어요.
 
-- <strong>기한이 있는 가격</strong>: GPT-5.6 Sol 가격은 최소 11월 21일까지 유지되는 프로모션이에요. Gemini 3.8 Flash는 2027년 1월부터 $1.50/$7.50으로 올라요.
-- <strong>토크나이저 차이</strong>: Claude 4.7 이후 모델은 새 토크나이저(글을 토큰으로 나누는 규칙)를 써요. 같은 글도 약 30% 더 많은 토큰으로 집계된다고 공식 문서에 적혀 있어요.
-- <strong>Opus 세대</strong>: Opus 5와 Opus 4.8은 $5/$25로 남아 있어요. 새로 시작한다면 더 싸고 새로운 Opus 5.5가 먼저예요.
+- ChatGPT Go는 광고가 붙을 수 있어요. Go, Plus, Pro는 월 결제만 돼요.
+- ChatGPT Pro 세 등급 중 가장 빠른 응답 모드(Ultrafast)는 $500 등급에만 있어요.
+- Claude Max와 Google AI Ultra의 "5배·20배"는 바로 아래 요금제 대비 사용량이에요.
 
-## 코딩에는 어떤 AI 모델이 좋나요?
+저는 대부분의 사람에게 월 20달러 요금제 하나면 충분하다고 봐요. 상위 요금제는 하루 종일 에이전트를 돌리거나 영상을 많이 만드는 경우에만 의미가 있어요.
 
-코딩 기본값 자리에서는 Claude Sonnet 5와 GPT-6 Sol이 같은 $2/$10에 맞붙어요. Anthropic은 Sonnet 5가 일부 설정에서 Opus 4.8 수준에 맞먹는다고 발표했어요. OpenAI는 GPT-6 Sol을 복잡한 코딩과 에이전트 작업용 모델로 소개해요.
+## 지금 쓸 수 있는 최신 모델은 무엇인가요?
 
-오래 걸리는 큰 작업은 한 단계 위를 볼 만해요. Anthropic은 Opus 5.5가 코드베이스 전체 마이그레이션 같은 긴 작업에 특히 강하다고 설명해요. 입력·출력 단가는 Opus 5보다 20% 낮아요.
+2026년 10월 기준 각 서비스의 주력 모델은 이래요.
 
-가장 어려운 문제는 GPT-6 Astra나 Claude Fable 5.1까지 올릴 수 있어요. 다만 둘 다 $10/$50이라 기본값으로 켜 두기에는 비싸요.
+| 서비스 | 무료에서 쓰는 모델 | 유료에서 추가되는 모델 |
+| --- | --- | --- |
+| ChatGPT | GPT-6 Luna | GPT-6.1 Sol, GPT-6 Astra |
+| Claude | Sonnet, Haiku | Opus 5.5 (Pro부터), Fable 5.1 (Max는 주간 한도의 50%까지) |
+| Gemini | 3.5 Flash-Lite | 3.8 Flash, 3.1 Pro |
 
-저는 기본값 하나와 올려 쓸 모델 하나를 정해 두는 구성이 가장 합리적이라고 봐요. 예를 들어 평소엔 Sonnet 5나 GPT-6 Sol을 쓰고, 막히는 작업만 Opus 5.5나 Astra로 넘기는 식이에요.
+모델 이름이 자주 바뀌어서 헷갈리기 쉬워요. 각 회사의 최신 정보는 앱의 모델 선택 메뉴에서 바로 확인하는 게 가장 정확해요.
+
+## ChatGPT, Claude, Gemini는 무엇이 다른가요?
+
+세 서비스 모두 질문 답변, 글쓰기, 파일 분석, 웹 검색은 기본으로 돼요. 차이는 함께 딸려 오는 도구에서 나요.
+
+| 서비스 | 강점이 드러나는 곳 (공식 요금제 페이지 기준) |
+| --- | --- |
+| ChatGPT | 이미지 생성, 음성 대화, 딥 리서치, Codex, 엑셀·워드·구글 시트 확장 |
+| Claude | 코딩 도구 Claude Code, 크롬·마이크로소프트 365 연동, 문서·슬라이드 만들기 |
+| Gemini | Gmail·Docs 등 구글 앱 안에서 바로 쓰기, 영상 생성, 5TB 클라우드 저장공간(AI Pro) |
+
+용도별로 정리하면 저는 이렇게 권해요.
+
+- <strong>문서 정리와 이미지, 음성까지 한 앱에서</strong>: ChatGPT Plus
+- <strong>코딩과 긴 글 작업</strong>: Claude Pro. Claude Code가 유료 요금제에 포함돼요.
+- <strong>Gmail과 구글 드라이브를 매일 쓴다면</strong>: Google AI Pro. 저장공간까지 생각하면 가성비가 좋아요.
 
 참고로 이 블로그는 Claude Code의 도움을 받아 만들고 있어요. 그래서 Claude 쪽에 더 익숙하다는 점은 밝혀 둘게요.
 
-## 대량 처리와 저예산에는 어떤 모델이 싼가요?
+## 개발자라면 API 가격은 어떻게 다른가요?
 
-작업이 단순하고 양이 많다면 가격 차이가 훨씬 커져요. 용도별로 고르면 이래요.
+앱 구독과 API(프로그램에서 모델을 부르는 방식) 요금은 따로예요. 주요 모델의 표준 가격은 이래요. 단위는 100만 토큰당 입력/출력 달러예요 (2026년 10월 11일 확인).
 
-| 작업 | 추천 모델 | 이유 |
-| --- | --- | --- |
-| 단순 질의응답·요약 | GPT-6 Luna | $0.10 / $0.50, 이 표에서 가장 쌈 |
-| 분류·번역 같은 대량 작업 | Gemini 3.1 Flash-Lite | $0.25 / $1.50 |
-| 에이전트 실행 | Gemini 3.8 Flash | 연말까지 $0.75 / $3.75 |
-| 경량 에이전트·분류 | Claude Haiku 4.5 | $1 / $5, 배치 처리 시 절반 |
+| 모델 | API 가격 (입력 / 출력) |
+| --- | --- |
+| GPT-6 Astra | $10 / $50 |
+| GPT-6.1 Sol | $2 / $10 |
+| Claude Fable 5.1 | $10 / $50 |
+| Claude Opus 5.5 | $4 / $20 |
+| Claude Sonnet 5.5 | $2 / $10 |
+| Gemini 3.8 Flash | $0.75 / $3.75 (12월 31일까지) |
 
-비용을 더 줄이는 방법도 있어요. 결과를 바로 받지 않아도 되면 배치(Batch) 처리를 쓰세요. OpenAI와 Anthropic 모두 표준 가격의 절반이에요.
-
-같은 문서를 반복해서 넣는다면 프롬프트 캐싱(앞부분을 저장해 두고 재사용하는 기능)도 챙기세요. 캐시에서 읽는 입력은 표준 입력보다 훨씬 싸요.
-
-## 이미지·영상과 긴 문서는 어떻게 고르나요?
-
-이미지·영상까지 다루는 멀티모달 작업은 Google 생태계가 가장 넓어요. Gemini Omni Flash는 Gemini API 유료 등급에서 정식 제공되는 영상 생성·편집 모델이에요. 입력은 100만 토큰당 $1.50이에요.
-
-긴 문서는 컨텍스트(한 번에 넣을 수 있는 입력 길이)와 요금 구조를 같이 봐야 해요. Claude 4.6 이후 모델은 100만 토큰 컨텍스트를 추가 요금 없이 써요. 반면 OpenAI GPT-6는 긴 컨텍스트 구간에서 단가가 올라가요. GPT-6 Sol은 이 구간에서 입력이 $4예요.
-
-그래도 컨텍스트가 크다고 다 넣지는 마세요. 긴 입력은 비용이 커지고, 중간 내용을 놓치는 문제(lost in the middle)도 완전히 사라지지 않았어요. 필요한 부분만 발췌해 넣는 쪽이 대부분 더 정확하고 싸요.
-
-결국 고를 건 세 개예요. 기본값 하나, 올려 쓸 모델 하나, 대량 처리용 하나예요. 가격표는 계속 바뀌니 결제 전엔 공식 가격 페이지를 다시 확인하세요.
+Gemini 3.8 Flash는 2027년부터 $1.50 / $7.50으로 올라요. 저는 기본값은 중간 가격대 모델로 두고, 막히는 작업만 상위 모델로 올리는 구성이 합리적이라고 봐요.
 
 ## 자주 묻는 질문
 
-### GPT-6 API 가격은 얼마인가요?
+### 무료로 쓰기에 가장 좋은 AI는 무엇인가요?
 
-2026년 9월 기준 100만 토큰당 가격이에요. GPT-6 Astra는 $10/$50, Sol은 $2/$10이에요. Luna는 $0.10/$0.50이에요.
+세 서비스 모두 무료 요금제가 있어요. 무료에서도 웹 검색과 파일 업로드가 되니, 자주 쓰는 앱에 맞춰 고르면 돼요.
 
-### Claude Sonnet 5 가격이 9월에 올랐나요?
+### ChatGPT Plus와 Claude Pro 중 무엇이 나은가요?
 
-아니요. 원래 9월 1일부터 $3/$15로 오를 예정이었어요. Anthropic이 8월 10일 $2/$10을 정가로 확정하면서 인상은 취소됐어요.
+가격은 둘 다 월 20달러예요. 저는 이미지·음성이 중요하면 ChatGPT Plus, 코딩이 중요하면 Claude Pro를 권해요.
 
-### Claude Opus 5.5와 Opus 5는 무엇이 다른가요?
+### 한국에서도 같은 가격인가요?
 
-Opus 5.5의 입력·출력 단가는 $4/$20으로 Opus 5보다 20% 낮아요. Anthropic은 자체 테스트에서 일반 작업 비용이 40% 줄었다고 밝혔어요.
+공식 가격은 미국 달러 기준이에요. 한국에서는 부가세와 환율이 붙어 결제 금액이 달라질 수 있어요.
 
-### 가장 싼 AI 모델 API는 무엇인가요?
+### 9월 판의 Claude Sonnet 5는 어떻게 됐나요?
 
-이 글의 표 기준으로는 GPT-6 Luna가 가장 싸요. 품질이 더 필요하면 Gemini Flash 계열이나 Claude Haiku 4.5를 비교해 보세요.
+지금 Claude의 최신 Sonnet은 Sonnet 5.5예요. Sonnet 5는 이전 세대 모델로 분류됐고, API 가격은 둘 다 $2 / $10이에요.
 
 ---
 
-근거가 된 자료: [OpenAI API 가격](https://developers.openai.com/api/docs/pricing), [GPT-5.6 Terra 모델 페이지](https://developers.openai.com/api/docs/models/gpt-5.6-terra), [GPT-5.6 Luna 모델 페이지](https://developers.openai.com/api/docs/models/gpt-5.6-luna), [Claude API 가격](https://platform.claude.com/docs/en/about-claude/pricing), [Introducing Claude Opus 5.5](https://www.anthropic.com/news/claude-opus-5-5), [Introducing Claude Sonnet 5 (8/10 가격 변경 기록 포함)](https://www.anthropic.com/news/claude-sonnet-5), [Gemini API 가격](https://ai.google.dev/gemini-api/docs/pricing), [GPT-6 Astra 발표](https://openai.com/index/gpt-6-astra/)
+근거 (2026년 10월 11일 확인): [ChatGPT 요금제](https://chatgpt.com/pricing), [About ChatGPT Pro tiers](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers), [What is ChatGPT Go?](https://help.openai.com/en/articles/11989085), [Claude 요금제](https://claude.com/pricing), [Google AI 구독](https://gemini.google/subscriptions/), [OpenAI API 가격](https://developers.openai.com/api/docs/pricing), [Gemini API 가격](https://ai.google.dev/gemini-api/docs/pricing)
