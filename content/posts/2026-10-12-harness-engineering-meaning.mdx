@@ -1,0 +1,109 @@
+---
+title: "하네스 엔지니어링 뜻과 예시 — 같은 AI 모델인데 점수가 갈리는 이유"
+thumbnail: "/thumbnails/harness-engineering-meaning.png"
+description: "하네스 엔지니어링(harness engineering)이 무슨 뜻인지, 같은 모델이 하네스만 바꿔 54.8%와 99.9%로 갈린 사례, 컴팩션(compaction)과 Provider Adapter의 의미, Codex·Claude Code에서 바로 바꿀 수 있는 설정을 2026년 10월 공식 문서 기준으로 정리했어요."
+date: "2026-10-12"
+updatedAt: "2026-10-12"
+tags: ["에이전트", "Codex", "Claude Code", "가이드"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "같은 모델이라도 기억을 어떻게 넘기느냐에 따라 결과가 크게 달라져요. 그래서 AI 점수를 볼 때는 모델 이름과 하네스 이름을 같이 확인해야 한다고 봐요."
+draft: false
+---
+
+AI 코딩 에이전트는 모델 혼자 일하지 않아요. 모델을 감싸고 도구를 쥐여 주고, 기억을 관리하고, 결과를 검사하는 프로그램이 따로 있어요. 이 프로그램을 <strong>하네스(harness)</strong>라고 부르고, 이걸 설계하는 일을 하네스 엔지니어링이라고 해요.
+
+저는 2026년 들어 모델을 고르는 것만큼 하네스를 고르는 일이 결과를 좌우한다고 봐요. 이 글에서는 뜻과 구성 요소, 점수가 갈린 실제 사례, 그리고 Codex와 클로드 코드(Claude Code)에서 바로 손댈 수 있는 설정을 2026년 10월 공식 문서 기준으로 정리해요.
+
+## 하네스 엔지니어링은 무슨 뜻인가요?
+
+하네스는 원래 말에 씌우는 마구를 뜻해요. AI에서는 <strong>모델을 뺀 나머지 실행 환경 전부</strong>를 가리켜요. 모델은 다음에 올 글을 예측할 뿐이고, 실제로 파일을 읽고 명령을 실행하는 건 하네스예요.
+
+이 말이 널리 퍼진 건 OpenAI의 2026년 2월 글 [Harness engineering](https://openai.com/index/harness-engineering)부터예요. OpenAI의 한 팀이 5개월 동안 사람이 직접 쓴 코드 없이 Codex만으로 제품을 만들었어요. 그 팀은 엔지니어의 일이 코드 작성에서 <strong>환경 설계, 의도 명시, 피드백 루프 만들기</strong>로 바뀌었다고 적었어요.
+
+일이 막혔을 때 그 팀이 던진 질문도 인상적이에요. "더 열심히 해 봐"라고 시키지 않았어요. 대신 "어떤 능력이 빠졌고, 에이전트가 알아보고 지킬 수 있게 하려면 어떻게 할까?"를 물었다고 해요.
+
+하네스를 이루는 부분은 대략 이래요.
+
+| 구성 요소 | 하는 일 | 예시 |
+| --- | --- | --- |
+| 지시 파일 | 작업 규칙과 문서 위치를 알려 줌 | `AGENTS.md`, `CLAUDE.md` |
+| 도구 | 모델이 실제로 손을 쓰게 해 줌 | 셸, 브라우저, MCP 서버 |
+| 맥락 관리 | 길어진 대화를 줄이고 기억을 넘김 | 컴팩션, 메모리 |
+| 검증 | 결과가 맞는지 기계로 확인함 | 린터, 테스트, 리뷰 에이전트 |
+| 권한 | 위험한 동작을 막음 | 샌드박스, 승인 규칙 |
+
+MCP(Model Context Protocol)는 외부 도구를 AI에 연결하는 표준이에요. 린터는 코드 규칙 위반을 자동으로 찾아 주는 프로그램이에요.
+
+## 같은 모델인데 하네스만 바꾸면 얼마나 달라지나요?
+
+생각보다 많이 달라져요. 가장 분명한 사례는 ARC Prize가 9월 3일에 올린 [GPT-6 Astra의 ARC-AGI-3 결과](https://arcprize.org/blog/astra)예요. ARC-AGI-3는 처음 보는 퍼즐 게임의 규칙을 스스로 알아내야 하는 시험이에요.
+
+ARC Prize는 같은 모델을 두 가지 하네스로 돌렸어요.
+
+- <strong>Standard 하네스</strong>: 모델이 스스로 고른 메모만 다음 단계로 가져가요. 회사와 상관없이 똑같은 조건이에요.
+- <strong>Provider Adapter 하네스</strong>: 모델을 만든 회사의 기능을 그대로 써요. 요청 사이에 추론 상태를 보존하고, 대화가 길어지면 컴팩션을 써요.
+
+결과는 이렇게 갈렸어요 (Semi-Private 세트 기준).
+
+| 추론 수준 | Standard 하네스 | Provider Adapter 하네스 |
+| --- | --- | --- |
+| max | 62.7% | 98.6% |
+| high | 54.8% | 99.9% |
+
+high 기준으로 약 45%포인트 차이예요. 모델은 그대로고 하네스만 바뀌었어요. ARC Prize는 두 하네스가 모두 푼 게임만 비교하면, Adapter 쪽이 토큰을 49% 덜 썼다고도 적었어요.
+
+저는 이 표가 AI 점수를 인용할 때 하네스 이름을 같이 적어야 하는 이유를 보여준다고 봐요. ARC Prize도 앞으로 리더보드에 두 조건을 따로 표시하겠다고 밝혔어요. 이 표를 더 깊게 읽은 내용은 [점수를 올린 건 Astra가 아니라 하네스다](/posts/2026-09-07-harness-not-astra)에 있어요.
+
+## 컴팩션(compaction)은 어떻게 작동하나요?
+
+컴팩션은 대화가 길어지면 앞부분을 요약해 줄이는 기능이에요. 모델이 한 번에 볼 수 있는 글의 양에는 한계가 있어요. 이 한계를 컨텍스트 윈도우(context window)라고 불러요. 대화가 그 한계에 가까워지면 오래된 내용을 압축해서 자리를 만들어요.
+
+방식은 도구마다 달라요.
+
+- <strong>OpenAI API</strong>: 요청에 `compact_threshold`(압축을 시작할 토큰 수)를 넣으면 서버가 알아서 압축해요. 결과는 암호화된 항목으로 돌아와요. 공식 [Compaction 문서](https://developers.openai.com/api/docs/guides/compaction)는 이 항목이 사람이 읽으라고 만든 게 아니라고 적었어요.
+- <strong>Codex</strong>: `/compact`를 입력하면 지금까지의 대화를 짧은 요약으로 바꿔요.
+- <strong>클로드 코드</strong>: `/compact`에 지시를 붙일 수 있어요. 예를 들어 `/compact focus on the auth bug fix`라고 쓰면 그 내용을 중심으로 요약해요.
+
+앞의 ARC 사례에서 Provider Adapter가 쓴 게 바로 OpenAI API 방식이에요. Standard 하네스에서는 모델이 직접 쓴 메모만 남아요. Adapter에서는 서버가 압축한 추론 상태까지 다음 요청으로 넘어가요. 점수 차이의 상당 부분이 여기서 나왔다고 저는 봐요.
+
+## Codex와 Claude Code에서는 하네스를 어떻게 손보나요?
+
+하네스를 처음부터 만들 필요는 없어요. 이미 쓰는 도구의 설정만 바꿔도 하네스를 손보는 셈이에요. 효과가 큰 순서로 세 가지만 꼽을게요.
+
+<strong>1. 지시 파일은 짧은 목차로 둬요.</strong> OpenAI 팀은 거대한 `AGENTS.md` 하나에 모든 규칙을 넣었다가 실패했어요. 중요한 규칙이 묻히고, 금방 낡았다고 해요. 그래서 약 100줄짜리 목차만 남기고, 자세한 내용은 `docs/` 폴더로 옮겼어요.
+
+<strong>2. 압축 시점을 직접 정해요.</strong> Codex는 `~/.codex/config.toml`에서 자동 압축이 시작될 토큰 수를 정할 수 있어요. 값을 비워 두면 모델 기본값을 써요.
+
+```toml
+# ~/.codex/config.toml
+model_auto_compact_token_limit = 64000
+```
+
+64000은 공식 샘플 설정에 적힌 예시 값이에요. 숫자를 낮출수록 더 일찍 압축해요. 이 파일의 위치와 다른 설정은 [Codex config.toml 위치와 핵심 설정](/posts/2026-09-28-codex-config-toml-guide)에 정리해 뒀어요.
+
+클로드 코드는 `/autocompact 500k`처럼 입력해서 압축 시점을 바꿔요. v2.1.221 이상에서 쓸 수 있고, 값은 사용자 설정에 저장돼요. `/autocompact auto`를 입력하면 모델 기본값으로 돌아가요.
+
+<strong>3. 꼭 지킬 규칙은 대화가 아니라 파일에 둬요.</strong> 압축이 일어나면 대화 속 세부 내용은 요약으로 바뀌어요. 클로드 코드의 [컨텍스트 문서](https://code.claude.com/docs/en/context-window)에 따르면, 프로젝트 루트의 `CLAUDE.md`는 압축 뒤 디스크에서 다시 읽어요. 반면 하위 폴더의 `CLAUDE.md`는 다른 대화와 함께 요약돼요. 압축 뒤에도 남아야 하는 규칙이라면 루트 `CLAUDE.md`로 옮기는 게 안전해요.
+
+저는 이 세 가지 모두 결국 같은 원칙이라고 생각해요. 에이전트가 볼 수 없는 정보는 없는 것과 같다는 거예요. OpenAI 팀도 슬랙이나 사람 머릿속에만 있는 합의는 에이전트에게 보이지 않는다고 적었어요.
+
+## 자주 묻는 질문
+
+### 하네스와 에이전트는 같은 말인가요?
+
+아니요. 에이전트는 모델과 하네스가 함께 일하는 전체를 말해요. 하네스는 그중 모델을 뺀 부분이에요.
+
+### 프롬프트 엔지니어링과는 무엇이 다른가요?
+
+프롬프트 엔지니어링은 모델에 넣는 문장을 다듬는 일이에요. 하네스 엔지니어링은 그 문장을 포함해 도구, 기억, 검증까지 실행 환경 전체를 설계하는 일이에요.
+
+### 컴팩션을 하면 앞의 대화는 사라지나요?
+
+통째로 사라지지는 않고 요약으로 바뀌어요. 다만 요약에서 세부 사항이 빠질 수 있어요. 그래서 중요한 규칙과 계획은 파일로 남겨 두는 게 좋아요.
+
+---
+
+참고 문서: [Harness engineering (OpenAI)](https://openai.com/index/harness-engineering), [OpenAI's GPT-6 Astra on ARC-AGI-3 (ARC Prize)](https://arcprize.org/blog/astra), [Compaction (OpenAI API)](https://developers.openai.com/api/docs/guides/compaction), [Codex Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference), [Codex slash commands](https://learn.chatgpt.com/docs/developer-commands?surface=cli), [Claude Code: Explore the context window](https://code.claude.com/docs/en/context-window), [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference)
