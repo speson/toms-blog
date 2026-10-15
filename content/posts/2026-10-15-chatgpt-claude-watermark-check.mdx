@@ -1,0 +1,99 @@
+---
+title: "ChatGPT·Claude 워터마크 확인 방법 — 한국에서 쓴 글에도 찍힐까"
+thumbnail: "/thumbnails/chatgpt-claude-watermark-check.png"
+description: "챗GPT(ChatGPT)와 클로드(Claude)의 AI 워터마크를 글과 이미지로 나눠 정리했어요. 한국에서 쓴 글에도 워터마크가 들어가는지, 누가 어디서 확인할 수 있는지, 확인 결과를 어디까지 믿어도 되는지를 2026년 10월 공식 문서 기준으로 담았어요."
+date: "2026-10-15"
+updatedAt: "2026-10-15"
+tags: ["ChatGPT", "Anthropic", "규제", "가이드"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "한국에서 쓴 Claude 글에는 워터마크가 들어가고, ChatGPT 글에는 아직 기본으로 안 들어가요. 일반인이 직접 확인할 수 있는 건 이미지 파일뿐이라고 봐요."
+draft: false
+---
+
+챗GPT(ChatGPT)와 클로드(Claude)가 만든 글과 이미지에는 이제 눈에 안 보이는 표시가 들어가요. 그런데 저는 "워터마크가 있으니 AI 글을 확인할 수 있다"는 말이 절반만 맞다고 봐요. 이 글을 읽으면 두 서비스에서 글과 이미지에 각각 무엇이 찍히는지, 누가 어디서 확인할 수 있는지 알 수 있어요.
+
+결론부터 표로 정리할게요 (2026년 10월 15일 기준).
+
+| 구분 | ChatGPT (OpenAI) | Claude (Anthropic) |
+| --- | --- | --- |
+| 글 워터마크 | EU 사용자에게만 순차 적용 | 전 세계 기본 적용 |
+| 글 확인 도구 | 승인된 연구 기관만 | EU 법상 대상 기관·기업만 |
+| 이미지 표시 | C2PA 메타데이터 + SynthID 워터마크 | C2PA 메타데이터만 |
+| 이미지 확인 도구 | [openai.com/verify](https://openai.com/research/verify/), 누구나 | [claude.com/check-content](https://claude.com/check-content), 누구나 |
+
+C2PA는 파일에 "어떤 도구로 만들었는지"를 서명해서 붙이는 업계 표준 메타데이터예요. SynthID는 구글 딥마인드가 만든 기술로, 이미지 픽셀 자체에 신호를 심어요.
+
+## 한국에서 ChatGPT로 쓴 글에도 워터마크가 들어가나요?
+
+2026년 10월 기준으로는 기본으로 들어가지 않아요. OpenAI는 10월 5일 [EU 텍스트 출처 표시 방침](https://openai.com/index/eu-text-provenance/)을 발표했어요. 여기서 글 워터마크를 <strong>EU에 있는 ChatGPT·Codex 사용자에게만</strong> 몇 주에 걸쳐 넣겠다고 밝혔어요.
+
+OpenAI의 글 워터마크 기술 이름은 <strong>textGrain</strong>이에요. 모델이 비슷한 후보 단어 중 하나를 무작위로 고를 때, 그 무작위성을 비밀 키로 살짝 조정해요. 숨은 문자나 공백을 넣지 않아서 읽는 사람은 차이를 알 수 없어요.
+
+API(개발자가 프로그램에서 모델을 부르는 통로)는 전 세계에서 쓸 수 있지만 기본은 꺼져 있어요. 직접 켜려면 아래 경로로 들어가요.
+
+- 조직 전체: Organization settings → Data controls → Text provenance
+- 프로젝트 하나만: Project Settings → Text provenance
+- 화면에서 Allow text watermarking을 켜고, 적용할 모델을 고른 뒤 Save를 눌러요.
+
+Claude는 반대예요. Anthropic은 지역을 나눌 방법이 아직 없다며 <strong>전 세계에 기본 적용</strong>했어요. [Claude 헬프 문서](https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content)에 따르면 Claude 앱, API, 클로드 코드(Claude Code)까지 지원 모델의 출력이면 모두 들어가요.
+
+이 차이가 가장 헷갈리는 부분이에요. 같은 한국 사용자가 같은 글을 써도, 어느 AI를 썼느냐에 따라 표시 유무가 갈려요. 두 회사가 같은 EU 규정을 따르면서도 적용 범위를 다르게 고른 결과예요.
+
+## AI가 쓴 글의 워터마크는 어디서 확인하나요?
+
+일반 사용자가 쓸 수 있는 공식 도구는 두 회사 모두 없어요.
+
+- <strong>ChatGPT 글</strong>: openai.com/verify는 글을 지원하지 않아요. 글 감지기는 승인된 연구·학술 기관만 신청할 수 있어요. OpenAI 헬프 문서는 학생 과제의 AI 사용 확인 같은 학업 윤리 용도를 현재 대상에서 뺀다고 적었어요.
+- <strong>Claude 글</strong>: 감지 API(detection API)가 비공개 프리뷰예요. EU 법이 정한 규제 기관, 언론, 팩트체커, 연구자, 교육 기관 등이 신청할 수 있어요. 개인은 관심 등록만 가능해요.
+
+그래서 검색에 나오는 "ChatGPT 워터마크 확인 사이트"는 조심해서 봐야 해요. 두 회사의 워터마크는 비밀 키가 있어야 확인돼요. 숨은 문자도 넣지 않는다고 공식 문서에 적혀 있어요. 그러니 이런 사이트가 찾는 건 공식 워터마크가 아니에요. 대개 보이지 않는 특수문자나 AI 특유의 문체를 보고 추정하는 다른 방식이에요.
+
+## ChatGPT·Claude 이미지는 어떻게 확인하나요?
+
+이미지는 누구나 무료로 확인할 수 있어요. 순서는 이래요.
+
+1. 가능하면 <strong>처음 내려받은 원본 파일</strong>을 준비해요. 자르거나 다른 형식으로 바꾸지 않은 파일이 가장 정확해요.
+2. ChatGPT·Codex 이미지라면 [openai.com/verify](https://openai.com/research/verify/)에 올려요. PNG, JPG, WEBP와 일부 오디오 파일을 받아요.
+3. Claude가 만든 파일이라면 [claude.com/check-content](https://claude.com/check-content)에 올려요. 이미지, 영상, 오디오를 100MB까지 받아요. 이 도구는 브라우저 안에서만 돌아서 파일이 서버로 가지 않아요.
+4. 결과에 표시가 나오면 그 회사 도구가 만들었거나 거쳤을 가능성이 높다는 뜻이에요.
+
+여기서 두 회사의 차이가 다시 나와요. ChatGPT 이미지에는 메타데이터와 SynthID가 함께 들어가요. 메타데이터는 캡처하거나 형식을 바꾸면 지워질 수 있어요. 그래도 픽셀에 심은 SynthID는 남아 있을 가능성이 있어요.
+
+Claude 파일에는 메타데이터만 붙어요. Anthropic도 캡처, 다시 저장, 형식 변환을 거치면 표시가 사라질 수 있다고 적었어요. 저는 SNS에서 돌아다니는 캡처본이라면 Claude 쪽 확인 결과는 거의 기대하지 않는 게 맞다고 봐요. Codex에서 `$imagegen`으로 이미지를 만드는 기본 방법은 [Codex 메모리·이미지 생성 가이드](/posts/2026-07-28-codex-memory-image-guide)에 정리해 뒀어요.
+
+## 워터마크가 안 나오면 사람이 쓴 글인가요?
+
+아니에요. 두 회사 모두 "감지 안 됨"이 사람이 썼다는 증거가 아니라고 분명히 적었어요. OpenAI가 공개한 실험 수치를 보면 이유가 보여요. 아래는 오탐률(워터마크가 없는데 있다고 잘못 판정하는 비율)을 1%로 맞췄을 때의 검출률이에요.
+
+| 조건 | 검출률 |
+| --- | --- |
+| 200토큰 분량 글 | 약 80% |
+| 400토큰 분량 글 | 약 95% |
+| 400토큰 글에서 단어 25%를 동의어로 바꿈 | 약 17% |
+
+토큰은 모델이 글을 자르는 단위예요. 영어 기준 200토큰은 약 150단어예요. 수학처럼 단어를 고를 여지가 적은 글은 검출률이 훨씬 낮았다고 해요. 코드도 마찬가지예요.
+
+한국어는 더 불확실해요. OpenAI의 언어별 실험은 EU 공식 언어 24개만 다뤘어요. 한국어 검출률은 공개된 수치가 없어요. 제가 확인한 Anthropic 공식 문서에는 Claude 워터마크의 정확도 수치가 없었어요.
+
+그래서 저는 지금 워터마크를 "누가 썼는지 가리는 판정 도구"로 쓰기는 이르다고 봐요. 내가 직접 쓴 글이라는 걸 보여야 하는 상황이라면, 초안과 수정 기록을 남겨 두는 편이 훨씬 확실해요. 워터마크 원리를 더 자세히 알고 싶다면 [Claude 워터마크 확인 방법과 한계](/posts/2026-08-20-claude-watermark-works)를 함께 보세요.
+
+## 자주 묻는 질문
+
+### 복사해서 붙여넣으면 워터마크가 사라지나요?
+
+아니요. 워터마크는 단어 선택 자체에 들어 있어서 복사·붙여넣기로는 안 사라져요. 숨은 문자가 없으니 특수문자를 지워도 달라지지 않아요.
+
+### 워터마크로 내가 누군지 알 수 있나요?
+
+두 회사 모두 아니라고 밝혔어요. 워터마크에는 사용자, 조직, 프롬프트, 대화 정보가 들어 있지 않아요.
+
+### ChatGPT 감지 도구로 Claude 글도 확인되나요?
+
+안 돼요. 회사마다 키와 방식이 달라서 각자 자기 모델의 표시만 찾아요. 다른 회사 AI가 쓴 글은 감지 결과가 나오지 않아요.
+
+---
+
+참고 문서 (2026년 10월 15일 확인): [Our approach to EU text provenance rules (OpenAI)](https://openai.com/index/eu-text-provenance/), [Provenance signals in OpenAI-generated content (OpenAI Help)](https://help.openai.com/en/articles/8912793-provenance-signals-in-openai-generated-content), [Verify OpenAI-generated content](https://openai.com/research/verify/), [How Claude marks AI-generated content (Claude Help)](https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content), [How Claude's text watermark works (Anthropic)](https://www.anthropic.com/news/claude-text-watermark), [Claude Content Checker](https://claude.com/check-content)
