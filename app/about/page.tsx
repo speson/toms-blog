@@ -3,7 +3,7 @@ import { BreadcrumbJsonLd, ProfilePageJsonLd } from "@/components";
 
 const BASE_URL = "https://toms-blog.co.kr";
 const DESCRIPTION =
-  "Tom's Blog — AI 뉴스와 개발 트렌드를 개발자 관점에서 분석하는 기술 블로그. 운영자, 콘텐츠 제작 방식, 편집 원칙을 소개합니다.";
+  "Tom's Blog 소개 — Codex·ChatGPT·Claude Code·OpenCode 설정과 가격, 문제 해결 가이드를 공식 문서로 확인해 쓰는 블로그예요. 운영자, 글 만드는 방식, 광고 정책, 연락처를 안내해요.";
 
 export const metadata: Metadata = {
   title: "소개",
@@ -53,179 +53,53 @@ export default function AboutPage() {
             소개
           </h1>
           <p className="text-lg text-zinc-400">
-            AI 코딩 도구, 모델 비교, 개발 워크플로우 변화를 직접 경험하며
-            기록하는 개발자 Tom의 프로필 페이지입니다.
+            Codex, ChatGPT, Claude Code, OpenCode 같은 AI 코딩 도구의 설정, 가격,
+            문제 해결을 쉽게 정리하는 개발자 Tom의 블로그예요.
           </p>
         </div>
 
         <div className="space-y-8">
-          {/* Tom 소개 */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-4 text-xl font-semibold text-white">
-              안녕하세요, Tom입니다
-            </h2>
+            <h2 className="mb-4 text-xl font-semibold text-white">안녕하세요, Tom입니다</h2>
             <div className="space-y-3 leading-relaxed text-zinc-400">
-              <p>
-                AI 코딩 도구와 함께 일하는 개발자예요. 매일 Claude Code,
-                OpenCode, Oh My OpenCode 같은 도구들을 사용하면서 AI가 개발
-                워크플로우를 어떻게 바꾸는지 직접 경험하고 있습니다.
-              </p>
-              <p>
-                2026년 1월부터 이 블로그를 운영하며, AI 업계의 빠른 변화를
-                추적하고 개발자 관점에서 분석하고 있어요. 단순한 뉴스 전달이
-                아니라, 직접 써보고 느낀 점을 솔직하게 공유하는 걸 중요하게
-                생각합니다.
-              </p>
+              <p>AI 코딩 도구와 함께 일하는 개발자예요. Codex, Claude Code, Grok을 매일 쓰면서 겪은 일을 기록해요.</p>
+              <p>2026년 1월부터 이 블로그를 운영하고 있어요. 처음엔 AI 뉴스를 빠르게 전하는 데 집중했어요. 지금은 시간이 지나도 쓸모 있는 가이드를 더 많이 써요.</p>
             </div>
           </section>
-
-          {/* 블로그 소개 */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-4 text-xl font-semibold text-white">
-              이 블로그에 대해
-            </h2>
+            <h2 className="mb-4 text-xl font-semibold text-white">이 블로그는 무엇을 다루나요?</h2>
             <div className="space-y-3 leading-relaxed text-zinc-400">
-              <p>
-                Tom&apos;s Blog는 AI 뉴스와 개발 트렌드를 다루는 기술
-                블로그예요. GeekNews, GitHub Releases, OpenAI, Anthropic, Google
-                AI 등의 공식 소스에서 뉴스를 수집하고, 개발자 관점에서 분석하여
-                전달합니다.
-              </p>
-              <p>
-                이 블로그의 특징은 단순 번역/요약이 아니라{" "}
-                <span className="font-medium text-zinc-300">
-                  개발자 관점의 분석과 해석
-                </span>
-                을 담는다는 점이에요. Claude Code 릴리스를 한 달간 추적하며
-                분석한 글, AI 코딩 도구 가격 비교 가이드, 프롬프트 인젝션 방어
-                가이드 같은 오리지널 콘텐츠를 발행하고 있습니다.
-              </p>
-            </div>
-          </section>
-
-          {/* 편집 원칙 */}
-          <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-4 text-xl font-semibold text-white">
-              콘텐츠는 이렇게 만들어요
-            </h2>
-            <div className="space-y-3 leading-relaxed text-zinc-400">
-              <p>
-                이 블로그는 AI 도구를 적극적으로 활용해 운영해요. 투명하게
-                공개하자면, 제작 과정은 이렇습니다.
-              </p>
+              <p>Tom&apos;s Blog는 AI 코딩 도구를 쓰다가 막히는 순간에 바로 답을 찾을 수 있게 만든 블로그예요. Codex, ChatGPT, Claude·Claude Code, OpenCode를 주로 다뤄요.</p>
               <ul className="list-disc space-y-2 pl-5">
-                <li>
-                  <span className="font-medium text-zinc-300">수집</span> —
-                  GeekNews, 각 사 공식 블로그, GitHub 릴리스 등 공개 소스에서
-                  뉴스를 수집합니다.
-                </li>
-                <li>
-                  <span className="font-medium text-zinc-300">선별과 관점</span>{" "}
-                  — 어떤 소식을 다룰지, 어떤 주장과 각도로 쓸지는 운영자가 직접
-                  결정합니다.
-                </li>
-                <li>
-                  <span className="font-medium text-zinc-300">초안</span> —
-                  AI(Claude)가 스타일 가이드에 따라 초안을 작성합니다.
-                </li>
-                <li>
-                  <span className="font-medium text-zinc-300">검수와 발행</span>{" "}
-                  — 사실 관계와 출처를 확인한 뒤 발행하고, 모든 글에 원문 링크를
-                  남깁니다.
-                </li>
+                <li><b className="text-zinc-300">설정 가이드</b> — config.toml, 메모리, 데이터 학습 끄기처럼 &quot;어디서 어떻게 바꾸나&quot;에 답하는 글</li>
+                <li><b className="text-zinc-300">요금·가격 정리</b> — 요금제 차이, 크레딧 단가, 한도를 넘었을 때 할 일</li>
+                <li><b className="text-zinc-300">문제 해결</b> — 버전 차이, 업그레이드, 자주 막히는 오류</li>
+                <li><b className="text-zinc-300">개념 풀이</b> — 하네스 엔지니어링처럼 처음 듣는 용어를 예시로 설명하는 글</li>
+                <li><b className="text-zinc-300">by Tom 칼럼</b> — 제 관점에서 쓰는 의견 글</li>
               </ul>
-              <p>
-                편집 원칙은 세 가지예요. 사실과 의견을 구분해서 쓰고, 실제로
-                경험하지 않은 것을 경험한 것처럼 쓰지 않으며, 오류를 발견하면
-                확인 후 정정합니다. 잘못된 내용을 발견하시면 아래 연락처로
-                알려주세요.
-              </p>
+              <p>새 글은 매주 월요일과 목요일에 올려요. 글은 <a href="/categories" className="text-purple-400 transition-colors hover:text-purple-300">카테고리</a>에서 &quot;by Tom&quot;과 &quot;AI 소식&quot;으로 나눠 볼 수 있어요.</p>
             </div>
           </section>
-
-          {/* 콘텐츠 카테고리 */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-6 text-xl font-semibold text-white">
-              콘텐츠 카테고리
-            </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
-                <div className="mb-2 text-2xl">{"📰"}</div>
-                <h3 className="mb-1 font-medium text-zinc-200">뉴스</h3>
-                <p className="text-sm text-zinc-500">
-                  AI 업계 최신 소식을 빠르게 전달합니다
-                </p>
-              </div>
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
-                <div className="mb-2 text-2xl">{"🚀"}</div>
-                <h3 className="mb-1 font-medium text-zinc-200">릴리스</h3>
-                <p className="text-sm text-zinc-500">
-                  개발 도구 업데이트를 추적하고 분석합니다
-                </p>
-              </div>
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
-                <div className="mb-2 text-2xl">{"🔍"}</div>
-                <h3 className="mb-1 font-medium text-zinc-200">분석</h3>
-                <p className="text-sm text-zinc-500">
-                  트렌드 분석, 모델 비교, 종합 정리
-                </p>
-              </div>
-              <div className="rounded-lg border border-zinc-800 bg-zinc-950/50 p-4">
-                <div className="mb-2 text-2xl">{"📖"}</div>
-                <h3 className="mb-1 font-medium text-zinc-200">가이드</h3>
-                <p className="text-sm text-zinc-500">
-                  실용적인 개발자 가이드와 튜토리얼
-                </p>
-              </div>
+            <h2 className="mb-4 text-xl font-semibold text-white">글은 이렇게 만들어요</h2>
+            <div className="space-y-3 leading-relaxed text-zinc-400">
+              <p>이 블로그는 AI 도구의 도움을 받아 만들어요. 숨기지 않고 과정을 공개할게요.</p>
+              <ul className="list-disc space-y-2 pl-5">
+                <li><b className="text-zinc-300">주제 고르기</b> — 독자가 실제로 검색하는 질문을 보고 제가 주제와 관점을 정해요.</li>
+                <li><b className="text-zinc-300">초안</b> — AI(Claude Code 등)가 제 글쓰기 가이드에 맞춰 초안을 써요.</li>
+                <li><b className="text-zinc-300">사실 확인</b> — 가격, 설정 경로, 버전은 각 회사 공식 문서로 다시 확인해요. 바뀌기 쉬운 정보에는 &quot;(2026년 10월 기준)&quot;처럼 기준 날짜를 붙여요.</li>
+                <li><b className="text-zinc-300">발행과 수정</b> — 제가 검토한 뒤 발행해요. 모든 글에 출처 링크를 남기고, 내용이 바뀌면 글을 고치고 수정일을 표시해요.</li>
+              </ul>
+              <p>원칙은 세 가지예요. 사실과 의견을 나눠 써요. 직접 해보지 않은 걸 해본 것처럼 쓰지 않아요. 틀린 걸 알면 확인하고 바로 고쳐요. 잘못된 내용을 보시면 아래 연락처로 알려 주세요.</p>
             </div>
           </section>
-
-          {/* 전문 분야 */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-4 text-xl font-semibold text-white">전문 분야</h2>
-            <div className="space-y-3 text-zinc-400">
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-500" />
-                <div>
-                  <span className="font-medium text-zinc-300">
-                    AI 코딩 도구
-                  </span>{" "}
-                  — Claude Code, Cursor, GitHub Copilot, OpenCode 등 주요 도구를
-                  직접 사용하며 비교 분석
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-500" />
-                <div>
-                  <span className="font-medium text-zinc-300">
-                    멀티 에이전트 시스템
-                  </span>{" "}
-                  — Oh My OpenCode의 오케스트레이션 구조와 에이전트 협업 패턴
-                  추적
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-500" />
-                <div>
-                  <span className="font-medium text-zinc-300">
-                    AI 모델 비교
-                  </span>{" "}
-                  — GPT, Claude, Gemini 등 주요 모델의 실사용 관점 비교와 활용
-                  가이드
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-500" />
-                <div>
-                  <span className="font-medium text-zinc-300">
-                    LLM 활용 개발
-                  </span>{" "}
-                  — 프롬프트 엔지니어링, AI 보안, API 통합 등 실무 개발 지식
-                </div>
-              </div>
+            <h2 className="mb-4 text-xl font-semibold text-white">광고는 어떻게 붙나요?</h2>
+            <div className="space-y-3 leading-relaxed text-zinc-400">
+              <p>블로그 운영비를 위해 Google AdSense 광고를 넣고 있어요. 광고는 글 본문과 목록 사이, 데스크톱 사이드바에 표시돼요. 팝업이나 화면 전체를 덮는 광고는 쓰지 않아요.</p>
+              <p>광고와 글 내용은 관계없어요. 쿠키 등 자세한 내용은 <a href="/privacy" className="text-purple-400 transition-colors hover:text-purple-300">개인정보처리방침</a>에 있어요.</p>
             </div>
           </section>
-
           {/* Tech Stack */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
             <h2 className="mb-4 text-xl font-semibold text-white">
@@ -236,11 +110,11 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                "Next.js 15",
+                "Next.js 16",
                 "TypeScript",
-                "Tailwind CSS",
+                "Tailwind CSS 4",
                 "MDX",
-                "Contentlayer",
+                "Contentlayer2",
                 "Vercel",
               ].map((tech) => (
                 <span
@@ -253,28 +127,14 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Contact */}
           <section className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md">
-            <h2 className="mb-4 text-xl font-semibold text-white">Contact</h2>
-            <p className="leading-relaxed text-zinc-400">
-              GitHub:{" "}
-              <a
-                href="https://github.com/speson"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 transition-colors hover:text-purple-300"
-              >
-                @speson
-              </a>
-              <br />
-              Email:{" "}
-              <a
-                href="mailto:speson2@gmail.com"
-                className="text-purple-400 transition-colors hover:text-purple-300"
-              >
-                speson2@gmail.com
-              </a>
-            </p>
+            <h2 className="mb-4 text-xl font-semibold text-white">연락은 어디로 하나요?</h2>
+            <div className="space-y-3 leading-relaxed text-zinc-400">
+              <p>오류 제보, 질문, 제안 모두 환영해요. 이메일이 가장 빨라요.</p>
+              <p>Email: <a href="mailto:speson2@gmail.com" className="text-purple-400 transition-colors hover:text-purple-300">speson2@gmail.com</a><br />
+              GitHub: <a href="https://github.com/speson" target="_blank" rel="noopener noreferrer" className="text-purple-400 transition-colors hover:text-purple-300">@speson</a><br />
+              <a href="/contact" className="text-purple-400 transition-colors hover:text-purple-300">연락처 페이지</a></p>
+            </div>
           </section>
         </div>
       </div>
