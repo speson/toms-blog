@@ -1,0 +1,110 @@
+---
+title: "Claude Code 요금제 가격 차이 — Pro와 Max 중 무엇을 고를까"
+thumbnail: "/thumbnails/claude-code-pro-max-pricing.png"
+description: "클로드 코드(Claude Code)를 쓰려면 어떤 요금제가 필요한지, Pro와 Max 5x·20x의 가격 차이와 사용 한도, 한도에 걸렸을 때 쓰는 사용 크레딧(usage credits)까지 2026년 10월 공식 문서 기준으로 정리했어요. API 키 때문에 요금이 따로 나가는 실수도 함께 짚었어요."
+date: "2026-10-22"
+updatedAt: "2026-10-22"
+tags: ["Claude Code", "Claude", "Anthropic", "가이드", "가격"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "처음엔 Pro로 시작하고, 한도에 걸리는 날이 잦아질 때 Max 5x로 올리는 게 맞다고 봐요. 가끔 걸리는 정도라면 사용 크레딧으로 메우는 편이 싸요."
+draft: false
+---
+
+클로드 코드(Claude Code)는 따로 사는 제품이 아니라 Claude 유료 요금제에 들어 있어요. 저는 요금제를 고를 때 가격표보다 <strong>사용 한도가 어떻게 줄어드는지</strong>를 먼저 아는 게 돈을 아끼는 길이라고 봐요. 이 글을 읽으면 Pro와 Max 중 무엇을 고를지, 한도에 걸렸을 때 무엇을 해야 할지 정할 수 있어요.
+
+먼저 개인 요금제를 표로 볼게요 (2026년 10월 기준, 세금 별도).
+
+| 요금제 | 월 가격 | Claude Code | 사용량 |
+| --- | --- | --- | --- |
+| Free | $0 | 안 됨 | 기본 |
+| Pro | $20 (연간 결제 시 월 $17) | 됨 | Free의 5배 이상 |
+| Max 5x | $100 | 됨 | Pro의 5배 |
+| Max 20x | $200 | 됨 | Pro의 20배 |
+
+사용량 배수는 5시간 세션 기준이에요. 가격은 [Claude 요금제 페이지](https://claude.com/pricing?mode=code)에서 다시 확인했어요. Pro 연간 결제는 $200를 한 번에 내는 방식이고, Max는 월 결제만 돼요.
+
+## Claude Code는 어떤 요금제부터 쓸 수 있나요?
+
+<strong>Pro부터</strong> 쓸 수 있어요. Free 요금제에서는 Claude Code를 쓸 수 없어요.
+
+연결 방법은 간단해요.
+
+1. Claude Code를 설치해요.
+2. 처음 실행할 때 Claude 웹에서 쓰는 계정으로 로그인해요.
+3. 이미 API 계정으로 로그인돼 있다면 Claude Code 안에서 `/login`을 실행해 구독 계정으로 바꿔요.
+
+VS Code, Cursor, JetBrains 같은 IDE 확장도 같은 구독으로 돌아가요 ([Pro·Max로 Claude Code 쓰기](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan)).
+
+여기서 많이 하는 실수가 하나 있어요. 컴퓨터에 `ANTHROPIC_API_KEY` 환경 변수가 있으면 Claude Code는 구독 대신 이 API 키를 써요. 그러면 구독 사용량 대신 <strong>API 요금이 따로</strong> 나가요. 구독을 샀는데 API 청구서가 왔다면 이 변수부터 확인해 보세요.
+
+## Pro와 Max의 사용 한도는 어떻게 다른가요?
+
+Claude의 사용 한도는 두 가지예요.
+
+- <strong>세션 한도</strong>: 5시간마다 다시 차요.
+- <strong>주간 한도</strong>: 계정마다 정해진 요일과 시각에 일주일 단위로 다시 차요.
+
+중요한 점은 <strong>웹 채팅과 Claude Code가 같은 한도를 나눠 쓴다</strong>는 거예요. 낮에 채팅을 많이 하면 저녁에 Claude Code로 쓸 몫이 줄어요 ([사용 한도 설명](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+
+공식 문서에는 메시지 몇 개, 토큰 몇 개 같은 고정 숫자가 없어요. 대화 길이와 고른 모델, 쓰는 기능에 따라 달라져서예요. 그래서 위 표의 배수로 비교하는 게 가장 정확해요.
+
+모델 차이도 있어요. Anthropic의 최상위 모델인 Fable은 요금제마다 쓰는 방식이 달라요.
+
+| 항목 | Pro | Max 5x·20x |
+| --- | --- | --- |
+| Opus·Sonnet·Haiku | 포함 | 포함 |
+| Fable | 사용 크레딧으로만 | 주간 한도의 50%까지 |
+| 혼잡 시간 우선 처리 | 없음 | 있음 |
+
+Max는 Fable 전용 주간 한도가 따로 있어요. 남은 몫은 Claude Code의 `/status` 명령이나 Claude 웹의 Settings > Usage에서 볼 수 있어요.
+
+한 가지 덧붙이면, Max에는 매달 API 크레딧($100 또는 $200)이 딸려 와요. 이건 <strong>Claude Code나 Claude 앱에서는 쓸 수 없고</strong>, 직접 만드는 앱에서 API를 부를 때만 써요. 저는 이걸 Max를 고르는 이유로 넣지 않는 게 맞다고 봐요.
+
+## 한도에 걸리면 크레딧을 살까요, Max로 올릴까요?
+
+한도에 걸렸을 때 고를 수 있는 길은 넷이에요.
+
+1. 한도가 다시 찰 때까지 기다려요.
+2. <strong>사용 크레딧(usage credits)</strong>을 켜요. 한도를 넘은 만큼 API 표준 요금으로 미리 충전한 잔액에서 빠져요.
+3. 상위 요금제로 올려요 (Pro → Max 5x → Max 20x).
+4. Claude Console 계정에서 API 크레딧을 사서 Claude Code를 API로 돌려요.
+
+사용 크레딧은 Claude 웹의 Settings > Usage에서 켜요. 켤 때 <strong>월 지출 한도</strong>를 정할 수 있고, 잔액이 줄면 자동으로 채우는 자동 충전도 고를 수 있어요 ([사용 크레딧 관리](https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans)). 모바일 앱으로 구독했어도 크레딧 설정은 웹에서만 돼요.
+
+제 기준은 이래요.
+
+| 상황 | 추천 |
+| --- | --- |
+| 한 달에 몇 번 한도에 걸림 | Pro 유지 + 사용 크레딧 (월 지출 한도 설정) |
+| 거의 매일 세션 한도에 걸림 | Max 5x |
+| Max 5x에서도 주간 한도가 모자람 | Max 20x |
+| Fable을 자주 써야 함 | Max |
+
+저는 Pro와 Max 5x의 가격 차이가 $80라는 점을 기준으로 봐요. 한 달 크레딧 지출이 이 금액에 가까워지면 Max로 올리는 게 낫다고 봐요. 업그레이드는 바로 적용되고, 남은 기간 금액은 새 요금제에 차감돼요.
+
+OpenAI 코덱스(Codex)와 비교하고 싶다면 [Codex 크레딧 가격 정리](/posts/2026-10-05-codex-credits-plus-pro-billing)를 같이 보면 돼요. 두 회사 모두 "요금제 + 넘치면 크레딧" 구조라서 같은 기준으로 비교할 수 있어요.
+
+## 자주 묻는 질문
+
+### Claude Code만 따로 결제할 수 있나요?
+
+구독으로는 따로 살 수 없어요. Claude Code만 쓰고 싶다면 Claude Console에서 API 크레딧을 사서 쓰는 방법이 있어요. 이때는 쓴 만큼 API 요금이 나가요.
+
+### 한도에 걸린 순간 Claude Code가 작업을 끊나요?
+
+진행 중인 응답이라면 하던 단계를 잠깐 더 마무리할 수 있어요. 이때 "Usage limit reached · wrapping up"이 표시돼요. Pro는 주간 기간당 한 번, Max는 세션 한도에 걸릴 때마다 적용되고, 아직 순차 적용 중이에요.
+
+### 사용 크레딧에 유효 기간이 있나요?
+
+대부분 지역에서는 없어요. 일본 등 일부 지역은 2026년 9월 10일 이후 구매분부터 6개월 뒤 만료돼요.
+
+### 쓰다가 요금제를 내리면 어떻게 되나요?
+
+내린 요금제는 현재 결제 기간이 끝날 때 적용돼요. 채팅과 프로젝트, 파일은 그대로 남아요.
+
+---
+
+참고 문서: [Claude Plans & pricing](https://claude.com/pricing?mode=code), [Use Claude Code with your Pro or Max plan](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan), [What is the Max plan?](https://support.claude.com/en/articles/11049741-what-is-the-max-plan), [How do usage and length limits work?](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work), [Manage usage credits for paid Claude plans](https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans)
