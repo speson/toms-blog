@@ -3,7 +3,7 @@ title: "Claude Code Auto 모드 완전 가이드 — 켜는 법, 분류기 동�
 thumbnail: "/thumbnails/claude-code-auto-mode-guide.png"
 description: "Auto 모드는 권한 프롬프트 없이 작업하되 별도 분류기가 모든 액션을 사전 검토하는 모드예요. CLAUDE_CODE_ENABLE_AUTO_MODE 환경변수는 이제 no-op이고, 저장소 설정으로는 켤 수 없고, 3연속/누적 20회 차단 시 자동 해제됩니다. 공식 문서 기준으로 활성화 조건, 기본 차단 목록, 커스텀 규칙, 관리자 통제까지 전부 정리했어요."
 date: "2026-07-28"
-updatedAt: "2026-07-28"
+updatedAt: "2026-10-26"
 tags: ["Claude Code", "개발도구", "가이드"]
 category: "by-tom"
 subcategory: "column"
@@ -45,6 +45,8 @@ Claude Code에서 Shift+Tab을 아무리 눌러도 auto 모드가 안 나온다�
   걸 막는 설계라, 반드시 사용자 설정(`~/.claude/settings.json`)이나 관리 설정에
   넣어야 해요. VS Code 확장의 initialPermissionMode도 auto를 받지 않아요.
 - <strong>관리자가 막은 경우</strong> — 아래 참조.
+
+settings.json 파일이 어디 있는지, 여러 파일 중 무엇이 이기는지는 [Claude Code settings.json 위치와 설정법](/posts/2026-10-26-claude-code-settings-json-location)에 정리했어요.
 
 ## 무엇이 차단되고 무엇이 통과되나
 
