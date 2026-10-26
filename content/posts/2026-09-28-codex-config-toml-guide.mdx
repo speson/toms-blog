@@ -3,7 +3,7 @@ title: "Codex config.toml 위치와 핵심 설정 — 메모리 켜는 법 포�
 thumbnail: "/thumbnails/codex-config-toml-guide.png"
 description: "코덱스(Codex) config.toml이 어디에 있는지, 어떤 파일이 어떤 설정을 덮어쓰는지, 메모리·모델·샌드박스처럼 자주 건드리는 키만 공식 문서 기준으로 정리했어요. IDE에서 여는 방법과 Windows 경로도 함께 담았어요."
 date: "2026-09-28"
-updatedAt: "2026-10-19"
+updatedAt: "2026-10-26"
 tags: ["Codex", "OpenAI", "가이드"]
 category: "by-tom"
 subcategory: "column"
@@ -55,6 +55,8 @@ IDE 확장에서 열려면 우측 상단 톱니바퀴 → Codex Settings → Ope
 프로젝트 파일에는 넣어도 무시되는 키가 있어요. 대표적으로 `model_provider`, `model_providers`, `openai_base_url`, `chatgpt_base_url`, `notify`, `profile`, `profiles`, `otel`이에요. 인증·프로바이더·알림·텔레메트리는 개인 `~/.codex/config.toml`에 두세요.
 
 회사 PC라면 관리자가 `requirements.toml`로 더 강한 제한을 걸 수 있어요. 사용자가 `approval_policy = "never"`처럼 풀어도 막히는 경우가 그거예요. 관리 강제 쪽은 [Codex Business·Enterprise 가이드](/posts/2026-08-03-codex-enterprise-guide)에 더 자세히 적어 두었어요.
+
+Claude Code는 같은 역할을 settings.json이 해요. 위치와 우선순위는 [Claude Code settings.json 위치와 설정법](/posts/2026-10-26-claude-code-settings-json-location)에 따로 정리했어요.
 
 ## 실무에서 자주 바꾸는 설정은 뭔가요?
 
