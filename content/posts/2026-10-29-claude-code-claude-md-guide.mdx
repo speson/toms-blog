@@ -1,0 +1,108 @@
+---
+title: "Claude Code CLAUDE.md 위치와 작성법 — 규칙을 안 따를 때 확인할 것"
+thumbnail: "/thumbnails/claude-code-claude-md-guide.png"
+description: "클로드 코드(Claude Code)의 작업 지시 파일 CLAUDE.md를 어디에 두는지, 어떻게 써야 잘 따르는지, Codex의 AGENTS.md와 함께 쓰는 법과 규칙을 무시할 때 확인할 것을 2026년 10월 공식 문서 기준으로 정리했어요."
+date: "2026-10-29"
+updatedAt: "2026-10-29"
+tags: ["Claude Code", "Claude", "Anthropic", "가이드", "설정"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "팀 규칙은 프로젝트의 CLAUDE.md, 내 습관은 ~/.claude/CLAUDE.md에 짧고 구체적으로 쓰면 돼요. 안 따르면 /context로 파일이 읽혔는지부터 보세요."
+draft: false
+---
+
+CLAUDE.md는 클로드 코드(Claude Code)에게 주는 <strong>작업 지시서</strong>예요. 매번 채팅으로 다시 설명하던 내용을 적어 두면 세션을 새로 열 때마다 Claude가 먼저 읽어요. 이 글을 읽으면 파일을 어디에 두고, 무엇을 어떻게 쓰고, 안 따를 때 무엇을 볼지 알 수 있어요.
+
+## Claude Code CLAUDE.md는 어디에 두나요?
+
+직접 만드는 파일은 세 곳이에요 (2026년 10월 기준).
+
+| 파일 위치 | 적용 범위 | 넣을 것 |
+| --- | --- | --- |
+| `~/.claude/CLAUDE.md` | 내 컴퓨터의 모든 프로젝트 | 내 코딩 습관, 자주 쓰는 도구 |
+| `./CLAUDE.md` 또는 `./.claude/CLAUDE.md` | 이 프로젝트를 쓰는 모든 사람 | 빌드·테스트 명령, 팀 규칙, 폴더 구조 |
+| `./CLAUDE.local.md` | 이 프로젝트의 나만 | 내 테스트 주소, 개인 메모 |
+
+`./`는 프로젝트 폴더 맨 위를 뜻해요. `CLAUDE.local.md`는 git에 올리지 않도록 `.gitignore`에 직접 넣어 주세요.
+
+가장 쉬운 시작은 프로젝트 폴더에서 `/init`을 실행하는 거예요. Claude가 코드를 훑어보고 빌드 명령과 규칙을 담은 CLAUDE.md 초안을 만들어 줘요. 이미 파일이 있으면 덮어쓰지 않고 고칠 점을 제안해요.
+
+`settings.json`과 헷갈리기 쉬운데 역할이 달라요. settings.json은 모델·권한 같은 <strong>동작 설정</strong>이고, CLAUDE.md는 Claude가 읽는 <strong>글로 된 지시</strong>예요. 설정 파일 위치는 [Claude Code settings.json 위치와 설정법](/posts/2026-10-26-claude-code-settings-json-location)에 정리해 뒀어요.
+
+## CLAUDE.md는 어떻게 써야 잘 따르나요?
+
+공식 문서가 권하는 기준은 세 가지예요.
+
+1. <strong>확인할 수 있게 구체적으로 써요.</strong> "코드를 깔끔하게"보다 "들여쓰기는 2칸"이 잘 지켜져요.
+2. <strong>파일 하나는 200줄 아래로 유지해요.</strong> 길수록 컨텍스트(Claude가 한 번에 보는 글의 양)를 많이 차지하고 덜 따라요.
+3. <strong>제목과 목록으로 묶어요.</strong> 긴 문단보다 항목으로 나눈 글을 더 잘 따라요.
+
+예를 들면 이 정도면 충분해요.
+
+```markdown
+# 빌드와 테스트
+- 패키지 설치는 pnpm만 써요. npm은 쓰지 않아요.
+- 커밋 전에 `pnpm test`를 실행해요.
+
+# 코드 규칙
+- API 코드는 `src/api/handlers/`에 둬요.
+- 들여쓰기는 2칸이에요.
+```
+
+다른 문서를 끌어오고 싶으면 `@README`처럼 `@` 뒤에 경로를 적어요. 다만 끌어온 파일도 함께 읽히니 길이를 줄여 주지는 않아요.
+
+무엇을 넣을지 헷갈리면 이렇게 판단하면 돼요. 같은 실수를 두 번 했거나, 지난 세션에 했던 설명을 또 하고 있다면 CLAUDE.md에 넣을 때예요. 여러 단계로 된 작업 절차라면 필요할 때만 읽히는 스킬(skill)이 더 맞아요. 스킬은 [Claude Code Skills 글](/posts/2026-03-23-claude-code-skills)에서 소개했어요.
+
+저는 CLAUDE.md를 "새 팀원에게 첫날 알려 줄 것"만 적는 파일로 보는 게 맞다고 봐요. 코드만 봐도 알 수 있는 폴더 목록 같은 내용은 빼는 게 더 잘 먹혀요.
+
+## Codex AGENTS.md와 같이 쓰려면 어떻게 하나요?
+
+Codex는 같은 역할의 파일로 `AGENTS.md`를 써요. 두 도구를 같이 쓰면 파일을 두 벌 관리해야 하나 고민이 되죠.
+
+2026년 10월 기준 Claude Code는 v2.1.277부터 `AGENTS.md`를 직접 읽어요. 규칙은 이래요.
+
+| 프로젝트에 있는 파일 | Claude가 읽는 것 |
+| --- | --- |
+| AGENTS.md만 있음 | AGENTS.md |
+| AGENTS.md와 CLAUDE.md가 함께 있음 | CLAUDE.md만 |
+| CLAUDE.md 안에 `@AGENTS.md`가 적혀 있음 | CLAUDE.md와 AGENTS.md 둘 다 |
+
+여기서 놓치기 쉬운 점이 있어요. 나만 쓰려고 `CLAUDE.local.md`를 하나 만들어도 <strong>AGENTS.md를 더 이상 읽지 않아요</strong>.
+
+그래서 저는 공통 규칙은 AGENTS.md에 한 번만 쓰고, CLAUDE.md 첫 줄에 `@AGENTS.md`를 넣는 방법을 추천해요. 그 아래에 Claude에만 필요한 내용을 덧붙이면 돼요. Codex 쪽에서 AGENTS.md와 메모리가 어떻게 다른지는 [Codex 메모리 가이드](/posts/2026-07-28-codex-memory-image-guide)에 있어요.
+
+## Claude가 CLAUDE.md를 안 따를 때는 무엇부터 확인하나요?
+
+순서대로 확인해 보세요.
+
+1. <strong>`/context`를 실행해요.</strong> `Memory files` 목록에 내 파일이 없으면 Claude가 아예 못 본 거예요.
+2. <strong>파일 위치를 다시 봐요.</strong> 하위 폴더의 CLAUDE.md는 시작할 때가 아니라 Claude가 그 폴더의 파일을 열 때 읽혀요.
+3. <strong>서로 부딪히는 지시가 있는지 봐요.</strong> 두 파일이 다르게 말하면 Claude가 아무거나 고를 수 있어요.
+4. <strong>`/doctor prompt-audit`을 실행해요.</strong> 오래되거나 서로 충돌하는 지시를 찾아 고칠 점을 제안해 줘요. 파일은 내가 허락해야 바뀌어요.
+5. <strong>반드시 지켜야 하는 규칙인지 봐요.</strong> CLAUDE.md는 참고하는 글이지 강제 설정이 아니에요. 꼭 막아야 할 일은 settings.json의 `deny` 규칙이나 훅(hooks)으로 막아요.
+
+`/compact`로 대화를 줄인 뒤 규칙이 사라진 것 같다면, 그 규칙을 채팅으로만 말했을 가능성이 커요. 프로젝트 맨 위의 CLAUDE.md는 압축 뒤에도 다시 읽히니 거기에 적어 두세요.
+
+## 자주 묻는 질문
+
+### CLAUDE.md를 영어로 써야 하나요?
+
+꼭 그럴 필요는 없어요. 공식 문서는 언어보다 구체적이고 짧게 쓰는 걸 강조해요. 저는 팀이 읽기 편한 언어로 쓰고 명령어와 경로만 정확히 적어요.
+
+### "기억해 줘"라고 말하면 CLAUDE.md에 저장되나요?
+
+아니에요. 그렇게 말하면 Claude가 스스로 쓰는 자동 메모리(auto memory)에 저장돼요. CLAUDE.md에 넣고 싶으면 "CLAUDE.md에 추가해 줘"라고 말하거나 `/memory`로 직접 열어 고쳐요.
+
+### 사람만 볼 메모를 남길 수 있나요?
+
+있어요. `<!-- 메모 -->` 같은 HTML 주석은 Claude에게 넘기기 전에 지워져요. 컨텍스트를 쓰지 않고 팀원에게 설명을 남길 수 있어요.
+
+### 회사 전체에 같은 CLAUDE.md를 적용할 수 있나요?
+
+돼요. 관리자가 정해진 시스템 위치(macOS는 `/Library/Application Support/ClaudeCode/CLAUDE.md`)에 파일을 배포하면 그 컴퓨터의 모든 사용자에게 적용돼요.
+
+---
+
+참고 문서 (2026년 10월 29일 확인): [Claude Code memory (CLAUDE.md)](https://code.claude.com/docs/en/memory)
