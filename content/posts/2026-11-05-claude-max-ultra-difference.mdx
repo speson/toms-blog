@@ -1,0 +1,86 @@
+---
+title: "Claude Max Ultra 차이 — 5시간 제한 사라진 뒤 고르는 법"
+thumbnail: "/thumbnails/claude-max-ultra-difference.png"
+description: "2026년 10월 말 Anthropic이 Max 5x·20x를 Max와 Ultra로 바꿨어요. 가격은 그대로인데 Ultra는 인증된 계정에서 5시간 세션 한도가 없어요. Claude Code 기준으로 Max와 Ultra 중 무엇을 고를지 2026년 11월 공식 문서 기준으로 정리했어요."
+date: "2026-11-05"
+updatedAt: "2026-11-05"
+tags: ["Claude Code", "Claude", "Anthropic", "가이드", "가격"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "세션 한도에 자주 막히면 Ultra가 맞고, 주간 한도부터 닳으면 Max에 사용 크레딧을 얹는 편이 낫다고 봐요. 이름만 바뀐 줄 알고 넘기면 이득을 놓쳐요."
+draft: false
+---
+
+Anthropic이 Max 요금제 이름을 바꿨어요. Max 5x는 Max, Max 20x는 Ultra가 됐고 가격은 그대로예요. 저는 이름보다 <strong>인증된 Ultra에서 5시간 세션 한도가 없어진 점</strong>이 실무에 더 중요하다고 봐요. 이 글을 읽으면 무엇이 바뀌었는지, Max와 Ultra 중 누구를 고를지 정할 수 있어요.
+
+## Max 5x·20x는 지금 뭐로 불려요?
+
+Anthropic은 2026년 10월 30일 [공식 안내](https://x.com/claudeai/status/2116221457252659275)에서 이름을 이렇게 바꿨어요 (2026년 11월 5일 기준).
+
+| 예전 이름 | 지금 이름 | 월 가격 |
+| --- | --- | --- |
+| Max 5x | Max | $100 |
+| Max 20x | Ultra | $200 |
+
+기존 구독자는 자동으로 옮겨지고, 따로 할 일은 없어요. [What is the Ultra plan?](https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan)에도 같은 내용이 적혀 있어요.
+
+가격표의 사용량 배수는 이렇게 정리돼요 ([Claude 요금제](https://claude.com/pricing?mode=code)).
+
+| 요금제 | 5시간 세션 | 주간 | 월 API 크레딧 |
+| --- | --- | --- | --- |
+| Pro ($20) | 1배 | 1배 | 없음 |
+| Max ($100) | Pro의 5배 | Pro의 5배 | $100 |
+| Ultra ($200) | 인증 계정은 없음 | Pro의 10배 | $200 |
+
+예전 이름 Max 20x는 5시간 한도가 Pro의 20배라는 뜻에 가까웠어요. 주간 한도는 처음부터 Pro의 10배 근처였고, 지금은 Ultra 표에 주간 10배로 명시돼요. Claude Code·웹·데스크톱은 같은 한도를 나눠 써요.
+
+월 API 크레딧은 Claude Code나 앱에서는 못 써요. 콘솔에서 API를 직접 부를 때만 써요. 저는 Claude Code만 쓰는 사람이라면 이 숫자를 고르는 이유로 넣지 않는 게 맞다고 봐요.
+
+## Ultra에서 5시간 제한이 진짜 없어졌나요?
+
+인증된 Ultra 계정에서는 맞아요. 주간 한도는 그대로 남아 있어요.
+
+인증은 Anthropic이 계정·결제 이력을 보고 자동으로 해요. 폰 번호만 넣는다고 풀리지 않아요. Settings > Usage에 <strong>Current session</strong> 막대가 없으면 인증된 상태예요. 새 계정은 잠깐 임시 한도가 걸리고, 풀리면 메일이 와요.
+
+한도에 걸렸을 때 wrap-up도 달라요. Pro와 Max는 응답 중간에 세션 한도에 걸리면 잠깐 마무리할 수 있어요. 인증된 Ultra는 세션 한도 자체가 없어서 이 여유가 필요 없어요. 임시 한도가 있는 Ultra는 Max와 같게 동작해요 ([Pro·Max·Ultra로 Claude Code 쓰기](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan)).
+
+## Claude Code 기준으로 Max와 Ultra 중 무엇을 고를까요?
+
+제 기준은 한 가지예요. <strong>먼저 닳는 한도가 세션이냐, 주간이냐</strong>를 보면 돼요.
+
+| 상황 | 추천 | 이유 |
+| --- | --- | --- |
+| 낮에 세션 한도에 자주 걸림, 주간은 남음 | Ultra | 긴 코딩 세션을 끊기지 않게 이어요 |
+| 주간 한도부터 먼저 바닥남 | Max + 사용 크레딧 | Ultra로 올려도 주간 배수만 2배예요 |
+| Max에서도 주간이 모자람 | Ultra 또는 크레딧 | 주간이 Pro의 10배가 필요한지 먼저 재요 |
+| Fable을 주간 한도의 절반까지 씀 | Max 또는 Ultra | 둘 다 Fable 주간 한도가 따로 있어요 |
+
+사용 크레딧은 Settings > Usage에서 켜요. 세션·주간·Fable 한도를 넘긴 뒤에도 API 표준 요금으로 이어갈 수 있어요. Pro·Max 선택과 크레딧 기준은 [Claude Code 요금제 가격 차이](/posts/2026-10-22-claude-code-pro-max-pricing)에 더 자세히 적어 뒀어요. 그 글도 Max·Ultra 표기로 맞춰 뒀어요.
+
+ChatGPT·Codex도 대화와 코딩이 한 사용량을 나누는 쪽으로 가고 있어요. 그 쪽 변화는 [ChatGPT·Codex 사용량 한도 통합](/posts/2026-11-02-chatgpt-codex-shared-usage-limit)에서 볼 수 있어요.
+
+저는 Max 사용자 가운데 "오후만 되면 세션이 끊긴다"는 사람만 Ultra를 먼저 보라고 봐요. 주간이 먼저 닳는 사람에게는 이름 바꾼 Ultra가 체감이 작을 수 있어요.
+
+## 자주 묻는 질문
+
+### 예전에 Max 20x였는데 지금 뭘 보면 되나요?
+
+계정은 Ultra로 옮겨져 있어요. Settings > Billing에서 요금제 이름을 확인하면 돼요.
+
+### Ultra인데 아직도 5시간 한도가 보여요?
+
+아직 인증 전일 수 있어요. Settings > Usage에 Current session 막대가 있으면 임시 한도가 남은 상태예요. 인증이 끝나면 막대가 사라지고 메일이 와요.
+
+### Ultra로 올리면 Claude Code를 따로 결제해야 하나요?
+
+아니요. Claude Code는 Pro·Max·Ultra에 포함되고, 채팅과 같은 한도를 써요.
+
+### 가격이 올랐나요?
+
+웹 기준 월 $100(Max)·$200(Ultra)로 예전과 같아요. 유럽은 각각 €90·€180로 안내된 보도가 있어요. 결제 전에 [요금제 페이지](https://claude.com/pricing?mode=code)를 다시 확인하세요.
+
+---
+
+참고 문서 (2026년 11월 5일 확인): [Claude Plans & pricing](https://claude.com/pricing?mode=code), [What is the Ultra plan?](https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan), [Use Claude Code with your Pro, Max, or Ultra plan](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan), Anthropic 공식 안내 (2026-10-30)
