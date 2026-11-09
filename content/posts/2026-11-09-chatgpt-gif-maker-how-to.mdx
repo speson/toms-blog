@@ -1,0 +1,104 @@
+---
+title: "ChatGPT GIF 만드는 법 — 움짤 생성과 사진 저장(@이름) 쓰는 법"
+thumbnail: "/thumbnails/chatgpt-gif-maker-how-to.png"
+description: "챗GPT(ChatGPT)에서 GIF(움짤) 만드는 법을 정리했어요. Images 2.6과 함께 나온 GIF 생성, 재생 속도 조절, 사진을 저장해 @이름으로 다시 쓰는 법, 안 보일 때 확인할 것과 저장 사진 프라이버시까지 2026년 11월 공식 문서 기준으로 담았어요."
+date: "2026-11-09"
+updatedAt: "2026-11-09"
+tags: ["ChatGPT", "OpenAI", "가이드", "프라이버시"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "GIF는 말로 움직임만 설명하면 되니 바로 써 볼 만해요. 사진 저장은 편하지만 계정에 남으니 반려동물·캐릭터·내 사진까지만 저장하는 게 맞다고 봐요."
+draft: false
+---
+
+ChatGPT로 움직이는 GIF를 만들 수 있을까요? 이제는 돼요. OpenAI가 새 이미지 모델 <strong>ChatGPT Images 2.6</strong>을 내면서 GIF 생성과 사진 저장 기능을 같이 넣었어요. 저는 GIF보다 <strong>사진을 이름으로 저장해 두는 기능</strong>이 더 오래 쓰일 변화라고 봐요. 이 글을 읽으면 GIF 만드는 순서, 저장 사진 쓰는 법, 안 보일 때 확인할 것을 한 번에 챙길 수 있어요.
+
+이 글은 [OpenAI 릴리스 노트](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)와 [Images in ChatGPT 헬프 문서](https://help.openai.com/en/articles/11084440-images-in-chatgpt)를 2026년 11월 9일에 다시 확인해 정리했어요. 프롬프트 예시는 공식 문서 예시를 옮긴 것이고, 제가 결과를 보증하는 건 아니에요.
+
+## ChatGPT로 GIF는 어떻게 만드나요?
+
+방법은 두 가지예요. 글로 설명하거나, 정지 이미지를 올려서 움직이게 해요.
+
+1. 대화창에 <strong>루프(looping) GIF</strong>를 만들어 달라고 적어요. 루프는 끝나면 처음으로 돌아가 계속 반복된다는 뜻이에요.
+2. 무엇이 어떻게 움직이는지 한 가지만 구체적으로 적어요.
+3. 이미 있는 그림이나 사진이 있으면 올리고 "이 캐릭터가 손을 흔들게 해 줘"처럼 요청해요.
+4. 결과를 고치고 싶으면 같은 대화에서 바꿀 점을 말로 적어요.
+
+공식 문서의 예시는 이런 식이에요.
+
+```text
+Make a looping GIF of a paper boat bobbing on the water.
+```
+
+한국어로 "물 위에서 종이배가 위아래로 흔들리는 루프 GIF 만들어 줘"라고 써도 같은 요청이에요. 저는 움직임을 하나로 좁히는 게 핵심이라고 봐요. "춤추고 웃고 뛰는" 식으로 여러 동작을 겹치면 무엇을 고쳐야 할지 알기 어려워져요.
+
+## 만든 GIF는 속도를 바꾸고 저장할 수 있나요?
+
+네. 만든 GIF를 열면 아래 세 가지를 할 수 있어요.
+
+| 할 수 있는 것 | 방법 |
+| --- | --- |
+| 재생 속도 조절 | GIF를 열어 속도를 바꿔요 |
+| 기기에 저장 | GIF를 열어 저장해요 |
+| 공유 | GIF를 열어 다른 앱으로 보내요 |
+
+한 가지 제약이 있어요. <strong>내가 올린 움직이는 GIF는 ChatGPT가 편집하지 못해요.</strong> 고칠 수 있는 건 ChatGPT가 만든 GIF뿐이에요. 인터넷에서 받은 움짤을 다듬고 싶다면, 그 움짤의 한 장면을 정지 이미지로 올려서 새로 만들게 하는 편이 맞아요.
+
+만든 이미지는 사이드바의 <strong>Images</strong>에 자동으로 모여요. 이미지를 지우려면 그 이미지를 만든 대화를 지워야 해요.
+
+## 사진을 저장해 두고 @이름으로 다시 쓰는 법은?
+
+같은 반려동물이나 캐릭터를 여러 번 그리고 싶을 때 쓰는 기능이에요. 예전에는 대화마다 같은 사진을 다시 올려야 했어요.
+
+1. 사진을 올리고 "이 사진을 참고 이미지로 저장해 줘"라고 요청해요.
+2. 저장할 이름을 정해요. 예: 우리 강아지 사진이면 `Pepper`.
+3. 다음 대화에서 `@` 뒤에 저장한 이름을 붙여 불러요.
+
+```text
+Make a watercolor portrait of @Pepper.
+```
+
+사진을 설명하면 ChatGPT가 먼저 저장하겠냐고 물을 수도 있어요. 저는 이 기능이 GIF보다 실제로 더 자주 쓰일 거라고 봐요. 블로그 마스코트나 아이 그림책 캐릭터처럼 <strong>같은 얼굴을 계속 유지해야 하는 작업</strong>이 한 번 설정으로 끝나기 때문이에요.
+
+다만 저장한 사진은 계정에 남아요. 2026년 11월 9일 기준으로 공식 헬프 문서는 저장한 참고 이미지를 어디서 관리하고 지우는지 아직 적지 않았어요. 10월에 나온 옷 입어 보기(가상 피팅) 사진은 Settings → Personalization → Reference photos에서 바꾸거나 지울 수 있다고 [릴리스 노트](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)에 적혀 있어요. 같은 곳에 모이는지는 공식 확인이 없어요.
+
+그래서 저는 <strong>내 사진, 반려동물, 지어낸 캐릭터까지만</strong> 저장하라고 권해요. 다른 사람 얼굴은 본인 동의 없이 저장하지 않는 게 맞다고 봐요. 대화가 학습에 쓰이는 게 싫다면 학습 설정도 같이 확인하세요. 끄는 경로는 [ChatGPT·Codex 학습 끄기](/posts/2026-10-01-chatgpt-codex-data-training-off)에 정리해 뒀어요.
+
+## GIF 메뉴가 안 보이면 뭘 확인해요?
+
+GIF 생성은 <strong>순차 배포 중</strong>이에요. 아직 내 계정에 안 들어왔을 수 있어요.
+
+| 확인할 것 | 내용 |
+| --- | --- |
+| 요금제 | ChatGPT Images는 무료를 포함한 모든 요금제에서 쓸 수 있어요 |
+| 앱 버전 | 웹, iOS, Android에서 지원해요. 앱은 최신으로 올려요 |
+| 배포 시점 | 순차 배포라 며칠 뒤 다시 시도해요 |
+| 사용량 | 요금제별 GIF 한도는 공개되지 않았어요 |
+
+GIF를 따로 켜는 스위치는 공식 문서에 없어요. 대화창에서 GIF를 요청했는데 정지 이미지만 나온다면 아직 배포 전일 가능성이 커요. 요청이 거절될 때는 다시 누르기보다 표현을 바꾸는 편이 빨라요. 거절 대처법은 [Codex 메모리·이미지 생성 가이드](/posts/2026-07-28-codex-memory-image-guide)에 적어 뒀어요.
+
+만든 이미지에는 AI가 만들었다는 표시(C2PA 메타데이터와 SynthID 워터마크)가 들어가요. 확인하는 법은 [ChatGPT·Claude 워터마크 확인 방법](/posts/2026-10-15-chatgpt-claude-watermark-check)에 있어요. 이 표시가 GIF에도 똑같이 들어가는지는 공식 문서에서 확인하지 못했어요.
+
+## 자주 묻는 질문
+
+### ChatGPT GIF 만들기는 무료인가요?
+
+ChatGPT Images는 무료 요금제에서도 쓸 수 있어요. 다만 GIF는 순차 배포 중이고 요금제별 한도가 공개되지 않았어요.
+
+### 내가 가진 움짤을 ChatGPT로 고칠 수 있나요?
+
+안 돼요. ChatGPT는 사용자가 올린 움직이는 GIF를 편집하지 못해요. 한 장면을 정지 이미지로 올려서 새로 만들게 하세요.
+
+### 저장한 사진은 다른 사람도 볼 수 있나요?
+
+저장한 참고 이미지는 내 계정에서 @이름으로 부르는 용도예요. 공유 범위나 관리 메뉴는 공식 문서에 아직 자세히 나오지 않았어요.
+
+### Images 2.6은 이전 모델과 뭐가 달라요?
+
+OpenAI는 생성이 더 빠르고, 배경을 바꿔도 옷차림 같은 세부를 더 잘 유지한다고 밝혔어요.
+
+---
+
+참고 문서 (2026년 11월 9일 확인): [ChatGPT release notes (OpenAI Help)](https://help.openai.com/en/articles/6825453-chatgpt-release-notes), [Images in ChatGPT (OpenAI Help)](https://help.openai.com/en/articles/11084440-images-in-chatgpt)
