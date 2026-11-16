@@ -3,7 +3,7 @@ title: "Claude Code settings.json 위치와 설정법 — 설정이 안 먹힐 �
 thumbnail: "/thumbnails/claude-code-settings-json-location.png"
 description: "클로드 코드(Claude Code)의 설정 파일 settings.json이 어디에 있는지, 내 컴퓨터 전체용과 프로젝트용 파일이 어떻게 다른지, 설정이 적용되지 않을 때 무엇부터 확인할지 2026년 10월 공식 문서 기준으로 정리했어요."
 date: "2026-10-26"
-updatedAt: "2026-11-12"
+updatedAt: "2026-11-16"
 tags: ["Claude Code", "Claude", "Anthropic", "가이드", "설정"]
 category: "by-tom"
 subcategory: "column"
@@ -58,6 +58,8 @@ draft: false
 
 1. 이 파일은 <strong>엄격한 JSON</strong>이에요. `//` 주석이나 마지막 쉼표가 있으면 오류가 나요.
 2. 대부분의 수정은 저장하면 바로 적용돼요. 하지만 `model`처럼 시작할 때만 읽는 값도 있어요. 이때는 `/model`로 바꾸거나 새로 시작해요.
+
+`env` 블록에 환경 변수를 넣어 실험 기능을 켤 수도 있어요. 예시는 [Claude Code Code Mode 켜는 법](/posts/2026-11-16-claude-code-code-mode-how-to)에 정리해 뒀어요.
 
 저는 처음엔 `/config`로 시작하고, 권한 규칙이 필요해질 때 파일을 여는 게 맞다고 봐요. 권한 규칙 문법이 처음이라면 [Claude Code Auto 모드 가이드](/posts/2026-07-28-claude-code-auto-mode-guide)의 allow·deny 설명을 같이 보면 좋아요.
 
