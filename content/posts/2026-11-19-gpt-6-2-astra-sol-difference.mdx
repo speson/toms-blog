@@ -1,0 +1,100 @@
+---
+title: "GPT-6.2 Astra Sol 차이 — Codex에서 어떤 모델을 기본으로 둘까"
+thumbnail: "/thumbnails/gpt-6-2-astra-sol-difference.png"
+description: "11월 17일 나온 GPT-6.2 아스트라(Astra)와 솔(Sol)의 차이를 코덱스(Codex) 사용자 기준으로 정리했어요. 사용량을 얼마나 쓰는지, 어떤 일에 어느 모델이 맞는지, 기본 모델을 바꾸는 법을 2026년 11월 19일 기준 공식 문서로 확인했어요."
+date: "2026-11-19"
+updatedAt: "2026-11-19"
+tags: ["Codex", "ChatGPT", "OpenAI", "GPT-6.2", "가이드"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "Codex 기본 모델은 Sol로 두고, 여러 서비스에 걸친 버그처럼 정말 어려운 일만 Astra로 돌리는 게 맞다고 봐요. 특히 Plus라면 Astra를 기본으로 두면 한도가 금방 끝나요."
+draft: false
+---
+
+OpenAI가 새 모델 두 개를 한꺼번에 내놨어요. 어려운 일용 GPT-6.2 아스트라(Astra)와 일상 작업용 GPT-6.2 솔(Sol)이에요. 저는 둘 중 무엇을 <strong>기본 모델</strong>로 두느냐가 Codex 사용량을 가장 크게 좌우한다고 봐요.
+
+이 글을 읽으면 두 모델이 사용량을 얼마나 쓰는지, 어떤 일에 무엇을 고를지, 기본 모델을 바꾸는 법을 알 수 있어요. 내용은 2026년 11월 19일 기준 OpenAI 공식 발표와 문서로 확인했어요. 저는 아직 두 모델을 오래 써 보지 않았기 때문에, 사용 후기가 아니라 공개된 숫자와 제 판단을 나눠서 적었어요.
+
+## GPT-6.2 Astra와 Sol은 무엇이 다른가요?
+
+한 줄로 줄이면 Astra는 <strong>가장 똑똑한 모델</strong>, Sol은 <strong>매일 쓰는 효율 모델</strong>이에요. 둘 다 11월 17일 ChatGPT Work와 Codex, API에 함께 나왔어요.
+
+OpenAI 문서가 권하는 쓰임새를 정리하면 이래요.
+
+| 구분 | GPT-6.2 Astra | GPT-6.2 Sol |
+| :- | :- | :- |
+| 성격 | 가장 어려운 프로젝트용 | 일상 코딩·글쓰기용 |
+| Codex 예시 | 여러 서비스에 걸친 버그 추적·수정·테스트 | PR 리뷰, 리뷰 의견 반영해 코드 고치기 |
+| 그 밖에 잘하는 일 | 보고서로 슬라이드 만들기, 자료 비교 조사 | 회의록을 프로젝트 요약으로 정리 |
+| 이전 모델 대비 | GPT-6 Astra보다 API 가격 20% 낮음 | GPT-6.1 Sol과 API 가격 같음 |
+
+눈여겨볼 숫자가 하나 있어요. OpenAI 발표에 따르면 실제 코드 변경이 병합 기준을 넘는지 보는 FrontierCode 2.0에서 Sol은 Astra와 <strong>0.5점 차이</strong>였어요. 비용은 약 5분의 1이었고요. 저는 이 숫자가 "코딩만 놓고 보면 Sol로 충분한 일이 대부분"이라는 뜻이라고 봐요.
+
+## Astra와 Sol은 사용량을 얼마나 쓰나요?
+
+차이가 가장 크게 나는 곳이 여기예요. Codex 요금 문서에 나온 숫자를 모았어요 (2026년 11월 19일 기준).
+
+| 항목 | GPT-6.2 Astra | GPT-6.2 Sol |
+| :- | :- | :- |
+| Plus 5시간 로컬 메시지 (추정) | 6~50개 | 17~180개 |
+| 크레딧 (100만 토큰당 입력/출력) | 200 / 1,000 | 50 / 250 |
+| API 가격 (100만 토큰당 입력/출력) | $8 / $40 | $2 / $10 |
+
+크레딧 기준으로 Astra는 Sol보다 <strong>토큰당 4배</strong> 비싸요. 메시지 추정치로 봐도 같은 시간에 Sol을 3배 넘게 쓸 수 있어요. 메시지 수는 작업 크기에 따라 크게 달라지는 추정치라서, 정확한 남은 양은 Settings → Usage나 CLI의 `/status`에서 확인해야 해요.
+
+Plus와 Standard Business만 5시간 한도가 있어요. Pro 요금제는 5시간 한도가 없고 주간 한도만 있어요. 그래서 이 차이는 <strong>Plus 사용자에게 가장 크게</strong> 느껴질 거라고 저는 봐요.
+
+빠른 모드도 조심해야 해요. Fast 모드는 두 모델 모두 포함된 사용량을 2배 빠르게 써요. Ultrafast는 Pro 500에서 두 모델 모두, Pro 200에서는 Sol만 쓸 수 있어요. 이 모드는 포함 사용량을 6배 빠르게 줄여요.
+
+## 어떤 일에 Astra를 고르고, 어떤 일에 Sol을 고를까요?
+
+제 기준은 이래요. 기본은 Sol로 두고, 아래 셋 중 하나일 때만 Astra로 바꿔요.
+
+1. <strong>원인을 모르는 버그가 여러 서비스에 걸쳐 있을 때</strong>예요. OpenAI가 Astra 예시로 직접 든 일이기도 해요.
+2. <strong>Sol로 두 번 시도했는데 같은 곳에서 막힐 때</strong>예요. 세 번째도 Sol로 돌리면 사용량만 더 써요.
+3. <strong>코드 밖의 결과물이 중요할 때</strong>예요. 템플릿에 맞춘 슬라이드나 숫자가 맞아야 하는 엑셀 같은 일이에요.
+
+반대로 PR 리뷰, 테스트 추가, 리뷰 의견 반영, 문서 고치기는 Sol로 충분하다고 봐요. 이런 일에 Astra를 쓰면 결과는 비슷한데 한도만 4배 빨리 줄 수 있어요.
+
+하나 더 챙길 점이 있어요. OpenAI는 두 모델이 일부 시험에서 <strong>막힌 사실을 말하지 않고 넘어가는</strong> 경향을 보였다고 밝혔어요. 예를 들어 고칠 파일이 없거나 검색 도구가 안 될 때예요. Codex에는 이를 줄이는 지시를 넣었다고 해요. 그래도 저는 "테스트를 돌렸다"는 말만 믿지 말고 실제 결과를 한 번 열어 보는 습관을 권해요.
+
+## Codex 기본 모델은 어떻게 바꾸나요?
+
+방법은 두 가지예요.
+
+- <strong>지금 세션만 바꿀 때</strong>: Codex 앱은 모델 선택 메뉴, CLI는 `/model`을 써요.
+- <strong>매번 같은 모델로 시작할 때</strong>: 개인 설정 파일 `~/.codex/config.toml`에 적어요.
+
+```toml
+# ~/.codex/config.toml
+model = "gpt-6.2-sol"
+model_reasoning_effort = "medium"
+```
+
+모델 이름은 OpenAI가 API용으로 공개한 `gpt-6.2-astra`, `gpt-6.2-sol`과 같은 형식으로 적었어요. 계정에 따라 목록이 다를 수 있으니 `/model`에 보이는 이름과 맞는지 먼저 확인하세요. 설정 파일 위치와 다른 키는 [Codex config.toml 가이드](/posts/2026-09-28-codex-config-toml-guide)에 정리해 뒀어요.
+
+12월부터는 ChatGPT 대화도 Codex와 같은 사용량을 나눠 쓰게 돼요. 기본 모델을 지금 정리해 두면 그때 덜 당황할 거라고 봐요. 무엇이 바뀌는지는 [ChatGPT·Codex 사용량 한도 통합](/posts/2026-11-02-chatgpt-codex-shared-usage-limit) 글을 보세요.
+
+## 자주 묻는 질문
+
+### GPT-6.2는 어떤 요금제에서 쓸 수 있나요?
+
+Plus, Pro, Business, Enterprise, Edu에서 ChatGPT Work와 Codex로 쓸 수 있어요. Enterprise와 Edu는 기본으로 꺼져 있어서 관리자가 켜야 해요. Free와 Go 요금제의 Codex는 GPT-6 Luna만 안내돼 있어요.
+
+### 일반 ChatGPT 대화창에서도 Astra와 Sol을 고를 수 있나요?
+
+아니요. 2026년 11월 19일 기준으로 두 모델은 ChatGPT의 Work에서 써야 해요. 일반 대화(Chat)에서 고를 수 있는 모델은 따로 있어요.
+
+### 한도에 걸리면 모델을 바꿔서 사용량을 돌려받을 수 있나요?
+
+공식 문서에 그런 안내는 없어요. 이미 쓴 양은 그대로라고 보는 게 안전해요. 다만 남은 양으로 더 오래 쓰려면 Sol 같은 가벼운 모델로 바꾸는 게 도움이 돼요. 크레딧을 사서 이어 쓰는 방법은 [Codex 크레딧 가이드](/posts/2026-10-05-codex-credits-plus-pro-billing)에 있어요.
+
+### 이전 모델인 GPT-6.1 Sol도 계속 쓸 수 있나요?
+
+네. 11월 19일 기준 요금 문서에 GPT-6.1 Sol과 GPT-6 Astra도 함께 올라 있어요. 언제까지 남을지는 공지되지 않았어요.
+
+---
+
+참고 문서 (2026년 11월 19일 확인): [Introducing GPT-6.2 Astra and Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol/), [GPT-6.2 | ChatGPT Learn](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol), [Pricing | ChatGPT Learn](https://learn.chatgpt.com/docs/pricing)
