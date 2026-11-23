@@ -1,0 +1,101 @@
+---
+title: "Gemini 4 Neon 가격과 쓰는 법 — Claude·Codex 쓰는 개발자가 볼 차이"
+thumbnail: "/thumbnails/gemini-4-neon-price-how-to.png"
+description: "구글이 새로 낸 제미나이(Gemini) 4 Neon의 API 가격을 Claude Opus 5.5, GPT-6.2 Sol과 비교했어요. 어떤 요금제와 도구에서 쓸 수 있는지, Gemini CLI에 안 보이는 이유도 2026년 11월 23일 기준 공식 문서로 정리했어요."
+date: "2026-11-23"
+updatedAt: "2026-11-23"
+tags: ["Gemini", "Google", "Antigravity", "가이드", "가격"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "Codex나 Claude Code를 매일 쓴다면 Neon 때문에 도구를 바꿀 필요는 없다고 봐요. 다만 막힌 버그의 다른 의견이나 긴 문서 작업용으로는 API로 따로 써 볼 만해요."
+draft: false
+---
+
+구글이 제미나이 4(Gemini 4) 가족에 Neon이라는 중간급 모델을 새로 넣었어요. 저는 이 모델이 Claude와 Codex 사이에서 고민하던 개발자에게 세 번째 선택지를 만들었다고 봐요. 이 글을 읽으면 Neon의 가격과 쓸 수 있는 곳, 그리고 지금 쓰는 도구를 바꿀 만한지 판단할 수 있어요.
+
+저는 평소 Codex, Claude Code, Grok을 매일 써요. Neon은 아직 오래 써 보지 않았어요. 그래서 아래 내용은 사용 후기가 아니라 2026년 11월 23일 기준 공식 문서와 제 판단을 나눠서 적었어요.
+
+## Gemini 4 Neon 가격은 얼마인가요?
+
+Neon의 API 가격은 <strong>100만 토큰당 입력 $3, 출력 $15</strong>예요. 출력 가격에는 생각 토큰(thinking tokens, 답하기 전에 모델이 속으로 추론하며 쓰는 토큰)도 들어가요. 무료 등급(Free tier)에서는 쓸 수 없고 유료 프로젝트에서만 돼요.
+
+Claude와 Codex 쪽 비슷한 모델과 나란히 놓으면 이래요 (2026년 11월 23일 기준, 표준 요금).
+
+| 모델 | 입력 (100만 토큰당) | 출력 (100만 토큰당) | 캐시 입력 |
+| :- | :- | :- | :- |
+| Gemini 4 Neon | $3 | $15 | $0.15 |
+| Claude Opus 5.5 | $4 | $20 | $0.20 |
+| Claude Sonnet 5.5 | $2 | $10 | $0.10 |
+| GPT-6.2 Sol | $2 | $10 | $0.10 |
+
+표만 보면 Neon은 Opus 5.5보다 싸고, Sonnet 5.5나 Sol보다는 비싸요. 구글 발표를 보면 Neon은 Opus 5.5와 비슷한 위치를 노려요. 실제 코드 변경이 병합 기준을 넘는지 보는 FrontierCode 2.0에서 Neon은 46.2%, Opus 5.5는 47.3%였다고 해요.
+
+캐시 입력은 같은 앞부분 프롬프트를 다시 보낼 때 받는 할인이에요. Neon은 이 할인이 <strong>자동으로만</strong> 붙어요. 직접 캐시를 만드는 방식(explicit caching)은 지원하지 않아요. 기존 Gemini 코드에 `cachedContents`를 쓰고 있었다면 지워야 해요.
+
+하나 더 알아 둘 일정이 있어요. 위 모델인 Gemini 4 Carbon은 11월 30일까지만 할인가예요. 12월 1일부터는 Opus 5.5와 같은 $4 / $20이 돼요. 그래서 12월부터는 Neon이 Carbon보다 25% 싸져요. 저는 Carbon을 API로 쓰고 있다면 지금 Neon으로 시험해 볼 때라고 봐요.
+
+## Gemini 4 Neon은 어디서 쓸 수 있나요?
+
+쓰는 방법은 크게 세 가지예요.
+
+| 어디서 | 필요한 것 | 알아 둘 점 |
+| :- | :- | :- |
+| Gemini API (Google AI Studio) | 유료 API 프로젝트 | 모델 ID `gemini-4-neon`, 컨텍스트 100만 토큰 |
+| 안티그래비티(Antigravity) 앱·CLI | Google AI Pro(유료) 또는 Ultra | 컨텍스트 최대 51만여 토큰(512K) |
+| Gemini 앱 | Google AI Pro 또는 Ultra | 모델 선택 메뉴에서 고름 |
+
+여기서 헷갈리기 쉬운 곳이 두 군데 있어요.
+
+첫째, <strong>Gemini CLI에는 Neon이 없어요.</strong> Gemini CLI 저장소 안내를 보면 이제 이 도구는 기업용 Code Assist 라이선스를 위한 것이에요. 개인과 Google AI Pro·Ultra 사용자는 6월 18일부터 안티그래비티 CLI(`agy`)로 옮겨졌어요. 11월 20일에 Gemini CLI에 Neon을 넣어 달라는 이슈가 열렸지만 아직 답이 없어요.
+
+둘째, <strong>기본 생각 수준이 도구마다 달라요.</strong> 생각 수준(thinking level)은 모델이 답하기 전에 얼마나 오래 추론할지 정하는 값이에요. API의 기본값은 `high`예요. 안티그래비티는 공식 문서와 출시 공지에 적힌 기본값이 서로 달라요. 같은 Neon이라도 결과가 다르게 느껴지면 생각 수준부터 확인하세요.
+
+안티그래비티 CLI에서는 모델 이름에 생각 수준을 붙여서 고르는 방식이에요. 공식 문서 예시는 아래와 같아요.
+
+```bash
+# 내 계정에서 고를 수 있는 모델 ID 보기
+agy models
+
+# 이번 세션만 Neon을 가장 깊은 생각 수준으로
+agy --model gemini-4-neon-xhigh
+```
+
+저는 이 명령을 직접 돌려 보지 못했어요. 계정에 따라 목록이 다를 수 있으니 `agy models`에 보이는 이름을 먼저 확인하세요. 무료와 Google AI Plus 요금제에서는 Neon이 목록에 안 나와요.
+
+## Codex·Claude Code를 쓰는데 Neon으로 바꿀 만한가요?
+
+제 답은 <strong>"바꾸지는 말고, 옆에 하나 더 둘 만하다"</strong>예요.
+
+바꾸지 않는 이유는 단순해요. Neon을 제대로 쓰려면 안티그래비티라는 다른 작업 도구로 옮겨야 해요. 구글 발표를 봐도 같은 모델이 도구에 따라 점수가 크게 달랐어요. SWE-sweep에서 Neon은 단순한 실행 도구로 12.8%, 안티그래비티 안에서 39.0%였다고 해요. 저는 이 숫자가 "모델보다 그 모델을 감싼 도구가 결과를 더 좌우한다"는 뜻이라고 봐요. 이미 Codex나 Claude Code에 설정과 규칙 파일을 쌓아 둔 사람이라면 그걸 버리는 비용이 커요.
+
+반대로 옆에 둘 만한 경우는 이래요.
+
+- <strong>지금 모델로 두 번 막힌 버그</strong>가 있을 때예요. 다른 회사 모델에게 같은 코드를 보여 주면 다른 의심 지점을 짚는 경우가 있어요.
+- <strong>PDF, 표, 음성처럼 섞인 자료</strong>를 한 번에 넣어야 할 때예요. 구글은 Neon이 한 번에 동영상과 음성, 스프레드시트까지 함께 읽는다고 밝혔어요.
+- <strong>Google AI Pro를 이미 구독하고 있을 때</strong>예요. 추가 비용 없이 Gemini 앱이나 안티그래비티에서 바로 써 볼 수 있어요.
+
+API로 쓸 때는 가격표만 보면 안 돼요. 같은 일을 끝내는 데 토큰을 얼마나 쓰는지가 실제 비용을 정해요. Neon은 Sol보다 토큰당 1.5배 비싸서, 같은 일을 약 3분의 1 적은 토큰으로 끝내야 비용이 같아져요. Sol과 비교하는 기준은 [GPT-6.2 Astra Sol 차이](/posts/2026-11-19-gpt-6-2-astra-sol-difference) 글에 정리해 뒀어요. 월 구독으로 쓰는 Claude 쪽 기준은 [Claude Max Ultra 차이](/posts/2026-11-05-claude-max-ultra-difference)를 보세요.
+
+## 자주 묻는 질문
+
+### Gemini 4 Neon은 무료로 쓸 수 있나요?
+
+2026년 11월 23일 기준으로는 안 돼요. API는 유료 등급에서만 되고, 앱과 안티그래비티는 Google AI Pro(유료) 이상이 필요해요. 무료로 쓰려면 API 무료 등급의 Gemini 4 Hydrogen이나, 안티그래비티 무료 요금제의 Gemini 3.8 Flash를 골라야 해요.
+
+### Neon과 Carbon, Hydrogen은 어떻게 다른가요?
+
+구글 설명으로는 Carbon이 가장 어려운 긴 작업용, Hydrogen이 빠른 일상 작업용이에요. Neon은 그 사이에서 어려운 일을 자주 돌릴 때 쓰라고 나온 모델이에요. 구글 문서는 일상 코딩 기본값으로 여전히 Hydrogen을 권해요.
+
+### Claude Code나 Codex 안에서 Neon을 고를 수 있나요?
+
+두 도구의 기본 모델 목록에는 Neon이 없어요. 가장 쉬운 방법은 Gemini API를 직접 부르거나, 안티그래비티나 Gemini 앱을 쓰는 거예요.
+
+### 기존 Gemini 코드를 Neon으로 바꾸면 고칠 게 있나요?
+
+Gemini 4 모델을 쓰고 있었다면 모델 ID만 바꾸면 돼요. Gemini 3 이하에서 옮긴다면 `temperature` 같은 샘플링 값을 빼야 해요. 직접 만든 캐시 설정도 지워야 해요. 자세한 목록은 구글의 마이그레이션 안내에 있어요.
+
+---
+
+참고 문서 (2026년 11월 23일 확인): [Introducing Gemini 4 Neon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/), [What's new in Gemini 4 Neon](https://aistudio.google.com/docs/whats-new-gemini-4-neon), [Gemini Developer API pricing](https://aistudio.google.com/docs/pricing), [Choose a model | Google Antigravity Docs](https://antigravity.google/docs/models/), [Gemini CLI 저장소](https://github.com/google-gemini/gemini-cli), [Claude 가격](https://platform.claude.com/docs/en/about-claude/pricing), [VentureBeat 비교 기사](https://venturebeat.com/technology/google-launches-gemini-4-neon-with-opus-5-5-level-coding-performance-at-25-lower-api-token-prices)
