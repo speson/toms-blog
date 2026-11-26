@@ -1,0 +1,122 @@
+---
+title: "OpenAI API flex 오류 해결 — GPT-6.2는 background로 할인받는 법"
+thumbnail: "/thumbnails/openai-api-flex-background-discount.png"
+description: "GPT-6.2에서 service_tier=flex를 쓰면 오류가 나는 이유와, 대신 background 모드의 2시간·8시간 완료 창으로 토큰 값을 30~40% 깎는 방법을 2026년 11월 26일 기준 OpenAI 공식 문서로 정리했어요."
+date: "2026-11-26"
+updatedAt: "2026-11-26"
+tags: ["OpenAI", "API", "GPT-6.2", "가이드", "가격"]
+category: "by-tom"
+subcategory: "column"
+source: "original"
+sourceUrl: ""
+tldrVerdict: "GPT-6.2에는 flex가 없으니 오류가 나면 background 모드로 옮기면 돼요. 바로 답이 필요 없는 일만 2시간이나 8시간 창에 맡기는 게 맞다고 봐요."
+draft: false
+---
+
+OpenAI API로 GPT-6.2를 부르는데 service_tier를 flex로 두면 요청이 거절돼요. 저는 이 오류가 설정 실수가 아니라 <strong>모델이 flex를 아예 지원하지 않아서</strong> 생긴다고 봐요. 이 글을 읽으면 오류의 원인과, 같은 할인을 받는 새 방법과, 쓰기 전에 확인할 조건을 알 수 있어요.
+
+저는 Codex, Claude Code, Grok을 매일 쓰는 사용자예요. 이 글의 요청 예시는 직접 실행해 보지 않았어요. 2026년 11월 26일 기준 공식 문서에 적힌 필드 이름으로만 구성했어요.
+
+## GPT-6.2에서 service_tier=flex 오류가 나는 이유가 뭔가요?
+
+flex(Flex processing)는 응답이 느려지고 가끔 거절되는 대신 토큰 값을 깎아 주는 방식이에요. OpenAI 문서에 따르면 <strong>GPT-6.2 Astra와 Sol에서는 flex를 쓸 수 없어요.</strong> 앞으로 나올 모델에도 넣지 않을 거라고 해요.
+
+flex는 지금 쓰는 모델에서는 계속 돼요. 다만 문서는 flex 베타를 정리하는 중이라고 밝혔어요. 종료 날짜는 아직 안 나왔어요.
+
+커뮤니티에는 아래와 비슷한 오류 문구를 받았다는 글이 있어요. 공식 문서에 같은 문장이 있는 것은 아니니 참고만 하세요.
+
+```text
+This model does not support service_tier=flex.
+Use background=true with background_options.completion_window instead.
+```
+
+오류 문구가 가리키는 길이 바로 다음 장에서 설명할 background 모드예요.
+
+## flex 대신 background 모드로 얼마나 싸게 쓸 수 있나요?
+
+background 모드는 Responses API에서 요청을 맡겨 두고 나중에 결과를 받는 방식이에요. 여기에 완료 창(completion window)을 고르면 토큰 값이 내려가요. 완료 창은 "이 시간 안에 첫 응답을 주겠다"는 목표 시간이에요.
+
+| 완료 창 | 표준 요금 대비 | 어울리는 일 |
+| :- | :- | :- |
+| `soonest` (기본) | 할인 없음 | 사람이 기다리는 일 |
+| `2h` | 30% 저렴 | 오후 회의 전에 끝낼 분석 |
+| `8h` | 40% 저렴 | 밤새 돌리는 문서 검토 |
+
+GPT-6.2 Sol의 표준 요금은 100만 토큰당 입력 $2, 출력 $10이에요 (2026년 11월 26일 기준). 위 할인율로 제가 계산하면 이래요.
+
+| GPT-6.2 Sol | 입력 | 출력 |
+| :- | :- | :- |
+| 표준 | $2.00 | $10.00 |
+| background 2h | $1.40 | $7.00 |
+| background 8h | $1.20 | $6.00 |
+| Batch API | $1.00 | $5.00 |
+
+background 두 줄은 공식 표가 아니라 제 계산이에요. 실제 청구 전에 가격 페이지의 숫자와 맞춰 보세요.
+
+표를 보면 <strong>가장 싸게 쓰는 길은 여전히 Batch API</strong>예요. 독립된 요청 여러 개를 한 번에 올려 둘 수 있다면 Batch가 더 싸요. 반대로 도구를 부르며 이어지는 에이전트 작업은 background가 맞아요. 이어지는 요청에도 같은 할인이 붙기 때문이에요.
+
+이 할인은 지금 공개 베타예요. 지원 모델은 GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, GPT-6 Luna예요. 커뮤니티에서는 GPT-6.1 이하에서는 flex가 더 싸다는 지적도 나왔어요. 그 모델들은 flex가 아직 되니 비교해서 고르면 돼요.
+
+## background 할인을 받으려면 요청을 어떻게 보내나요?
+
+공식 문서가 요구하는 조건은 네 가지예요.
+
+- `background`를 `true`로 둬요.
+- `background_options.completion_window`를 `2h`나 `8h`로 둬요.
+- `service_tier`를 `default`(표준 처리)로 둬요. `auto`는 표준으로 정해질 때만 할인돼요.
+- `stream`은 켜지 않아요.
+
+문서의 필드 이름으로 만든 요청 예시예요.
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-6.2-sol",
+    "input": "어제 들어온 지원 티켓을 유형별로 요약해 줘.",
+    "background": true,
+    "background_options": { "completion_window": "8h" },
+    "service_tier": "default"
+  }'
+```
+
+응답으로 받은 ID는 꼭 저장해 두세요. 완료 여부는 웹훅(webhook)으로 받거나, 그 ID로 상태를 조회해서 확인해요. 웹훅은 서버가 끝났다고 알려 주는 방식이에요.
+
+지금 flex를 쓰는 코드를 옮기는 순서는 간단해요. 모델 이름을 바꾸고, `service_tier: "flex"`를 지우고, 위 조건 네 가지를 넣어요. 그리고 응답을 바로 읽던 부분을 "ID 저장 후 나중에 조회"로 바꿔요. 이 마지막 부분이 가장 손이 가는 작업이라고 봐요.
+
+## background로 옮기기 전에 알아 둘 점은 뭔가요?
+
+저는 아래 세 가지를 먼저 보라고 말하고 싶어요.
+
+<strong>첫째, 한도가 Batch와 같이 쓰여요.</strong> 2h·8h 요청은 Batch API 작업과 같은 Batch/Background 한도를 나눠 써요. 입력 토큰은 요청을 낼 때 셈해요. 기본 `soonest` 요청은 일반 한도를 써요.
+
+<strong>둘째, 캐시가 따로 놀아요.</strong> 표준 요청은 2h·8h 요청이 만든 프롬프트 캐시(앞부분 프롬프트를 다시 보낼 때 받는 할인)를 쓰지 못해요. 프롬프트가 똑같아도 마찬가지예요.
+
+<strong>셋째, 데이터가 잠시 저장돼요.</strong> background 모드는 `store`를 `false`로 하거나 데이터 무보관(Zero Data Retention)을 써도 응답 데이터를 임시로 저장해요. 회사 보안 규정이 걸려 있다면 가장 먼저 확인할 부분이에요.
+
+저는 이 세 가지를 보면 <strong>"사람이 기다리지 않는 일만 옮긴다"</strong>가 기준이라고 봐요. 채팅처럼 바로 답이 필요한 곳은 표준이나 기본 `soonest`로 두는 게 안전해요.
+
+Sol과 Astra 중 어느 모델을 쓸지는 [GPT-6.2 Astra Sol 차이](/posts/2026-11-19-gpt-6-2-astra-sol-difference) 글에 정리해 뒀어요. 다른 회사 모델과 API 가격을 견줄 때는 [Gemini 4 Neon 가격](/posts/2026-11-23-gemini-4-neon-price-how-to) 글이 도움이 돼요.
+
+## 자주 묻는 질문
+
+### flex는 언제까지 쓸 수 있나요?
+
+2026년 11월 26일 기준 종료 날짜는 공개되지 않았어요. 문서는 날짜가 정해지면 flex 안내 페이지에 올리겠다고 했어요. 지금 flex를 쓰는 서비스라면 그 페이지를 가끔 확인하세요.
+
+### service_tier를 auto로 두면 할인이 되나요?
+
+API가 표준 처리를 고른 경우에만 돼요. 확실히 하려면 `default`로 직접 지정하세요.
+
+### 400 Invalid service_tier 오류는 같은 문제인가요?
+
+아니에요. 그 오류는 프로젝트 설정에서 그 등급을 막아 둔 경우에 나와요. 프로젝트와 조직 설정에서 허용된 등급을 확인해야 해요. 조직이 막은 등급은 프로젝트에서 켤 수 없어요.
+
+### Chat Completions에서도 쓸 수 있나요?
+
+공식 문서의 background 안내는 Responses API 기준이에요. Chat Completions에서의 지원 여부는 확인하지 못해서 적지 않았어요.
+
+---
+
+참고 문서 (2026년 11월 26일 확인): [Background mode](https://developers.openai.com/api/docs/guides/background), [Flex processing](https://developers.openai.com/api/docs/guides/flex-processing), [API 가격](https://developers.openai.com/api/docs/pricing), [Responses API create 레퍼런스](https://developers.openai.com/api/reference/resources/responses/methods/create/index.md), [오류 코드](https://developers.openai.com/api/docs/guides/error-codes), [OpenAI 커뮤니티 글](https://community.openai.com/t/reduce-costs-using-background-mode-with-completion-windows/1418130)
